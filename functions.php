@@ -38,7 +38,7 @@ require_once('library/custom-post-type.php'); // you can disable this if you lik
     - adding custom login css
     - changing text in footer of admin
 */
-// require_once('library/admin.php'); // this comes turned off by default
+require_once('library/admin.php'); // this comes turned off by default
 /*
 4. library/translation/translation.php
     - adding support for other languages
