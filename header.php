@@ -44,11 +44,11 @@
 					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					
 					<!-- if you'd like to use the site description you can un-comment it below -->
-					<?php // bloginfo('description'); ?>
+					<?php bloginfo('description'); ?>
 					
 					
 					<nav role="navigation">
-						<?php bones_main_nav(); ?>
+						<?php kmc2_main_nav(); ?>
 					</nav>
 				
 				</div> <!-- end #inner-header -->

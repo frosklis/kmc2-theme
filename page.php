@@ -14,7 +14,7 @@
 							
 							    <h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
                   <p class="byline vcard"><?php
-                    printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span>.', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(__('F jS, Y', 'bonestheme')), bones_get_the_author_posts_link());
+                    printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span>.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(__('F jS, Y', 'kmc2theme')), kmc2_get_the_author_posts_link());
                   ?></p>
 
 						
@@ -25,7 +25,7 @@
 							</section> <!-- end article section -->
 						
 						    <footer class="article-footer">
-                  <?php the_tags('<span class="tags">' . __('Tags:', 'bonestheme') . '</span> ', ', ', ''); ?>
+                  <?php the_tags('<span class="tags">' . __('Tags:', 'kmc2theme') . '</span> ', ', ', ''); ?>
 							
 						    </footer> <!-- end article footer -->
 						    
@@ -37,13 +37,13 @@
 					
     					    <article id="post-not-found" class="hentry clearfix">
     					    	<header class="article-header">
-    					    		<h1><?php _e("Oops, Post Not Found!", "bonestheme"); ?></h1>
+    					    		<h1><?php _e("Oops, Post Not Found!", "kmc2theme"); ?></h1>
     					    	</header>
     					    	<section class="entry-content">
-    					    		<p><?php _e("Uh Oh. Something is missing. Try double checking things.", "bonestheme"); ?></p>
+    					    		<p><?php _e("Uh Oh. Something is missing. Try double checking things.", "kmc2theme"); ?></p>
     					    	</section>
     					    	<footer class="article-footer">
-    					    	    <p><?php _e("This is the error message in the page.php template.", "bonestheme"); ?></p>
+    					    	    <p><?php _e("This is the error message in the page.php template.", "kmc2theme"); ?></p>
     					    	</footer>
     					    </article>
 					

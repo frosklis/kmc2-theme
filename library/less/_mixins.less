@@ -59,10 +59,10 @@ http://0to255.com/
 @black:             #000;
 @white:             #fff;
 
-@bones-pink:        #f01d4f;
-@bones-blue:        #1990db;
+@kmc2-pink:        #f01d4f;
+@kmc2-blue:        #1990db;
 
-@link-color:        @bones-blue;
+@link-color:        @kmc2-blue;
 @link-hover:        darken(@link-color, 9%);
 
 @normal-text-color: #565656;
@@ -222,9 +222,9 @@ BUTTONS
 *********************/
 
 .button, .button:visited {
-	border: 1px solid darken(@bones-blue, 13%);
-	border-top-color: darken(@bones-blue, 7%);
-	border-left-color: darken(@bones-blue, 7%);
+	border: 1px solid darken(@kmc2-blue, 13%);
+	border-top-color: darken(@kmc2-blue, 7%);
+	border-left-color: darken(@kmc2-blue, 7%);
 	padding: 4px 12px;
 	color: @white;
 	display: inline-block;
@@ -237,33 +237,33 @@ BUTTONS
 	line-height: 21px;
 	.transition();
 	.border-radius(4px);
-	.css-gradient(@bones-blue,darken(@bones-blue, 5%));
+	.css-gradient(@kmc2-blue,darken(@kmc2-blue, 5%));
 
 	&:hover, &:focus {
 		color: @white;
-	  border: 1px solid darken(@bones-blue, 13%);
-	  border-top-color: darken(@bones-blue, 20%);
-	 	border-left-color: darken(@bones-blue, 20%);
-		.css-gradient(darken(@bones-blue, 5%),darken(@bones-blue, 10%));
+	  border: 1px solid darken(@kmc2-blue, 13%);
+	  border-top-color: darken(@kmc2-blue, 20%);
+	 	border-left-color: darken(@kmc2-blue, 20%);
+		.css-gradient(darken(@kmc2-blue, 5%),darken(@kmc2-blue, 10%));
 	}
 	
 	&:active {
-		.css-gradient(darken(@bones-blue, 5%),@bones-blue);
+		.css-gradient(darken(@kmc2-blue, 5%),@kmc2-blue);
 	}	
 }
 
 .blue-button, .blue-button:visited {
-	border-color: darken(@bones-blue, 10%);
-	text-shadow: 0 1px 1px darken(@bones-blue, 10%);
-	.css-gradient( @bones-blue, darken(@bones-blue, 5%) );
-	-webkit-box-shadow: inset 0 0 3px lighten(@bones-blue, 16%);
-       -moz-box-shadow: inset 0 0 3px lighten(@bones-blue, 16%);
-   	        box-shadow: inset 0 0 3px lighten(@bones-blue, 16%);
+	border-color: darken(@kmc2-blue, 10%);
+	text-shadow: 0 1px 1px darken(@kmc2-blue, 10%);
+	.css-gradient( @kmc2-blue, darken(@kmc2-blue, 5%) );
+	-webkit-box-shadow: inset 0 0 3px lighten(@kmc2-blue, 16%);
+       -moz-box-shadow: inset 0 0 3px lighten(@kmc2-blue, 16%);
+   	        box-shadow: inset 0 0 3px lighten(@kmc2-blue, 16%);
 	&:hover, &:focus {
-		border-color: darken(@bones-blue, 15%);
-		.css-gradient( darken(@bones-blue, 4%), darken(@bones-blue, 10%) );
+		border-color: darken(@kmc2-blue, 15%);
+		.css-gradient( darken(@kmc2-blue, 4%), darken(@kmc2-blue, 10%) );
 	}
 	&:active {
-		.css-gradient( darken(@bones-blue, 5%), @bones-blue );
+		.css-gradient( darken(@kmc2-blue, 5%), @kmc2-blue );
 	}
 }

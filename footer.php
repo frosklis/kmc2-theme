@@ -3,7 +3,7 @@
 				<div id="inner-footer" class="wrap clearfix">
 					
 					<nav role="navigation">
-    					<?php bones_footer_links(); ?>
+    					<?php kmc2_footer_links(); ?>
 	                </nav>
 	                		
 					<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>.</p>
@@ -14,7 +14,7 @@
 		
 		</div> <!-- end #container -->
 		
-		<!-- all js scripts are loaded in library/bones.php -->
+		<!-- all js scripts are loaded in library/kmc2.php -->
 		<?php wp_footer(); ?>
 
 	</body>
