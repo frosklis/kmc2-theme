@@ -88,7 +88,7 @@ function kmc2_register_sidebars() {
         'id' => 'cover1',
         'name' => __('Cover 1', 'kmc2theme'),
         'description' => __('The blog cover', 'kmc2theme'),
-        'before_widget' => '<div id="%1$s" class="widget wrap %2$s">',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h4 class="widgettitle">',
         'after_title' => '</h4>',
