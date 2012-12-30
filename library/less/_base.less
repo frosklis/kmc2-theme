@@ -1,6 +1,6 @@
 /******************************************************************
- Site Name: claudionoguera.net/blog
- Author: Claudio Noguera
+Site Name: claudionoguera.net/blog
+Author: Claudio Noguera
 
 Stylesheet: Base Mobile Stylesheet
 
@@ -38,7 +38,7 @@ body {
 	font-family: @serif;
 	font-size: 100%;
 	line-height: 1.5;
-	color: #565656;
+	color: @normal-text-color;
 }
 
 /********************
@@ -209,8 +209,8 @@ and more scalable.
 			display: block;
 			text-decoration: none;
 			padding: 10px 10px;
-			background-color: #eee;
-			border-bottom: 1px solid #ccc;
+			background-color: @light-grey;
+			border-bottom: 1px solid @medium-grey;
 
 			/*
 			remember this is for mobile ONLY, so there's no need
@@ -380,15 +380,15 @@ and more scalable.
 			}
 
 			pre {
-				background: #eee;
-				border: 1px solid #cecece;
+				background: @light-grey;
+				border: 1px solid @almost-white;
 				padding: 10px;
 			}
 
 		} /* end .entry-content */
 
 		.wp-caption {
-			background: #eee;
+			background: @light-grey;
 			padding: 5px;
 
 			/* images inside wp-caption */
@@ -452,7 +452,7 @@ and more scalable.
 
 				&:hover,
 				&:focus {
-					color: #f01d4f;
+					color: @bones-blue;
 					text-decoration: underline;
 				}
 			}
@@ -462,7 +462,7 @@ and more scalable.
 		/* current page link */
 		li.bpn-current {
 			padding: 3px 6px;
-			border-bottom: 2px solid #f01d4f;
+			border-bottom: 2px solid @bones-blue;
 			position: relative;
 
 			a {
@@ -619,10 +619,10 @@ and more scalable.
 	/* general comment classes */
 	.alt {}
 	.odd {
-		background: #eee;
+		background: @light-grey;
 	}
 	.even {
-		background: #fefefe;
+		background: @dark-white;
 	}
 	.parent {}
 	.comment {}
@@ -668,8 +668,8 @@ and more scalable.
 			position: absolute;
 			left: 10px;
 			padding: 2px;
-			border: 1px solid #cecece;
-			background: #fff;
+			border: 1px solid @almost-white;
+			background: @white;
 		}
 
 	} /* end .commentlist .vcard */
@@ -704,9 +704,9 @@ and more scalable.
 	.comment-reply-link {
 		text-decoration: none;
 		float: right;
-		background: #4598bb;
+		background: @caribbean-blue;
 		padding: 3px 5px;
-		color: #fff;
+		color: @white;
 		opacity: 0.65;
 		margin-bottom: 10px;
 		font-weight: 700;
