@@ -38,12 +38,18 @@ require_once('library/custom-post-type.php'); // you can disable this if you lik
     - adding custom login css
     - changing text in footer of admin
 */
-require_once('library/admin.php'); // this comes turned off by default
+// require_once('library/admin.php'); // this comes turned off by default
 /*
 4. library/translation/translation.php
     - adding support for other languages
 */
-require_once('library/translation/translation.php'); // this comes turned off by default
+// require_once('library/translation/translation.php'); // this comes turned off by default
+/*
+5. library/options.php
+    - adds options to the wordpress dashboard
+See http://net.tutsplus.com/tutorials/wordpress/how-to-create-a-better-wordpress-options-panel/
+*/
+require_once('library/options.php');
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 
