@@ -197,10 +197,7 @@ function mytheme_admin() {
 	</div>  
 <?php  
 }  
-?> 
-
-
-<?php  
+ 
 add_action('admin_init', 'mytheme_add_init');  
 add_action('admin_menu', 'mytheme_add_admin');  
 ?>
