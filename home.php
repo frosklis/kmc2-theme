@@ -10,9 +10,7 @@
 						if ( is_active_sidebar( 'cover1' ) ) :
 							dynamic_sidebar( 'cover1' );
 						else : ?>
-							<div class="alert help">
-								<p><?php _e("Please activate some Widgets.", "kmc2theme");  ?></p>
-							</div>
+							<p><?php _e("Please activate some Widgets.", "kmc2theme");  ?></p>
 						<?php endif; ?>
 					</div>
 
@@ -27,9 +25,7 @@
 					    if (is_active_sidebar($widget)):
 					    	dynamic_sidebar($widget);
 					    else: ?>
-							<div class="alert help">
-								<p><?php _e("Please activate some Widgets.", "kmc2theme");  ?></p>
-							</div>
+							<p><?php _e("Please activate some Widgets.", "kmc2theme");  ?></p>
 						<?php endif; ?>
 						</div>
 					<?php
