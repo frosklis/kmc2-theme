@@ -9,13 +9,12 @@
 						<div class="flex-container">
 						  <div class="flexslider">
 							<ul class="slides">
-							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4849.jpg" /></li>
-							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4800.jpg" /></li>
-							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4889.jpg" /></li>
+							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4849.jpg" style={max-height: 350px;}/></li>
+							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4800.jpg" style={max-height: 350px;}/></li>
+							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4889.jpg" style={max-height: 350px;}/></li>
 							</ul>
 						  </div>
 						</div>
-
 					</div>
 
 					<!--Four widgetized areas-->
