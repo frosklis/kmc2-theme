@@ -11,69 +11,56 @@ foreach ($categories as $category_list ) {
 }  
 array_unshift($wp_cats, "Choose a category"); 
 
-$options = array (
-array( "name" => $themename." Options",
-	"type" => "title"),
-array( "name" => "General",
-	"type" => "section"),
-array( "type" => "open"),
-array( "name" => "Colour Scheme",
-	"desc" => "Select the colour scheme for the theme",
-	"id" => $shortname."_color_scheme",
-	"type" => "select",
-	"options" => array("blue", "red", "green"),
-	"std" => "blue"),
-array( "name" => "Logo URL",
-	"desc" => "Enter the link to your logo image",
-	"id" => $shortname."_logo",
-	"type" => "text",
-	"std" => ""),
-array( "name" => "Custom CSS",
-	"desc" => "Want to add any custom CSS code? Put in here, and the rest is taken care of. This overrides any other stylesheets. eg: a.button{color:green}",
-	"id" => $shortname."_custom_css",
-	"type" => "textarea",
-	"std" => ""),
-array( "type" => "close"),
-array( "name" => "Homepage",
-	"type" => "section"),
-array( "type" => "open"),
-array( "name" => "Homepage header image",
-	"desc" => "Enter the link to an image used for the homepage header.",
-	"id" => $shortname."_header_img",
-	"type" => "text",
-	"std" => ""),
-array( "name" => "Homepage featured category",
-	"desc" => "Choose a category from which featured posts are drawn",
-	"id" => $shortname."_feat_cat",
-	"type" => "select",
-	"options" => $wp_cats,
-	"std" => "Choose a category"),
-array( "type" => "close"),
-array( "name" => "Footer",
-	"type" => "section"),
-array( "type" => "open"),
-array( "name" => "Footer copyright text",
-	"desc" => "Enter text used in the right side of the footer. It can be HTML",
-	"id" => $shortname."_footer_text",
-	"type" => "text",
-	"std" => ""),
-array( "name" => "Google Analytics Code",
-	"desc" => "You can paste your Google Analytics or other tracking code in this box. This will be automatically added to the footer.",
-	"id" => $shortname."_ga_code",
-	"type" => "textarea",
-	"std" => ""),
-array( "name" => "Custom Favicon",
-	"desc" => "A favicon is a 16x16 pixel icon that represents your site; paste the URL to a .ico image that you want to use as the image",
-	"id" => $shortname."_favicon",
-	"type" => "text",
-	"std" => get_bloginfo('url') ."/favicon.ico"),
-array( "name" => "Feedburner URL",
-	"desc" => "Feedburner is a Google service that takes care of your RSS feed. Paste your Feedburner URL here to let readers see it in your website",
-	"id" => $shortname."_feedburner",
-	"type" => "text",
-	"std" => get_bloginfo('rss2_url')),
-array( "type" => "close")
-);
+$options = 
+	array (
+		array( "name" => $themename." Options",	"type" => "title"),
+		array( "name" => "General", "type" => "section"),
+		array( "type" => "open"),
+		array( "name" => "Colour Scheme",
+			   "desc" => "Select the colour scheme for the theme",
+			   "id" => $shortname."_color_scheme",
+			   "type" => "select",
+			   "options" => array("blue", "red", "green"),
+			   "std" => "blue"),
+		array( "name" => "Logo URL",
+			   "desc" => "Enter the link to your logo image",
+			   "id" => $shortname."_logo",
+			   "type" => "text",
+			   "std" => ""),
+		array( "name" => "Custom CSS",
+			   "desc" => "Want to add any custom CSS code? Put in here, and the rest is taken care of. This overrides any other stylesheets. eg: a.button{color:green}",
+			   "id" => $shortname."_custom_css",
+			   "type" => "textarea",
+			   "std" => ""),
+		array( "type" => "close"),
+		array( "name" => "Homepage", "type" => "section"),
+		array( "type" => "open"),
+		array( "name" => "Homepage header image",
+			   "desc" => "Enter the link to an image used for the homepage header.",
+			   "id" => $shortname."_header_img",
+			   "type" => "text",
+			   "std" => ""),
+		array( "name" => "Homepage featured category",
+			   "desc" => "Choose a category from which featured posts are drawn",
+			   "id" => $shortname."_feat_cat",
+			   "type" => "select",
+			   "options" => $wp_cats,
+			   "std" => "Choose a category"),
+		array( "type" => "close"),
+		array( "name" => "Footer", "type" => "section"),
+		array( "type" => "open"),
+		array( "name" => "Footer copyright text",
+			   "desc" => "Enter text used in the right side of the footer. It can be HTML",
+			   "id" => $shortname."_footer_text",
+			   "type" => "text",
+			   "std" => ""),
+		array( "name" => "Custom Favicon",
+			   "desc" => "A favicon is a 16x16 pixel icon that represents your site; paste the URL to a .ico image that you want to use as the image",
+			   "id" => $shortname."_favicon",
+			   "type" => "text",
+			   "std" => get_bloginfo('url') ."/favicon.ico"),
+		array( "type" => "close")
+	);
 
 
 function mytheme_add_admin() {
@@ -81,18 +68,25 @@ function mytheme_add_admin() {
 	if ( $_GET['page'] == basename(__FILE__) ) {
 		if ( 'save' == $_REQUEST['action'] ) {
 			foreach ($options as $value) {
-			update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
-	foreach ($options as $value) {
-		if( isset( $_REQUEST[ $value['id'] ] ) ) { update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); } else { delete_option( $value['id'] ); } }
-		//header("Location: admin.php?page=functions.php&saved=true");
-	die;
-	}
-	else if( 'reset' == $_REQUEST['action'] ) {
-		foreach ($options as $value) {
-			delete_option( $value['id'] ); }
-		//header("Location: admin.php?page=functions.php&reset=true");
-	die;
-	}
+				update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
+			}
+			foreach ($options as $value) {
+				if( isset( $_REQUEST[ $value['id'] ] ) ) { 
+					update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); 
+				} 
+				else { 
+					delete_option( $value['id'] ); 
+				} 
+			}
+			header("Location: admin.php?page=functions.php&saved=true");
+			die;
+		}
+		else if( 'reset' == $_REQUEST['action'] ) {
+			foreach ($options as $value) {
+				delete_option( $value['id'] ); }
+			header("Location: admin.php?page=functions.php&reset=true");
+			die;
+		}
 	}
 //	add_menu_page($themename, $themename, 'administrator', basename(__FILE__), 'mytheme_admin');
 	add_theme_page($themename, $themename, 'administrator', basename(__FILE__), 'mytheme_admin');

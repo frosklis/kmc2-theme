@@ -9,9 +9,18 @@
 						<div class="flex-container">
 						  <div class="flexslider">
 							<ul class="slides">
-							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4849.jpg" height="300"/></li>
-							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4800.jpg" height="300"/></li>
-							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4889.jpg" height="300"/></li>
+							  <li>
+							  	<img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4849.jpg" height="300"/>
+							  	<p class="flex-caption">Esto es una foto.</p>
+							  </li>
+							  <li>
+							  	<img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4800.jpg" height="300"/>
+							  	<p class="flex-caption">Esto es otra foto.</p>
+							  </li>
+							  <li>
+							  	<img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4889.jpg" height="300"/>
+							  	<p class="flex-caption">Y esto otra.</p>
+							  </li>
 							</ul>
 						  </div>
 						</div>
