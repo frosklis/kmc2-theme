@@ -84,13 +84,13 @@ function mytheme_add_admin() {
 			update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
 	foreach ($options as $value) {
 		if( isset( $_REQUEST[ $value['id'] ] ) ) { update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); } else { delete_option( $value['id'] ); } }
-		header("Location: admin.php?page=functions.php&saved=true");
+		//header("Location: admin.php?page=functions.php&saved=true");
 	die;
 	}
 	else if( 'reset' == $_REQUEST['action'] ) {
 		foreach ($options as $value) {
 			delete_option( $value['id'] ); }
-		header("Location: admin.php?page=functions.php&reset=true");
+		//header("Location: admin.php?page=functions.php&reset=true");
 	die;
 	}
 	}
