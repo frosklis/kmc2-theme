@@ -34,7 +34,7 @@
 						</div>
 					<?php
 					} // foreach
-					unset($widget;
+					unset($widget);
 					?>
 				    
 				</div> <!-- end #inner-content -->
