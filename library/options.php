@@ -99,7 +99,7 @@ add_menu_page($themename, $themename, 'administrator', basename(__FILE__), 'myth
 function mytheme_add_init() {
 	$file_dir=get_bloginfo('template_directory');  
 	wp_enqueue_style("functions", $file_dir."/library/css/options.css", false, "1.0", "all"); 
-	wp_enqueue_script("rm_script", $file_dir."/library/js/rm_script.js", false, "1.0");  
+	wp_enqueue_script("rm_script", $file_dir."/library/js/rm_scripts.js", false, "1.0");  
 } 
 
 
