@@ -90,39 +90,50 @@ function kmc2_register_sidebars() {
     	'after_title' => '</h4>',
     ));
     
+    // This is where the banner will be
     register_sidebar(array(
         'id' => 'cover1',
         'name' => __('Cover 1', 'kmc2theme'),
         'description' => __('The blog cover', 'kmc2theme'),
-        'before_widget' => '<div id="%1$s" class="widget threecol %2$s">',
+    ));
+
+
+    register_sidebar(array(
+        'id' => 'cover2',
+        'name' => __('Cover 2', 'kmc2theme'),
+        'description' => __('WIdget area', 'kmc2theme'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h4 class="widgettitle">',
         'after_title' => '</h4>',
     ));
-    /* 
-    to add more sidebars or widgetized areas, just copy
-    and edit the above sidebar code. In order to call 
-    your new sidebar just use the following code:
-    
-    Just change the name to whatever your new
-    sidebar's id is, for example:
-    
     register_sidebar(array(
-    	'id' => 'sidebar2',
-    	'name' => __('Sidebar 2', 'kmc2theme'),
-    	'description' => __('The second (secondary) sidebar.', 'kmc2theme'),
-    	'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    	'after_widget' => '</div>',
-    	'before_title' => '<h4 class="widgettitle">',
-    	'after_title' => '</h4>',
+        'id' => 'cover3',
+        'name' => __('Cover 3', 'kmc2theme'),
+        'description' => __('Widget area', 'kmc2theme'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widgettitle">',
+        'after_title' => '</h4>',
     ));
-    
-    To call the sidebar in your template, you can just copy
-    the sidebar.php file and rename it to your sidebar's name.
-    So using the above example, it would be:
-    sidebar-sidebar2.php
-    
-    */
+    register_sidebar(array(
+        'id' => 'cover4',
+        'name' => __('Cover 4', 'kmc2theme'),
+        'description' => __('Widget area', 'kmc2theme'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widgettitle">',
+        'after_title' => '</h4>',
+    ));
+    register_sidebar(array(
+        'id' => 'cover5',
+        'name' => __('Cover 5', 'kmc2theme'),
+        'description' => __('Widget area', 'kmc2theme'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widgettitle">',
+        'after_title' => '</h4>',
+    ));
 } // don't remove this bracket!
 
 /************* COMMENT LAYOUT *********************/
