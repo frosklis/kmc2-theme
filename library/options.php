@@ -137,7 +137,7 @@ function mytheme_admin() {
 				case 'text':  ?>  
 					<div class="rm_input rm_text">  
 					    <label for="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></label>  
-					    <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_settings( $value['id'] ) != "") { echo stripslashes(get_settings( $value['id'])  ); } else { echo $value['std']; } ?>" />  
+					    <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id'])  ); } else { echo $value['std']; } ?>" />  
 					 	<small><?php echo $value['desc']; ?></small><div class="clearfix"></div>  
 					 </div>  
 					<?php  
@@ -145,7 +145,7 @@ function mytheme_admin() {
 				case 'textarea':  ?>  
 					<div class="rm_input rm_textarea">  
 					    <label for="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></label>  
-					    <textarea name="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" cols="" rows=""><?php if ( get_settings( $value['id'] ) != "") { echo stripslashes(get_settings( $value['id']) ); } else { echo $value['std']; } ?></textarea>  
+					    <textarea name="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" cols="" rows=""><?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id']) ); } else { echo $value['std']; } ?></textarea>  
 					 	<small><?php echo $value['desc']; ?></small><div class="clearfix"></div>  
 					</div>  
 					<?php  
@@ -155,7 +155,7 @@ function mytheme_admin() {
 					    <label for="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></label>  
 						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">  
 							<?php foreach ($value['options'] as $option) { ?>  
-						        <option <?php if (get_settings( $value['id'] ) == $option) { echo 'selected="selected"'; } ?>><?php echo $option; ?></option>
+						        <option <?php if (get_option( $value['id'] ) == $option) { echo 'selected="selected"'; } ?>><?php echo $option; ?></option>
 					    	<?php } ?>  
 						</select>  
 					    <small><?php echo $value['desc']; ?></small><div class="clearfix"></div>  
