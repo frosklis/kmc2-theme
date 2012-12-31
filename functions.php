@@ -30,7 +30,7 @@ require_once('library/kmc2.php'); // if you remove this, kmc2 will break
     - example custom taxonomy (like categories)
     - example custom taxonomy (like tags)
 */
-require_once('library/custom-post-type.php'); // you can disable this if you like
+// require_once('library/custom-post-type.php'); // you can disable this if you like
 /*
 3. library/admin.php
     - removing some default WordPress dashboard widgets

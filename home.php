@@ -6,12 +6,35 @@
 			
 					<!--Cover banner-->
 					<div id="cover_banner" class="home-slideshow">
+						<!--
 						<?php 
 						if ( is_active_sidebar( 'cover1' ) ) :
 							dynamic_sidebar( 'cover1' );
 						else : ?>
 							<p><?php _e("Please activate some Widgets.", "kmc2theme");  ?></p>
 						<?php endif; ?>
+					-->
+						<div class="flex-container">
+						  <div class="flexslider">
+							<ul class="slides">
+							<?php
+							query_posts(array('category_name' => 'featured', 'posts_per_page' => 3));
+							if(have_posts()) :
+							    while(have_posts()) : the_post();
+							?>
+							  <li>
+								<?php the_post_thumbnail(); ?>
+								<p class="flex-caption"><?php the_excerpt(); ?></p>
+							  </li>
+							<?php
+							    endwhile;
+							endif;
+							wp_reset_query();
+							?>
+							</ul>
+						  </div>
+						</div>
+
 					</div>
 
 					<!--Four widgetized areas-->
