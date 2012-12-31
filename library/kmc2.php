@@ -218,6 +218,18 @@ function kmc2_theme_support() {
 			'footer-links' => __( 'Footer Links', 'kmc2theme' ) // secondary nav in footer
 		)
 	);
+
+	// Infinite-scroll
+	add_theme_support( 'infinite-scroll', array(
+	    'type'           => 'scroll',		//scroll or click
+	    'footer_widgets' => false,
+	    'container'      => 'main',
+	    'wrapper'        => true,			//adds a .infinite-wrap div to the new posts
+	    'render'         => false,          //should add a content.php template
+	    'posts_per_page' => false
+		) 
+	);
+
 } /* end kmc2 theme support */
 
 
