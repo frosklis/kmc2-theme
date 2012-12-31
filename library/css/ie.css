@@ -462,10 +462,10 @@ LAYOUT & GRID STYLES
 /*********************
 HOMEPAGE STYLES
 *********************/
-.home_widgetarea1,
-.home_widgetarea2,
-.home_widgetarea3 {
-  margin-right: 12px;
+.home-widgetarea1,
+.home-widgetarea2,
+.home-widgetarea3 {
+  margin-right: 9px;
 }
 /*********************
 HEADER STYLES

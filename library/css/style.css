@@ -1346,6 +1346,14 @@ and more scalable.
   width: 230px;
   margin-top: 10px;
 }
+.home-widgetarea1,
+.home-widgetarea2,
+.home-widgetarea3 {
+  margin-right: 20px;
+}
+.home_widgetarea4 {
+  float: right;
+}
 /*
 LARGER MOBILE DEVICES
 This is for devices like the Galaxy Note or something that's
@@ -1559,10 +1567,10 @@ you can add resource intensive styles.
   /*********************
   HOMEPAGE STYLES
   *********************/
-  .home_widgetarea1,
-  .home_widgetarea2,
-  .home_widgetarea3 {
-    margin-right: 12px;
+  .home-widgetarea1,
+  .home-widgetarea2,
+  .home-widgetarea3 {
+    margin-right: 9px;
   }
   /*********************
   HEADER STYLES
