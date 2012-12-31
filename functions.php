@@ -49,7 +49,7 @@ require_once('library/custom-post-type.php'); // you can disable this if you lik
     - adds options to the wordpress dashboard
 See http://net.tutsplus.com/tutorials/wordpress/how-to-create-a-better-wordpress-options-panel/
 */
-//require_once('library/options.php');
+require_once('library/options.php');
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 
