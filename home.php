@@ -17,20 +17,9 @@
 						<div class="flex-container">
 						  <div class="flexslider">
 							<ul class="slides">
-							<?php
-							query_posts(array('category_name' => 'featured', 'posts_per_page' => 3));
-							if(have_posts()) :
-							    while(have_posts()) : the_post();
-							?>
-							  <li>
-								<?php the_post_thumbnail(); ?>
-								<p class="flex-caption"><?php the_excerpt(); ?></p>
-							  </li>
-							<?php
-							    endwhile;
-							endif;
-							wp_reset_query();
-							?>
+							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4849.jpg" /></li>
+							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4800.jpg" /></li>
+							  <li><img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4889.jpg" /></li>
 							</ul>
 						  </div>
 						</div>
