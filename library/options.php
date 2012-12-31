@@ -175,7 +175,7 @@ case "section":
 $i++;  
 ?>  
 <div class="rm_section">  
-<div class="rm_title"><h3><img src="<?php bloginfo('template_directory')?>/library/images/nothing.gif" class="inactive" alt="""><?php echo $value['name']; ?></h3><span class="submit"><input name="save<?php echo $i; ?>" type="submit" value="Save changes" />  
+<div class="rm_title"><h3><img src="<?php bloginfo('template_directory')?>/library/images/transparent.gif" class="inactive" alt="""><?php echo $value['name']; ?></h3><span class="submit"><input name="save<?php echo $i; ?>" type="submit" value="Save changes" />  
 </span><div class="clearfix"></div></div>  
 <div class="rm_options">  
 <?php break;  
