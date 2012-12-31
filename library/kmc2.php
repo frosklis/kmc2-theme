@@ -155,8 +155,8 @@ function kmc2_scripts_and_styles() {
     wp_enqueue_script( 'kmc2-js' );
 
     // Add flexslider
-    wp_enqueue_script('flexslider', get_bloginfo('stylesheet_directory').'library/js/jquery.flexslider-min.js', array('jquery'));
-	wp_enqueue_script('flexslider-init', get_bloginfo('stylesheet_directory').'library/js/flexslider-init.js', array('jquery', 'flexslider'));
+    wp_enqueue_script('flexslider', get_bloginfo('stylesheet_directory').'/library/js/jquery.flexslider-min.js', array('jquery'));
+	wp_enqueue_script('flexslider-init', get_bloginfo('stylesheet_directory').'/library/js/flexslider-init.js', array('jquery', 'flexslider'));
 
 
   }
