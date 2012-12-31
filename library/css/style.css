@@ -1349,7 +1349,7 @@ and more scalable.
 .home_widgetarea1,
 .home_widgetarea2,
 .home_widgetarea3 {
-  margin-left: 10px;
+  margin-right: 10px;
 }
 /*
 LARGER MOBILE DEVICES
@@ -1567,7 +1567,7 @@ you can add resource intensive styles.
   .home_widgetarea1,
   .home_widgetarea2,
   .home_widgetarea3 {
-    margin-left: 12px;
+    margin-right: 12px;
   }
   /*********************
   HEADER STYLES
