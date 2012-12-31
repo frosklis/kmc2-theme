@@ -94,7 +94,7 @@ function mytheme_add_admin() {
 	die;
 	}
 	}
-	add_menu_page($themename, $themename, 'administrator', basename(__FILE__), 'mytheme_admin');
+//	add_menu_page($themename, $themename, 'administrator', basename(__FILE__), 'mytheme_admin');
 	add_theme_page($themename, $themename, 'administrator', basename(__FILE__), 'mytheme_admin');
 
 }
