@@ -6,14 +6,6 @@
 			
 					<!--Cover banner-->
 					<div id="cover_banner" class="home-slideshow">
-						<!--
-						<?php 
-						if ( is_active_sidebar( 'cover1' ) ) :
-							dynamic_sidebar( 'cover1' );
-						else : ?>
-							<p><?php _e("Please activate some Widgets.", "kmc2theme");  ?></p>
-						<?php endif; ?>
-					-->
 						<div class="flex-container">
 						  <div class="flexslider">
 							<ul class="slides">
