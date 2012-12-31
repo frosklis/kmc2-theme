@@ -21,7 +21,7 @@
 					$widgets = array("cover2", "cover3", "cover4", "cover5");
 					$i = 0;
 					foreach ($widgets as &$widget) { 
-						$i = i+1?>
+						$i = $i+1?>
 						<div class="home-widgetarea<?php echo $i; ?>">
 						<?php
 					    if (is_active_sidebar($widget)):
