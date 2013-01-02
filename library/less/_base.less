@@ -36,10 +36,11 @@ and will be used across all viewports.
 *********************/
 
 body {
-	font-family: @serif;
+	font-family: @sans-serif;
 	font-size: 100%;
-	line-height: 1.5;
+	line-height: 1.2;
 	color: @normal-text-color;
+	background-color: @medium-grey;
 }
 
 img { //Don't let images be larger than their container
@@ -146,8 +147,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 
 h1, .h1 {
-	font-size: 2.5em;
+	font-size: 48px;
 	line-height: 1.333em;
+	margin-right: 0.5em;
 }
 
 h2, .h2 {
@@ -177,14 +179,37 @@ h5, .h5 {
 *********************/
 
 .header {
-	#inner-header {}
+	#inner-header {
+		background-color: @white;
+		display: block;
+		height: @header-height;
+		margin-top: 4px;
+		position: relative;
+		padding-top: 10px;
+		padding-left: 8px;
+	}
 
-	#logo {}
+	#logo {
+		a {
+			color: @black;
+		}
+	}
 
 	nav {
+		height: @header-navbar-height;
+		background-color: @black;
+		color: white;
+		position: absolute;
+		top: @header-height - @header-navbar-height;
+		right: 0px;
 		ul.nav {
+			color: @white;
+			margin: 0;
+			font-size: 18px;
 			li {
-				a {}
+				a {
+					color: @white;
+				}
 
 				&:first-child {}
 
@@ -207,17 +232,15 @@ and more scalable.
 */
 
 .nav {
-	border: 1px solid #ccc;
-	border-bottom: 0;
 
 	li {
+		float: left;
+		position: relative;
 
 		a {
 			display: block;
 			text-decoration: none;
-			padding: 10px 10px;
-			background-color: @light-grey;
-			border-bottom: 1px solid @medium-grey;
+			padding: 8px 10px;
 
 			/*
 			remember this is for mobile ONLY, so there's no need
@@ -230,52 +253,73 @@ and more scalable.
 			}
 		}
 
-		&:first-child {}
+		
 
+		&:first-child {}
 		&:last-child {}
 
-		/*
-		so you really have to rethink your dropdowns for mobile.
-		you don't want to have it expand too much because the
-		screen is so small. How you manage your menu should
-		depend on the project. Here's some great info on it:
-		http://www.alistapart.com/articles/organizing-mobile/
-		*/
+		
+		// plan your menus and drop-downs wisely.
+		
 		ul.sub-menu,
 		ul.children {
+			width: 200px;
+			border: 1px solid #ccc;
+			border-top: 0;
+			position: absolute;
+			display: none;
+			z-index: 8999;
 
 			li {
 
 				a {
-					padding-left: 30px;
+					padding-left: 10px;
+					border-right: 0;
+					display: block;
+					width: 180px;
+					border-bottom: 1px solid #ccc;
 
 					&:hover,
 					&:focus {}
 
 					&:link {}
-
 				}
 
 				&:first-child {}
 
-				&:last-child {}
+				&:last-child {
+
+					a {
+						border-bottom: 0;
+					}
+				}
 
 			}
 
+			// highlight sub-menu current page
+			li.current-menu-item,
+			li.current_page_item,
+			li.current-page-ancestor {
+				a {}
+			}
 		}
 
-	} /* end .menu li */
+		// showing sub-menus
+		&:hover ul {
+			top: auto;
+			display: block;
+		}
 
-	/* highlight current page */
+	} // end .menu ul li 
+
+	// highlight current page
 	li.current-menu-item,
 	li.current_page_item,
-	li.current_page_ancestor {
-
+	li.current-page-ancestor {
 		a {}
+	}  // end current highlighters
 
-	}  /* end current highlighters */
-
-} /* end .nav */
+} // end .nav
 
 
 /*********************
@@ -308,7 +352,7 @@ and more scalable.
 		/* want to style individual post classes? Booya! */
 		.post-id {}         /* post by id (i.e. post-3) */
 		.post {
-			background-color: @white;
+			background-color: white;
 			opacity: 0.8;
 			}            /* general post style */
 		.page {}            /* general article on a page style */
@@ -679,7 +723,7 @@ and more scalable.
 			left: 10px;
 			padding: 2px;
 			border: 1px solid @almost-white;
-			background: @white;
+			background: white;
 		}
 
 	} /* end .commentlist .vcard */
@@ -716,7 +760,7 @@ and more scalable.
 		float: right;
 		background: @caribbean-blue;
 		padding: 3px 5px;
-		color: @white;
+		color: white;
 		opacity: 0.65;
 		margin-bottom: 10px;
 		font-weight: 700;

@@ -26,9 +26,6 @@
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->
-			
-		<!-- drop Google Analytics Here -->
-		<!-- end analytics -->
 		
 	</head>
 	
@@ -40,11 +37,10 @@
 			
 				<div id="inner-header" class="wrap clearfix">
 					
-					<!-- to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> -->
-					<p id="logo">
-						<h1><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></h1>
+					<div id="logo">
+						<span class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></span>
 						<?php bloginfo('description'); ?>
-					</p>
+					</div>
 					
 					<nav role="navigation">
 						<?php kmc2_main_nav(); ?>

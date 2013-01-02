@@ -56,18 +56,18 @@ http://0to255.com/
 @alert-green:       #e6efc2;
 @alert-blue:        #d5edf8;
 
-@black:             #000;
-@white:             #fff;
-
-@kmc2-pink:        #f01d4f;
-@kmc2-blue:        #1990db;
+@kmc2-pink:         #f01d4f;
+@kmc2-blue:         #1990db;
 
 @link-color:        @kmc2-blue;
 @link-hover:        darken(@link-color, 9%);
 
+@white:             #ffffff;
+@black:             #000000;
+
 @normal-text-color: #565656;
 @light-grey:        #eee;
-@medium-grey:       #ccc;
+@medium-grey:       #b3b3b3;
 @almost-white:      #cecece;
 @dark-white:        #fefefe;
 @caribbean-blue:    #4598bb;
@@ -86,12 +86,14 @@ DIMENSIONS
 *********************/
 @border-width: 1px;
 @home-widget-width: 230px;
+@header-height: 88px;
+@header-navbar-height: 40px;
 
 /*********************
 TYPOGRAPHY
 *********************/
 
-@sans-serif:         "Helvetica Neue", Helvetica, Arial, sans-serif; 
+@sans-serif:         Arial, "Helvetica Neue", Helvetica, sans-serif; 
 @serif:              "Georgia", Cambria, Times New Roman, Times, serif; 
 
 
@@ -234,7 +236,7 @@ BUTTONS
 	border-top-color: darken(@kmc2-blue, 7%);
 	border-left-color: darken(@kmc2-blue, 7%);
 	padding: 4px 12px;
-	color: @white;
+	color: white;
 	display: inline-block;
 	font-size: 11px;
 	font-weight: bold;
@@ -248,7 +250,7 @@ BUTTONS
 	.css-gradient(@kmc2-blue,darken(@kmc2-blue, 5%));
 
 	&:hover, &:focus {
-		color: @white;
+		color: white;
 	  border: 1px solid darken(@kmc2-blue, 13%);
 	  border-top-color: darken(@kmc2-blue, 20%);
 	 	border-left-color: darken(@kmc2-blue, 20%);
