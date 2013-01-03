@@ -807,21 +807,8 @@ html[xmlns] .slides {
 }
 /* FlexSlider Default Theme
 *********************************/
-.flexslider {
-  margin: 0 0 60px;
-  background: #fff;
-  border: 4px solid #fff;
-  position: relative;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  -o-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  zoom: 1;
-}
+/* Don't need this stuff
+.flexslider {margin: 0 0 60px; background: #fff; border: 4px solid #fff; position: relative; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,.2); -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); zoom: 1;} */
 .flex-viewport {
   max-height: 2000px;
   -webkit-transition: all 1s ease;
@@ -985,7 +972,7 @@ body {
   font-size: 100%;
   line-height: 1.2;
   color: #565656;
-  background-color: #b3b3b3;
+  background-color: #f2f2f2;
 }
 img {
   max-width: 100%;
@@ -1264,7 +1251,7 @@ and more scalable.
 }
 .entry-content pre {
   background: #eeeeee;
-  border: 1px solid #cecece;
+  border: 1px solid #f2f2f2;
   padding: 10px;
 }
 /* end .entry-content */
@@ -1422,7 +1409,7 @@ and more scalable.
   background: #eeeeee;
 }
 .commentlist .even {
-  background: #fefefe;
+  background: #f2f2f2;
 }
 .commentlist .vcard {
   margin-left: 50px;
@@ -1445,7 +1432,7 @@ and more scalable.
   position: absolute;
   left: 10px;
   padding: 2px;
-  border: 1px solid #cecece;
+  border: 1px solid #f2f2f2;
   background: white;
 }
 .commentlist .comment_content {
@@ -1574,16 +1561,15 @@ and more scalable.
 *********************/
 .home-slideshow {
   display: block;
-  border: solid 1px #cecece;
   width: 100%;
-  height: 400px;
+  height: 540px;
 }
 .home-widgetarea1,
 .home-widgetarea2,
 .home-widgetarea3,
 .home-widgetarea4 {
   display: inline-block;
-  border: solid 1px #cecece;
+  border: solid 1px #f2f2f2;
   width: 230px;
   margin-top: 10px;
 }

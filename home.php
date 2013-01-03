@@ -10,22 +10,21 @@
 						  <div class="flexslider">
 							<ul class="slides">
 							  <li>
-							  	<img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4849.jpg" height="300"/>
+							  	<img src="./mockups/_DSC6580.jpg" />
 							  	<p class="flex-caption">Esto es una foto.</p>
 							  </li>
 							  <li>
-							  	<img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4800.jpg" height="300"/>
+							  	<img src="./mockups/_DSC6259.jpg" />
 							  	<p class="flex-caption">Esto es otra foto.</p>
 							  </li>
 							  <li>
-							  	<img src="http://www.kmc2.tk/wp-content/gallery/transmongoliano/dsc4889.jpg" height="300"/>
-							  	<p class="flex-caption">Y esto otra.</p>
+							  	<img src="./mockups/_DSC4849.jpg" />
+							  	<p class="flex-caption">Y una más.</p>
 							  </li>
 							</ul>
 						  </div>
 						</div>
 					</div>
-
 					<!--Four widgetized areas-->
 					<?php
 					$widgets = array("cover2", "cover3", "cover4", "cover5");
