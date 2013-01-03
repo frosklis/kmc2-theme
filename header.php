@@ -38,7 +38,8 @@
 				<div id="inner-header" class="wrap clearfix">
 					
 					<div id="logo">
-						<span class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></span>
+						<span class="h1">
+							<a href="<?php echo home_url(); ?>" rel="nofollow">km c<sup>2</sup><?php //bloginfo('name'); ?></a></span>
 						<?php bloginfo('description'); ?>
 					</div>
 				</div> <!-- end #inner-header -->
