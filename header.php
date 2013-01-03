@@ -44,7 +44,7 @@
 				</div> <!-- end #inner-header -->
 			</header> <!-- end header -->
 			<div class="nav-container">		
-				<nav role="navigation">
+				<nav role="navigation" class="wrap" "clearfix">
 					<?php kmc2_main_nav(); ?>
 				</nav>
 			</div>
