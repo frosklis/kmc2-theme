@@ -231,7 +231,7 @@ sub {
    Lists
    ========================================================================== */
 /*
- * Addresses margins set differently in IE6/7.
+ * 
  */
 dl,
 menu,
@@ -778,7 +778,8 @@ the other stylesheets. Remember, keep it light: Speed is Important.
 }
 /* Hide the slides before the JS is loaded. Avoids image jumping */
 .flexslider .slides img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
   display: block;
 }
 .flex-pauseplay span {
@@ -1161,35 +1162,34 @@ and more scalable.
 .nav li {
   float: left;
   position: relative;
+  height: 40px;
 }
 .nav li a {
   display: block;
   text-decoration: none;
   padding: 8px 10px;
-  /*
-			remember this is for mobile ONLY, so there's no need
-			to even declare hover styles here, you can do it in
-			the style.scss file where it's relevant. We want to
-			keep this file as small as possible!
-			*/
-
+  height: 100%;
+}
+.nav li a:hover,
+.nav li a:focus {
+  background-color: #2a7fff;
 }
 .nav li ul.sub-menu,
 .nav li ul.children {
+  background-color: #ff7f2a;
+  opacity: 0.7;
   width: 200px;
-  border: 1px solid #ccc;
-  border-top: 0;
   position: absolute;
   display: none;
   z-index: 8999;
+  margin-top: 0px;
 }
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
   padding-left: 10px;
-  border-right: 0;
   display: block;
-  width: 180px;
-  border-bottom: 1px solid #ccc;
+  width: 200px;
+  opacity: 1;
 }
 .nav li ul.sub-menu li:last-child a,
 .nav li ul.children li:last-child a {
@@ -1562,7 +1562,6 @@ and more scalable.
 .home-slideshow {
   display: block;
   width: 100%;
-  height: 540px;
 }
 .home-widgetarea1,
 .home-widgetarea2,

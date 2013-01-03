@@ -2,7 +2,8 @@
     $(window).load(function() {
         $('.flexslider').flexslider({
 	            animation: 'slide',
-		    controlsContainer: '.flex-container'
+		    controlsContainer: '.flex-container',
+		    smoothHeight: true,
 	    });
     });
 })(jQuery)
