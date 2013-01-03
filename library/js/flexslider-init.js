@@ -4,6 +4,7 @@
 	            animation: 'slide',
 		    controlsContainer: '.flex-container',
 		    smoothHeight: true,
+		    pausePlay: true,
 	    });
     });
 })(jQuery)
