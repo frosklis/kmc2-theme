@@ -179,8 +179,8 @@ h5, .h5 {
 *********************/
 
 .header {
+	background-color: @white;
 	#inner-header {
-		background-color: @white;
 		display: block;
 		height: @header-height;
 		margin-top: 4px;
@@ -191,32 +191,10 @@ h5, .h5 {
 
 	#logo {
 		a {
-			color: @black;
+			color: @kmc2-blue;
 		}
 	}
 
-	nav {
-		height: @header-navbar-height;
-		background-color: @black;
-		color: white;
-		position: absolute;
-		top: @header-height - @header-navbar-height;
-		right: 0px;
-		ul.nav {
-			color: @white;
-			margin: 0;
-			font-size: 18px;
-			li {
-				a {
-					color: @white;
-				}
-
-				&:first-child {}
-
-				&:last-child {}
-			}
-		}
-	}
 }
 
 /*********************
@@ -230,6 +208,29 @@ easily write one group of styles for
 the navs on the site so our css is cleaner
 and more scalable.
 */
+.nav-container {
+	height: @header-navbar-height;
+	background-color: @kmc2-orange;
+	color: white;
+	margin: 0 auto;
+	// position: absolute;
+	// top: @header-height - @header-navbar-height;
+	// right: 0px;
+	ul.nav {
+		color: @white;
+		margin: 0;
+		font-size: 18px;
+		li {
+			a {
+				color: @white;
+			}
+
+			&:first-child {}
+
+			&:last-child {}
+		}
+	}
+}
 
 .nav {
 

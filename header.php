@@ -41,11 +41,10 @@
 						<span class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></span>
 						<?php bloginfo('description'); ?>
 					</div>
-					
-					<nav role="navigation">
-						<?php kmc2_main_nav(); ?>
-					</nav>
-				
 				</div> <!-- end #inner-header -->
-			
 			</header> <!-- end header -->
+			<div class="nav-container">		
+				<nav role="navigation">
+					<?php kmc2_main_nav(); ?>
+				</nav>
+			</div>
