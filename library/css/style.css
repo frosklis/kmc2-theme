@@ -1179,7 +1179,7 @@ and more scalable.
 .nav li ul.sub-menu,
 .nav li ul.children {
   background-color: #ff7f2a;
-  opacity: 0.7;
+  opacity: 1;
   width: 200px;
   position: absolute;
   display: none;
