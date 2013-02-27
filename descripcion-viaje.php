@@ -22,7 +22,6 @@ Template Name: Descripción de viajes
 						
 						    <footer class="article-footer">
 							    <p class="clearfix"><?php the_tags('<span class="tags">' . __('Tags:', 'kmc2theme') . '</span> ', ', ', ''); ?></p>
-								<p> Aquí aparece contenido extra porque puedo, yo soy así, yo lo valgo</p>
 						    </footer> <!-- end article footer -->
 
 					    </article> <!-- end article -->
