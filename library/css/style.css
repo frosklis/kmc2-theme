@@ -1547,6 +1547,32 @@ and more scalable.
   background-color: #000000;
   clear: both;
 }
+.footer a,
+.footer a:visited {
+  color: #ffffff;
+  /* on hover */
+
+  /* on click */
+
+  /* mobile tap color */
+
+}
+.footer a:hover,
+.footer a:visited:hover,
+.footer a:focus,
+.footer a:visited:focus {
+  color: #0064fb;
+}
+.footer a:link,
+.footer a:visited:link {
+  /*
+		this highlights links on iPhones/iPads.
+		so it basically works like the :hover selector
+		for mobile devices.
+		*/
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+}
 /*
 	if you checked out the link above:
 	http://www.alistapart.com/articles/organizing-mobile/
