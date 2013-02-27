@@ -15,16 +15,6 @@ Template Name: Descripción de viajes
 					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					
 					    <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
-						
-						    <header class="article-header">
-							
-							    <h1 class="page-title"><?php the_title(); ?></h1>
-                  <p class="byline vcard"><?php
-                    printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span>.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(__('F jS, Y', 'kmc2theme')), kmc2_get_the_author_posts_link());
-                  ?></p>
-
-						
-						    </header> <!-- end article header -->
 					
 						    <section class="entry-content">
 							    <?php the_content(); ?>
@@ -34,8 +24,6 @@ Template Name: Descripción de viajes
 							    <p class="clearfix"><?php the_tags('<span class="tags">' . __('Tags:', 'kmc2theme') . '</span> ', ', ', ''); ?></p>
 								<p> Aquí aparece contenido extra porque puedo, yo soy así, yo lo valgo</p>
 						    </footer> <!-- end article footer -->
-						    
-						    <!--  NO HAY COMENTARIOS -->
 
 					    </article> <!-- end article -->
 					

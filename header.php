@@ -53,8 +53,37 @@
 					</div>
 				</div> <!-- end #inner-header -->
 			</header> <!-- end header -->
+
+
+
+
+
 			<div class="nav-container">		
 				<nav role="navigation" class="wrap" "clearfix">
-					<?php kmc2_main_nav(); ?>
+					<?php
+						if ( is_page_template('descripcion-viaje.php') ) {
+							if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+
+							<ul id="menu-menu-principal" class="nav top-nav clearfix">
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
+									<a href="#">Itinerario</a>
+								</li>
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
+									<a href="#">Blog</a>
+								</li>
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
+									<a href="#">Top 10</a>
+								</li>
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
+									<a href="#">Notas y apuntes</a>
+								</li>
+							</ul>
+							<?php
+							endwhile;
+							endif;
+						} else {
+							kmc2_main_nav(); 
+					} // Si no estamos en descripcion-viaje?>
 				</nav>
 			</div>
