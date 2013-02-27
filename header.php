@@ -39,8 +39,16 @@
 					
 					<div id="logo">
 						<span class="h1">
+						<?php
+						if ( is_page_template('descripcion-viaje.php') ) {
+							if (have_posts()) : while (have_posts()) : the_post();
+							the_title();
+							endwhile;
+						} else {
+						?>
 							<a href="<?php echo home_url(); ?>" rel="nofollow">km c<sup>2</sup><?php //bloginfo('name'); ?></a></span>
-						<?php bloginfo('description'); ?>
+						<?php bloginfo('description'); 
+					} // Si no estamos en descripcion-viaje?>
 					</div>
 				</div> <!-- end #inner-header -->
 			</header> <!-- end header -->
