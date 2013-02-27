@@ -35,8 +35,8 @@ Template Name: Descripción de viajes
 								<p> Aquí aparece contenido extra porque puedo, yo soy así, yo lo valgo</p>
 						    </footer> <!-- end article footer -->
 						    
-						    <?php comments_template(); ?>
-					
+						    <!--  NO HAY COMENTARIOS -->
+
 					    </article> <!-- end article -->
 					
 					    <?php endwhile; ?>	
@@ -51,7 +51,7 @@ Template Name: Descripción de viajes
         						    <p><?php _e("Uh Oh. Something is missing. Try double checking things.", "kmc2theme"); ?></p>
         						</section>
         						<footer class="article-footer">
-        						    <p><?php _e("This is the error message in the page-custom.php template.", "kmc2theme"); ?></p>
+        						    <p><?php _e("This is the error message in the descripcion-viaje.php template.", "kmc2theme"); ?></p>
         						</footer>
         					</article>
 					

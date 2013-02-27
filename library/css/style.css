@@ -1543,6 +1543,8 @@ and more scalable.
 13. FOOTER STYLES
 *********************/
 .footer {
+  color: #ffffff;
+  background-color: #000000;
   clear: both;
 }
 /*
