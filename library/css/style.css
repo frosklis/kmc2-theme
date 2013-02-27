@@ -1033,6 +1033,7 @@ img {
 a,
 a:visited {
   color: #2a7fff;
+  text-decoration: none;
   /* on hover */
 
   /* on click */
