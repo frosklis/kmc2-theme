@@ -48,12 +48,12 @@
 							$aux = get_post_custom_values("Categoría asociada");
 							$current_viaje = $aux[0];
 
-							echo('<a href="' . get_permalink() . '"><'.get_the_title() .">");
+							echo('<a href="' . get_permalink() . '"><'.get_the_title() ."</a>");
 
 							endwhile;
 							endif;
 						} elseif (is_page_template('blog-viaje.php')) {
-							echo('<a href="' . home_url() . '/' . $_GET['cat'] . '"><' .$_GET['cat'] . ">");
+							echo('<a href="' . home_url() . '/' . $_GET['cat'] . '"><' .$_GET['cat'] . "</a>");
 						} 
 						else {
 						?>
