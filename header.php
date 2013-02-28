@@ -48,19 +48,18 @@
 							$aux = get_post_custom_values("Categoría asociada");
 							$current_viaje = $aux[0];
 
-							echo('<a href="' . get_permalink() . '">'.get_the_title() ."</a>");
+							echo('<a href="' . get_permalink() . '">'.get_the_title() ."</a></span>");
 
 							endwhile;
 							endif;
 						} elseif (is_page_template('blog-viaje.php')) {
-							echo('<a href="' . home_url() . '/' . $_GET['cat'] . '">' .$_GET['cat'] . "</a>");
+							echo('<a href="' . home_url() . '/' . $_GET['cat'] . '">' .$_GET['cat'] . "</a></span>");
 						} 
 						else {
 						?>
-							<a href="<?php echo(home_url()); ?>" rel="nofollow">km c<sup>2</sup><?php //bloginfo('name'); ?></a>
+							<a href="<?php echo(home_url()); ?>" rel="nofollow">km c<sup>2</sup><?php //bloginfo('name'); ?></a></span>
 						<?php bloginfo('description'); 
 						} // Si no estamos en descripcion-viaje?>
-						</span>
 					</div>
 				</div> <!-- end #inner-header -->
 			</header> <!-- end header -->
