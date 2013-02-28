@@ -40,12 +40,12 @@
 					<div id="logo">
 						<span class="h1">
 						<?php
+						global $current_viaje;
 						if ( is_page_template('descripcion-viaje.php') ) {
 							if (have_posts()) : while (have_posts()) : the_post();
 							the_title();
 
 							// También crear o alterar la variable global $current_viaje
-							global $current_viaje;
 							$aux = get_post_custom_values("Categoría asociada", $post_id);
 							$current_viaje = $aux[0];
 
@@ -73,11 +73,8 @@
 						if ( is_page_template('descripcion-viaje.php') || is_page_template('blog-viaje.php') ) {
 							if (have_posts()) : while (have_posts()) : the_post(); 
 								if (isset($_GET['cat']) ) {
-									$cat = $_GET['cat'];
-								} else {
-									$cat = $current_viaje;
+									global $current_viaje = $_GET['cat'];
 								}
-
 							?>
 
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
@@ -85,7 +82,7 @@
 									<a href=<?php
 										$url = '"http://www.kmc2.tk/blog-de-viaje?';
 										// Calcular los parametros
-										$url .= 'cat=' . $categoria;
+										$url .= 'cat=' . $current_viaje;
 										$url .= '&';
 										$url .= 'tag=diario';
 										$url .= '"';
@@ -100,7 +97,7 @@
 									<a href=<?php
 										$url = '"http://www.kmc2.tk/blog-de-viaje?';
 										// Calcular los parametros
-										$url .= 'cat=' . $categoria;
+										$url .= 'cat=' . $current_viaje;
 										$url .= '&';
 										$url .= 'tag=notas';
 										$url .= '"';
