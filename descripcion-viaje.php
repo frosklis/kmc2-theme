@@ -21,6 +21,7 @@ Template Name: Descripción de viajes
 						    </section> <!-- end article section -->
 						
 						    <footer class="article-footer">
+						    	<p><?php the_meta(); ?></p>
 							    <p class="clearfix"><?php the_tags('<span class="tags">' . __('Tags:', 'kmc2theme') . '</span> ', ', ', ''); ?></p>
 						    </footer> <!-- end article footer -->
 

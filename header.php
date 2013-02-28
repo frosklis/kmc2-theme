@@ -67,10 +67,7 @@
 
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
-									<a href="#">Itinerario</a>
-								</li>
-								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
-									<a href=<?php echo('"http://www.kmc2.tk"'); ?>>Blog</a>
+									<a href=<?php echo('"http://www.kmc2.tk"'); ?>>Diario</a>
 								</li>
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
 									<a href="#">Top 10</a>
