@@ -45,12 +45,19 @@
 							the_title();
 
 							// También crear o alterar la variable global $current_viaje
-							global $current_viaje;
-							$aux = get_post_custom_values("Categoría asociada", $post_id);
-							$current_viaje = $aux[0];
+							global $current_viaje_categoria;
+							global $current_viaje_nombre;
+							$aux1 = get_post_custom_values("Categoría asociada", $post_id);
+							$current_viaje_categoria = $aux1[0];
+							$aux2 = get_post_custom_values("Nombre del viaje", $post_id);
+							$current_viaje_nombre = $aux2[0];
+
 							endwhile;
 							endif;
-						} else {
+						} elseif (is_page_template('blog-viaje.php')) {
+							echo($current_viaje_nombre);
+						} 
+						else {
 						?>
 							<a href="<?php echo home_url(); ?>" rel="nofollow">km c<sup>2</sup><?php //bloginfo('name'); ?></a></span>
 						<?php bloginfo('description'); 
@@ -66,13 +73,22 @@
 			<div class="nav-container">		
 				<nav role="navigation" class="wrap" "clearfix">
 					<?php
-						if ( is_page_template('descripcion-viaje.php') || is_page_template('blog-viaje.php') || is_page_template('notas-viaje.php') ) {
+						if ( is_page_template('descripcion-viaje.php') || is_page_template('blog-viaje.php') ) {
 							if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
-									<a href=<?php echo('"http://www.kmc2.tk/blog-de-viaje"'); ?>>Diario</a>
+									<a href=<?php
+										$url = 'http://www.kmc2.tk/blog-de-viaje?';
+										// Calcular los parametros
+										$url .= 'cat=' . $current_viaje_categoria;
+										$url .= '&';
+										$url .= 'tag=diario';
+										$url .= '"';
+
+										echo($url); 
+									?>>Diario</a>
 								</li>
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
 									<a href="#">Top 10</a>
