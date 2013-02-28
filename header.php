@@ -57,9 +57,10 @@
 						} 
 						else {
 						?>
-							<a href="<?php echo(home_url()); ?>" rel="nofollow">km c<sup>2</sup><?php //bloginfo('name'); ?></a></span>
+							<a href="<?php echo(home_url()); ?>" rel="nofollow">km c<sup>2</sup><?php //bloginfo('name'); ?></a>
 						<?php bloginfo('description'); 
-					} // Si no estamos en descripcion-viaje?>
+						} // Si no estamos en descripcion-viaje?>
+						</span>
 					</div>
 				</div> <!-- end #inner-header -->
 			</header> <!-- end header -->
