@@ -73,7 +73,7 @@
 						if ( is_page_template('descripcion-viaje.php') || is_page_template('blog-viaje.php') ) {
 							if (have_posts()) : while (have_posts()) : the_post(); 
 								if (isset($_GET['cat']) ) {
-									global $current_viaje = $_GET['cat'];
+									$current_viaje = $_GET['cat'];
 								}
 							?>
 
