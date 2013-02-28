@@ -61,13 +61,13 @@
 			<div class="nav-container">		
 				<nav role="navigation" class="wrap" "clearfix">
 					<?php
-						if ( is_page_template('descripcion-viaje.php') ) {
+						if ( is_page_template('descripcion-viaje.php') || is_page_template('blog-viaje.php') || is_page_template('notas-viaje.php') {
 							if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
-									<a href=<?php echo('"http://www.kmc2.tk"'); ?>>Diario</a>
+									<a href=<?php echo('"http://www.kmc2.tk/blog-de-viaje"'); ?>>Diario</a>
 								</li>
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
 									<a href="#">Top 10</a>
