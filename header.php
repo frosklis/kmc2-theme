@@ -43,6 +43,10 @@
 						if ( is_page_template('descripcion-viaje.php') ) {
 							if (have_posts()) : while (have_posts()) : the_post();
 							the_title();
+
+							// También crear o alterar la variable global $current_viaje
+							global $current_viaje;
+							$current_viaje = get_post_custom_values("Categoría asociada", $post_id)[0];
 							endwhile;
 							endif;
 						} else {
