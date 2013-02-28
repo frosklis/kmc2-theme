@@ -38,10 +38,6 @@ Template Name: Blog del viaje
 						    </section> <!-- end article section -->
 						
 						    <footer class="article-footer">
-						    	<p><?php the_meta(); ?></p>
-						    	<p>Custom keys: <?php var_dump(get_post_custom_keys()); ?></p>
-						    	<p>Custom values: <?php var_dump(get_post_custom_values("Categoría asociada", $post_id)); ?></p>
-						    	<p>Global var: <?php echo($current); ?></p>
     							<p class="tags"><?php the_tags('<span class="tags-title">' . __('Tags:', 'kmc2theme') . '</span> ', ', ', ''); ?></p>
 
 						    </footer> <!-- end article footer -->
