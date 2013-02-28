@@ -13,8 +13,8 @@ Template Name: Blog del viaje
 				    <div id="main" class="eightcol first clearfix" role="main">
 						<?php 
 						$args = array(
-							'category' => $_GET["cat"]),
-							'tag' => $_GET["tag"]),
+							'category' => $_GET["cat"],
+							'tag' => $_GET["tag"],
 							'post_type' => 'post',
 							'paged' => $paged
 						  );
