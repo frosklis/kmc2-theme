@@ -22,8 +22,8 @@ Template Name: Descripción de viajes
 						
 						    <footer class="article-footer">
 						    	<p><?php the_meta(); ?></p>
-						    	<p><?php get_post_custom_keys(); ?></p>
-						    	<p>Mi mamá me mima: <?php get_post_custom_values("Categoría asociada", $post_id); ?></p>
+						    	<p>Custom keys: <?php echo(get_post_custom_keys()); ?></p>
+						    	<p>Custom values: <?php echo(get_post_custom_values("Categoría asociada", $post_id)); ?></p>
 							    <p class="clearfix"><?php the_tags('<span class="tags">' . __('Tags:', 'kmc2theme') . '</span> ', ', ', ''); ?></p>
 						    </footer> <!-- end article footer -->
 
