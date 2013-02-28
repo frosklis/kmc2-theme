@@ -46,7 +46,7 @@
 
 							// También crear o alterar la variable global $current_viaje
 							global $current_viaje;
-							var $aux = get_post_custom_values("Categoría asociada", $post_id);
+							$aux = get_post_custom_values("Categoría asociada", $post_id);
 							$current_viaje = $aux[0];
 							endwhile;
 							endif;
