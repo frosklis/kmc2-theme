@@ -45,7 +45,7 @@
 							if (have_posts()) : while (have_posts()) : the_post();
 							
 							// También crear o alterar la variable global $current_viaje
-							$aux = get_post_custom_values("Categoría asociada", $post_id);
+							$aux = get_post_custom_values("Categoría asociada");
 							$current_viaje = $aux[0];
 
 							echo('<a href="' . get_permalink() . '"><'.get_the_title() .">");
