@@ -10,8 +10,13 @@ Template Name: All posts
 				<div id="inner-content" class="wrap clearfix">
 			
 				    <div id="main" class="eightcol first clearfix" role="main">
+						<?php $args = array(
+							//'category_name' => 'antiquarianism, championship', 
+							'paged' => $paged
+						  );
 
-					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+						  $list_of_posts = new WP_Query( $args );
+					    if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : the_post(); ?>
 					
 					    <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
 						
