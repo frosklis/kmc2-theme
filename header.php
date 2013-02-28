@@ -48,9 +48,7 @@
 							$aux = get_post_custom_values("Categoría asociada", $post_id);
 							$current_viaje = $aux[0];
 
-							echo('<a href="' . the_permalink() . '"><');
-							the_title();
-							echo (">");
+							echo('<a href="' . get_permalink() . '"><'.get_the_title() .">");
 
 							endwhile;
 							endif;
