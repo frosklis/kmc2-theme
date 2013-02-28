@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!doctype html>  
 
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -48,17 +45,14 @@ session_start();
 							the_title();
 
 							// También crear o alterar la variable global $current_viaje
-							global $current_viaje_categoria;
-							global $current_viaje_nombre;
-							$aux1 = get_post_custom_values("Categoría asociada", $post_id);
-							$_SESSION['current_viaje_categoria'] = $aux1[0];
-							$aux2 = get_post_custom_values("Nombre del viaje", $post_id);
-							$_SESSION['current_viaje_nombre'] = $aux2[0];
+							global $current_viaje;
+							$aux = get_post_custom_values("Categoría asociada", $post_id);
+							$current_viaje = $aux[0];
 
 							endwhile;
 							endif;
 						} elseif (is_page_template('blog-viaje.php')) {
-							echo($_SESSION['current_viaje_nombre']);
+							echo($_GET['cat']);
 						} 
 						else {
 						?>
@@ -77,15 +71,21 @@ session_start();
 				<nav role="navigation" class="wrap" "clearfix">
 					<?php
 						if ( is_page_template('descripcion-viaje.php') || is_page_template('blog-viaje.php') ) {
-							if (have_posts()) : while (have_posts()) : the_post(); ?>
+							if (have_posts()) : while (have_posts()) : the_post(); 
+								if (isset($_GET['cat']) ) {
+									$cat = $_GET['cat'];
+								} else {
+									$cat = $current_viaje;
+								}
 
+							?>
 
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
 									<a href=<?php
 										$url = '"http://www.kmc2.tk/blog-de-viaje?';
 										// Calcular los parametros
-										$url .= 'cat=' . $_SESSION['current_viaje_categoria'];
+										$url .= 'cat=' . $categoria;
 										$url .= '&';
 										$url .= 'tag=diario';
 										$url .= '"';
@@ -100,7 +100,7 @@ session_start();
 									<a href=<?php
 										$url = '"http://www.kmc2.tk/blog-de-viaje?';
 										// Calcular los parametros
-										$url .= 'cat=' . $_SESSION['current_viaje_categoria'];
+										$url .= 'cat=' . $categoria;
 										$url .= '&';
 										$url .= 'tag=notas';
 										$url .= '"';
