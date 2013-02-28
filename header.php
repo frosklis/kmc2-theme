@@ -61,7 +61,7 @@
 			<div class="nav-container">		
 				<nav role="navigation" class="wrap" "clearfix">
 					<?php
-						if ( is_page_template('descripcion-viaje.php') || is_page_template('blog-viaje.php') || is_page_template('notas-viaje.php') {
+						if ( is_page_template('descripcion-viaje.php') || is_page_template('blog-viaje.php') || is_page_template('notas-viaje.php') ) {
 							if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 
