@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>  
 
 <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -48,14 +51,14 @@
 							global $current_viaje_categoria;
 							global $current_viaje_nombre;
 							$aux1 = get_post_custom_values("Categoría asociada", $post_id);
-							$current_viaje_categoria = $aux1[0];
+							$_SESSION['current_viaje_categoria'] = $aux1[0];
 							$aux2 = get_post_custom_values("Nombre del viaje", $post_id);
-							$current_viaje_nombre = $aux2[0];
+							$_SESSION['current_viaje_nombre'] = $aux2[0];
 
 							endwhile;
 							endif;
 						} elseif (is_page_template('blog-viaje.php')) {
-							echo($current_viaje_nombre);
+							echo($_SESSION['current_viaje_nombre']);
 						} 
 						else {
 						?>
@@ -82,7 +85,7 @@
 									<a href=<?php
 										$url = '"http://www.kmc2.tk/blog-de-viaje?';
 										// Calcular los parametros
-										$url .= 'cat=' . $current_viaje_categoria;
+										$url .= 'cat=' . $_SESSION['current_viaje_categoria'];
 										$url .= '&';
 										$url .= 'tag=diario';
 										$url .= '"';
@@ -97,7 +100,7 @@
 									<a href=<?php
 										$url = '"http://www.kmc2.tk/blog-de-viaje?';
 										// Calcular los parametros
-										$url .= 'cat=' . $current_viaje_categoria;
+										$url .= 'cat=' . $_SESSION['current_viaje_categoria'];
 										$url .= '&';
 										$url .= 'tag=notas';
 										$url .= '"';
