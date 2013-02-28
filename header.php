@@ -80,7 +80,7 @@
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
 									<a href=<?php
-										$url = 'http://www.kmc2.tk/blog-de-viaje?';
+										$url = '"http://www.kmc2.tk/blog-de-viaje?';
 										// Calcular los parametros
 										$url .= 'cat=' . $current_viaje_categoria;
 										$url .= '&';
@@ -94,7 +94,16 @@
 									<a href="#">Top 10</a>
 								</li>
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
-									<a href="#">Notas y apuntes</a>
+									<a href=<?php
+										$url = '"http://www.kmc2.tk/blog-de-viaje?';
+										// Calcular los parametros
+										$url .= 'cat=' . $current_viaje_categoria;
+										$url .= '&';
+										$url .= 'tag=notas';
+										$url .= '"';
+
+										echo($url); 
+									?>>Notas y apuntes</a>
 								</li>
 							</ul>
 							<?php
