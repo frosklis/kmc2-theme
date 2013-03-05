@@ -202,15 +202,15 @@ function kmc2_theme_support() {
 	// adding post format support
 	add_theme_support( 'post-formats',
 		array(
-			'aside',             // title less blurb
-			'gallery',           // gallery of images
-			'link',              // quick link to other site
-			'image',             // an image
-			'quote',             // a quick quote
-			'status',            // a Facebook like status update
-			'video',             // video
-			'audio',             // audio
-			'chat'               // chat transcript
+			//'aside',             // title less blurb
+			//'gallery',           // gallery of images
+			//'link',              // quick link to other site
+			//'image',             // an image
+			//'quote',             // a quick quote
+			//'status',            // a Facebook like status update
+			//'video',             // video
+			//'audio',             // audio
+			//'chat'               // chat transcript
 		)
 	);
 
@@ -228,7 +228,7 @@ function kmc2_theme_support() {
 	// Infinite-scroll
 	add_theme_support( 'infinite-scroll', array(
 	    'type'           => 'scroll',		//scroll or click
-	    'footer_widgets' => false,
+	    'footer_widgets' => true,
 	    'container'      => 'main',
 	    'wrapper'        => true,			//adds a .infinite-wrap div to the new posts
 	    'render'         => false,          //should add a content.php template

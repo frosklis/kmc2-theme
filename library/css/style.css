@@ -1591,21 +1591,20 @@ and more scalable.
   display: block;
   width: 100%;
 }
-.home-widgetarea1,
-.home-widgetarea2,
-.home-widgetarea3,
-.home-widgetarea4 {
+.footer-widgetarea1,
+.footer-widgetarea2,
+.footer-widgetarea3,
+.footer-widgetarea4 {
   display: inline-block;
-  border: solid 1px #f2f2f2;
   width: 230px;
-  margin-top: 10px;
+  margin-top: 6px;
 }
-.home-widgetarea1,
-.home-widgetarea2,
-.home-widgetarea3 {
+.footer-widgetarea1,
+.footer-widgetarea2,
+.footer-widgetarea3 {
   margin-right: 20px;
 }
-.home_widgetarea4 {
+.footer_widgetarea4 {
   float: right;
 }
 /********************
@@ -1827,9 +1826,9 @@ you can add resource intensive styles.
   /*********************
   HOMEPAGE STYLES
   *********************/
-  .home-widgetarea1,
-  .home-widgetarea2,
-  .home-widgetarea3 {
+  .footer-widgetarea1,
+  .footer-widgetarea2,
+  .footer-widgetarea3 {
     margin-right: 9px;
   }
   /*********************

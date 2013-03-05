@@ -1,6 +1,25 @@
 			<footer class="footer" role="contentinfo">
 			
 				<div id="inner-footer" class="wrap clearfix">
+
+					<!--Four widgetized areas-->
+					<?php
+					$widgets = array("cover2", "cover3", "cover4", "cover5");
+					$i = 0;
+					foreach ($widgets as &$widget) { 
+						$i = $i+1?>
+						<div class="footer-widgetarea<?php echo $i; ?>">
+						<?php
+					    if (is_active_sidebar($widget)):
+					    	dynamic_sidebar($widget);
+					    else: ?>
+							<p><?php //_e("Please activate some Widgets.", "kmc2theme");  ?></p>
+						<?php endif; ?>
+						</div>
+					<?php
+					} // foreach
+					unset($widget);
+					?>
 					
 					<nav role="navigation">
     					<?php kmc2_footer_links(); ?>
