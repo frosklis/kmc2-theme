@@ -1206,11 +1206,11 @@ and more scalable.
 08. POSTS & CONTENT STYLES
 *********************/
 /* end .hentry */
-/* want to style individual post classes? Booya! */
-/* post by id (i.e. post-3) */
 .post {
   background-color: white;
   opacity: 0.8;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 /* general post style */
 /* general article on a page style */
