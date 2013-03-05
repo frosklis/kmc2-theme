@@ -92,48 +92,15 @@ function kmc2_register_sidebars() {
     
     // This is where the banner will be
     register_sidebar(array(
-        'id' => 'cover1',
-        'name' => __('Cover 1', 'kmc2theme'),
-        'description' => __('The blog cover', 'kmc2theme'),
+        'id' => 'footer1',
+        'name' => __('Footer 1', 'kmc2theme'),
+        'description' => __('The footer', 'kmc2theme'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widgettitle">',
+        'after_title' => '</h4>',
     ));
 
-
-    register_sidebar(array(
-        'id' => 'cover2',
-        'name' => __('Cover 2', 'kmc2theme'),
-        'description' => __('WIdget area', 'kmc2theme'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h4 class="widgettitle">',
-        'after_title' => '</h4>',
-    ));
-    register_sidebar(array(
-        'id' => 'cover3',
-        'name' => __('Cover 3', 'kmc2theme'),
-        'description' => __('Widget area', 'kmc2theme'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h4 class="widgettitle">',
-        'after_title' => '</h4>',
-    ));
-    register_sidebar(array(
-        'id' => 'cover4',
-        'name' => __('Cover 4', 'kmc2theme'),
-        'description' => __('Widget area', 'kmc2theme'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h4 class="widgettitle">',
-        'after_title' => '</h4>',
-    ));
-    register_sidebar(array(
-        'id' => 'cover5',
-        'name' => __('Cover 5', 'kmc2theme'),
-        'description' => __('Widget area', 'kmc2theme'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h4 class="widgettitle">',
-        'after_title' => '</h4>',
-    ));
 } // don't remove this bracket!
 
 /************* COMMENT LAYOUT *********************/
