@@ -1554,10 +1554,45 @@ and more scalable.
 /*********************
 12. SIDEBARS & ASIDES
 *********************/
-.sidebar .widget ul li {
+.sidebar {
+  margin-top: 20px;
+}
+.sidebar .widget {
+  background: #ffffff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+/*********************
+SIDEBARS & ASIDES
+*********************/
+.widgettitle {
+  border-bottom: 2px solid #444;
+  margin-bottom: 0.75em;
+}
+.widget {
+  padding: 0 10px;
+}
+.widget ul li {
+  margin-bottom: 0.75em;
   /* deep nesting */
 
 }
+.widget ul li ul {
+  margin-top: 0.75em;
+  padding-left: 1em;
+}
+/* links widget */
+/* meta widget */
+/* pages widget */
+/* recent-posts widget */
+/* archives widget */
+/* tag-cloud widget */
+/* calendar widget */
+/* category widget */
+/* recent-comments widget */
+/* search widget */
+/* text widget */
 /*********************
 13. FOOTER STYLES
 *********************/
@@ -1825,77 +1860,15 @@ you can add resource intensive styles.
   
   ******************************************************************/
   /*********************
-  GENERAL STYLES
-  *********************/
-  /*********************
   LAYOUT & GRID STYLES
   *********************/
   .wrap {
     max-width: 960px;
   }
   /*********************
-  HOMEPAGE STYLES
-  *********************/
-  .footer-widgetarea1,
-  .footer-widgetarea2,
-  .footer-widgetarea3 {
-    margin-right: 9px;
-  }
-  /*********************
-  HEADER STYLES
-  *********************/
-  /*********************
-  NAVIGATION STYLES
-  *********************/
-  /*********************
-  SIDEBARS & ASIDES
-  *********************/
-  .sidebar {
-    margin-top: 2.2em;
-  }
-  .widgettitle {
-    border-bottom: 2px solid #444;
-    margin-bottom: 0.75em;
-  }
-  .widget {
-    padding: 0 10px;
-    margin: 2.2em 0;
-  }
-  .widget ul li {
-    margin-bottom: 0.75em;
-    /* deep nesting */
-  
-  }
-  .widget ul li ul {
-    margin-top: 0.75em;
-    padding-left: 1em;
-  }
-  /* links widget */
-  /* meta widget */
-  /* pages widget */
-  /* recent-posts widget */
-  /* archives widget */
-  /* tag-cloud widget */
-  /* calendar widget */
-  /* category widget */
-  /* recent-comments widget */
-  /* search widget */
-  /* text widget */
-  /*********************
   FOOTER STYLES
   *********************/
-  /*
-  you'll probably need to do quite a bit
-  of overriding here if you styled them for
-  mobile. Make sure to double check these!
-  */
-  .footer-links ul li {
-    /*
-  			be careful with the depth of your menus.
-  			it's very rare to have multi-depth menus in
-  			the footer.
-  			*/
-  
+  .footer .widget {
+    margin-right: 9px;
   }
-  /* end .footer-links */
 }
