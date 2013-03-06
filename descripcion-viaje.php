@@ -7,6 +7,56 @@ Template Name: Descripción de viajes
 <?php get_header(); ?>
 			
 			<div id="content">
+
+
+
+<?php
+							if (have_posts()) : while (have_posts()) : the_post(); 
+								if (isset($_GET['cat']) ) {
+									$current_viaje = $_GET['cat'];
+								}
+							?>
+
+							<ul id="menu-menu-principal" class="nav top-nav clearfix">
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
+									<a href=<?php
+										$url = '"http://www.kmc2.tk/blog-de-viaje?';
+										// Calcular los parametros
+										$url .= 'cat=' . $current_viaje;
+										$url .= '&';
+										$url .= 'tag=diario';
+										$url .= '"';
+
+										echo($url); 
+									?>>Diario</a>
+								</li>
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
+									<a href="#">Top 10</a>
+								</li>
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
+									<a href=<?php
+										$url = '"http://www.kmc2.tk/blog-de-viaje?';
+										// Calcular los parametros
+										$url .= 'cat=' . $current_viaje;
+										$url .= '&';
+										$url .= 'tag=notas';
+										$url .= '"';
+
+										echo($url); 
+									?>>Notas y apuntes</a>
+								</li>
+							</ul>
+							<?php
+							endwhile;
+							endif;
+							?>
+
+
+
+
+
+
+
 			
 				<div id="inner-content" class="wrap clearfix">
 			
