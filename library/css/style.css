@@ -1211,6 +1211,7 @@ and more scalable.
   opacity: 0.8;
   padding-left: 20px;
   padding-right: 20px;
+  margin-top: 20px;
 }
 /* general post style */
 /* general article on a page style */
@@ -1536,7 +1537,7 @@ and more scalable.
 /*********************
 12. SIDEBARS & ASIDES
 *********************/
-.widget ul li {
+.sidebar .widget ul li {
   /* deep nesting */
 
 }
@@ -1547,6 +1548,7 @@ and more scalable.
   color: #ffffff;
   background-color: #000000;
   clear: both;
+  margin-top: 20px;
 }
 .footer a,
 .footer a:visited {
@@ -1567,12 +1569,19 @@ and more scalable.
 .footer a:link,
 .footer a:visited:link {
   /*
-		this highlights links on iPhones/iPads.
-		so it basically works like the :hover selector
-		for mobile devices.
-		*/
+			this highlights links on iPhones/iPads.
+			so it basically works like the :hover selector
+			for mobile devices.
+			*/
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+}
+.footer .widget {
+  display: inline-block;
+  width: 230px;
+  margin-top: 6px;
+  margin-right: 10px;
+  vertical-align: top;
 }
 /*
 	if you checked out the link above:
@@ -1590,22 +1599,6 @@ and more scalable.
 .home-slideshow {
   display: block;
   width: 100%;
-}
-.footer-widgetarea1,
-.footer-widgetarea2,
-.footer-widgetarea3,
-.footer-widgetarea4 {
-  display: inline-block;
-  width: 230px;
-  margin-top: 6px;
-}
-.footer-widgetarea1,
-.footer-widgetarea2,
-.footer-widgetarea3 {
-  margin-right: 20px;
-}
-.footer_widgetarea4 {
-  float: right;
 }
 /********************
 15. Quitar cosas

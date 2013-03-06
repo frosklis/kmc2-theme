@@ -352,7 +352,8 @@ and more scalable.
 			opacity: 0.8;
 			padding-left: 20px;
 			padding-right: 20px;
-			}            /* general post style */
+			margin-top: 20px;
+		}            /* general post style */
 		.page {}            /* general article on a page style */
 		.attachment {}      /* general style on an attatchment */
 		.sticky {}          /* sticky post style */
@@ -866,7 +867,7 @@ and more scalable.
 12. SIDEBARS & ASIDES
 *********************/
 
-.sidebar {}
+.sidebar {
 
 	.widgettitle {}
 
@@ -890,6 +891,7 @@ and more scalable.
 		}
 
 	}
+}
 
 /*********************
 13. FOOTER STYLES
@@ -898,6 +900,7 @@ and more scalable.
 	color: @white;
 	background-color: @black;
 	clear: both;
+	margin-top: 20px;
 	#inner-footer {
 	}
 	nav {
@@ -914,28 +917,37 @@ and more scalable.
 
 
 	a, a:visited {
-	color: @white;
+		color: @white;
 
-	/* on hover */
-	&:hover, &:focus {
-		color: @link-hover;
+		/* on hover */
+		&:hover, &:focus {
+			color: @link-hover;
+		}
+
+		/* on click */
+		&:active {
+
+		}
+
+		/* mobile tap color */
+		&:link {
+			/*
+			this highlights links on iPhones/iPads.
+			so it basically works like the :hover selector
+			for mobile devices.
+			*/
+			-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
+		}
 	}
 
-	/* on click */
-	&:active {
-
+	.widget {
+		display: inline-block;
+		// border: solid 1px @almost-white;
+		width: @footer-widget-width;
+		margin-top: 6px;
+		margin-right: 10px;
+		vertical-align: top;
 	}
-
-	/* mobile tap color */
-	&:link {
-		/*
-		this highlights links on iPhones/iPads.
-		so it basically works like the :hover selector
-		for mobile devices.
-		*/
-		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
-	}
-}
 }
 
 	/*
@@ -958,7 +970,8 @@ and more scalable.
 	} /* end .footer-links */
 
 
-	.copyright {}
+
+.copyright {}
 
 /*********************
 14. HOME PAGE
@@ -967,19 +980,6 @@ and more scalable.
 	display: block; //si no, no coge la altura
 	width: 100%;
 	//max-height: 600px;
-}
-.footer-widgetarea1, .footer-widgetarea2, .footer-widgetarea3, 
-.footer-widgetarea4 {
-	display: inline-block;
-	// border: solid 1px @almost-white;
-	width: @footer-widget-width;
-	margin-top: 6px;
-}
-.footer-widgetarea1, .footer-widgetarea2, .footer-widgetarea3, {
-	margin-right: 20px;
-}
-.footer_widgetarea4 {
-	float: right;
 }
 
 
