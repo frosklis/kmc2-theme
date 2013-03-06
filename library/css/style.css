@@ -1232,6 +1232,11 @@ and more scalable.
   top: auto;
   display: block;
 }
+.nav li.current-menu-item,
+.nav li.current_page_item,
+.nav li.current-page-ancestor {
+  font-weight: bold;
+}
 /*********************
 08. POSTS & CONTENT STYLES
 *********************/
