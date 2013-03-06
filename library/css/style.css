@@ -1206,9 +1206,9 @@ and more scalable.
 08. POSTS & CONTENT STYLES
 *********************/
 /* end .hentry */
-.post {
+.post,
+.page {
   background-color: white;
-  opacity: 0.8;
   padding-left: 20px;
   padding-right: 20px;
   margin-top: 20px;
