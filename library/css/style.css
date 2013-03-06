@@ -971,8 +971,8 @@ and will be used across all viewports.
 01. GENERAL STYLES
 *********************/
 body {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 100%;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 14px;
   line-height: 1.2;
   color: #565656;
   background-color: #f2f2f2;
@@ -1070,7 +1070,7 @@ h4,
 .h4,
 h5,
 .h5 {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   text-rendering: optimizelegibility;
   font-weight: 500;
   /*
@@ -1187,6 +1187,10 @@ and more scalable.
   z-index: 8999;
   margin-top: 0px;
 }
+.nav li ul.sub-menu li,
+.nav li ul.children li {
+  border-top: 1px solid #ffffff;
+}
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
   padding-left: 10px;
@@ -1194,9 +1198,23 @@ and more scalable.
   width: 200px;
   opacity: 1;
 }
+.nav li ul.sub-menu li a:hover,
+.nav li ul.children li a:hover,
+.nav li ul.sub-menu li a:focus,
+.nav li ul.children li a:focus {
+  background-color: #2a7fff;
+}
 .nav li ul.sub-menu li:last-child a,
 .nav li ul.children li:last-child a {
   border-bottom: 0;
+}
+.nav li ul.sub-menu li.current-menu-item,
+.nav li ul.children li.current-menu-item,
+.nav li ul.sub-menu li.current_page_item,
+.nav li ul.children li.current_page_item,
+.nav li ul.sub-menu li.current-page-ancestor,
+.nav li ul.children li.current-page-ancestor {
+  background-color: #2a7fff;
 }
 .nav li:hover ul {
   top: auto;
@@ -1248,6 +1266,7 @@ and more scalable.
   color: #999;
 }
 #content .entry-content {
+  text-align: justify;
   /*
 			image alignment on a screen this size may be
 			a bit difficult. It's set to start aligning
@@ -1255,6 +1274,10 @@ and more scalable.
 			but it's up to you. Feel free to change it up.
 			*/
 
+}
+#content .entry-content p {
+  text-indent: 20px;
+  line-height: 1.7;
 }
 #content .entry-content dd {
   margin-left: 0;
