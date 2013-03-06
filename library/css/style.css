@@ -1205,27 +1205,49 @@ and more scalable.
 /*********************
 08. POSTS & CONTENT STYLES
 *********************/
-/* end .hentry */
-.post,
-.page {
+#content {
+  /* end .hentry */
+
+  /* general post style */
+
+  /* general article on a page style */
+
+  /* general style on an attatchment */
+
+  /* sticky post style */
+
+  /* hentry class */
+
+  /* style by category (i.e. category-videos) */
+
+  /* style by tag (i.e. tag-news) */
+
+  /* post meta */
+
+  /* entry content */
+
+  /* end .entry-content */
+
+  /* end .wp-caption */
+
+  /* image gallery styles */
+
+  /* end .gallery */
+
+  /* gallery caption styles */
+
+}
+#content .post,
+#content .page {
   background-color: white;
   padding-left: 20px;
   padding-right: 20px;
   margin-top: 20px;
 }
-/* general post style */
-/* general article on a page style */
-/* general style on an attatchment */
-/* sticky post style */
-/* hentry class */
-/* style by category (i.e. category-videos) */
-/* style by tag (i.e. tag-news) */
-/* post meta */
-.byline {
+#content .byline {
   color: #999;
 }
-/* entry content */
-.entry-content {
+#content .entry-content {
   /*
 			image alignment on a screen this size may be
 			a bit difficult. It's set to start aligning
@@ -1234,47 +1256,42 @@ and more scalable.
 			*/
 
 }
-.entry-content dd {
+#content .entry-content dd {
   margin-left: 0;
   font-size: 0.9em;
   color: #787878;
   margin-bottom: 1.5em;
 }
-.entry-content img {
+#content .entry-content img {
   margin: 0 0 1.5em 0;
   max-width: 100%;
   height: auto;
 }
-.entry-content video,
-.entry-content object {
+#content .entry-content video,
+#content .entry-content object {
   max-width: 100%;
   height: auto;
 }
-.entry-content pre {
+#content .entry-content pre {
   background: #eeeeee;
   border: 1px solid #f2f2f2;
   padding: 10px;
 }
-/* end .entry-content */
-.wp-caption {
+#content .wp-caption {
   background: #eeeeee;
   padding: 5px;
   /* images inside wp-caption */
 
 }
-.wp-caption img {
+#content .wp-caption img {
   margin-bottom: 0;
   width: 100%;
 }
-.wp-caption p.wp-caption-text {
+#content .wp-caption p.wp-caption-text {
   font-size: 0.85em;
   margin: 4px 0 7px;
   text-align: center;
 }
-/* end .wp-caption */
-/* image gallery styles */
-/* end .gallery */
-/* gallery caption styles */
 /******************************************************************
 09. PAGE NAVI STYLES
 ******************************************************************/
