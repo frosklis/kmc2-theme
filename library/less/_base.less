@@ -211,17 +211,29 @@ and more scalable.
 */
 .nav-container {
 	height: @header-navbar-height;
-	background-color: @kmc2-orange;
-	color: white;
+	//background-color: @kmc2-orange;
+	background-color: white;
+	//color: white;
+	color: @normal-text-color;
+	border-top: 1px solid @kmc2-orange;
+	border-bottom: 1px solid @kmc2-orange;
 	margin: 0 auto;
+	text-transform: uppercase;
 
 	ul.nav {
-		color: @white;
+		//color: @white;
+		color: @normal-text-color;
 		margin: 0;
-		font-size: 18px;
+		font-size: 12px;
 		li {
 			a {
-				color: @white;
+				// color: @white;
+				color: @normal-text-color;
+
+				&:hover, &:focus {
+					background-color: @kmc2-blue;
+					color: @white;
+				}
 			}
 
 			&:first-child {}
@@ -236,16 +248,17 @@ and more scalable.
 	li {
 		float: left;
 		position: relative;
-		height: @header-navbar-height;
+		height: @header-navbar-height - 2px;
 
 		a {
 			display: block;
 			text-decoration: none;
-			padding: 8px 10px;
+			padding: 8px 16px;
 			height: 100%;
 
 			&:hover, &:focus {
 				background-color: @kmc2-blue;
+				color: @white;
 			}
 		}
 
@@ -260,6 +273,7 @@ and more scalable.
 		ul.sub-menu,
 		ul.children {
 			background-color: @kmc2-orange;
+			color: @white;
 			opacity: 1;
 			width: 200px;
 			position: absolute;
@@ -273,9 +287,10 @@ and more scalable.
 					display: block;
 					width: 200px;
 					opacity: 1;
-
+					color: @white;
 					&:hover, &:focus {
 						background-color: @kmc2-blue;
+						color: @white;
 					}
 
 					&:link {}

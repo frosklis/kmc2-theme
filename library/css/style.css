@@ -1149,37 +1149,47 @@ the navs on the site so our css is cleaner
 and more scalable.
 */
 .nav-container {
-  height: 40px;
-  background-color: #ff7f2a;
-  color: white;
+  height: 32px;
+  background-color: white;
+  color: #565656;
+  border-top: 1px solid #ff7f2a;
+  border-bottom: 1px solid #ff7f2a;
   margin: 0 auto;
+  text-transform: uppercase;
 }
 .nav-container ul.nav {
-  color: #ffffff;
+  color: #565656;
   margin: 0;
-  font-size: 18px;
+  font-size: 12px;
 }
 .nav-container ul.nav li a {
+  color: #565656;
+}
+.nav-container ul.nav li a:hover,
+.nav-container ul.nav li a:focus {
+  background-color: #2a7fff;
   color: #ffffff;
 }
 .nav li {
   float: left;
   position: relative;
-  height: 40px;
+  height: 30px;
 }
 .nav li a {
   display: block;
   text-decoration: none;
-  padding: 8px 10px;
+  padding: 8px 16px;
   height: 100%;
 }
 .nav li a:hover,
 .nav li a:focus {
   background-color: #2a7fff;
+  color: #ffffff;
 }
 .nav li ul.sub-menu,
 .nav li ul.children {
   background-color: #ff7f2a;
+  color: #ffffff;
   opacity: 1;
   width: 200px;
   position: absolute;
@@ -1197,12 +1207,14 @@ and more scalable.
   display: block;
   width: 200px;
   opacity: 1;
+  color: #ffffff;
 }
 .nav li ul.sub-menu li a:hover,
 .nav li ul.children li a:hover,
 .nav li ul.sub-menu li a:focus,
 .nav li ul.children li a:focus {
   background-color: #2a7fff;
+  color: #ffffff;
 }
 .nav li ul.sub-menu li:last-child a,
 .nav li ul.children li:last-child a {
