@@ -1567,7 +1567,7 @@ and more scalable.
 SIDEBARS & ASIDES
 *********************/
 .widgettitle {
-  border-bottom: 2px solid #444;
+  border-bottom: 2px solid #ff7f2a;
   margin-bottom: 0.75em;
   margin-top: 10px;
 }
@@ -1786,7 +1786,7 @@ you can add resource intensive styles.
   }
   /* 13.45%; } /* grid_2  */
   .threecol {
-    width: 22.928176794%;
+    width: 23.928176794%;
   }
   /* 22.05%; } /* grid_3  */
   .fourcol {
@@ -1839,7 +1839,7 @@ you can add resource intensive styles.
   .twelvecol {
     position: relative;
     float: left;
-    margin-left: 2.762430939%;
+    margin-left: 1.762430939%;
   }
   .first {
     margin-left: 0;
