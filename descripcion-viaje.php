@@ -9,10 +9,15 @@ Template Name: Descripción de viajes
 			<div id="content">
 
 				<div id="inner-content" class="wrap clearfix">
-			
+
+				    <div id="main" class="ninecol first clearfix" role="main">
 
 
 
+
+
+<div class="nav-container">		
+				<nav role="navigation" class="clearfix">
 
 
 <?php
@@ -60,13 +65,14 @@ Template Name: Descripción de viajes
 
 
 
+				</nav>
+			</div>
 
 
-			
-				
 
-			
-				    <div id="main" class="ninecol first clearfix" role="main">
+
+
+
 
 					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					

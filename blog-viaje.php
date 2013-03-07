@@ -10,10 +10,13 @@ Template Name: Blog del viaje
 			
 				<div id="inner-content" class="wrap clearfix">
 
+				    <div id="main" class="ninecol first clearfix" role="main">
 
 
 
 
+<div class="nav-container">		
+				<nav role="navigation" class="clearfix">
 
 
 
@@ -64,14 +67,17 @@ Template Name: Blog del viaje
 
 
 
-			
-				
+
+				</nav>
+			</div>			
 
 
 
-					
-			
-				    <div id="main" class="ninecol first clearfix" role="main">
+
+
+
+
+
 						<?php 
 						$args = array(
 							'category' => $_GET["cat"],
