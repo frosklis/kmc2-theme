@@ -70,48 +70,6 @@
 
 			<div class="nav-container">		
 				<nav role="navigation" class="wrap" "clearfix">
-					<?php
-						if ( is_page_template('descripcion-viaje.php') || is_page_template('blog-viaje.php') ) {
-							if (have_posts()) : while (have_posts()) : the_post(); 
-								if (isset($_GET['cat']) ) {
-									$current_viaje = $_GET['cat'];
-								}
-							?>
-
-							<ul id="menu-menu-principal" class="nav top-nav clearfix">
-								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
-									<a href=<?php
-										$url = '"http://www.kmc2.tk/blog-de-viaje?';
-										// Calcular los parametros
-										$url .= 'cat=' . $current_viaje;
-										$url .= '&';
-										$url .= 'tag=diario';
-										$url .= '"';
-
-										echo($url); 
-									?>>Diario</a>
-								</li>
-								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
-									<a href="#">Top 10</a>
-								</li>
-								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
-									<a href=<?php
-										$url = '"http://www.kmc2.tk/blog-de-viaje?';
-										// Calcular los parametros
-										$url .= 'cat=' . $current_viaje;
-										$url .= '&';
-										$url .= 'tag=notas';
-										$url .= '"';
-
-										echo($url); 
-									?>>Notas y apuntes</a>
-								</li>
-							</ul>
-							<?php
-							endwhile;
-							endif;
-						} else {
-							kmc2_main_nav(); 
-					} // Si no estamos en descripcion-viaje?>
+					<?php kmc2_main_nav(); ?>
 				</nav>
 			</div>
