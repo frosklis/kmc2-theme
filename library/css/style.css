@@ -1154,7 +1154,9 @@ and more scalable.
   color: #565656;
   border-top: 1px solid #ff7f2a;
   border-bottom: 1px solid #ff7f2a;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
   text-transform: uppercase;
 }
 .nav-container ul.nav {
@@ -1241,7 +1243,6 @@ and more scalable.
 08. POSTS & CONTENT STYLES
 *********************/
 #content {
-  margin-top: 20px;
   /* end .hentry */
 
   /* general post style */
