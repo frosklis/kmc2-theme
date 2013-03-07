@@ -1124,16 +1124,14 @@ h5,
 /*********************
 06. HEADER SYTLES
 *********************/
-.header {
-  background-color: #ffffff;
-}
 .header #inner-header {
+  background-color: #ffffff;
   display: block;
-  height: 88px;
-  margin-top: 4px;
+  height: 68px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   position: relative;
-  padding-top: 10px;
-  padding-left: 8px;
+  padding-left: 16px;
 }
 .header #logo a {
   color: #2a7fff;
