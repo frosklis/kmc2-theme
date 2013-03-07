@@ -8,6 +8,11 @@ Template Name: Descripción de viajes
 			
 			<div id="content">
 
+				<div id="inner-content" class="wrap clearfix">
+			
+
+
+
 
 
 <?php
@@ -58,7 +63,8 @@ Template Name: Descripción de viajes
 
 
 			
-				<div id="inner-content" class="wrap clearfix">
+				
+
 			
 				    <div id="main" class="ninecol first clearfix" role="main">
 
