@@ -1124,9 +1124,6 @@ h5,
 /*********************
 06. HEADER SYTLES
 *********************/
-.header {
-  background-color: #ffffff;
-}
 .header #inner-header {
   display: block;
   height: 68px;
