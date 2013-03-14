@@ -56,6 +56,7 @@ require_once('library/options.php');
 // Thumbnail sizes
 add_image_size( 'kmc2-thumb-600', 600, 150, true );
 add_image_size( 'kmc2-thumb-300', 300, 100, true );
+add_image_size( 'kmc2-thumb-960', 960, 540, true );
 /* 
 to add more sizes, simply copy a line from above 
 and change the dimensions & name. As long as you
