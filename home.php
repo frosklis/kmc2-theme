@@ -13,7 +13,11 @@
 								
 								foreach ($media_items as $imagen) { ?>
 									<li>
-										<img src=<?php echo($imagen->guid); ?>>
+										<!-- <img src="thumbnail.php?file=<?php // echo($imagen->guid ); ?>&width=50&height=50"> -->
+										<img src="<?php 
+											//echo($imagen->guid );
+											echo (str_replace($imagen->guid, ".jpg", "-960x540.jpg")); 
+										?>">
 										<p class="flex-caption"><?php // var_dump($imagen); ?></p>
 									</li> 
 								<?php
