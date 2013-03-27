@@ -16,7 +16,7 @@
 										<!-- <img src="thumbnail.php?file=<?php // echo($imagen->guid ); ?>&width=50&height=50"> -->
 										<img src="<?php 
 											//echo($imagen->guid );
-											echo (str_replace($imagen->guid, ".jpg", "-960x540.jpg")); 
+											echo (str_replace(".jpg", "-960x540.jpg", $imagen->guid)); 
 										?>">
 										<p class="flex-caption"><?php // var_dump($imagen); ?></p>
 									</li> 
