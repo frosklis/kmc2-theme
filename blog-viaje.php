@@ -67,14 +67,6 @@ Template Name: Blog del viaje
 							endwhile;
 							endif;
 							?>
-
-
-
-
-
-
-
-
 				</nav>
 			</div>	
 
