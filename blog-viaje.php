@@ -72,7 +72,7 @@ Template Name: Blog del viaje
 
 						<?php 
 						$args = array(
-							'category' => $_GET["cat"],
+							'category_name' => $_GET["cat"],
 							'tag' => $_GET["tag"],
 							'post_type' => 'post',
 							'paged' => $paged
