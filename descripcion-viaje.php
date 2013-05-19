@@ -83,9 +83,25 @@ Template Name: Descripción de viajes
 
 					    </article> <!-- end article -->
 					
-					    <?php endwhile; 
-
-// Poner la lista de todos los posts relacionados
+					    <?php endwhile; ?>	
+					
+					    <?php else : ?>
+					
+        					<article id="post-not-found" class="hentry clearfix">
+        					    <header class="article-header">
+        						    <h1><?php _e("Oops, Post Not Found!", "kmc2theme"); ?></h1>
+        						</header>
+        					    <section class="entry-content">
+        						    <p><?php _e("Uh Oh. Something is missing. Try double checking things.", "kmc2theme"); ?></p>
+        						</section>
+        						<footer class="article-footer">
+        						    <p><?php _e("This is the error message in the descripcion-viaje.php template.", "kmc2theme"); ?></p>
+        						</footer>
+        					</article>
+					
+					    <?php endif; ?>
+					    <?php
+					    // Poner la lista de todos los posts relacionados
 //*************** CÓDIGO COPIADO DE blog-viaje.php
 
 						$args = array(
@@ -135,23 +151,7 @@ Template Name: Descripción de viajes
 					        <?php } 
 
 //*************** FIN CÓDIGO COPIADO de blog-viaje.php
-					    ?>	
-					
-					    <?php else : ?>
-					
-        					<article id="post-not-found" class="hentry clearfix">
-        					    <header class="article-header">
-        						    <h1><?php _e("Oops, Post Not Found!", "kmc2theme"); ?></h1>
-        						</header>
-        					    <section class="entry-content">
-        						    <p><?php _e("Uh Oh. Something is missing. Try double checking things.", "kmc2theme"); ?></p>
-        						</section>
-        						<footer class="article-footer">
-        						    <p><?php _e("This is the error message in the descripcion-viaje.php template.", "kmc2theme"); ?></p>
-        						</footer>
-        					</article>
-					
-					    <?php endif; ?>
+					    ?>
 			
 				    </div> <!-- end #main -->
     
