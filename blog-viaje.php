@@ -20,15 +20,22 @@ Template Name: Blog del viaje
 
 
 
-<?php
+							<?php
 							if (have_posts()) : while (have_posts()) : the_post(); 
 								if (isset($_GET['cat']) ) {
 									$current_viaje = $_GET['cat'];
 								}
+								$es_diario = has_tag( "diario", $post );
 							?>
 
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
-								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor
+									<?php
+									if ($es_diario) {
+										echo (" current-menu-item ");
+									} 
+									?> ">
+
 									<a href=<?php
 										$url = '"http://www.kmc2.tk/blog-de-viaje?';
 										// Calcular los parametros
@@ -69,14 +76,7 @@ Template Name: Blog del viaje
 
 
 				</nav>
-			</div>			
-
-
-
-
-
-
-
+			</div>	
 
 						<?php 
 						$args = array(
