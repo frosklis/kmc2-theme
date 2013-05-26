@@ -30,12 +30,12 @@ Template Name: Descripción de viajes
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
 									<a href=<?php
-										$url = '"http://www.kmc2.tk/blog-de-viaje?';
+										$url = bloginfo('siteurl'); 
+										$url .= '/blog-de-viaje?';
 										// Calcular los parametros
 										$url .= 'cat=' . $current_viaje;
 										$url .= '&';
 										$url .= 'tag=diario';
-										$url .= '"';
 
 										echo($url); 
 									?>>Diario</a>
@@ -45,12 +45,12 @@ Template Name: Descripción de viajes
 								</li>
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
 									<a href=<?php
-										$url = '"http://www.kmc2.tk/blog-de-viaje?';
+										$url = bloginfo('siteurl'); 
+										$url .= '/blog-de-viaje?';
 										// Calcular los parametros
 										$url .= 'cat=' . $current_viaje;
 										$url .= '&';
 										$url .= 'tag=notas';
-										$url .= '"';
 
 										echo($url); 
 									?>>Notas y apuntes</a>
