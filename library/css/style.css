@@ -1158,7 +1158,7 @@ and more scalable.
 */
 .nav-container {
   height: 32px;
-  background-color: #ff7f2a;
+  background-color: #565656;
   color: white;
   margin-left: auto;
   margin-right: auto;
@@ -1267,7 +1267,7 @@ nav li.current-menu-item,
 nav li.current_page_item,
 nav li.current-page-ancestor {
   font-weight: bold;
-  border-bottom: solid 8px #ffffff;
+  border-bottom: solid 8px #ff7f2a;
 }
 /*********************
 08. POSTS & CONTENT STYLES
