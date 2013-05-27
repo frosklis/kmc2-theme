@@ -47,8 +47,8 @@
 					   rel="publisher" target="_top"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/gplus.png">
 					</a>
 
-					<form role="search" method="get" id="searchform" action="http://htpc.local/kmc2/">
-					    <input type="text" value="" name="s" id="s" placeholder="buscar...">
+					<form role="search" method="get" id="searchform" action="<?php bloginfo('siteurl'); ?>">
+					    <input type="text" value="" name="s" id="s" placeholder="Buscar en el blog...">
 					    <input type="hidden" id="searchsubmit" value="Buscars">
 				    </form>
 
