@@ -30,9 +30,38 @@
 	</head>
 	
 	<body <?php body_class(); ?>>
+		<div id="topbar" class="nav-container">		
+			<nav role="navigation" class="wrap">
+
+				<div class="block first">
+				</div>
+
+				<div class="block">
+					<?php kmc2_main_nav(); ?>
+				</div>
+
+				<div class="block last">
+				    <a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/rss.png"></a>
+				    <a href="https://twitter.com/_kmc2"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/twitter-bird-dark-bgs.png"></a>
+					<a href="//plus.google.com/102083218914804503792?prsrc=3"
+					   rel="publisher" target="_top"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/gplus.png">
+					</a>
+
+					<form role="search" method="get" id="searchform" action="http://htpc.local/kmc2/">
+					    <input type="text" value="" name="s" id="s" placeholder="buscar...">
+					    <input type="hidden" id="searchsubmit" value="Buscars">
+				    </form>
+
+					<a href="<?php bloginfo('siteurl'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/kmc2.png"></a>
+
+				</div>
+
+			</nav>
+		</div>
 	
 		<div id="container">
 			
+		
 			<header class="header" role="banner">
 			
 				<div id="inner-header" class="wrap clearfix">
@@ -68,8 +97,4 @@
 
 
 
-			<div class="nav-container">		
-				<nav role="navigation" class="wrap" "clearfix">
-					<?php kmc2_main_nav(); ?>
-				</nav>
-			</div>
+

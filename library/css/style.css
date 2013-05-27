@@ -297,6 +297,7 @@ figure {
  */
 form {
   margin: 0;
+  display: inline-block;
 }
 /*
  * Define consistent border, margin, and padding.
@@ -972,7 +973,7 @@ and will be used across all viewports.
 *********************/
 body {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.2;
   color: #565656;
   background-color: #ffffff;
@@ -980,6 +981,7 @@ body {
 img {
   max-width: 100%;
   max-height: 100%;
+  margin: 0 auto;
 }
 /********************
 02. WORDPRESS BODY CLASSES
@@ -1026,6 +1028,15 @@ img {
 .wrap {
   width: 96%;
   margin: 0 auto;
+}
+#topbar {
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+}
+#container {
+  margin-top: 32px;
 }
 /*********************
 04. LINK STYLES
@@ -1147,46 +1158,67 @@ and more scalable.
 */
 .nav-container {
   height: 32px;
-  background-color: white;
-  color: #565656;
-  border-top: 1px solid #ff7f2a;
-  border-bottom: 1px solid #ff7f2a;
+  background-color: #ff7f2a;
+  color: white;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
   text-transform: uppercase;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 .nav-container ul.nav {
-  color: #565656;
+  display: inline-block;
+  color: #ffffff;
   margin: 0;
   font-size: 12px;
 }
 .nav-container ul.nav li a {
-  color: #565656;
+  color: #ffffff;
 }
 .nav-container ul.nav li a:hover,
 .nav-container ul.nav li a:focus {
   background-color: #2a7fff;
   color: #ffffff;
 }
-.nav li {
+.nav-container form {
+  vertical-align: top;
+  margin: 0 4px;
+}
+.nav-container form input {
+  height: 24px;
+  position: relative;
+  top: 4px;
+  border: none;
+  text-indent: 4px;
+}
+.nav-container .block {
+  position: relative;
+  float: left;
+  height: 32px;
+}
+.nav-container .last {
+  float: right;
+}
+nav li {
   float: left;
   position: relative;
-  height: 30px;
+  height: 32px;
 }
-.nav li a {
+nav li a {
   display: block;
   text-decoration: none;
   padding: 8px 16px;
   height: 100%;
 }
-.nav li a:hover,
-.nav li a:focus {
+nav li:hover,
+nav li:focus {
   background-color: #2a7fff;
   color: #ffffff;
+  border: none;
 }
-.nav li ul.sub-menu,
-.nav li ul.children {
+nav li ul.sub-menu,
+nav li ul.children {
   background-color: #ff7f2a;
   color: #ffffff;
   opacity: 1;
@@ -1196,45 +1228,46 @@ and more scalable.
   z-index: 8999;
   margin-top: 0px;
 }
-.nav li ul.sub-menu li,
-.nav li ul.children li {
+nav li ul.sub-menu li,
+nav li ul.children li {
   border-top: 1px solid #ffffff;
 }
-.nav li ul.sub-menu li a,
-.nav li ul.children li a {
+nav li ul.sub-menu li a,
+nav li ul.children li a {
   padding-left: 10px;
   display: block;
   width: 200px;
   opacity: 1;
   color: #ffffff;
 }
-.nav li ul.sub-menu li a:hover,
-.nav li ul.children li a:hover,
-.nav li ul.sub-menu li a:focus,
-.nav li ul.children li a:focus {
+nav li ul.sub-menu li a:hover,
+nav li ul.children li a:hover,
+nav li ul.sub-menu li a:focus,
+nav li ul.children li a:focus {
   background-color: #2a7fff;
   color: #ffffff;
 }
-.nav li ul.sub-menu li:last-child a,
-.nav li ul.children li:last-child a {
+nav li ul.sub-menu li:last-child a,
+nav li ul.children li:last-child a {
   border-bottom: 0;
 }
-.nav li ul.sub-menu li.current-menu-item,
-.nav li ul.children li.current-menu-item,
-.nav li ul.sub-menu li.current_page_item,
-.nav li ul.children li.current_page_item,
-.nav li ul.sub-menu li.current-page-ancestor,
-.nav li ul.children li.current-page-ancestor {
+nav li ul.sub-menu li.current-menu-item,
+nav li ul.children li.current-menu-item,
+nav li ul.sub-menu li.current_page_item,
+nav li ul.children li.current_page_item,
+nav li ul.sub-menu li.current-page-ancestor,
+nav li ul.children li.current-page-ancestor {
   background-color: #2a7fff;
 }
-.nav li:hover ul {
+nav li:hover ul {
   top: auto;
   display: block;
 }
-.nav li.current-menu-item,
-.nav li.current_page_item,
-.nav li.current-page-ancestor {
+nav li.current-menu-item,
+nav li.current_page_item,
+nav li.current-page-ancestor {
   font-weight: bold;
+  border-bottom: solid 8px #ffffff;
 }
 /*********************
 08. POSTS & CONTENT STYLES
@@ -1302,7 +1335,7 @@ and more scalable.
   margin-bottom: 1.5em;
 }
 #content .entry-content img {
-  margin: 0 0 1.5em 0;
+  margin: 0 auto;
   max-width: 100%;
   height: auto;
 }
@@ -1797,7 +1830,7 @@ you can add resource intensive styles.
   
   Stylesheet: Grid Stylesheet
   
-  I've seperated the grid so you can swap it out easily. It's
+  I've separated the grid so you can swap it out easily. It's
   called at the top the style.less stylesheet.
   
   There are a ton of grid solutions out there. You should definitely
@@ -1898,9 +1931,6 @@ you can add resource intensive styles.
   /*********************
   LAYOUT & GRID STYLES
   *********************/
-  .wrap {
-    max-width: 960px;
-  }
   /*********************
   FOOTER STYLES
   *********************/

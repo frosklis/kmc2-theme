@@ -37,7 +37,7 @@ and will be used across all viewports.
 
 body {
 	font-family: @sans-serif;
-	font-size: 14px;
+	font-size: 18px;
 	line-height: 1.2;
 	color: @normal-text-color;
 	background-color: @white;
@@ -46,6 +46,7 @@ body {
 img { //Don't let images be larger than their container
 	max-width: 100%; 
 	max-height: 100%;
+	margin: 0 auto; // center images in their container
 }
 
 
@@ -99,6 +100,16 @@ img { //Don't let images be larger than their container
 	margin: 0 auto;
 }
 
+#topbar {
+	width: 100%;
+	z-index: 1;
+	position: fixed;
+	top: 0;
+}
+
+#container {
+	margin-top: @header-navbar-height;
+}
 /*********************
 04. LINK STYLES
 *********************/
@@ -212,26 +223,29 @@ and more scalable.
 */
 .nav-container {
 	height: @header-navbar-height;
-	//background-color: @kmc2-orange;
-	background-color: white;
-	//color: white;
-	color: @normal-text-color;
-	border-top: 1px solid @kmc2-orange;
-	border-bottom: 1px solid @kmc2-orange;
+	background-color: @kmc2-orange;
+	//background-color: white;
+	color: white;
+	//color: @normal-text-color;
+	//border-top: 1px solid @kmc2-orange;
+	//border-bottom: 1px solid @kmc2-orange;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 20px;
 	text-transform: uppercase;
+	padding-left: 4px;
+	padding-right: 4px;
 
 	ul.nav {
-		//color: @white;
-		color: @normal-text-color;
+		display: inline-block;
+		color: @white;
+		//color: @normal-text-color;
 		margin: 0;
 		font-size: 12px;
 		li {
 			a {
-				// color: @white;
-				color: @normal-text-color;
+				color: @white;
+				//color: @normal-text-color;
 
 				&:hover, &:focus {
 					background-color: @kmc2-blue;
@@ -244,27 +258,52 @@ and more scalable.
 			&:last-child {}
 		}
 	}
+
+	form {
+		vertical-align: top;
+		margin: 0 4px;
+
+		input {
+			height: @header-navbar-height - 8px;
+			position: relative;
+			top: 4px;
+			border: none;
+			text-indent: 4px;
+		}
+	}
+
+	.block {
+		position: relative;
+		float: left;
+		height: @header-navbar-height;
+	}
+
+	.last {
+		float: right;
+	}
+
 }
 
-.nav {
+nav {
 
 	li {
 		float: left;
 		position: relative;
-		height: @header-navbar-height - 2px;
+		//top: -2px;
+		height: @header-navbar-height;
 
 		a {
 			display: block;
 			text-decoration: none;
 			padding: 8px 16px;
 			height: 100%;
-
-			&:hover, &:focus {
-				background-color: @kmc2-blue;
-				color: @white;
-			}
 		}
 
+		&:hover, &:focus {
+			background-color: @kmc2-blue;
+			color: @white;
+			border: none;
+		}
 		
 
 		&:first-child {}
@@ -332,8 +371,10 @@ and more scalable.
 	li.current_page_item,
 	li.current-page-ancestor {
 		font-weight: bold;
+		border-bottom: solid 8px @white;
 		a {}
 	}  // end current highlighters
+
 
 } // end .nav
 
@@ -433,7 +474,8 @@ and more scalable.
 			}
 
 			img {
-				margin: 0 0 1.5em 0;
+				//margin: 0 0 1.5em 0;
+				margin: 0 auto;
 				max-width: 100%;
 				height: auto;
 			}
