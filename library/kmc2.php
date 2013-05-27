@@ -50,6 +50,9 @@ function kmc2_ahoy() {
     // cleaning up excerpt
     add_filter('excerpt_more', 'kmc2_excerpt_more');
 
+    // no mostrar admin bar
+    add_filter( 'show_admin_bar', '__return_false' );
+
 } /* end kmc2 ahoy */
 
 /*********************
