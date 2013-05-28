@@ -52,7 +52,7 @@
 					    <input type="hidden" id="searchsubmit" value="Buscars">
 				    </form>
 
-					<a href="<?php bloginfo('siteurl'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/kmc2.png" height="53px" width="32px"></a>
+					<a href="<?php bloginfo('siteurl'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/kmc2.png" height="32px" width="53px"></a>
 
 				</div>
 
