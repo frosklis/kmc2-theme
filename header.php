@@ -41,10 +41,10 @@
 				</div>
 
 				<div class="block last">
-				    <a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/rss.png"></a>
-				    <a href="https://twitter.com/_kmc2"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/twitter-bird-dark-bgs.png"></a>
+				    <a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/rss.png" height="32px" width="32px"></a>
+				    <a href="https://twitter.com/_kmc2"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/twitter-bird-dark-bgs.png" height="32px" width="32px"></a>
 					<a href="//plus.google.com/102083218914804503792?prsrc=3"
-					   rel="publisher" target="_top"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/gplus.png">
+					   rel="publisher" target="_top"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/gplus.png" height="32px" width="32px">
 					</a>
 
 					<form role="search" method="get" id="searchform" action="<?php bloginfo('siteurl'); ?>">
@@ -52,7 +52,7 @@
 					    <input type="hidden" id="searchsubmit" value="Buscars">
 				    </form>
 
-					<a href="<?php bloginfo('siteurl'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/kmc2.png"></a>
+					<a href="<?php bloginfo('siteurl'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/kmc2.png" height="53px" width="32px"></a>
 
 				</div>
 
