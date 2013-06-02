@@ -65,7 +65,7 @@ function tipo_taxonomy() {
 		'tipo',
 		'post',
 		array(
-			'hierarchical' => false,
+			'hierarchical' => true,
 			'label' => 'Tipo',
 			'query_var' => true,
 			'rewrite' => array('slug' => 'tipo'),
