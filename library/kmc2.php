@@ -68,7 +68,9 @@ function tipo_taxonomy() {
 			'hierarchical' => false,
 			'label' => 'Tipo',
 			'query_var' => true,
-			'rewrite' => array('slug' => 'tipo')
+			'rewrite' => array('slug' => 'tipo'),
+			'show_ui' => true,
+        	'show_admin_column' => true,
 			)
 		);
 }
