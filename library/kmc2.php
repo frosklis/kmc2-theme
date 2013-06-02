@@ -23,6 +23,9 @@ function kmc2_ahoy() {
 
     // launching operation cleanup
     add_action('init', 'kmc2_head_cleanup');
+    
+    add_action( 'init', 'tipo_taxonomy' );
+
     // remove WP version from RSS
     add_filter('the_generator', 'kmc2_rss_version');
     // remove pesky injected css for recent comments widget
@@ -54,6 +57,21 @@ function kmc2_ahoy() {
     add_filter( 'show_admin_bar', '__return_false' );
 
 } /* end kmc2 ahoy */
+
+
+
+function tipo_taxonomy() {
+	register_taxonomy(
+		'tipo',
+		'post',
+		array(
+			'hierarchical' => false,
+			'label' => 'Tipo',
+			'query_var' => true,
+			'rewrite' => array('slug' => 'tipo')
+			)
+		);
+}
 
 /*********************
 WP_HEAD GOODNESS
@@ -146,20 +164,15 @@ function kmc2_scripts_and_styles() {
     wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
 
     // enqueue styles and scripts
-    wp_enqueue_script( 'kmc2-modernizr' );
     wp_enqueue_style( 'kmc2-stylesheet' );
     wp_enqueue_style('kmc2-ie-only');
-    /*
-    I recommend using a plugin to call jQuery
-    using the google cdn. That way it stays cached
-    and your site will load faster.
-    */
+
+    wp_enqueue_script( 'kmc2-modernizr' );
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'kmc2-js' );
-
-    // Add flexslider
     wp_enqueue_script('flexslider', get_bloginfo('stylesheet_directory').'/library/js/jquery.flexslider-min.js', array('jquery'));
 	wp_enqueue_script('flexslider-init', get_bloginfo('stylesheet_directory').'/library/js/flexslider-init.js', array('jquery', 'flexslider'));
+
 
 
   }
@@ -250,8 +263,8 @@ MENUS & NAVIGATION
 function kmc2_main_nav() {
 	// display the wp3 menu if available
     wp_nav_menu(array(
-    	'container' => false,                           // remove nav container
-    	'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
+    	'container' => 'nav',                           // remove nav container
+    	'container_class' => 'nav clearfix',           // class of container (should you choose to use it)
     	'menu' => __( 'The Main Menu', 'kmc2theme' ),  // nav name
     	'menu_class' => 'nav top-nav',         // adding custom nav class
     	'theme_location' => 'main-nav',                 // where it's located in the theme
@@ -259,6 +272,7 @@ function kmc2_main_nav() {
         'after' => '',                                  // after the menu
         'link_before' => '',                            // before each link
         'link_after' => '',                             // after each link
+        //'items_wrap' => '<ul><li id="menu-logo" class="menu-item">Menu: </li>%3$s</ul>',
         'depth' => 0,                                   // limit the depth of the nav
     	'fallback_cb' => 'kmc2_main_nav_fallback'      // fallback function
 	));
