@@ -157,13 +157,6 @@ function kmc2_wpsearch($form) {
 
 
 
-// ***********************************************************
-// Crear thumbnails on the fly
-// ***********************************************************
-function kmc2_thumbnail($source, $width=640, $height=480, $link=true) {
-    
-}
-
 //
 function display_posts ($list_of_posts = null) {
 ?>

@@ -30,7 +30,7 @@
 	</head>
 	
 	<body <?php body_class(); ?>>
-		<div id="topbar">	
+		<header id="topbar">	
 			<form role="search" method="get" id="searchform" action="<?php bloginfo('siteurl'); ?>">
 				    <input type="text" value="" name="s" id="s" placeholder="Buscar en el blog...">
 			    </form>
@@ -44,41 +44,10 @@
 
 				
 			</span></div>
-		</div>
+		</header>
 	
 		<div id="container">
-			
-		
-			<header class="header" role="banner">
-			
-				<div id="inner-header" class="wrap clearfix">
-					
-					<div id="logo">
-						<span class="h1">
-						<?php
-						global $current_viaje;
-						if ( is_page_template('descripcion-viaje.php') ) {
-							if (have_posts()) : while (have_posts()) : the_post();
-							
-							// También crear o alterar la variable global $current_viaje
-							$aux = get_post_custom_values("Categoría asociada");
-							$current_viaje = $aux[0];
 
-							echo('<a href="' . get_permalink() . '">'.get_the_title() ."</a></span>");
-
-							endwhile;
-							endif;
-						} elseif (is_page_template('blog-viaje.php')) {
-							echo('<a href="' . home_url() . '/' . $_GET['cat'] . '">' .$_GET['cat'] . "</a></span>");
-						} 
-						else {
-						?>
-							<a href="<?php echo(home_url()); ?>" rel="nofollow">km c<sup>2</sup><?php //bloginfo('name'); ?></a></span>
-						<?php bloginfo('description'); 
-						} // Si no estamos en descripcion-viaje?>
-					</div>
-				</div> <!-- end #inner-header -->
-			</header> <!-- end header -->
 
 
 

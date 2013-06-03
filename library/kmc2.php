@@ -54,10 +54,31 @@ function kmc2_ahoy() {
     add_filter('excerpt_more', 'kmc2_excerpt_more');
 
     // no mostrar admin bar
-    add_filter( 'show_admin_bar', '__return_false' );
+    add_filter('show_admin_bar', '__return_false' );
+
+	//add_filter('wp_nav_menu_items','add_social_bar_to_menu', 10, 2);
 
 
 } /* end kmc2 ahoy */
+
+
+// function add_social_bar_to_menu( $items, $args ) {
+//     if( $args->theme_location == 'main-nav' )
+//         return $items.
+//     		"<li class='menu-header-search'><a href=" . '"' .
+//     		bloginfo('rss2_url').'"><img src="'. 
+//     		bloginfo('stylesheet_directory'). 
+//     		'/images/rss.png" height="32px" width="32px"></a>
+// 			    <a href="https://twitter.com/_kmc2"><img src="'.
+// 			bloginfo('stylesheet_directory').
+// 			'/images/twitter-bird-dark-bgs.png" height="32px" width="32px"></a>
+// 				<a href="//plus.google.com/102083218914804503792?prsrc=3"
+// 				   rel="publisher" target="_top"><img src="'.
+// 			bloginfo('stylesheet_directory').
+// 			'/images/gplus.png" height="32px" width="32px"></a></li>"';
+
+//    return $items;
+//}
 
 function tipo_taxonomy() {
 
