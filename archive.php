@@ -8,6 +8,7 @@
 				
 					    <?php if (is_category()) { ?>
 						    <h1 class="archive-title h2">
+						    	Etiqueta
 							    <span><?php _e("Posts Categorized:", "kmc2theme"); ?></span> <?php single_cat_title(); ?>
 					    	</h1>
 					    

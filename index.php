@@ -52,10 +52,20 @@
 					        	    <h1><?php _e("Oops, Post Not Found!", "kmc2theme"); ?></h1>
 					        	</header>
 					            <section class="entry-content">
-					        	    <p><?php _e("Uh Oh. Something is missing. Try double checking things.", "kmc2theme"); ?></p>
+					        	    <p><?php _e("Algo fue mal.", "kmc2theme"); 
+
+
+	global $wp_rewrite;
+	global $wp_query;
+	print_r($wp_query);
+
+print_r($wp_rewrite->rules);
+
+
+					        	    ?></p>
 					        	</section>
 					        	<footer class="article-footer">
-					        	    <p><?php _e("This is the error message in the index.php template.", "kmc2theme"); ?></p>
+					        	    <p><?php _e("Pero muy mal fhlsadhalskda", "kmc2theme"); ?></p>
 					        	</footer>
 					        </article>
 					

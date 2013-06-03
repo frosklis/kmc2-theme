@@ -41,6 +41,7 @@ body {
 	line-height: 1.2;
 	color: @normal-text-color;
 	background-color: @white;
+	//background-image: url(../../images/bg-grid.png)
 }
 
 img { //Don't let images be larger than their container
@@ -103,8 +104,7 @@ img { //Don't let images be larger than their container
 #topbar {
 	width: 100%;
 	z-index: 1;
-	position: fixed;
-	top: 0;
+	background-color: @normal-text-color;
 }
 
 #container {
@@ -221,7 +221,7 @@ easily write one group of styles for
 the navs on the site so our css is cleaner
 and more scalable.
 */
-.nav-container {
+.nav {
 	height: @header-navbar-height;
 	//background-color: @kmc2-orange;
 	//background-color: white;
@@ -240,7 +240,7 @@ and more scalable.
 	ul.nav {
 		color: @white;
 		//color: @normal-text-color;
-		margin: 0;
+		margin: 0 auto;
 		font-size: 12px;
 		li {
 			a {
@@ -259,37 +259,9 @@ and more scalable.
 		}
 	}
 
-	form {
-		vertical-align: top;
-		margin: 0 4px;
-
-		input {
-			height: @header-navbar-height - 8px;
-			position: relative;
-			top: 4px;
-			border: none;
-			text-indent: 4px;
-		}
-	}
-
-	.block {
-		position: relative;
-		float: left;
-		height: @header-navbar-height;
-	}
-
-	.last {
-		float: right;
-	}
-
-}
-
-nav {
-
 	li {
 		float: left;
 		position: relative;
-		//top: -2px;
 		height: @header-navbar-height;
 
 		a {
@@ -409,7 +381,8 @@ nav {
 			background-color: white;
 			padding-left: 20px;
 			padding-right: 20px;
-			margin-bottom: 20px;
+			margin-bottom: 40px;
+			box-shadow: 0px 0px 4px 0 @light-grey;
 		}          /* general post style */
 		           /* general article on a page style */
 
@@ -1074,7 +1047,7 @@ SIDEBARS & ASIDES
 	color: @white;
 	background-color: @black;
 	clear: both;
-	position: fixed;
+	//position: fixed;
 	bottom: 0;
 	width: 100%;
 	//margin-top: 20px;

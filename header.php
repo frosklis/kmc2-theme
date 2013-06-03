@@ -30,28 +30,20 @@
 	</head>
 	
 	<body <?php body_class(); ?>>
-		<div id="topbar" class="nav-container">		
-			<nav role="navigation" class="wrap">
+		<div id="topbar">	
+			<form role="search" method="get" id="searchform" action="<?php bloginfo('siteurl'); ?>">
+				    <input type="text" value="" name="s" id="s" placeholder="Buscar en el blog...">
+			    </form>
+			    
+			<div><?php kmc2_main_nav(); ?><span id="socialbar">
+			    <a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/rss.png" height="32px" width="32px"></a>
+			    <a href="https://twitter.com/_kmc2"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/twitter-bird-dark-bgs.png" height="32px" width="32px"></a>
+				<a href="//plus.google.com/102083218914804503792?prsrc=3"
+				   rel="publisher" target="_top"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/gplus.png" height="32px" width="32px">
+				</a>
 
-
-				<div class="block">
-					<?php kmc2_main_nav(); ?>
-				</div>
-				<span id="socialbar">
-				    <a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/rss.png" height="32px" width="32px"></a>
-				    <a href="https://twitter.com/_kmc2"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/twitter-bird-dark-bgs.png" height="32px" width="32px"></a>
-					<a href="//plus.google.com/102083218914804503792?prsrc=3"
-					   rel="publisher" target="_top"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/gplus.png" height="32px" width="32px">
-					</a>
-
-					<form role="search" method="get" id="searchform" action="<?php bloginfo('siteurl'); ?>">
-					    <input type="text" value="" name="s" id="s" placeholder="Buscar en el blog...">
-					    <input type="hidden" id="searchsubmit" value="Buscars">
-				    </form>
-
-					<a href="<?php bloginfo('siteurl'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/kmc2.png" height="32px" width="53px"></a>
-				</span>
-			</nav>
+				
+			</span></div>
 		</div>
 	
 		<div id="container">
