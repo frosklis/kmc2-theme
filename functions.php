@@ -165,7 +165,7 @@ function kmc2_thumbnail($source, $width=640, $height=480, $link=true) {
 }
 
 //
-function display_posts ($list_of_posts) {
+function display_posts ($list_of_posts = null) {
 ?>
         <?php 
         if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); ?>

@@ -26,8 +26,6 @@ function kmc2_ahoy() {
     
     add_action('init', 'tipo_taxonomy' );
 
-    //add_rewrite_rule('category/(.+?)/tipo/(.+?)?$/([^/]*)/?','index.php?category=$matches[1]&tipo=$matches[2]','top');
-
     // remove WP version from RSS
     add_filter('the_generator', 'kmc2_rss_version');
     // remove pesky injected css for recent comments widget
@@ -61,15 +59,9 @@ function kmc2_ahoy() {
 
 } /* end kmc2 ahoy */
 
-
-
 function tipo_taxonomy() {
 
     global $wp_rewrite;
-    $story = array(  
-	    'query_var' => true,
-	    'rewrite' => false,
-	    );
 	register_taxonomy(
 		'tipo',
 		'post',
@@ -79,16 +71,12 @@ function tipo_taxonomy() {
 			'query_var' => true,
 			'show_ui' => true,
         	'show_admin_column' => true,
-        	'rewrite' => array('slug' => 'tipo', 'with_front' => false),
+        	'rewrite' => array('slug' => 'tipo', 'with_front' => true),
 			)
 		);
 
-    $tipo1_structure = '/%category%/%tipo%';
-    $tipo2_structure = '/%tipo%/%category%';
-    $wp_rewrite->add_rewrite_tag("%tipo%", '([^/]+)', "tipo=");
-    $wp_rewrite->add_permastruct('category_tipo', $tipo1_structure, false);
-    $wp_rewrite->add_permastruct('tipo_category', $tipo2_structure, false);
-
+    $tipo1_structure = '/tree/%category%/%tipo%';
+    $wp_rewrite->add_permastruct('category_tipo', $tipo1_structure);
     $wp_rewrite->generate_rewrite_rules();
 	$wp_rewrite->flush_rules();
 }
