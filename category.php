@@ -7,11 +7,14 @@
     					
     					//$mi_cat = $wp_query['category_name'];
 						$categoria = get_query_var('category_name');
+						$tipo = get_query_var('tipo');
 						?>
 
 						<nav role="navigation" class="clearfix">
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
-								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor 
+									<?php if ($tipo == 'notas') echo ("current-menu-item"); ?>
+									">
 									<a href=<?php
 										$url = bloginfo('siteurl'); 
 										$url .= '/tree/';
@@ -22,7 +25,9 @@
 										echo($url); 
 									?>>Notas</a>
 								</li>
-								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor 
+									<?php if ($tipo == 'diario') echo ("current-menu-item"); ?>
+									">
 									<a href=<?php
 										$url = bloginfo('siteurl'); 
 										$url .= '/tree/';
@@ -33,7 +38,9 @@
 										echo($url); 
 									?>>Diario</a>
 								</li>
-								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor">
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor 
+									<?php if ($tipo == 'top-10') echo ("current-menu-item"); ?>
+									">
 									<a href=<?php
 										$url = bloginfo('siteurl'); 
 										$url .= '/tree/';
