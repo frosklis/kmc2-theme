@@ -24,7 +24,9 @@ function kmc2_ahoy() {
     // launching operation cleanup
     add_action('init', 'kmc2_head_cleanup');
     
-    add_action( 'init', 'tipo_taxonomy' );
+    add_action('init', 'tipo_taxonomy' );
+
+    //add_rewrite_rule('category/(.+?)/tipo/(.+?)?$/([^/]*)/?','index.php?category=$matches[1]&tipo=$matches[2]','top');
 
     // remove WP version from RSS
     add_filter('the_generator', 'kmc2_rss_version');
@@ -56,11 +58,18 @@ function kmc2_ahoy() {
     // no mostrar admin bar
     add_filter( 'show_admin_bar', '__return_false' );
 
+
 } /* end kmc2 ahoy */
 
 
 
 function tipo_taxonomy() {
+
+    global $wp_rewrite;
+    $story = array(  
+	    'query_var' => true,
+	    'rewrite' => false,
+	    );
 	register_taxonomy(
 		'tipo',
 		'post',
@@ -68,11 +77,20 @@ function tipo_taxonomy() {
 			'hierarchical' => true,
 			'label' => 'Tipo',
 			'query_var' => true,
-			'rewrite' => array('slug' => 'tipo'),
 			'show_ui' => true,
         	'show_admin_column' => true,
+        	'rewrite' => array('slug' => 'tipo', 'with_front' => false),
 			)
 		);
+
+    $tipo1_structure = '/%category%/%tipo%';
+    $tipo2_structure = '/%tipo%/%category%';
+    $wp_rewrite->add_rewrite_tag("%tipo%", '([^/]+)', "tipo=");
+    $wp_rewrite->add_permastruct('category_tipo', $tipo1_structure, false);
+    $wp_rewrite->add_permastruct('tipo_category', $tipo2_structure, false);
+
+    $wp_rewrite->generate_rewrite_rules();
+	$wp_rewrite->flush_rules();
 }
 
 /*********************
