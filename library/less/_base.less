@@ -190,24 +190,16 @@ h5, .h5 {
 06. HEADER SYTLES
 *********************/
 
-.header {
-	//background-color: @white;
-	#inner-header {
-		display: block;
-		height: @header-height - 20px;
-		margin-top: 20px;
-		margin-bottom: 20px;
+#socialbar {
+	margin-left: 20px;
+	float: right;
+	height: @header-navbar-height;
+	form {
 		position: relative;
-		//padding-top: 10px;
-		padding-left: 16px;
+		margin-left: 10px;
+		margin-right: 2px;
+		bottom: 10px;
 	}
-
-	#logo {
-		a {
-			color: @kmc2-blue;
-		}
-	}
-
 }
 
 /*********************
@@ -222,7 +214,7 @@ the navs on the site so our css is cleaner
 and more scalable.
 */
 .nav, nav {
-	height: @header-navbar-height;
+	//height: @header-navbar-height;
 	//background-color: @kmc2-orange;
 	//background-color: white;
 	background-color: @normal-text-color;
@@ -234,15 +226,27 @@ and more scalable.
 	margin-right: auto;
 	margin-bottom: 20px;
 	text-transform: uppercase;
+	font-size: 12px;
 	padding-left: 4px;
 	padding-right: 4px;
 
+	a {
+		color: @white;
+		display: inline-block;
+
+		&:hover, &:focus {
+			background-color: @kmc2-blue;
+			color: @white;
+		}
+	}
+
 	ul.nav {
+		//height: @header-navbar-height;
 		color: @white;
 		//color: @normal-text-color;
 		margin: 0 auto;
-		font-size: 12px;
 		li {
+			height: @header-navbar-height;
 			a {
 				color: @white;
 				//color: @normal-text-color;
@@ -262,13 +266,14 @@ and more scalable.
 	li {
 		float: left;
 		position: relative;
-		height: @header-navbar-height;
+		max-width: 200px;
 
 		a {
 			display: block;
 			text-decoration: none;
 			padding: 8px 16px;
 			height: 100%;
+			//line-height: @header-navbar-height;
 		}
 
 		&:hover, &:focus {
@@ -289,7 +294,7 @@ and more scalable.
 			background-color: @kmc2-orange;
 			color: @white;
 			opacity: 1;
-			width: 200px;
+			max-width: 200px;
 			position: absolute;
 			display: none;
 			z-index: 8999;
@@ -349,7 +354,9 @@ and more scalable.
 
 
 } // end .nav
-
+nav a#pull {  
+    display: none;  
+} 
 
 /*********************
 08. POSTS & CONTENT STYLES
