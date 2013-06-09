@@ -157,8 +157,33 @@ function kmc2_wpsearch($form) {
 
 
 
+// GET the first image of a post
+function echo_first_image( $postID ) {
+    $args = array(
+        'numberposts' => 1,
+        'order' => 'ASC',
+        'post_mime_type' => 'image',
+        'post_parent' => $postID,
+        'post_status' => null,
+        'post_type' => 'attachment',
+    );
+
+    $attachments = get_children( $args );
+
+    if ( $attachments ) {
+        foreach ( $attachments as $attachment ) {
+            $image_attributes = wp_get_attachment_image_src( $attachment->ID, 'thumbnail' )  ? wp_get_attachment_image_src( $attachment->ID, 'thumbnail' ) : wp_get_attachment_image_src( $attachment->ID, 'full' );
+
+            echo '<img src="' . wp_get_attachment_thumb_url( $attachment->ID ) . '" class="current">';
+        }
+    }
+    else {
+        echo 'No hay imágenes';
+    }
+}
+
 //
-function display_posts ($list_of_posts = null) {
+function display_posts ($list_of_posts = null, $resumen = false) {
 ?>
         <?php 
         if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); ?>
@@ -176,7 +201,18 @@ function display_posts ($list_of_posts = null) {
             </header> <!-- end article header -->
 
             <section class="entry-content clearfix">
-                <?php the_content(); ?>
+                <?php
+                if ($resumen) { 
+                    if ( has_post_thumbnail() ) {
+                        the_post_thumbnail();
+                    } else { 
+                        echo_first_image(get_the_ID());
+                    }
+                    the_excerpt();
+                } else {
+                    the_content();
+                } 
+                ?>
             </section> <!-- end article section -->
         
             <footer class="article-footer">
