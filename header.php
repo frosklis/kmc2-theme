@@ -49,19 +49,6 @@
 		</header>
 
 
-		<div id="full-bg">
-			<?php			
-			$media_items = get_attachments_by_media_tags('media_tags=portada');
-			
-			foreach ($media_items as $imagen) { ?>
-					<img class="full-bg" src="<?php 
-						echo($imagen->guid );
-					?>">
-			<?php
-			} // foreach
-			?>
-		</div>
-	
 		<div id="container">
 
 
