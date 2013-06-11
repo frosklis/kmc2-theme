@@ -25,7 +25,7 @@
 	
 	<body <?php body_class(); ?>>
 		<header id="topbar">
-			<div id="socialbar">
+			<div class="socialbar">
 			    <a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/rss.png" height="32px" width="32px"></a>
 			    <a href="https://twitter.com/_kmc2"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/twitter-bird-dark-bgs.png" height="32px" width="32px"></a>
 				<a href="//plus.google.com/102083218914804503792?prsrc=3"
