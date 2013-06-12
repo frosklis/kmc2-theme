@@ -172,7 +172,7 @@ function echo_first_image( $postID ) {
 
     if ( $attachments ) {
         foreach ( $attachments as $attachment ) {
-            $image_attributes = wp_get_attachment_image_src( $attachment->ID, 'thumbnail' )  ? wp_get_attachment_image_src( $attachment->ID, 'thumbnail' ) : wp_get_attachment_image_src( $attachment->ID, 'full' );
+            $image_attributes = wp_get_attachment_image_src( $attachment->ID, 'medium' )  ? wp_get_attachment_image_src( $attachment->ID, 'medium' ) : wp_get_attachment_image_src( $attachment->ID, 'full' );
 
             echo '<img src="' . wp_get_attachment_thumb_url( $attachment->ID ) . '" class="current">';
         }
@@ -204,7 +204,7 @@ function display_posts ($list_of_posts = null, $resumen = false) {
                 <?php
                 if ($resumen) { 
                     if ( has_post_thumbnail() ) {
-                        the_post_thumbnail();
+                        the_post_thumbnail(("medium"));
                     } else { 
                         echo_first_image(get_the_ID());
                     }
