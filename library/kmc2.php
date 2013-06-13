@@ -26,6 +26,15 @@ function kmc2_ahoy() {
     
     add_action('init', 'tipo_taxonomy' );
 
+
+    // Set featured image
+	add_action('the_post', 'autoset_featured');
+	add_action('save_post', 'autoset_featured');
+	add_action('draft_to_publish', 'autoset_featured');
+	add_action('new_to_publish', 'autoset_featured');
+	add_action('pending_to_publish', 'autoset_featured');
+	add_action('future_to_publish', 'autoset_featured');
+
     // remove WP version from RSS
     add_filter('the_generator', 'kmc2_rss_version');
     // remove pesky injected css for recent comments widget
@@ -61,6 +70,18 @@ function kmc2_ahoy() {
 
 } /* end kmc2 ahoy */
 
+function autoset_featured() {
+	global $post;
+	$already_has_thumb = has_post_thumbnail($post->ID);
+	if (!$already_has_thumb)  {
+		$attached_image = get_children( "post_parent=$post->ID&post_type=attachment&post_mime_type=image&numberposts=1" );
+		if ($attached_image) {
+			foreach ($attached_image as $attachment_id => $attachment) {
+				set_post_thumbnail($post->ID, $attachment_id);
+			}
+		}
+	}
+}
 
 // function add_social_bar_to_menu( $items, $args ) {
 //     if( $args->theme_location == 'main-nav' )
@@ -226,7 +247,7 @@ function kmc2_theme_support() {
 	add_theme_support('post-thumbnails');
 
 	// default thumb size
-	set_post_thumbnail_size(125, 125, true);
+	set_post_thumbnail_size(400, 400, true);
 
 	// wp custom background (thx to @bransonwerner for update)
 	add_theme_support( 'custom-background',
