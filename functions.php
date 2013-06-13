@@ -206,7 +206,7 @@ function display_posts ($list_of_posts = null, $resumen = false) {
                     if ( has_post_thumbnail() ) {
                         the_post_thumbnail("medium",array('class' => 'alignleft'));
                     } else { 
-                        echo_first_image(get_the_ID();
+                        echo_first_image(get_the_ID());
                     }
                     the_excerpt();
                 } else {
