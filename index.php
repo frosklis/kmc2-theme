@@ -55,11 +55,11 @@
 					        	    <p><?php _e("Algo fue mal.", "kmc2theme"); 
 
 
-	global $wp_rewrite;
-	global $wp_query;
-	print_r($wp_query);
+											global $wp_rewrite;
+											global $wp_query;
+											print_r($wp_query);
 
-print_r($wp_rewrite->rules);
+										print_r($wp_rewrite->rules);
 
 
 					        	    ?></p>
