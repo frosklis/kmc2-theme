@@ -76,7 +76,7 @@ Template Name: Blog del viaje
 
 						$list_of_posts = new WP_Query( $args );
 					    
-					    display_posts($list_of_posts);
+					    display_posts($list_of_posts, true);
 					    ?>
 				    </div> <!-- end #main -->
     

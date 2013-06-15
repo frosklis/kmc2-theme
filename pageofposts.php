@@ -18,7 +18,9 @@ Template Name: All posts
 					?>
 	
 					<div id="main" class="ninecol first clearfix" role="main">
-    					<?php display_posts($list_of_posts, true); ?>
+    					<?php 
+    					display_posts($list_of_posts, true); 
+    					?>
 					</div> <!-- end #main -->
     				
     				<?php get_sidebar(); ?>
