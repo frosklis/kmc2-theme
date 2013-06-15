@@ -11,11 +11,7 @@ Template Name: Descripción de viajes
 				<div id="inner-content" class="wrap clearfix">
 
 				    <div id="main" class="ninecol first clearfix" role="main">
-
-
-
-
-
+<p>descripcion-viaje.php</p>
 <div class="nav-container">		
 				<nav role="navigation" class="clearfix">
 
