@@ -67,7 +67,6 @@ function kmc2_ahoy() {
 
 	//add_filter('wp_nav_menu_items','add_social_bar_to_menu', 10, 2);
 
-
 } /* end kmc2 ahoy */
 
 function autoset_featured() {
@@ -194,38 +193,39 @@ SCRIPTS & ENQUEUEING
 
 // loading modernizr and jquery, and reply script
 function kmc2_scripts_and_styles() {
-  if (!is_admin()) {
+	if (!is_admin()) {
 
-    // modernizr (without media query polyfill)
-    wp_register_script( 'kmc2-modernizr', get_stylesheet_directory_uri() . '/library/js/modernizr.custom.min.js', array(), '2.5.3', false );
+	    // modernizr (without media query polyfill)
+	    wp_register_script( 'kmc2-modernizr', get_stylesheet_directory_uri() . '/library/js/modernizr.custom.min.js', array(), '2.5.3', false );
 
-    // register main stylesheet
-    wp_register_style( 'kmc2-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
+	    // register main stylesheet
+	    wp_register_style( 'kmc2-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
 
-    // ie-only style sheet
-    wp_register_style( 'kmc2-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
+	    // ie-only style sheet
+	    wp_register_style( 'kmc2-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
 
-    // comment reply script for threaded comments
-    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
-      wp_enqueue_script( 'comment-reply' );
-    }
+	    // comment reply script for threaded comments
+	    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
+	      wp_enqueue_script( 'comment-reply' );
+	    }
 
-    //adding scripts file in the footer
-    wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
+	    //adding scripts file in the footer
+	    wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
 
-    // enqueue styles and scripts
-    wp_enqueue_style( 'kmc2-stylesheet' );
-    wp_enqueue_style('kmc2-ie-only');
+	    // enqueue styles and scripts
+	    wp_enqueue_style( 'kmc2-stylesheet' );
+	    wp_enqueue_style('kmc2-ie-only');
 
-    wp_enqueue_script( 'kmc2-modernizr' );
-    wp_enqueue_script( 'jquery' );
-    wp_enqueue_script( 'kmc2-js' );
-    wp_enqueue_script('flexslider', get_bloginfo('stylesheet_directory').'/library/js/jquery.flexslider-min.js', array('jquery'));
-	wp_enqueue_script('flexslider-init', get_bloginfo('stylesheet_directory').'/library/js/flexslider-init.js', array('jquery', 'flexslider'));
-	wp_enqueue_script('galleria', get_bloginfo('stylesheet_directory').'/library/js/galleria/galleria-1.2.9.min.js');
+	    wp_enqueue_script( 'kmc2-modernizr' );
+	    wp_enqueue_script( 'jquery' );
+	    wp_enqueue_script( 'kmc2-js' );
+	    wp_enqueue_script('flexslider', get_bloginfo('stylesheet_directory').'/library/js/jquery.flexslider-min.js', array('jquery'));
+		wp_enqueue_script('flexslider-init', get_bloginfo('stylesheet_directory').'/library/js/flexslider-init.js', array('jquery', 'flexslider'));
+	    wp_enqueue_script( 'fancybox', get_template_directory_uri() . '/library/js/jquery.fancybox.pack.js', array( 'jquery' ), false, true );
+	    wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/library/js/lightbox.js', array( 'fancybox' ), false, true );
+	    wp_enqueue_style( 'lightbox-style', get_template_directory_uri() . '/library/css/jquery.fancybox.css' );
 
-
-  }
+	}
 }
 
 // adding the conditional wrapper around ie stylesheet
@@ -364,34 +364,6 @@ function kmc2_footer_links_fallback() {
 	/* you can put a default here if you like */
 }
 
-/*********************
-RELATED POSTS FUNCTION
-*********************/
-
-// Related Posts Function (call using kmc2_related_posts(); )
-function kmc2_related_posts() {
-	echo '<ul id="kmc2-related-posts">';
-	global $post;
-	$tags = wp_get_post_tags($post->ID);
-	if($tags) {
-		foreach($tags as $tag) { $tag_arr .= $tag->slug . ','; }
-        $args = array(
-        	'tag' => $tag_arr,
-        	'numberposts' => 5, /* you can change this to show more */
-        	'post__not_in' => array($post->ID)
-     	);
-        $related_posts = get_posts($args);
-        if($related_posts) {
-        	foreach ($related_posts as $post) : setup_postdata($post); ?>
-	           	<li class="related_post"><a class="entry-unrelated" href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></li>
-	        <?php endforeach; }
-	    else { ?>
-            <?php echo '<li class="no_related_post">' . __( 'No Related Posts Yet!', 'kmc2theme' ) . '</li>'; ?>
-		<?php }
-	}
-	wp_reset_query();
-	echo '</ul>';
-} /* end kmc2 related posts function */
 
 /*********************
 PAGE NAVI
@@ -460,13 +432,6 @@ RANDOM CLEANUP ITEMS
 // remove the p from around imgs (http://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/)
 function kmc2_filter_ptags_on_images($content){
    return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
-}
-
-// This removes the annoying […] to a Read More link
-function kmc2_excerpt_more($more) {
-	global $post;
-	// edit here if you like
-	return '...  <a href="'. get_permalink($post->ID) . '" title="Read '.get_the_title($post->ID).'">Read more &raquo;</a>';
 }
 
 /*

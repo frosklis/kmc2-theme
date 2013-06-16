@@ -93,7 +93,7 @@ add_action('wp_dashboard_setup', 'kmc2_custom_dashboard_widgets');
 
 // calling your own login css so you can style it
 function kmc2_login_css() {
-	/* I couldn't get wp_enqueue_style to work :( */
+  	/* I couldn't get wp_enqueue_style to work :( */
 	echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/library/css/login.css">';
 }
 
