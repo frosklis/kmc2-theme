@@ -3,11 +3,11 @@
 				<div id="inner-footer" class="wrap clearfix">
 						<div class="footer-widgetarea">
 						<?php
-					    //if (is_active_sidebar('footer1')):
-					    	//dynamic_sidebar('footer1');
-					    //else: ?>
-							<p><?php //_e("Please activate some Widgets.", "kmc2theme");  ?></p>
-						<?php //endif; ?>
+					    if (is_active_sidebar('footer1')):
+					    	dynamic_sidebar('footer1');
+					    else: ?>
+							<p><?php _e("Please activate some Widgets.", "kmc2theme");  ?></p>
+						<?php endif; ?>
 						</div>
 					<?php
 					unset($widget);
