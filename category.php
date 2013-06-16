@@ -51,13 +51,42 @@
 										echo($url); 
 									?>>Top 10</a>
 								</li>
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor 
+									<?php if ($tipo == 'fotos') echo ("current-menu-item"); ?>
+									">
+									<a href=<?php
+										$url = bloginfo('siteurl'); 
+										$url .= '/tree/';
+										// Calcular los parametros
+										$url .= $categoria;
+										$url .= '/fotos';
+
+										echo($url); 
+									?>>Fotos</a>
+								</li>
 							</ul>
 						</nav>
 
 						<?php
-						global $wp_query;
-    					$list_of_posts = $wp_query;
-    					display_posts($list_of_posts, true); 
+						if ($tipo != "fotos") {
+							global $wp_query;
+	    					$list_of_posts = $wp_query;
+	    					display_posts($list_of_posts, true); 
+    					} else {
+							// The Query
+							$args = array(
+								'posts_per_page' => 1,
+							);
+							$query = new WP_Query( $args );
+
+							// The Loop
+							if ( $query->have_posts() ) {
+								$query->the_post();
+								echo '<li>' . get_the_title() . '</li>';
+	    						echo "<p>Mostrando las fotos ... ?</p>";
+	    						echo do_shortcode('[gallery type=rectangular ids="353,355" order="rand"]');
+							} 
+    					}
     					?>
 					</div> <!-- end #main -->
     				
