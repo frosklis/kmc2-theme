@@ -272,7 +272,7 @@ function display_pictures($cat_id) {
         <section class="entry-content clearfix">
 
         <?php 
-        // echo $cat_id . " - id de categoría \n";
+        echo $cat_id . " - id de categoría \n";
 
         $list_of_posts = new WP_Query( 'cat='.$cat_id );
 
