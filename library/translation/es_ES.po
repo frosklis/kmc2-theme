@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: wp theme kmc2\n"
+"Project-Id-Version: kmc2theme\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-02 22:11+0100\n"
 "PO-Revision-Date: \n"
@@ -196,7 +196,7 @@ msgstr "Entradas de:"
 
 #: archive.php:21
 msgid "Daily Archives:"
-msgstr "Archivo dirario:"
+msgstr "Archivo diario:"
 
 #: archive.php:25
 msgid "Monthly Archives:"

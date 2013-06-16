@@ -2,12 +2,12 @@
 			<div id="content">
 				<div id="inner-content" class="wrap clearfix">
 
-					Esta es la página principal... se ve algo? pi
+					Esta es la página principal...
 
-					<div id="galleria">
-					    <img src="images/custom-post-icon.png" rel="galeria">
-					    <img src="images/seamlesstexture10_500.jpg" rel="galeria">
-					</div>
+					<p><?php echo get_locale(); ?></p>
+					<p><?php echo get_template_directory() ."/library/translation/$locale.php"; ?></p>
+
+
 				</div> <!-- end #inner-content -->
     
 			</div> <!-- end #content -->

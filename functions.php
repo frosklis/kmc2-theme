@@ -43,7 +43,7 @@ require_once('library/kmc2.php'); // if you remove this, kmc2 will break
 4. library/translation/translation.php
     - adding support for other languages
 */
-// require_once('library/translation/translation.php'); // this comes turned off by default
+require_once('library/translation/translation.php'); // this comes turned off by default
 /*
 5. library/options.php
     - adds options to the wordpress dashboard
