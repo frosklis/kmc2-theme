@@ -182,10 +182,9 @@ function echo_first_image( $postID ) {
     }
 }
 
-//
+// Dibujar los posts
 function display_posts ($list_of_posts = null, $resumen = false) {
-?>
-        <?php 
+
         if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
@@ -252,6 +251,73 @@ function display_posts ($list_of_posts = null, $resumen = false) {
             </article>
 
         <?php endif; ?>
+
+
+<?php
+}
+
+// Mostrar las imágenes asociadas a una categoría
+function display_pictures($cat_id) {
+?>    
+
+    <article <?php post_class('clearfix'); ?> role="article">
+    
+        <header class="article-header">
+        
+            <h2><a href="" rel="bookmark" title="Fotos">Fotos</a></h2>
+
+    
+        </header> <!-- end article header -->
+
+        <section class="entry-content clearfix">
+
+        <?php 
+        // echo $cat_id . " - id de categoría \n";
+
+        $list_of_posts = new WP_Query( 'cat='.$cat_id );
+
+        $lista_id = "";
+
+
+        if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
+
+            $postID = get_the_ID();
+
+            $args = array(
+                'posts_per_page' => -1,
+                'order' => 'ASC',
+                'post_mime_type' => 'image',
+                'post_parent' => $postID,
+                'post_status' => null,
+                'post_type' => 'attachment',
+            );
+
+            $attachments = get_children( $args );
+
+            if ( $attachments ) {
+                //echo "<p>Lista de fotos</p>";
+                foreach ( $attachments as $attachment ) {
+                    //echo $attachment->ID . ", ";
+                    $lista_id .= $attachment->ID . ", ";
+                }
+            }
+
+
+        endwhile;
+        endif;
+
+        $gallery = '[gallery type=rectangular order="rand" ids="';
+        $gallery .= $lista_id . '"]';
+
+        // echo "<p>" . $gallery . "</p>";
+
+        echo do_shortcode($gallery);
+
+        ?>
+        </section> <!-- end article section -->
+
+    </article> <!-- end article -->
+
 
 
 <?php

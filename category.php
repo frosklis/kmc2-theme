@@ -82,9 +82,14 @@
 							// The Loop
 							if ( $query->have_posts() ) {
 								$query->the_post();
-								echo '<li>' . get_the_title() . '</li>';
-	    						echo "<p>Mostrando las fotos ... ?</p>";
-	    						echo do_shortcode('[gallery type=rectangular ids="353,355" order="rand"]');
+								//echo '<li>' . get_the_title() . '</li>';
+	    						//echo "<p>Mostrando las fotos ... ?</p>";
+	    						//echo do_shortcode('[gallery type=rectangular ids="353,355" order="rand"]');
+
+	    						//echo "<p>Ahora bien " . $categoria . "</p>";
+	    						
+	    						$cat = get_query_var('cat');
+	    						display_pictures($cat);
 							} 
     					}
     					?>
