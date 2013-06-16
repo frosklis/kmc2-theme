@@ -272,7 +272,8 @@ function display_pictures($cat_id) {
         <section class="entry-content clearfix">
 
         <?php 
-        echo $cat_id . " - id de categoría \n";
+        //echo $cat_id . " - id de categoría \n";
+        
         $args = array(
             'posts_per_page' => -1,
             'cat' => $cat_id,
@@ -312,8 +313,9 @@ function display_pictures($cat_id) {
         endwhile;
         endif;
 
-        echo "<p>Se han procesado ".$number_of_posts." entradas</p>";
-        echo "<p>Se han encontrado ".$number_of_pictures." fotos</p>";
+        //echo "<p>Se han procesado ".$number_of_posts." entradas</p>";
+        //echo "<p>Se han encontrado ".$number_of_pictures." fotos</p>";
+        
         $gallery = '[gallery type=rectangular order="rand" ids="';
         $gallery .= $lista_id . '"]';
 
