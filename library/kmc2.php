@@ -21,6 +21,8 @@ add_action('after_setup_theme','kmc2_ahoy', 15);
 
 function kmc2_ahoy() {
 
+	if ( ! isset( $content_width ) ) $content_width = 1000;
+
     // launching operation cleanup
     add_action('init', 'kmc2_head_cleanup');
     
