@@ -273,8 +273,11 @@ function display_pictures($cat_id) {
 
         <?php 
         echo $cat_id . " - id de categoría \n";
-
-        $list_of_posts = new WP_Query( 'cat='.$cat_id );
+        $args = array(
+            'posts_per_page' => -1,
+            'cat' => $cat_id,
+        );
+        $list_of_posts = new WP_Query( $args );
 
         $lista_id = "";
 
@@ -309,8 +312,8 @@ function display_pictures($cat_id) {
         endwhile;
         endif;
 
-        echo "<p>Se han procesado ".$number_of_posts." entradas</p";
-        echo "<p>Se han encontrado ".$number_of_pictures." fotos</p";
+        echo "<p>Se han procesado ".$number_of_posts." entradas</p>";
+        echo "<p>Se han encontrado ".$number_of_pictures." fotos</p>";
         $gallery = '[gallery type=rectangular order="rand" ids="';
         $gallery .= $lista_id . '"]';
 
