@@ -278,8 +278,10 @@ function display_pictures($cat_id) {
 
         $lista_id = "";
 
-
+        $number_of_posts = 0;
+        $number_of_pictures = 0;
         if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
+            $number_of_posts += 1;
 
             $postID = get_the_ID();
 
@@ -299,6 +301,7 @@ function display_pictures($cat_id) {
                 foreach ( $attachments as $attachment ) {
                     //echo $attachment->ID . ", ";
                     $lista_id .= $attachment->ID . ", ";
+                    $number_of_pictures += 1;
                 }
             }
 
@@ -306,6 +309,8 @@ function display_pictures($cat_id) {
         endwhile;
         endif;
 
+        echo "<p>Se han procesado ".$number_of_posts." entradas</p";
+        echo "<p>Se han encontrado ".$number_of_pictures." fotos</p";
         $gallery = '[gallery type=rectangular order="rand" ids="';
         $gallery .= $lista_id . '"]';
 
