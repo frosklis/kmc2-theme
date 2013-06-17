@@ -2,10 +2,7 @@
 			<div id="content">
 				<div id="inner-content" class="wrap clearfix">
 
-					Esta es la página principal...
-
-					<p><?php echo get_locale(); ?></p>
-					<p><?php echo get_template_directory() ."/library/translation/$locale.php"; ?></p>
+					<h1><huge>Ceci es muy ordenada, no se parece en absoluto a mí.</huge></h1>
 
 
 				</div> <!-- end #inner-content -->
