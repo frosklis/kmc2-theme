@@ -47,7 +47,7 @@ The comments page for kmc2
 	<?php else : // comments are closed ?>
 	
 	<!-- If comments are closed. -->
-	<!--p class="nocomments"><?php _e("Comments are closed.", "kmc2theme"); ?></p-->
+	<p class="nocomments"><?php _e("Comments are closed.", "kmc2theme"); ?></p>
 
 	<?php endif; ?>
 

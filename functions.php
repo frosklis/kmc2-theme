@@ -183,7 +183,7 @@ function echo_first_image( $postID ) {
 }
 
 // Dibujar los posts
-function display_posts ($list_of_posts = null, $resumen = false) {
+function display_posts ($list_of_posts = null, $resumen = false, $comentarios = false) {
 
         if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); ?>
 
@@ -219,7 +219,7 @@ function display_posts ($list_of_posts = null, $resumen = false) {
 
             </footer> <!-- end article footer -->
             
-            <?php // comments_template(); // uncomment if you want to use them ?>
+            <?php if ($comentarios) comments_template();  ?>
 
         </article> <!-- end article -->
 
