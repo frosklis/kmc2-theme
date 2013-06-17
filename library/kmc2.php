@@ -63,11 +63,9 @@ function kmc2_ahoy() {
 
     // cleaning up random code around images
     add_filter('the_content', 'kmc2_filter_ptags_on_images');
-    // cleaning up excerpt
-    add_filter('excerpt_more', 'kmc2_excerpt_more');
 
     // no mostrar admin bar
-    add_filter('show_admin_bar', '__return_false' );
+    //add_filter('show_admin_bar', '__return_false' );
 
 	//add_filter('wp_nav_menu_items','add_social_bar_to_menu', 10, 2);
 
