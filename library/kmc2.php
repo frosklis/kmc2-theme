@@ -278,16 +278,6 @@ function kmc2_theme_support() {
 		)
 	);
 
-	// Infinite-scroll
-	add_theme_support( 'infinite-scroll', array(
-	    'type'           => 'scroll',		//scroll or click
-	    'footer_widgets' => true,
-	    'container'      => 'main',
-	    'wrapper'        => true,			//adds a .infinite-wrap div to the new posts
-	    'render'         => false,          //should add a content.php template
-	    'posts_per_page' => false
-		) 
-	);
 
 } /* end kmc2 theme support */
 
