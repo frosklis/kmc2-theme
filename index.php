@@ -52,7 +52,7 @@
 					        	    <h1><?php _e("Oops, Post Not Found!", "kmc2theme"); ?></h1>
 					        	</header>
 					            <section class="entry-content">
-					        	    <p><?php _e("Algo fue mal.", "kmc2theme"); 
+					        	    <p><?php _e("Something went wrong.", "kmc2theme"); 
 
 
 											global $wp_rewrite;
@@ -65,7 +65,7 @@
 					        	    ?></p>
 					        	</section>
 					        	<footer class="article-footer">
-					        	    <p><?php _e("Pero muy mal fhlsadhalskda", "kmc2theme"); ?></p>
+					        	    <p><?php _e("Terribly wrong", "kmc2theme"); ?></p>
 					        	</footer>
 					        </article>
 					
