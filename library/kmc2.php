@@ -65,7 +65,7 @@ function kmc2_ahoy() {
     add_filter('the_content', 'kmc2_filter_ptags_on_images');
 
     // no mostrar admin bar
-    //add_filter('show_admin_bar', '__return_false' );
+    add_filter('show_admin_bar', '__return_false' );
 
 	//add_filter('wp_nav_menu_items','add_social_bar_to_menu', 10, 2);
 
