@@ -19,6 +19,7 @@ Template Name: All posts
 	
 					<div id="main" class="ninecol first clearfix" role="main">
     					<?php 
+    					global wp_query;
     					display_posts($list_of_posts, true); 
     					?>
 					</div> <!-- end #main -->
