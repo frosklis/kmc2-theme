@@ -202,7 +202,7 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
             <?php
             if ($resumen) { 
             ?>
-                <section class="entry-content clearfix excerpt">
+                <section class="entry-content clearfix excerpt" onclick="location.href='<?php the_permalink(); ?>';">
                 <?php
                 if ( has_post_thumbnail() ) {
                     the_post_thumbnail("medium",array('class' => 'alignleft'));
