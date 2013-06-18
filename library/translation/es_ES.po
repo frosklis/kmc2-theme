@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmc2theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-17 23:43+0100\n"
+"POT-Creation-Date: 2013-06-19 00:08+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Claudio Noguera <claudio.noguera@gmail.com>\n"
 "Language-Team: fulgor <frag.fulgor@gmail.com>\n"
@@ -34,24 +34,21 @@ msgstr "F jS, Y"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:43
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive.php:79
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:233
-#: /Users/claudio/Dropbox/Web/kmc2-theme/index.php:42
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:238
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:36
 msgid "&laquo; Older Entries"
 msgstr "&laquo; Entradas anteriores"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:44
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive.php:80
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:234
-#: /Users/claudio/Dropbox/Web/kmc2-theme/index.php:43
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:239
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:37
 msgid "Newer Entries &raquo;"
 msgstr "Entradas más modernas &raquo;"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:53
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive.php:89
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:243
-#: /Users/claudio/Dropbox/Web/kmc2-theme/index.php:52
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:248
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:40
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:46
 #, fuzzy
@@ -60,7 +57,7 @@ msgstr "No encontrado"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:56
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive.php:92
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:246
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:251
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:43
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:49
 msgid "Uh Oh. Something is missing. Try double checking things."
@@ -97,7 +94,6 @@ msgstr "Archivo anual:"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive.php:53
 #: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:196
-#: /Users/claudio/Dropbox/Web/kmc2-theme/index.php:17
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:11
 #, php-format
 msgid ""
@@ -250,24 +246,15 @@ msgstr "Tu comentario está pendiente de moderación"
 msgid "Search for:"
 msgstr "Buscar por:"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:218
-#: /Users/claudio/Dropbox/Web/kmc2-theme/index.php:27
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:223
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:28
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:21
 msgid "Tags:"
 msgstr "Etiquetas:"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:249
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:254
 msgid "This is the error message in the display_posts function."
 msgstr "Este es el mensaje de error de la función display_posts"
-
-#: /Users/claudio/Dropbox/Web/kmc2-theme/index.php:55
-msgid "Something went wrong."
-msgstr "Algo fue mal."
-
-#: /Users/claudio/Dropbox/Web/kmc2-theme/index.php:68
-msgid "Terribly wrong"
-msgstr "Muy mal."
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:46
 msgid "This is the error message in the page.php template."
@@ -424,25 +411,29 @@ msgstr "Añadir nueva etiqueta personalizada"
 msgid "New Custom Tag Name"
 msgstr "Nuevo nombre de etiqueta personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:278
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:307
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:81
+msgid " keep reading"
+msgstr "seguir leyendo"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:290
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:309
 msgid "The Main Menu"
 msgstr "Menú Principal"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:279
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:326
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:291
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:328
 msgid "Footer Links"
 msgstr "Enlaces del pie"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:394
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:396
 msgid "First"
 msgstr "Primero"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:411
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:413
 msgid "Last"
 msgstr "Último"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:438
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:440
 #, php-format
 msgid "Posts by %s"
 msgstr "Entradas de %s"
@@ -450,6 +441,12 @@ msgstr "Entradas de %s"
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:52
 msgid "This is the error message in the index.php template."
 msgstr "Este es el mensaje de error de la plantilla index.php."
+
+#~ msgid "Something went wrong."
+#~ msgstr "Algo fue mal."
+
+#~ msgid "Terribly wrong"
+#~ msgstr "Muy mal."
 
 #~ msgid "Response"
 #~ msgstr "Respuesta"

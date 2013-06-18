@@ -71,6 +71,20 @@ function kmc2_ahoy() {
 
 } /* end kmc2 ahoy */
 
+
+function custom_excerpt_length( $length ) {
+	return 200;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+function new_excerpt_more( $more ) {
+	return '<a class="read-more" href="'. get_permalink( get_the_ID() ) . '"> ...'.__(' keep reading',kmc2theme).'</a>';
+}
+add_filter( 'excerpt_more', 'new_excerpt_more' );
+
+
+
+
 function autoset_featured() {
 	global $post;
 	$already_has_thumb = has_post_thumbnail($post->ID);
