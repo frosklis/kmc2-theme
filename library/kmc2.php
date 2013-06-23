@@ -211,6 +211,10 @@ function kmc2_scripts_and_styles() {
 	    //adding scripts file in the footer
 	    wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
 
+	    // scripts para que funcione el mapa
+	    wp_register_script('kartograph',get_stylesheet_directory_uri() . '/library/js/kartograph.min.js');
+	    wp_register_script('raphael',get_stylesheet_directory_uri() . '/library/js/raphael-min.js');
+
 	    // enqueue styles and scripts
 	    wp_enqueue_style( 'kmc2-stylesheet' );
 	    wp_enqueue_style('kmc2-ie-only');
@@ -218,6 +222,8 @@ function kmc2_scripts_and_styles() {
 	    wp_enqueue_script( 'kmc2-modernizr' );
 	    wp_enqueue_script( 'jquery' );
 	    wp_enqueue_script( 'kmc2-js' );
+	    wp_enqueue_script( 'kartograph');
+	    wp_enqueue_script( 'raphael');
 
 	    
 	    //wp_enqueue_script('flexslider', get_bloginfo('stylesheet_directory').'/library/js/jquery.flexslider-min.js', array('jquery'));
