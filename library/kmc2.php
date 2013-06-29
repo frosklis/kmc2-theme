@@ -69,6 +69,10 @@ function kmc2_ahoy() {
 
 	//add_filter('wp_nav_menu_items','add_social_bar_to_menu', 10, 2);
 
+
+	add_filter( 'wp_nav_menu_items', 'add_logo_to_menu', 10, 2 );
+
+
 } /* end kmc2 ahoy */
 
 
@@ -305,10 +309,17 @@ function kmc2_theme_support() {
 /*********************
 MENUS & NAVIGATION
 *********************/
+function add_logo_to_menu ( $items, $args ) {
+	//$img_logo = '<img src="' . get_bloginfo('stylesheet_directory') . '/images/c2-blanco-64x64.png">';
 
+	//$items = '<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9">' . $img_logo .'</li>' . $items;
+
+	return $items;
+}
 // the main menu
 function kmc2_main_nav() {
 	// display the wp3 menu if available
+
     wp_nav_menu(array(
     	'container' => false,                           // remove nav container
     	'container_class' => 'nav clearfix',           // class of container (should you choose to use it)

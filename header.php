@@ -25,20 +25,13 @@
 	
 	<body <?php body_class(); ?>>
 		<header id="topbar">
-			<div class="socialbar">
-			    <a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/rss.png" height="32px" width="32px"></a>
-			    <a href="https://twitter.com/_kmc2"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/twitter-bird-dark-bgs.png" height="32px" width="32px"></a>
-				<a href="//plus.google.com/102083218914804503792?prsrc=3"
-				   rel="publisher" target="_top"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/gplus.png" height="32px" width="32px">
-				</a>
-	
-				<form role="search" method="get" id="searchform" action="<?php bloginfo('siteurl'); ?>">
-				    <input type="text" value="" name="s" id="s" placeholder="Buscar en el blog...">
-			    </form>
-				
-			</div>    
-			<nav class="nav clearfix"><?php kmc2_main_nav(); ?>
+			  
+			<nav class="nav clearfix wrap">
+				<?php
+				kmc2_main_nav(); 
+				?>
 				<a href="#" id="pull">Menú</a>
 			</nav>
 		</header>
+
 		<div id="container">
