@@ -1,11 +1,6 @@
 /*
 kmc2 Scripts File
-Author: Eddie Machado
-
-This file should contain any js scripts you want to add to the site.
-Instead of calling it in the header or throwing it inside wp_head()
-this file will be called automatically in the footer so as not to
-slow the page load.
+Author: Claudio Noguera
 
 */
 
@@ -38,20 +33,20 @@ jQuery(document).ready(function($) {
     */
     
     /* getting viewport width */
-    var responsive_viewport = $(window).width();
+    var w = jQuery(window).width();
     
     /* if is below 481px */
-    if (responsive_viewport < 481) {
-    
+    if (w < 481) {
+        jQuery(".post, .page").css('box-shadow', 'none');
     } /* end smallest screen */
     
     /* if is larger than 481px */
-    if (responsive_viewport > 481) {
+    if (w > 481) {
         
     } /* end larger than 481px */
     
     /* if is above or equal to 768px */
-    if (responsive_viewport >= 768) {
+    if (w >= 768) {
     
         /* load gravatars */
         $('.comment img[data-gravatar]').each(function(){
@@ -61,14 +56,17 @@ jQuery(document).ready(function($) {
     }
     
     /* off the bat large screen actions */
-    if (responsive_viewport > 1030) {
+    if (w > 1030) {
         
     }
     
-	
-	// add all your scripts here
-	
- 
+
+    if(w > 320 && menu.is(':hidden')) {  
+        menu.removeAttr('style');  
+    }
+
+
+    size_dependent_actions();
 }); /* end of as page load scripts */
 
 
@@ -118,9 +116,25 @@ jQuery(function() {
     });  
 }); 
 
-jQuery(window).resize(function(){  
+jQuery(window).resize(function(){ 
     var w = jQuery(window).width();  
     if(w > 320 && menu.is(':hidden')) {  
         menu.removeAttr('style');  
-    }  
+    }
+
+    size_dependent_actions();
 });
+
+function size_dependent_actions() {
+
+    var main_w = jQuery("#main").width();
+    var pad = 54;
+    if (main_w < 1024) {
+        pad = Math.floor((main_w - 480) * 54 / (1024 - 480));
+    }
+
+    jQuery(".post, .page").css({
+        paddingLeft: pad + 'px',
+        paddingRight: pad + 'px'
+    });
+}

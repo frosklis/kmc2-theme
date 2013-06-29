@@ -81,6 +81,10 @@ the other stylesheets. Remember, keep it light: Speed is Important.
         right: 15px;  
         top: 6px;  
     }  
+
+    .post, .page {
+        box-shadow: none;
+    }
 }
 @media only screen and (max-width : 320px) {  
     nav li {  
@@ -89,19 +93,6 @@ the other stylesheets. Remember, keep it light: Speed is Important.
         width: 100%;  
     }  
 }
-
-/*
-LARGER MOBILE DEVICES
-This is for devices like the Galaxy Note or something that's
-larger than an iPhone but smaller than a tablet. Let's call them
-tweeners.
-*/
-@media only screen and (min-width: 481px) {
-
-	// styles in 481up.less
-	@import "_481up.less";
-
-} // end of media query
 
 /*
 TABLET & SMALLER LAPTOPS
