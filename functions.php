@@ -249,6 +249,7 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
                 </header>
                 <section class="entry-content">
                     <p><?php _e("Uh Oh. Something is missing. Try double checking things.", "kmc2theme"); ?></p>
+                    <?php echo '<p> ' . basename( get_page_template() ) . ' </p>'; ?>
                 </section>
                 <footer class="article-footer">
                     <p><?php _e("This is the error message in the display_posts function.", "kmc2theme"); ?></p>
