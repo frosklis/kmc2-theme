@@ -1,15 +1,15 @@
 <?php get_header(); ?>
-			
+<?php    					
+$categoria = get_query_var('category_name');
+$tipo = get_query_var('tipo');
+?>			
 			<div id="content">
 				<div id="inner-content" class="wrap clearfix">
+				<?php if ($tipo != "fotos") { ?>
 					<div id="main" class="ninecol first clearfix" role="main">
-    					<?php 
-    					
-    					//$mi_cat = $wp_query['category_name'];
-						$categoria = get_query_var('category_name');
-						$tipo = get_query_var('tipo');
-						?>
-
+				<?php } else { ?>
+					<div id="main" class="twelvecol single first clearfix" role="main">
+				<?php } ?>
 						<nav role="navigation" class="clearfix">
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor 
@@ -89,7 +89,7 @@
     					?>
 					</div> <!-- end #main -->
     				
-    				<?php get_sidebar(); ?>
+    				<?php if ($tipo != "fotos") { get_sidebar(); } ?>
 				    
 				</div> <!-- end #inner-content -->
     
