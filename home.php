@@ -7,7 +7,6 @@
 						<script type="text/javascript">
 
 						var map = Kartograph.map('#map');
-						//var map = Kartograph.map('#map', 1000, 400);
 
 						map.loadMap('wp-content/themes/kmc2-theme/images/mapa.svg', function() {
 						    // do something with your map, add layers etc.
@@ -15,11 +14,11 @@
 
 
 							map.getLayer('countries').style('fill', function(data) {
-								if (data["iso-a3"] == "ESP") {
-									return "#f00";
-								} else if (data["iso-a3"] == "RUS") {
-									return "#0f0";
-								} 
+								// if (data["iso-a3"] == "ESP") {
+								// 	return "#f00";
+								// } else if (data["iso-a3"] == "RUS") {
+								// 	return "#0f0";
+								// } 
 								return "#fff";
 								
 								//return '#f00';
@@ -32,7 +31,6 @@
 								    }
 							       // do something nice
 							        path.attr('fill', 'red');
-							        console.log(e.mouseX, e.mouseY);
 							    });
 
 						});
