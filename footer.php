@@ -1,6 +1,21 @@
 			<footer class="footer" role="contentinfo">
 			
 				<div id="inner-footer" class="wrap clearfix">
+
+						<div class="socialbar aligncenter">
+							<p>
+							    <a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/rss.png" height="32px" width="32px"></a>
+							    <a href="https://twitter.com/_kmc2"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/twitter-bird-dark-bgs.png" height="32px" width="32px"></a>
+								<a href="//plus.google.com/102083218914804503792?prsrc=3"
+								   rel="publisher" target="_top"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/gplus.png" height="32px" width="32px">
+								</a>
+							</p>
+							<p>
+								<form role="search" method="get" id="searchform" action="<?php bloginfo('siteurl'); ?>">
+								    <input type="text" value="" name="s" id="s" placeholder="Buscar en el blog...">
+							    </form>
+							</p>
+						</div> 
 						<div class="footer-widgetarea">
 						<?php
 					    if (is_active_sidebar('footer1')):
