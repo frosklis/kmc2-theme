@@ -334,7 +334,7 @@ function display_pictures($cat_id) {
         }
 
         
-        $gallery = '[gallery type=rectangular columns=3 ids="';
+        $gallery = '[gallery type=rectangular size="medium" columns=5 ids="';
         $gallery .= $str_ids . '"]';
 
         echo do_shortcode($gallery);
