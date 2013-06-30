@@ -89,7 +89,7 @@ $tipo = get_query_var('tipo');
     					?>
 					</div> <!-- end #main -->
     				
-    				<?php if ($tipo != "fotos") { get_sidebar(); } ?>
+    				<?php if ($tipo != "fotos") get_sidebar();  ?>
 				    
 				</div> <!-- end #inner-content -->
     

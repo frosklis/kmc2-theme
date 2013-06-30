@@ -17,7 +17,7 @@ right up top and clean.
 *********************/
 
 
-if ( ! isset( $content_width ) ) $content_width = 1000;
+if ( ! isset( $content_width ) ) $content_width = 1024;
 
 // we're firing all out initial functions at the start
 add_action('after_setup_theme','kmc2_ahoy', 15);
