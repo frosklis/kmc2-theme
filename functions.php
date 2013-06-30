@@ -290,7 +290,7 @@ function display_pictures($cat_id) {
         );
         $list_of_posts = new WP_Query( $args );
 
-        $lista_id = "";
+        $lista_id = array();
 
         $number_of_posts = 0;
         $number_of_pictures = 0;
@@ -311,10 +311,8 @@ function display_pictures($cat_id) {
             $attachments = get_children( $args );
 
             if ( $attachments ) {
-                //echo "<p>Lista de fotos</p>";
                 foreach ( $attachments as $attachment ) {
-                    //echo $attachment->ID . ", ";
-                    $lista_id .= $attachment->ID . ", ";
+                    array_push($lista_id, $attachment->ID);
                     $number_of_pictures += 1;
                 }
             }
@@ -323,13 +321,21 @@ function display_pictures($cat_id) {
         endwhile;
         endif;
 
-        //echo "<p>Se han procesado ".$number_of_posts." entradas</p>";
-        //echo "<p>Se han encontrado ".$number_of_pictures." fotos</p>";
-        
-        $gallery = '[gallery type=rectangular order="rand" ids="';
-        $gallery .= $lista_id . '"]';
+        // Limpiar aray de ids
+        $lista_id = array_unique($lista_id);
 
-        // echo "<p>" . $gallery . "</p>";
+        // Poner en orden aleatorio para que sea más interesante de mostrar
+        shuffle($lista_id);
+
+        $str_ids = "";
+
+        foreach ($lista_id as $l) {
+            $str_ids .= $l . ",";
+        }
+
+        
+        $gallery = '[gallery type=rectangular ids="';
+        $gallery .= $str_ids . '"]';
 
         echo do_shortcode($gallery);
 
