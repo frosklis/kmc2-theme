@@ -272,12 +272,12 @@ function display_pictures($cat_id) {
 
     <article <?php post_class('clearfix'); ?> role="article">
     
-        <header class="article-header">
+        <!-- <header class="article-header">
         
             <h2><a href="" rel="bookmark" title="Fotos">Fotos</a></h2>
 
     
-        </header> <!-- end article header -->
+        </header> --><!-- end article header -->
 
         <section class="entry-content clearfix">
 
