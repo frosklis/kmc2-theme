@@ -115,7 +115,7 @@ article li {
 #topbar {
 	width: 100%;
 	z-index: 1;
-	background-color: @normal-text-color;
+	background-color: @black;
 }
 
 #container {
@@ -228,7 +228,7 @@ and more scalable.
 	//height: @header-navbar-height;
 	//background-color: @kmc2-orange;
 	//background-color: white;
-	background-color: @normal-text-color;
+	background-color: @black;
 	color: white;
 	//color: @normal-text-color;
 	//border-top: 1px solid @kmc2-orange;
@@ -1074,6 +1074,7 @@ SIDEBARS & ASIDES
 *********************/
 .footer {
 	color: @white;
+	//background-color: @normal-text-color;
 	background-color: @black;
 	clear: both;
 	margin-top: @header-navbar-height;
@@ -1125,8 +1126,13 @@ SIDEBARS & ASIDES
 		// border: solid 1px @almost-white;
 		width: @footer-widget-width;
 		margin-top: 6px;
-		margin-right: 10px;
 		vertical-align: top;
+		margin-right: (960px - 5px - (2*@border-width+@footer-widget-width)*4 ) / 3;
+	}
+
+	}
+	.aligncenter {
+		text-align: center;
 	}
 }
 

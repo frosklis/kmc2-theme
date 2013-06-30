@@ -84,7 +84,7 @@
 								$query->the_post();
 	    						$cat = get_query_var('cat');
 	    						display_pictures($cat);
-							} 
+							}
     					}
     					?>
 					</div> <!-- end #main -->
