@@ -35,16 +35,7 @@ jQuery(document).ready(function($) {
     /* getting viewport width */
     var w = jQuery(window).width();
     
-    /* if is below 481px */
-    if (w < 481) {
-        jQuery(".post, .page").css('box-shadow', 'none');
-    } /* end smallest screen */
-    
-    /* if is larger than 481px */
-    if (w > 481) {
-        
-    } /* end larger than 481px */
-    
+
     /* if is above or equal to 768px */
     if (w >= 768) {
     
@@ -55,17 +46,6 @@ jQuery(document).ready(function($) {
         
     }
     
-    /* off the bat large screen actions */
-    if (w > 1030) {
-        
-    }
-    
-
-    if(w > 320 && menu.is(':hidden')) {  
-        menu.removeAttr('style');  
-    }
-
-
     size_dependent_actions();
 }); /* end of as page load scripts */
 
