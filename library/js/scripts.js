@@ -110,7 +110,8 @@ jQuery(function() {
         menu        = jQuery('nav ul');  
         menuHeight  = menu.height();  
   
-    jQuery(pull).on('click', function(e) {  
+    jQuery(pull).on('click', function(e) {
+        console.log("he hecho click");
         e.preventDefault();  
         menu.slideToggle();  
     });  
