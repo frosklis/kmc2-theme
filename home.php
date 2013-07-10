@@ -80,9 +80,12 @@
 
 							$args = array(
 					            'posts_per_page' => -1,
-					            'cat' => $category->id,
+					            'cat' => $category->cat_ID,
 					        );
 					        $list_of_posts = new WP_Query( $args );
+
+					        // var_dump($category);
+					        // var_dump($args);
 
 					        $lista_id = array();
 
