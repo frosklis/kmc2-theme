@@ -18,29 +18,39 @@
 							'pad_counts'               => false );
 						$categories = get_categories( $args );
 
+						$cat_tiles = array();
+
 						foreach ($categories as $category) {
 							if ($category->count == 0) continue;
 
+							$tile = array();
+
 							echo '<div class="home-category">';
+
+							$cad = "";
+
 
 							// 1st tile
 							// Poner un resumen de la categoría, con links
-							echo '<div class="tile">';
-							echo '<p>Category: <a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </p> ';
-						    echo '<p> Description:'. $category->description . '</p>';
-						    echo '<p> Post Count: '. $category->count . '</p>';
-							echo "<p>".$category->category_nicename."</p>";
-							echo "<ul>";
-							echo "<li>Diario</li>";
-							echo "<li>Notas</li>";
-							echo "<li>Fotos</li>";
-							echo "</ul>";
+							$cad .= '<div class="tile">';
+							$cad .= '<p>Category: <a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </p> ';
+						    $cad .= '<p> Description:'. $category->description . '</p>';
+						    $cad .= '<p> Post Count: '. $category->count . '</p>';
+							$cad .= "<p>".$category->category_nicename."</p>";
+							$cad .= "<ul>";
+							$cad .= "<li>Diario</li>";
+							$cad .= "<li>Notas</li>";
+							$cad .= "<li>Fotos</li>";
+							$cad .= "</ul>";
 
-							echo "</div>";
+							$cad .= "</div>";
 
+							array_push($tile, $cad);
+
+							$cad = "";
 
 							// 2nd tile
-							echo '<div class="tile">';
+							$cad .= '<div class="tile">';
 
 
 
@@ -88,14 +98,21 @@
 					        // Poner en orden aleatorio para que sea más interesante de mostrar
 					        shuffle($lista_id);
     
-					        echo wp_get_attachment_image( $lista_id[0], 'full' );
+					        $cad .= wp_get_attachment_image( $lista_id[0], 'full' );
 
-							echo "</div>";
+							$cad .= "</div>";
+
+							array_push($tile, $cad);
+
+							$cad = "";
+
+
+
 
 
 							// 3rd tile
 							// Poner un resumen de la categoría, con links
-							echo '<div class="tile"><ul>';
+							$cad .= '<div class="tile"><ul>';
 
 
 
@@ -110,7 +127,7 @@
 					        if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
 
 
-								?><li><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></li> <?php
+								$cad .= '<li><a href="' . the_permalink() .'" rel="bookmark" title="' . the_title_attribute() . '">'. the_title() . '</a></li>'; 
                 
 
 
@@ -120,9 +137,18 @@
 
 
 
-							echo "</ul></div>";
+							$cad .= "</ul></div>";
 
+							
 
+							array_push($tile, $cad);
+
+							shuffle($tile);
+
+							foreach ($tile as $t) {
+								echo $t;
+							}
+							
 							// Cerrar la div .home-category
 							echo "</div>";
 						}
