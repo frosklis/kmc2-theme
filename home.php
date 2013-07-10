@@ -122,7 +122,7 @@
 					        // Poner en orden aleatorio para que sea más interesante de mostrar
 					        shuffle($lista_id);
     
-					        echo wp_get_attachment_image( $lista_id[0] );
+					        echo wp_get_attachment_image( $lista_id[0], 'full' );
 
 
 
