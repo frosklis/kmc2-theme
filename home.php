@@ -55,6 +55,8 @@
 						$categories = get_categories( $args );
 
 						foreach ($categories as $category) {
+							if ($category->count == 0) continue;
+							
 							echo '<div class="home-category">';
 
 							// 1st tile
@@ -134,7 +136,7 @@
 
 
 							$args = array(
-					            'posts_per_page' => 5,
+					            'posts_per_page' => 10,
 					            'cat' => $category->cat_ID,
 					        );
 					        $list_of_posts = new WP_Query( $args );
