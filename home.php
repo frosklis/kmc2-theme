@@ -124,11 +124,37 @@
     
 					        echo wp_get_attachment_image( $lista_id[0], 'full' );
 
-
-
-
 							echo "</div>";
 
+
+							// 3rd tile
+							// Poner un resumen de la categoría, con links
+							echo '<div class="tile"><ul>';
+
+
+
+							$args = array(
+					            'posts_per_page' => 5,
+					            'cat' => $category->cat_ID,
+					        );
+					        $list_of_posts = new WP_Query( $args );
+
+					        $lista_id = array();
+
+					        if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
+
+
+								?><li><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></li> <?php
+                
+
+
+					        endwhile;
+					        endif;
+
+
+
+
+							echo "</ul></div>";
 
 
 							// Cerrar la div .home-category
