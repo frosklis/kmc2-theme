@@ -47,11 +47,9 @@
 
 							array_push($tile, $cad);
 
-							$cad = "";
 
 							// 2nd tile
-							$cad .= '<div class="tile">';
-
+							$cad = '<div class="tile">';
 
 
 							$args = array(
@@ -104,15 +102,10 @@
 
 							array_push($tile, $cad);
 
-							$cad = "";
-
-
-
-
 
 							// 3rd tile
 							// Poner un resumen de la categoría, con links
-							$cad .= '<div class="tile"><ul>';
+							$cad = '<div class="tile"><ul>';
 
 
 
@@ -122,24 +115,14 @@
 					        );
 					        $list_of_posts = new WP_Query( $args );
 
-					        $lista_id = array();
-
 					        if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
-
-
-								$cad .= '<li><a href="' . the_permalink() .'" rel="bookmark" title="' . the_title_attribute() . '">'. the_title() . '</a></li>'; 
+								$cad .= '<li><a href="' . get_permalink() . '" rel="bookmark" title="';
+								$cad .= get_the_title() . '">'. get_the_title() . '</a></li>'; 
                 
-
-
 					        endwhile;
 					        endif;
 
-
-
-
 							$cad .= "</ul></div>";
-
-							
 
 							array_push($tile, $cad);
 
@@ -148,7 +131,7 @@
 							foreach ($tile as $t) {
 								echo $t;
 							}
-							
+
 							// Cerrar la div .home-category
 							echo "</div>";
 						}
