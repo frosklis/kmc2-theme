@@ -129,10 +129,9 @@
 							array_push($tile, $cad);
 
 							$cad = '<div class="tile">';
-
-					        $cad .= wp_get_attachment_image( $lista_id[1], 'large' );
-
-							$cad .= "</div>";
+							$cad .= wp_get_attachment_image( $lista_id[1], 'large' );
+					        $cad .= "</div>";
+							array_push($tile, $cad);
 
 
 							// Mostrar las tiles
