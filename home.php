@@ -135,7 +135,7 @@
 
 
 							// Mostrar las tiles
-							shuffle($tile);
+							//shuffle($tile);
 
 							foreach ($tile as $t) {
 								echo $t;
