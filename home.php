@@ -18,6 +18,8 @@
 							'pad_counts'               => false );
 						$categories = get_categories( $args );
 
+						shuffle($categories);
+
 						$cat_tiles = array();
 
 						foreach ($categories as $category) {
