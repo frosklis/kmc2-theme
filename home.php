@@ -33,16 +33,16 @@
 							// 1st tile
 							// Poner un resumen de la categoría, con links
 							$cad .= '<div class="tile">';
-							$cad .= '<p>Category: <a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </p> ';
-						    $cad .= '<p> Description:'. $category->description . '</p>';
-						    $cad .= '<p> Post Count: '. $category->count . '</p>';
-							$cad .= "<p>".$category->category_nicename."</p>";
+							$cad .= '<h1><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </h1> ';
+						    $cad .= '<h2>'. $category->description . '</h2>';
+						    $cad .= '<p>' . $category->count . ' ' . __("entries", "kmc2theme"). '</p>';
 							$cad .= "<ul>";
 							$cad .= "<li>Diario</li>";
 							$cad .= "<li>Notas</li>";
 							$cad .= "<li>Fotos</li>";
 							$cad .= "</ul>";
 
+/*
 							$cad .= "</div>";
 
 							array_push($tile, $cad);
@@ -50,7 +50,7 @@
 
 							// 2nd tile
 							$cad = '<div class="tile">';
-
+*/
 
 							$args = array(
 					            'posts_per_page' => -1,
@@ -126,6 +126,8 @@
 
 							array_push($tile, $cad);
 
+
+							// Mostrar las tiles
 							shuffle($tile);
 
 							foreach ($tile as $t) {
