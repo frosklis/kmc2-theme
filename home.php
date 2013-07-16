@@ -34,10 +34,10 @@
 							// Poner un resumen de la categoría, con links
 							$cad .= '<div class="tile">';
 							$cad .= '<h2><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </h2> ';
-						    $cad .= "<nav><ul>";
-							$cad .= "<li>Diario</li>";
-							$cad .= "<li>Notas</li>";
-							$cad .= "<li>Fotos</li>";
+						    $cad .= '<nav class="nav clearfix wrap"><ul>';
+							$cad .= '<li><a href="#">Diario</a></li>';
+							$cad .= '<li><a href="#">Notas</a></li>';
+							$cad .= '<li><a href="#">Fotos</a></li>';
 							$cad .= "</ul></nav>";
 							$cad .= '<p>'. $category->description . '</p>';
 						    $cad .= '<p>' . $category->count . ' ' . __("entries", "kmc2theme"). '</p>';
@@ -128,6 +128,11 @@
 
 							array_push($tile, $cad);
 
+							$cad = '<div class="tile">';
+
+					        $cad .= wp_get_attachment_image( $lista_id[1], 'large' );
+
+							$cad .= "</div>";
 
 
 							// Mostrar las tiles

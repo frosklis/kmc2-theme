@@ -212,14 +212,8 @@ the navs on the site so our css is cleaner
 and more scalable.
 */
 .nav, nav {
-	//height: @header-navbar-height;
-	//background-color: @kmc2-orange;
-	//background-color: white;
 	background-color: @black;
 	color: white;
-	//color: @normal-text-color;
-	//border-top: 1px solid @kmc2-orange;
-	//border-bottom: 1px solid @kmc2-orange;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 20px;
@@ -239,15 +233,12 @@ and more scalable.
 	}
 
 	ul.nav {
-		//height: @header-navbar-height;
 		color: @white;
-		//color: @normal-text-color;
 		margin: 0 auto;
 		li {
 			height: @header-navbar-height;
 			a {
 				color: @white;
-				//color: @normal-text-color;
 
 				&:hover, &:focus {
 					background-color: @kmc2-blue;
@@ -271,7 +262,6 @@ and more scalable.
 			text-decoration: none;
 			padding: 8px 16px;
 			height: 100%;
-			//line-height: @header-navbar-height;
 		}
 
 		&:hover, &:focus {
@@ -1177,6 +1167,7 @@ SIDEBARS & ASIDES
 
 		h2 {
 			margin-top: 0;
+			margin-bottom: 0;
 		}
 
 		img {
@@ -1185,5 +1176,34 @@ SIDEBARS & ASIDES
 			width: auto;
 			height: auto;
 		}
+
+
+		.nav, nav {
+			background-color: transparent;
+			color: @normal-text-color;
+			padding: 0;
+			margin: 0;
+
+			a {
+				color: @normal-text-color;
+				&:hover, &:focus {
+					background-color: @kmc2-blue;
+					color: @white;
+				}
+			}
+
+			ul.nav {
+				color: @normal-text-color;
+				li {
+					padding-right: 8px;
+					padding-top: 8px;
+					padding-bottom: 8px;
+					a {
+						padding: 0;
+					}
+				}
+			}
+
+		} // end .nav
 	}
 }
