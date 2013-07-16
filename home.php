@@ -40,7 +40,7 @@
 							$cad .= '<li><a href="#">Fotos</a></li>';
 							$cad .= "</ul></nav>";
 							$cad .= '<p>'. $category->description . '</p>';
-						    $cad .= '<p>' . $category->count . ' ' . __("entries", "kmc2theme"). '</p>';
+						    // $cad .= '<p>' . $category->count . ' ' . __("entries", "kmc2theme"). '</p>';
 
 /*
 							$cad .= "</div>";
@@ -57,7 +57,7 @@
 							$cad .= '<ul>';
 
 							$args = array(
-					            'posts_per_page' => 10,
+					            'posts_per_page' => 6,
 					            'cat' => $category->cat_ID,
 					        );
 					        $list_of_posts = new WP_Query( $args );
