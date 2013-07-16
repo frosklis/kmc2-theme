@@ -51,9 +51,10 @@
 
 							// 3rd tile
 							// Poner un resumen de la categoría, con links
-							$cad = '<div class="tile"><ul>';
+							$cad = '<div class="tile">';
 */
 
+							$cad .= '<ul>';
 
 							$args = array(
 					            'posts_per_page' => 10,
