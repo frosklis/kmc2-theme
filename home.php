@@ -33,8 +33,8 @@
 							// 1st tile
 							// Poner un resumen de la categoría, con links
 							$cad .= '<div class="tile">';
-							$cad .= '<h1><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </h1> ';
-						    $cad .= '<h2>'. $category->description . '</h2>';
+							$cad .= '<h2><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </h2> ';
+						    $cad .= '<p>'. $category->description . '</p>';
 						    $cad .= '<p>' . $category->count . ' ' . __("entries", "kmc2theme"). '</p>';
 							$cad .= "<ul>";
 							$cad .= "<li>Diario</li>";
@@ -48,9 +48,34 @@
 							array_push($tile, $cad);
 
 
+
+							// 3rd tile
+							// Poner un resumen de la categoría, con links
+							$cad = '<div class="tile"><ul>';
+*/
+
+
+							$args = array(
+					            'posts_per_page' => 10,
+					            'cat' => $category->cat_ID,
+					        );
+					        $list_of_posts = new WP_Query( $args );
+
+					        if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
+								$cad .= '<li><a href="' . get_permalink() . '" rel="bookmark" title="';
+								$cad .= get_the_title() . '">'. get_the_title() . '</a></li>'; 
+                
+					        endwhile;
+					        endif;
+
+							$cad .= "</ul></div>";
+
+							array_push($tile, $cad);
+
+
 							// 2nd tile
 							$cad = '<div class="tile">';
-*/
+
 
 							$args = array(
 					            'posts_per_page' => -1,
@@ -102,29 +127,6 @@
 
 							array_push($tile, $cad);
 
-
-							// 3rd tile
-							// Poner un resumen de la categoría, con links
-							$cad = '<div class="tile"><ul>';
-
-
-
-							$args = array(
-					            'posts_per_page' => 10,
-					            'cat' => $category->cat_ID,
-					        );
-					        $list_of_posts = new WP_Query( $args );
-
-					        if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
-								$cad .= '<li><a href="' . get_permalink() . '" rel="bookmark" title="';
-								$cad .= get_the_title() . '">'. get_the_title() . '</a></li>'; 
-                
-					        endwhile;
-					        endif;
-
-							$cad .= "</ul></div>";
-
-							array_push($tile, $cad);
 
 
 							// Mostrar las tiles
