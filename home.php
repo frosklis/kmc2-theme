@@ -122,7 +122,7 @@
 					        // Poner en orden aleatorio para que sea más interesante de mostrar
 					        shuffle($lista_id);
     
-					        $cad .= wp_get_attachment_image( $lista_id[0], 'full' );
+					        $cad .= wp_get_attachment_image( $lista_id[0], 'medium' );
 
 							$cad .= "</div>";
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmc2theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-30 19:54+0100\n"
+"POT-Creation-Date: 2013-07-16 21:56+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Claudio Noguera <claudio.noguera@gmail.com>\n"
 "Language-Team: fulgor <frag.fulgor@gmail.com>\n"
@@ -242,6 +242,15 @@ msgstr "Etiquetas:"
 #: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:259
 msgid "This is the error message in the display_posts function."
 msgstr "Este es el mensaje de error de la función display_posts"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/home.php:36
+#, php-format
+msgid "View all posts in %s"
+msgstr "Ver todas los artículos en %s"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/home.php:38
+msgid "entries"
+msgstr "artículos"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:46
 msgid "This is the error message in the page.php template."
