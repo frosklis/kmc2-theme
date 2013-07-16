@@ -34,13 +34,13 @@
 							// Poner un resumen de la categoría, con links
 							$cad .= '<div class="tile">';
 							$cad .= '<h2><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </h2> ';
-						    $cad .= '<p>'. $category->description . '</p>';
-						    $cad .= '<p>' . $category->count . ' ' . __("entries", "kmc2theme"). '</p>';
-							$cad .= "<nav><ul>";
+						    $cad .= "<nav><ul>";
 							$cad .= "<li>Diario</li>";
 							$cad .= "<li>Notas</li>";
 							$cad .= "<li>Fotos</li>";
 							$cad .= "</ul></nav>";
+							$cad .= '<p>'. $category->description . '</p>';
+						    $cad .= '<p>' . $category->count . ' ' . __("entries", "kmc2theme"). '</p>';
 
 /*
 							$cad .= "</div>";
