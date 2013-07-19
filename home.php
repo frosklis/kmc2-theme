@@ -37,7 +37,7 @@
 
 							// 1st tile
 							// Poner un resumen de la categoría, con links
-							$cad .= '<div class="tile">';
+							$cad .= '<div class="tile textcontent">';
 							$cad .= '<h2><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </h2> ';
 						    $cad .= '<nav class="nav clearfix wrap"><ul>';
 							$cad .= '<li><a href="'.$cat_url.'/diario">Diario</a></li>';
