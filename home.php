@@ -3,7 +3,7 @@
 				<div id="inner-content" class="wrap clearfix">
 					<div>
 						<?php
-						$url = bloginfo('siteurl') . '/tree/';
+						$url = get_bloginfo('url') . '/tree/';
 
 						$args = array(
 							'type'                     => 'post',
@@ -33,7 +33,7 @@
 
 							$cad = "";
 
-							$cat_url = $url . $category->name;
+							$cat_url = $url . $category->slug;
 
 							// 1st tile
 							// Poner un resumen de la categoría, con links
