@@ -3,6 +3,8 @@
 				<div id="inner-content" class="wrap clearfix">
 					<div>
 						<?php
+						$url = bloginfo('siteurl') . '/tree/';
+
 						$args = array(
 							'type'                     => 'post',
 							'child_of'                 => 0,
@@ -31,15 +33,16 @@
 
 							$cad = "";
 
+							$cat_url = $url . $category->name;
 
 							// 1st tile
 							// Poner un resumen de la categoría, con links
 							$cad .= '<div class="tile">';
 							$cad .= '<h2><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </h2> ';
 						    $cad .= '<nav class="nav clearfix wrap"><ul>';
-							$cad .= '<li><a href="#">Diario</a></li>';
-							$cad .= '<li><a href="#">Notas</a></li>';
-							$cad .= '<li><a href="#">Fotos</a></li>';
+							$cad .= '<li><a href="'.$cat_url.'/diario">Diario</a></li>';
+							$cad .= '<li><a href="'.$cat_url.'/notas">Notas</a></li>';
+							$cad .= '<li><a href="'.$cat_url.'/fotos">Fotos</a></li>';
 							$cad .= "</ul></nav>";
 							$cad .= '<p>'. $category->description . '</p>';
 						    // $cad .= '<p>' . $category->count . ' ' . __("entries", "kmc2theme"). '</p>';
