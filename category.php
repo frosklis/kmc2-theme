@@ -39,19 +39,6 @@ $tipo = get_query_var('tipo');
 									?>>Diario</a>
 								</li>
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor 
-									<?php if ($tipo == 'top-10') echo ("current-menu-item"); ?>
-									">
-									<a href=<?php
-										$url = bloginfo('siteurl'); 
-										$url .= '/tree/';
-										// Calcular los parametros
-										$url .= $categoria;
-										$url .= '/top-10';
-
-										echo($url); 
-									?>>Top 10</a>
-								</li>
-								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor 
 									<?php if ($tipo == 'fotos') echo ("current-menu-item"); ?>
 									">
 									<a href=<?php
