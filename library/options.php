@@ -65,7 +65,7 @@ $options =
 
 function mytheme_add_admin() {
 	global $themename, $shortname, $options;
-	if ( $_GET['page'] == basename(__FILE__) ) {
+	if (isset($_GET['page'])) if ( $_GET['page'] == basename(__FILE__) ) {
 		if ( 'save' == $_REQUEST['action'] ) {
 			foreach ($options as $value) {
 				update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
@@ -88,7 +88,6 @@ function mytheme_add_admin() {
 			die;
 		}
 	}
-//	add_menu_page($themename, $themename, 'administrator', basename(__FILE__), 'mytheme_admin');
 	add_theme_page($themename, $themename, 'administrator', basename(__FILE__), 'mytheme_admin');
 
 }
@@ -192,6 +191,7 @@ function mytheme_admin() {
 <?php  
 }  
 
-add_action('admin_init', 'mytheme_add_init');  
-add_action('admin_menu', 'mytheme_add_admin');  
+// Opciones del tema
+// add_action('admin_init', 'mytheme_add_init');  
+// add_action('admin_menu', 'mytheme_add_admin');  
 ?>
