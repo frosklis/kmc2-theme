@@ -16,7 +16,7 @@ $tipo = get_query_var('tipo');
 									<?php if ($tipo == 'notas') echo ("current-menu-item"); ?>
 									">
 									<a href=<?php
-										$url = bloginfo('siteurl'); 
+										$url = get_bloginfo('url'); 
 										$url .= '/tree/';
 										// Calcular los parametros
 										$url .= $categoria;
@@ -29,7 +29,7 @@ $tipo = get_query_var('tipo');
 									<?php if ($tipo == 'diario') echo ("current-menu-item"); ?>
 									">
 									<a href=<?php
-										$url = bloginfo('siteurl'); 
+										$url = get_bloginfo('url'); 
 										$url .= '/tree/';
 										// Calcular los parametros
 										$url .= $categoria;
@@ -42,7 +42,7 @@ $tipo = get_query_var('tipo');
 									<?php if ($tipo == 'fotos') echo ("current-menu-item"); ?>
 									">
 									<a href=<?php
-										$url = bloginfo('siteurl'); 
+										$url = get_bloginfo('url'); 
 										$url .= '/tree/';
 										// Calcular los parametros
 										$url .= $categoria;
