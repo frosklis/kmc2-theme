@@ -198,9 +198,6 @@ SCRIPTS & ENQUEUEING
 function kmc2_scripts_and_styles() {
 	if (!is_admin()) {
 
-	    // modernizr (without media query polyfill)
-	    wp_register_script( 'kmc2-modernizr', get_stylesheet_directory_uri() . '/library/js/modernizr.custom.min.js', array(), '2.5.3', false );
-
 	    // register main stylesheet
 	    wp_register_style( 'kmc2-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
 
@@ -215,9 +212,6 @@ function kmc2_scripts_and_styles() {
 	    //adding scripts file in the footer
 	    wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
 
-	    // scripts para que funcione el mapa
-	    wp_register_script('kartograph',get_stylesheet_directory_uri() . '/library/js/kartograph.min.js');
-	    wp_register_script('raphael',get_stylesheet_directory_uri() . '/library/js/raphael-min.js');
 
 	    // enqueue styles and scripts
 	    wp_enqueue_style( 'kmc2-stylesheet' );
@@ -226,15 +220,6 @@ function kmc2_scripts_and_styles() {
 	    wp_enqueue_script( 'kmc2-modernizr' );
 	    wp_enqueue_script( 'jquery' );
 	    wp_enqueue_script( 'kmc2-js' );
-	    wp_enqueue_script( 'kartograph');
-	    wp_enqueue_script( 'raphael');
-
-	    
-	    //wp_enqueue_script('flexslider', get_bloginfo('stylesheet_directory').'/library/js/jquery.flexslider-min.js', array('jquery'));
-		//wp_enqueue_script('flexslider-init', get_bloginfo('stylesheet_directory').'/library/js/flexslider-init.js', array('jquery', 'flexslider'));
-	    //wp_enqueue_script( 'fancybox', get_template_directory_uri() . '/library/js/jquery.fancybox.pack.js', array( 'jquery' ), false, true );
-	    //wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/library/js/lightbox.js', array( 'fancybox' ), false, true );
-	    //wp_enqueue_style( 'lightbox-style', get_template_directory_uri() . '/library/css/jquery.fancybox.css' );
 
 	}
 }
