@@ -121,7 +121,7 @@ function tipo_taxonomy() {
 
     $tipo1_structure = '/tree/%category%/%tipo%';
     $wp_rewrite->add_permastruct('category_tipo', $tipo1_structure);
-    $wp_rewrite->generate_rewrite_rules();
+    //$wp_rewrite->generate_rewrite_rules();
 	$wp_rewrite->flush_rules();
 }
 

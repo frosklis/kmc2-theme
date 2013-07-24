@@ -1,5 +1,12 @@
 <?php get_header(); ?>
 			<div id="content">
+				<?php
+				if (function_exists("test_plugin")) {
+					echo("PRUEBAS: la función existe");
+				} else {
+					echo("PRUEBAS: la función no existe");
+				}
+				?>
 				<div id="inner-content" class="wrap clearfix">
 					<div>
 						<?php
@@ -94,6 +101,9 @@
 
 					        $lista_id = array();
 
+					        $number_of_posts = 0;
+					        $number_of_pictures = 0;
+
 					        if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
 					            $number_of_posts += 1;
 
@@ -126,15 +136,15 @@
 
 					        // Poner en orden aleatorio para que sea más interesante de mostrar
 					        shuffle($lista_id);
-    
-					        $cad .= wp_get_attachment_image( $lista_id[0], 'large' );
+
+					        if (count($lista_id) > 0) $cad .= wp_get_attachment_image( $lista_id[0], 'large' );
 
 							$cad .= "</div>";
 
 							array_push($tile, $cad);
 
 							$cad = '<div class="tile">';
-							$cad .= wp_get_attachment_image( $lista_id[1], 'large' );
+							if (count($lista_id) > 1) $cad .= wp_get_attachment_image( $lista_id[1], 'large' );
 					        $cad .= "</div>";
 							array_push($tile, $cad);
 
