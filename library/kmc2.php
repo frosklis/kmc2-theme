@@ -218,10 +218,10 @@ function kmc2_scripts_and_styles() {
 
 
 	    // enqueue styles and scripts
-	    wp_enqueue_style( 'kmc2-stylesheet' );
+	    wp_enqueue_style('kmc2-stylesheet');
 	    wp_enqueue_style('kmc2-ie-only');
 	    wp_enqueue_script('jquery');
-	    wp_enqueue_script( 'kmc2-js' );
+	    wp_enqueue_script('kmc2-js');
 
 	}
 }
