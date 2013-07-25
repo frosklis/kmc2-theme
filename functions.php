@@ -183,7 +183,7 @@ function echo_first_image( $postID ) {
 }
 
 // Dibujar los posts
-function display_posts ($list_of_posts = null, $resumen = false, $comentarios = false) {
+function display_posts ($list_of_posts = null, $resumen = false, $comentarios = false, $prev_next_links = false) {
 
         if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); ?>
 
@@ -225,9 +225,16 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
             </footer> <!-- end article footer -->
             
             <?php if ($comentarios) comments_template();  ?>
-
+            
         </article> <!-- end article -->
-
+        <?php
+        if ($prev_next_links) {
+            echo('<div class="wp-prev-next">'); 
+                previous_post_link('<div class="prev-link">  ≪ %link</div>');
+                next_post_link('<div class="next-link">%link ≫  </div>'); 
+            echo('</div>');
+        }
+        ?>
         <?php endwhile; ?>  
 
             <?php if (function_exists('kmc2_page_navi')) { ?>
