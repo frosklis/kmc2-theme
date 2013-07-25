@@ -48,11 +48,11 @@ function kmc2_ahoy() {
     // clean up gallery output in wp
     add_filter('gallery_style', 'kmc2_gallery_style');
 
-    // enqueue base scripts and styles
-    add_action('wp_enqueue_scripts', 'kmc2_scripts_and_styles', 999);
-
     // ie conditional wrapper
     add_filter( 'style_loader_tag', 'kmc2_ie_conditional', 10, 2 );
+
+    // enqueue base scripts and styles
+    add_action('wp_enqueue_scripts', 'kmc2_scripts_and_styles', 999);
 
     // launching this stuff after theme setup
     add_action('after_setup_theme','kmc2_theme_support');
@@ -196,6 +196,10 @@ SCRIPTS & ENQUEUEING
 
 // loading modernizr and jquery, and reply script
 function kmc2_scripts_and_styles() {
+
+	// Sintaxis: 
+	// wp_register_script( $handle, $src, $deps, $ver, $in_footer ); 
+
 	if (!is_admin()) {
 
 	    // register main stylesheet
@@ -206,7 +210,7 @@ function kmc2_scripts_and_styles() {
 
 	    // comment reply script for threaded comments
 	    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
-	      wp_enqueue_script( 'comment-reply' );
+	    	wp_enqueue_script( 'comment-reply' );
 	    }
 
 	    //adding scripts file in the footer
@@ -216,9 +220,7 @@ function kmc2_scripts_and_styles() {
 	    // enqueue styles and scripts
 	    wp_enqueue_style( 'kmc2-stylesheet' );
 	    wp_enqueue_style('kmc2-ie-only');
-
-	    wp_enqueue_script( 'kmc2-modernizr' );
-	    wp_enqueue_script( 'jquery' );
+	    wp_enqueue_script('jquery');
 	    wp_enqueue_script( 'kmc2-js' );
 
 	}
