@@ -38,7 +38,7 @@ require_once('library/kmc2.php'); // if you remove this, kmc2 will break
     - adding custom login css
     - changing text in footer of admin
 */
-// require_once('library/admin.php'); // this comes turned off by default
+//require_once('library/admin.php'); // this comes turned off by default
 /*
 4. library/translation/translation.php
     - adding support for other languages
@@ -96,6 +96,27 @@ function kmc2_register_sidebars() {
         'id' => 'footer1',
         'name' => __('Footer 1', 'kmc2theme'),
         'description' => __('The footer', 'kmc2theme'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widgettitle">',
+        'after_title' => '</h4>',
+    ));
+
+    // This is where the banner will be
+    register_sidebar(array(
+        'id' => 'homepage_widgets',
+        'name' => __('Homepage widgets', 'kmc2theme'),
+        'description' => __('These widgets go right below the navbar', 'kmc2theme'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widgettitle">',
+        'after_title' => '</h4>',
+    ));    // This is where the banner will be
+
+    register_sidebar(array(
+        'id' => 'category_widgets',
+        'name' => __('Category page widgets', 'kmc2theme'),
+        'description' => __('These widgets go right below the navbar in the catogry pages', 'kmc2theme'),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h4 class="widgettitle">',

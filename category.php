@@ -5,6 +5,7 @@ $tipo = get_query_var('tipo');
 ?>			
 			<div id="content">
 				<div id="inner-content" class="wrap clearfix">
+
 				<?php if ($tipo != "fotos") { ?>
 					<div id="main" class="ninecol first clearfix" role="main">
 				<?php } else { ?>
@@ -18,7 +19,6 @@ $tipo = get_query_var('tipo');
 									<a href=<?php
 										$url = get_bloginfo('url'); 
 										$url .= '/tree/';
-										// Calcular los parametros
 										$url .= $categoria;
 										$url .= '/notas';
 
@@ -31,7 +31,6 @@ $tipo = get_query_var('tipo');
 									<a href=<?php
 										$url = get_bloginfo('url'); 
 										$url .= '/tree/';
-										// Calcular los parametros
 										$url .= $categoria;
 										$url .= '/diario';
 
@@ -44,7 +43,6 @@ $tipo = get_query_var('tipo');
 									<a href=<?php
 										$url = get_bloginfo('url'); 
 										$url .= '/tree/';
-										// Calcular los parametros
 										$url .= $categoria;
 										$url .= '/fotos';
 
@@ -55,11 +53,15 @@ $tipo = get_query_var('tipo');
 						</nav>
 
 						<?php
+						if ($tipo == "") {
+							if ( is_active_sidebar( 'category_widgets' ) ) dynamic_sidebar( 'category_widgets' ); 
+						}
 						if ($tipo != "fotos") {
 							global $wp_query;
 	    					$list_of_posts = $wp_query;
 	    					display_posts($list_of_posts, true); 
-    					} else {
+    					} else { 
+						
 							// The Query
 							$args = array(
 								'posts_per_page' => 1,

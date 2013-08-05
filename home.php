@@ -2,6 +2,11 @@
 			<div id="content">
 				<div id="inner-content" class="wrap clearfix">
 					<div>
+
+						<?php 
+						if ( is_active_sidebar( 'homepage_widgets' ) ) dynamic_sidebar( 'homepage_widgets' ); 
+						?>
+
 						<?php
 						$url = get_bloginfo('url') . '/tree/';
 
