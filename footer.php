@@ -15,9 +15,6 @@
 								$form = "";
 								echo(kmc2_wpsearch($form));
 								?>
-								<form role="search" method="get" id="searchform" action="<?php bloginfo('url'); ?>">
-								    <input type="text" value="" name="s" id="s" placeholder="Buscar en el blog...">
-							    </form>
 							</p>
 						</div> 
 						<div class="footer-widgetarea">
