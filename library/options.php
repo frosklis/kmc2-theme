@@ -1,197 +1,141 @@
 <?php
-// See http://net.tutsplus.com/tutorials/wordpress/how-to-create-a-better-wordpress-options-panel/
+/**
+ * Contains methods for customizing the theme customization screen.
+ * 
+ * @link http://codex.wordpress.org/Theme_Customization_API
+ */
+class KmC2_Theme_Customize {
+   /**
+    * This hooks into 'customize_register' (available as of WP 3.4) and allows
+    * you to add new sections and controls to the Theme Customize screen.
+    * 
+    * Note: To enable instant preview, we have to actually write a bit of custom
+    * javascript. See live_preview() for more.
+    *  
+    * @see add_action('customize_register',$func)
+    * @param \WP_Customize_Manager $wp_customize
+    * @link http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
+    * @since MyTheme 1.0
+    */
+   public static function register ( $wp_customize ) {
+      //1. Define a new section (if desired) to the Theme Customizer
+      $wp_customize->add_section( 'colors', 
+         array(
+            'title' => __( 'Colors', 'kmc2theme' ), //Visible title of section
+            'priority' => 35, //Determines what order this appears in
+            'capability' => 'edit_theme_options', //Capability needed to tweak
+            'description' => __('Allows you to customize some example settings for MyTheme.', 'kmc2theme'), //Descriptive tooltip
+         ) 
+      );
+      
+      //2. Register new settings to the WP database...
+      $wp_customize->add_setting( 'normal_textcolor', //Give it a SERIALIZED name (so all theme settings can live under one db record)
+         array(
+            'default' => '#565656', //Default setting/value to save
+            'type' => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport' => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+      );      
+            
+      //3. Finally, we define the control itself (which links a setting to a section and renders the HTML controls)...
+      $wp_customize->add_control( new WP_Customize_Color_Control( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'kmc2_options_normal_textcolor', //Set a unique ID for the control
+         array(
+            'label' => __( 'Text Color', 'kmc2theme' ), //Admin-visible name of the control
+            'section' => 'colors', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
+            'settings' => 'normal_textcolor', //Which setting to load and manipulate (serialized is okay)
+            'priority' => 10, //Determines the order this control appears in for the specified section
+         ) 
+      ) );
+      
+      //4. We can also change built-in settings by modifying properties. For instance, let's make some stuff use live preview JS...
+      $wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
+      $wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+      $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+      $wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
+   }
 
-$themename = "Km C2 Theme";  
-$shortname = "km";
+   /**
+    * This will output the custom WordPress settings to the live theme's WP head.
+    * 
+    * Used by hook: 'wp_head'
+    * 
+    * @see add_action('wp_head',$func)
+    * @since MyTheme 1.0
+    */
+   public static function header_output() {
+      ?>
+      <!--Customizer CSS--> 
+      <style type="text/css">
+           <?php self::generate_css('#site-title a', 'color', 'header_textcolor'); ?> 
+           <?php self::generate_css('body', 'background-color', 'background_color'); ?>
+           <?php self::generate_css('body', 'color', 'normal_textcolor'); ?> 
+      </style> 
+      <!--/Customizer CSS-->
+      <?php
+   }
+   
+   /**
+    * This outputs the javascript needed to automate the live settings preview.
+    * Also keep in mind that this function isn't necessary unless your settings 
+    * are using 'transport'=>'postMessage' instead of the default 'transport'
+    * => 'refresh'
+    * 
+    * Used by hook: 'customize_preview_init'
+    * 
+    * @see add_action('customize_preview_init',$func)
+    * @since MyTheme 1.0
+    */
+   public static function live_preview() {
+      wp_enqueue_script( 
+           'mytheme-themecustomizer', // Give the script a unique ID
+           get_template_directory_uri() . '/library/js/theme-customizer.js', // Define the path to the JS file
+           array(  'jquery', 'customize-preview' ), // Define dependencies
+           '', // Define a version (optional) 
+           true // Specify whether to put in footer (leave this true)
+      );
+   }
 
-$categories = get_categories('hide_empty=0&orderby=name');  
-$wp_cats = array();  
-foreach ($categories as $category_list ) {  
-       $wp_cats[$category_list->cat_ID] = $category_list->cat_name;  
-}  
-array_unshift($wp_cats, "Choose a category"); 
-
-$options = 
-	array (
-		array( "name" => $themename." Options",	"type" => "title"),
-		array( "name" => "General", "type" => "section"),
-		array( "type" => "open"),
-		array( "name" => "Colour Scheme",
-			   "desc" => "Select the colour scheme for the theme",
-			   "id" => $shortname."_color_scheme",
-			   "type" => "select",
-			   "options" => array("blue", "red", "green"),
-			   "std" => "blue"),
-		array( "name" => "Logo URL",
-			   "desc" => "Enter the link to your logo image",
-			   "id" => $shortname."_logo",
-			   "type" => "text",
-			   "std" => ""),
-		array( "name" => "Custom CSS",
-			   "desc" => "Want to add any custom CSS code? Put in here, and the rest is taken care of. This overrides any other stylesheets. eg: a.button{color:green}",
-			   "id" => $shortname."_custom_css",
-			   "type" => "textarea",
-			   "std" => ""),
-		array( "type" => "close"),
-		array( "name" => "Homepage", "type" => "section"),
-		array( "type" => "open"),
-		array( "name" => "Homepage header image",
-			   "desc" => "Enter the link to an image used for the homepage header.",
-			   "id" => $shortname."_header_img",
-			   "type" => "text",
-			   "std" => ""),
-		array( "name" => "Homepage featured category",
-			   "desc" => "Choose a category from which featured posts are drawn",
-			   "id" => $shortname."_feat_cat",
-			   "type" => "select",
-			   "options" => $wp_cats,
-			   "std" => "Choose a category"),
-		array( "type" => "close"),
-		array( "name" => "Footer", "type" => "section"),
-		array( "type" => "open"),
-		array( "name" => "Footer copyright text",
-			   "desc" => "Enter text used in the right side of the footer. It can be HTML",
-			   "id" => $shortname."_footer_text",
-			   "type" => "text",
-			   "std" => ""),
-		array( "name" => "Custom Favicon",
-			   "desc" => "A favicon is a 16x16 pixel icon that represents your site; paste the URL to a .ico image that you want to use as the image",
-			   "id" => $shortname."_favicon",
-			   "type" => "text",
-			   "std" => get_bloginfo('url') ."/favicon.ico"),
-		array( "type" => "close")
-	);
-
-
-function mytheme_add_admin() {
-	global $themename, $shortname, $options;
-	if (isset($_GET['page'])) if ( $_GET['page'] == basename(__FILE__) ) {
-		if ( 'save' == $_REQUEST['action'] ) {
-			foreach ($options as $value) {
-				update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
-			}
-			foreach ($options as $value) {
-				if( isset( $_REQUEST[ $value['id'] ] ) ) { 
-					update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); 
-				} 
-				else { 
-					delete_option( $value['id'] ); 
-				} 
-			}
-			header("Location: admin.php?page=functions.php&saved=true");
-			die;
-		}
-		else if( 'reset' == $_REQUEST['action'] ) {
-			foreach ($options as $value) {
-				delete_option( $value['id'] ); }
-			header("Location: admin.php?page=functions.php&reset=true");
-			die;
-		}
-	}
-	add_theme_page($themename, $themename, 'administrator', basename(__FILE__), 'mytheme_admin');
-
+    /**
+     * This will generate a line of CSS for use in header output. If the setting
+     * ($mod_name) has no defined value, the CSS will not be output.
+     * 
+     * @uses get_theme_mod()
+     * @param string $selector CSS selector
+     * @param string $style The name of the CSS *property* to modify
+     * @param string $mod_name The name of the 'theme_mod' option to fetch
+     * @param string $prefix Optional. Anything that needs to be output before the CSS property
+     * @param string $postfix Optional. Anything that needs to be output after the CSS property
+     * @param bool $echo Optional. Whether to print directly to the page (default: true).
+     * @return string Returns a single line of CSS with selectors and a property.
+     * @since MyTheme 1.0
+     */
+    public static function generate_css( $selector, $style, $mod_name, $prefix='', $postfix='', $echo=true ) {
+      $return = '';
+      $mod = get_theme_mod($mod_name);
+      if ( ! empty( $mod ) ) {
+         $return = sprintf('%s { %s:%s; }',
+            $selector,
+            $style,
+            $prefix.$mod.$postfix
+         );
+         if ( $echo ) {
+            echo $return;
+         }
+      }
+      return $return;
+    }
 }
 
-function mytheme_add_init() {
-	$file_dir=get_bloginfo('template_directory');  
-	wp_enqueue_style("functions", $file_dir."/library/css/options.css", false, "1.0", "all"); 
-	wp_enqueue_script("rm_script", $file_dir."/library/js/rm_scripts.js", false, "1.0");  
-} 
+// Setup the Theme Customizer settings and controls...
+add_action( 'customize_register' , array( 'KmC2_Theme_Customize' , 'register' ) );
 
+// Output custom CSS to live site
+add_action( 'wp_head' , array( 'KmC2_Theme_Customize' , 'header_output' ) );
 
+// Enqueue live preview javascript in Theme Customizer admin screen
+add_action( 'customize_preview_init' , array( 'KmC2_Theme_Customize' , 'live_preview' ) );
 
-function mytheme_admin() {  
-	global $themename, $shortname, $options;  
-	$i=0;  
-	if ( $_REQUEST['saved'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';  
-	if ( $_REQUEST['reset'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';  
-	?>  
-
-	<div class="wrap rm_wrap">  
-		<h2><?php echo $themename; ?> Settings</h2>  
-		<div class="rm_opts">  
-			<form method="post"> 
-
-			<?php 
-			foreach ($options as $value) {  
-				switch ( $value['type'] ) {  
-				case "open":  
-					break;  
-				case "close":  // Close the divs ?>  
-					</div>  
-					</div>  
-					<br />  
-					<?php 
-					break;  
-				case "title":  ?>  
-					<p>To easily use the <?php echo $themename;?> theme, you can use the menu below.</p>  
-					<?php 
-					break;  
-				case 'text':  ?>  
-					<div class="rm_input rm_text">  
-					    <label for="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></label>  
-					    <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id'])  ); } else { echo $value['std']; } ?>" />  
-					 	<small><?php echo $value['desc']; ?></small><div class="clearfix"></div>  
-					 </div>  
-					<?php  
-					break;  
-				case 'textarea':  ?>  
-					<div class="rm_input rm_textarea">  
-					    <label for="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></label>  
-					    <textarea name="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" cols="" rows=""><?php if ( get_option( $value['id'] ) != "") { echo stripslashes(get_option( $value['id']) ); } else { echo $value['std']; } ?></textarea>  
-					 	<small><?php echo $value['desc']; ?></small><div class="clearfix"></div>  
-					</div>  
-					<?php  
-					break;  
-				case 'select':  ?>  
-					<div class="rm_input rm_select">  
-					    <label for="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></label>  
-						<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">  
-							<?php foreach ($value['options'] as $option) { ?>  
-						        <option <?php if (get_option( $value['id'] ) == $option) { echo 'selected="selected"'; } ?>><?php echo $option; ?></option>
-					    	<?php } ?>  
-						</select>  
-					    <small><?php echo $value['desc']; ?></small><div class="clearfix"></div>  
-					</div>  
-					<?php  
-					break;  
-				case "checkbox":  ?>  
-					<div class="rm_input rm_checkbox">  
-					    <label for="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></label>  
-					<?php if(get_option($value['id'])){ $checked = "checked=\"checked\""; }else{ $checked = "";} ?>  
-					<input type="checkbox" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="true" <?php echo $checked; ?> />  
-					    <small><?php echo $value['desc']; ?></small><div class="clearfix"></div>  
-					 </div>  
-					<?php 
-					break;  
-				case "section":  
-					$i++;  ?>  
-					<div class="rm_section">  
-						<div class="rm_title">
-							<h3><img src="<?php bloginfo('template_directory')?>/library/images/transparent.gif" class="inactive" alt=""><?php echo $value['name']; ?></h3>
-							<span class="submit"><input name="save<?php echo $i; ?>" type="submit" value="Save changes" />  
-							</span>
-							<div class="clearfix"></div>
-						</div>  
-					<div class="rm_options">  
-					<?php 
-					break;  
-				}  
-			}  
-		?>  
-	<input type="hidden" name="action" value="save" />  
-	</form>  
-	<form method="post">  
-		<p class="submit">  
-			<input name="reset" type="submit" value="Reset" />  
-			<input type="hidden" name="action" value="reset" />  
-		</p>  
-	</form>  
-	</div>  
-<?php  
-}  
-
-// Opciones del tema
-// add_action('admin_init', 'mytheme_add_init');  
-// add_action('admin_menu', 'mytheme_add_admin');  
 ?>

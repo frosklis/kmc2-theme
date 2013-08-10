@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmc2theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-10 13:05+0100\n"
+"POT-Creation-Date: 2013-08-10 17:13+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Claudio Noguera <claudio.noguera@gmail.com>\n"
 "Language-Team: fulgor <frag.fulgor@gmail.com>\n"
@@ -440,6 +440,18 @@ msgstr "Último"
 #, php-format
 msgid "Posts by %s"
 msgstr "Entradas de %s"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/options.php:24
+msgid "Colors"
+msgstr "Colores"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/options.php:27
+msgid "Allows you to customize some example settings for MyTheme."
+msgstr "Te permite personalizar algunos ajustes de ejemplo para MyTheme"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/options.php:46
+msgid "Text Color"
+msgstr "Color del texto"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:52
 msgid "This is the error message in the index.php template."
