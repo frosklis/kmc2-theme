@@ -51,6 +51,9 @@ See http://net.tutsplus.com/tutorials/wordpress/how-to-create-a-better-wordpress
 */
 require_once('library/options.php');
 
+$cab = getallheaders();
+error_log(implode($cab));
+
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
@@ -76,6 +79,23 @@ for the 600 x 100 image:
 You can change the names and dimensions to whatever
 you like. Enjoy!
 */
+add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
+add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
+add_filter( 'image_send_to_editor', 'remove_class_attribute', 10 );
+add_filter( 'image_send_to_editor', 'remove_alt_attribute', 10 );
+ 
+function remove_width_attribute( $html ) {
+    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html );
+    return $html;
+} 
+function remove_class_attribute( $html ) {
+    $html = preg_replace('/class=".*?"/', "", $html );
+    return $html;
+} 
+function remove_alt_attribute( $html ) {
+    $html = preg_replace('/alt=".*?"/', "", $html );
+    return $html;
+}
 
 /************* ACTIVE SIDEBARS ********************/
 
