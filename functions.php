@@ -178,27 +178,39 @@ function kmc2_wpsearch($form) {
 
 // GET the first image of a post
 function echo_first_image( $postID ) {
-    $args = array(
-        'numberposts' => 1,
-        'order' => 'ASC',
-        'post_mime_type' => 'image',
-        'post_parent' => $postID,
-        'post_status' => null,
-        'post_type' => 'attachment',
-    );
 
-    $attachments = get_children( $args );
+    if ( class_exists('KmC2_Responsive_Images') ) {
+        $images_functions = new KmC2_Responsive_Images();
+        $lista_imagenes = $images_functions->get_post_images( $postID );
 
-    if ( $attachments ) {
-        foreach ( $attachments as $attachment ) {
-            $image_attributes = wp_get_attachment_image_src( $attachment->ID, 'medium' )  ? wp_get_attachment_image_src( $attachment->ID, 'medium' ) : wp_get_attachment_image_src( $attachment->ID, 'full' );
-
-            echo '<img src="' . wp_get_attachment_thumb_url( $attachment->ID ) . '" class="current alignleft">';
+        if (count($lista_imagenes)>0) {
+            $img_id = $lista_imagenes[0];
+            echo '<img src="' . wp_get_attachment_thumb_url( $img_id ) . '" class="current alignleft">';
         }
-    }
+    } 
     else {
-        echo 'No hay imágenes';
-    }
+        $args = array(
+            'numberposts' => 1,
+            'order' => 'ASC',
+            'post_mime_type' => 'image',
+            'post_parent' => $postID,
+            'post_status' => null,
+            'post_type' => 'attachment',
+        );
+
+        $attachments = get_children( $args );
+
+        if ( $attachments ) {
+            foreach ( $attachments as $attachment ) {
+                $image_attributes = wp_get_attachment_image_src( $attachment->ID, 'medium' )  ? wp_get_attachment_image_src( $attachment->ID, 'medium' ) : wp_get_attachment_image_src( $attachment->ID, 'full' );
+
+                echo '<img src="' . wp_get_attachment_thumb_url( $attachment->ID ) . '" class="current alignleft">';
+            }
+        }
+        else {
+            echo 'No hay imágenes';
+        }
+}
 }
 
 // Dibujar los posts
