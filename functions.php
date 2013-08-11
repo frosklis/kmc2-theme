@@ -327,33 +327,54 @@ function display_pictures($cat_id) {
 
         $number_of_posts = 0;
         $number_of_pictures = 0;
-        if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
-            $number_of_posts += 1;
 
-            $postID = get_the_ID();
+        if ( class_exists('KmC2_Responsive_Images') ) {
+            $images_functions = new KmC2_Responsive_Images();
 
-            $args = array(
-                'posts_per_page' => -1,
-                'order' => 'ASC',
-                'post_mime_type' => 'image',
-                'post_parent' => $postID,
-                'post_status' => null,
-                'post_type' => 'attachment',
-            );
+            if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
+                $number_of_posts += 1;
 
-            $attachments = get_children( $args );
+                $postID = get_the_ID();
 
-            if ( $attachments ) {
-                foreach ( $attachments as $attachment ) {
-                    array_push($lista_id, $attachment->ID);
+
+                $lista_imagenes = $images_functions->get_post_images( $postID );
+                
+                for($i=0; $i<count($lista_imagenes); $i++) {
+                    array_push($lista_id, $lista_imagenes[$i]);
                     $number_of_pictures += 1;
                 }
-            }
+            endwhile;
+            endif;
+        } 
+        else {
+
+            if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
+                $number_of_posts += 1;
+
+                $postID = get_the_ID();
+
+                $args = array(
+                    'posts_per_page' => -1,
+                    'order' => 'ASC',
+                    'post_mime_type' => 'image',
+                    'post_parent' => $postID,
+                    'post_status' => null,
+                    'post_type' => 'attachment',
+                );
+
+                $attachments = get_children( $args );
+
+                if ( $attachments ) {
+                    foreach ( $attachments as $attachment ) {
+                        array_push($lista_id, $attachment->ID);
+                        $number_of_pictures += 1;
+                    }
+                }
 
 
-        endwhile;
-        endif;
-
+            endwhile;
+            endif;
+        }
         // Limpiar aray de ids
         $lista_id = array_unique($lista_id);
 
