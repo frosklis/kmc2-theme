@@ -114,7 +114,7 @@ function size_dependent_actions() {
         pad = Math.floor((main_w - 480) * 54 / (1024 - 480));
     }
 
-    jQuery(".post, .page").css({
+    jQuery("body .post, body .page").css({
         paddingLeft: pad + 'px',
         paddingRight: pad + 'px'
     });
