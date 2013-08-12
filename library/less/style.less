@@ -34,76 +34,16 @@ the other stylesheets. Remember, keep it light: Speed is Important.
 @import "_base.less";
 
 /*
-@media screen and (max-width: 621px) {
-
-    nav {   
-        height: auto;  
-    }  
-    nav ul {  
-        width: 100%;  
-        display: block;  
-        height: auto;  
-    }  
-    nav li {  
-        width: 50%;  
-        float: left;  
-        position: relative;  
-    }  
-    nav a {  
-        text-align: left;  
-        width: 100%;  
-    }
-
-}
-@media only screen and (max-width : 480px) {  
-    nav {  
-        border-bottom: 0;  
-    }  
-    nav ul {  
-        display: none;  
-        height: auto;  
-    }  
-    nav a#pull {  
-        display: block;   
-        width: 100%;  
-        position: relative;  
-        height: 30px; 
-    }  
-    nav a#pull:after {  
-        content:"";  
-        background: url('../../images/nav-icon.png') no-repeat;  
-        width: 30px;  
-        height: 30px;  
-        display: inline-block;  
-        position: absolute;  
-        right: 15px;  
-        top: 6px;  
-    }  
-
-    .post, .page {
-        box-shadow: none;
-    }
-}
-@media only screen and (max-width : 320px) {  
-    nav li {  
-        display: block;  
-        float: none;  
-        width: 100%;  
-    }  
-}
-
-*/
-/*
 TABLET & SMALLER LAPTOPS
 This is the average viewing window. So Desktops, Laptops, and
 in general anyone not viewing on a mobile device. Here's where
 you can add resource intensive styles.
 */
-@media only screen and (min-width: 768px) {
+@media (min-device-width: 1024px) {
 
 	// import grid
 	@import "_grid.less";
-    @import "_width_768px.less";
+    @import "_width_1024px.less";
 
 
 } // end of media query
