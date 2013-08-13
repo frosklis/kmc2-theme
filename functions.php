@@ -51,9 +51,6 @@ See http://net.tutsplus.com/tutorials/wordpress/how-to-create-a-better-wordpress
 */
 require_once('library/options.php');
 
-$cab = getallheaders();
-error_log(implode($cab));
-
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
