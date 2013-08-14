@@ -30,9 +30,8 @@
 	</head>
 	
 	<body <?php body_class(); ?>>
-		<header id="topbar">
-			  
-			<nav class="nav clearfix wrap">
+		<header id="topbar"> 
+			<nav class="nav clearfix">
 				<?php
 				kmc2_main_nav(); 
 				?>
