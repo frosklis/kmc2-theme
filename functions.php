@@ -39,8 +39,6 @@ function kmc2_ahoy() {
     // enqueue base scripts and styles
     add_action('wp_enqueue_scripts', 'kmc2_scripts_and_styles', 999);
 
-    // launching this stuff after theme setup
-    add_action('after_setup_theme','kmc2_theme_support');
     // adding sidebars to Wordpress (these are created in functions.php)
     add_action( 'widgets_init', 'kmc2_register_sidebars' );
     // adding the kmc2 search form (created in functions.php)
@@ -56,6 +54,47 @@ function kmc2_ahoy() {
 
 
     add_filter( 'wp_nav_menu_items', 'add_logo_to_menu', 10, 2 );
+
+
+    // wp thumbnails (sizes handled in functions.php)
+    add_theme_support('post-thumbnails');
+
+    // default thumb size
+    set_post_thumbnail_size(400, 400, true);
+    kmc2_image_sizes();
+
+    // rss thingy
+    add_theme_support('automatic-feed-links');
+
+    // to add header image support go here: http://themble.com/support/adding-header-background-image-support/
+
+    // adding post format support
+    add_theme_support( 'post-formats',
+        array(
+            //'aside',             // title less blurb
+            //'gallery',           // gallery of images
+            //'link',              // quick link to other site
+            //'image',             // an image
+            //'quote',             // a quick quote
+            //'status',            // a Facebook like status update
+            //'video',             // video
+            //'audio',             // audio
+            //'chat'               // chat transcript
+        )
+    );
+
+    // wp menus
+    add_theme_support( 'menus' );
+
+    // registering wp3+ menus
+    register_nav_menus(
+        array(
+            'main-nav' => __( 'The Main Menu', 'kmc2theme' ),   // main nav in header
+            'footer-links' => __( 'Footer Links', 'kmc2theme' ) // secondary nav in footer
+        )
+    );
+
+
 } /* end kmc2 ahoy */
 add_action('after_setup_theme','kmc2_ahoy', 15);
 
@@ -69,8 +108,29 @@ function new_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'new_excerpt_more' );
 
+/**
+@see http://codex.wordpress.org/Function_Reference/add_image_size
+*/
 
+define('IMAGE_SIZES', serialize(array(295, 295*2, 885, 885*2)));
+define('INFINITE', '99999999');
 
+function kmc2_image_sizes () {
+    // add_image_size( $name, $width, $height, $crop );
+    // Nexus 4: 1280 x 384 (pero la recoge como 640 x 384)
+    $sizes = unserialize(IMAGE_SIZES);
+
+    for ($i=0; $i<count($sizes); $i++) {
+        $str = "Image w" . $sizes[$i];
+        add_image_size($str, $sizes[$i], INFINITE, false);
+        $str = "Image h" . $sizes[$i];
+        add_image_size($str, INFINITE, $sizes[$i], false);
+    }
+    // add_image_size('Image 1280 x 768', 1280, 768);
+    // add_image_size('Image 640 x 384', 640, 384);
+    // add_image_size('Image 768 x 1280', 1280, 768);
+    // add_image_size('Image 384 x 640', 384, 640);
+}
 
 function autoset_featured() {
     global $post;
@@ -104,7 +164,6 @@ function tipo_taxonomy() {
 
     $tipo1_structure = '/tree/%category%/%tipo%';
     $wp_rewrite->add_permastruct('category_tipo', $tipo1_structure);
-    //$wp_rewrite->generate_rewrite_rules();
     $wp_rewrite->flush_rules();
 }
 
@@ -169,7 +228,8 @@ function kmc2_remove_recent_comments_style() {
 
 // remove injected CSS from gallery
 function kmc2_gallery_style($css) {
-  return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
+  //return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
+    return $css;
 }
 
 
@@ -198,6 +258,7 @@ function kmc2_scripts_and_styles() {
 
         //adding scripts file in the footer
         wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
+        wp_register_script( 'masonry', get_stylesheet_directory_uri() . '/library/js/masonry.pkgd.min.js', array( 'jquery' ), '', true );
 
 
         // enqueue styles and scripts
@@ -205,6 +266,7 @@ function kmc2_scripts_and_styles() {
         wp_enqueue_style('kmc2-ie-only');
         wp_enqueue_script('jquery');
         wp_enqueue_script('kmc2-js');
+        wp_enqueue_script('masonry');
 
     }
 }
@@ -217,63 +279,7 @@ function kmc2_ie_conditional( $tag, $handle ) {
     return $tag;
 }
 
-/*********************
-THEME SUPPORT
-*********************/
 
-// Adding WP 3+ Functions & Theme Support
-function kmc2_theme_support() {
-
-    // wp thumbnails (sizes handled in functions.php)
-    add_theme_support('post-thumbnails');
-
-    // default thumb size
-    set_post_thumbnail_size(400, 400, true);
-
-    // wp custom background (thx to @bransonwerner for update)
-    add_theme_support( 'custom-background',
-        array(
-        'default-image' => '',  // background image default
-        'default-color' => '', // background color default (dont add the #)
-        'wp-head-callback' => '_custom_background_cb',
-        'admin-head-callback' => '',
-        'admin-preview-callback' => ''
-        )
-    );
-
-    // rss thingy
-    add_theme_support('automatic-feed-links');
-
-    // to add header image support go here: http://themble.com/support/adding-header-background-image-support/
-
-    // adding post format support
-    add_theme_support( 'post-formats',
-        array(
-            //'aside',             // title less blurb
-            //'gallery',           // gallery of images
-            //'link',              // quick link to other site
-            //'image',             // an image
-            //'quote',             // a quick quote
-            //'status',            // a Facebook like status update
-            //'video',             // video
-            //'audio',             // audio
-            //'chat'               // chat transcript
-        )
-    );
-
-    // wp menus
-    add_theme_support( 'menus' );
-
-    // registering wp3+ menus
-    register_nav_menus(
-        array(
-            'main-nav' => __( 'The Main Menu', 'kmc2theme' ),   // main nav in header
-            'footer-links' => __( 'Footer Links', 'kmc2theme' ) // secondary nav in footer
-        )
-    );
-
-
-} /* end kmc2 theme support */
 
 
 /*********************
@@ -408,7 +414,7 @@ RANDOM CLEANUP ITEMS
 *********************/
 
 // remove the p from around imgs (http://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/)
-function kmc2_filter_ptags_on_images($content){
+function kmc2_filter_ptags_on_images($content) {
    return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 }
 
@@ -430,10 +436,6 @@ function kmc2_get_the_author_posts_link() {
     return $link;
 }
 
-
-
-
-
 /*
 2. library/custom-post-type.php
     - an example custom post type
@@ -453,7 +455,7 @@ function kmc2_get_the_author_posts_link() {
 4. library/translation/translation.php
     - adding support for other languages
 */
-require_once('library/translation/translation.php'); // this comes turned off by default
+require_once('library/translation/translation.php'); 
 /*
 5. library/options.php
     - adds options to the wordpress dashboard
@@ -461,31 +463,7 @@ See http://net.tutsplus.com/tutorials/wordpress/how-to-create-a-better-wordpress
 */
 require_once('library/options.php');
 
-/************* THUMBNAIL SIZE OPTIONS *************/
 
-// Thumbnail sizes
-add_image_size( 'kmc2-thumb-600', 600, 150, false );
-add_image_size( 'kmc2-thumb-300', 300, 100, false );
-add_image_size( 'kmc2-thumb-960', 960, 540, false );
-/* 
-to add more sizes, simply copy a line from above 
-and change the dimensions & name. As long as you
-upload a "featured image" as large as the biggest
-set width or height, all the other sizes will be
-auto-cropped.
-
-To call a different size, simply change the text
-inside the thumbnail function.
-
-For example, to call the 300 x 300 sized image, 
-we would use the function:
-<?php the_post_thumbnail( 'kmc2-thumb-300' ); ?>
-for the 600 x 100 image:
-<?php the_post_thumbnail( 'kmc2-thumb-600' ); ?>
-
-You can change the names and dimensions to whatever
-you like. Enjoy!
-*/
 add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_class_attribute', 10 );
@@ -560,12 +538,6 @@ function kmc2_comments($comment, $args, $depth) {
 	<li <?php comment_class(); ?>>
 		<article id="comment-<?php comment_ID(); ?>" class="clearfix">
 			<header class="comment-author vcard">
-			    <?php 
-			    /*
-			        this is the new responsive optimized comment image. It used the new HTML5 data-attribute to display comment gravatars on larger screens only. What this means is that on larger posts, mobile sites don't have a ton of requests for comment images. This makes load time incredibly fast! If you'd like to change it back, just replace it with the regular wordpress gravatar call:
-			        echo get_avatar($comment,$size='32',$default='<path_to_url>' );
-			    */ 
-			    ?>
 			    <!-- custom gravatar call -->
 			    <?php
 			    	// create variable
@@ -603,230 +575,8 @@ function kmc2_wpsearch($form) {
 
 
 
-// GET the first image of a post
-function echo_first_image( $postID ) {
 
-    if ( class_exists('KmC2_Responsive_Images') ) {
-        $images_functions = new KmC2_Responsive_Images();
-        $lista_imagenes = $images_functions->get_post_images( $postID );
+require_once('library/misc.php');
+require_once('library/gallery.php');
 
-        if (count($lista_imagenes)>0) {
-            $img_id = $lista_imagenes[0];
-            echo '<img src="' . wp_get_attachment_thumb_url( $img_id ) . '" class="current alignleft">';
-        }
-    } 
-    else {
-        $args = array(
-            'numberposts' => 1,
-            'order' => 'ASC',
-            'post_mime_type' => 'image',
-            'post_parent' => $postID,
-            'post_status' => null,
-            'post_type' => 'attachment',
-        );
-
-        $attachments = get_children( $args );
-
-        if ( $attachments ) {
-            foreach ( $attachments as $attachment ) {
-                $image_attributes = wp_get_attachment_image_src( $attachment->ID, 'medium' )  ? wp_get_attachment_image_src( $attachment->ID, 'medium' ) : wp_get_attachment_image_src( $attachment->ID, 'full' );
-
-                echo '<img src="' . wp_get_attachment_thumb_url( $attachment->ID ) . '" class="current alignleft">';
-            }
-        }
-        else {
-            echo 'No hay imágenes';
-        }
-}
-}
-
-// Dibujar los posts
-function display_posts ($list_of_posts = null, $resumen = false, $comentarios = false, $prev_next_links = false) {
-
-        if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); ?>
-
-        <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
-        
-            <header class="article-header">
-            
-                <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-                <p class="byline vcard"><?php
-                printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
-                ?></p>
-                <p><?php edit_post_link( "Editar entrada"); ?></p>
-        
-            </header> <!-- end article header -->
-
-            <?php
-            if ($resumen) { 
-            ?>
-                <section class="entry-content clearfix excerpt" onclick="location.href='<?php the_permalink(); ?>';">
-                <?php
-                if ( has_post_thumbnail() ) {
-                    the_post_thumbnail("medium",array('class' => 'alignleft'));
-                } else { 
-                    echo_first_image(get_the_ID());
-                }
-                the_excerpt();
-            } else {
-            ?>
-                <section class="entry-content clearfix">
-                <?php
-                the_content();
-            } 
-            ?>
-            </section> <!-- end article section -->
-        
-            <footer class="article-footer">
-                <p class="tags"><?php the_tags('<span class="tags-title">' . __('Tags:', 'kmc2theme') . '</span> ', ', ', ''); ?></p>
-
-            </footer> <!-- end article footer -->
-            
-            <?php if ($comentarios) comments_template();  ?>
-            
-        </article> <!-- end article -->
-        <?php
-        if ($prev_next_links) {
-            echo('<div class="wp-prev-next">'); 
-                previous_post_link('<div class="prev-link">  ≪ %link</div>');
-                next_post_link('<div class="next-link">%link ≫  </div>'); 
-            echo('</div>');
-        }
-        ?>
-        <?php endwhile; ?>  
-
-            <?php if (function_exists('kmc2_page_navi')) { ?>
-                <?php kmc2_page_navi(); ?>
-            <?php } else { ?>
-                <nav class="wp-prev-next">
-                    <ul class="clearfix">
-                        <li class="prev-link"><?php next_posts_link(__('&laquo; Older Entries', "kmc2theme")) ?></li>
-                        <li class="next-link"><?php previous_posts_link(__('Newer Entries &raquo;', "kmc2theme")) ?></li>
-                    </ul>
-                </nav>
-            <?php } ?>      
-
-        <?php else : ?>
-        
-            <article id="post-not-found" class="hentry clearfix">
-                <header class="article-header">
-                    <h1><?php _e("Oops, Post Not Found!", "kmc2theme"); ?></h1>
-                </header>
-                <section class="entry-content">
-                    <p><?php _e("Uh Oh. Something is missing. Try double checking things.", "kmc2theme"); ?></p>
-                </section>
-                <footer class="article-footer">
-                    <p><?php _e("This is the error message in the display_posts function.", "kmc2theme"); ?></p>
-                </footer>
-            </article>
-
-        <?php endif; ?>
-
-
-<?php
-}
-
-// Mostrar las imágenes asociadas a una categoría
-function display_pictures($cat_id) {
-?>    
-
-    <article <?php post_class('clearfix'); ?> role="article">
-    
-        <!-- <header class="article-header">
-        
-            <h2><a href="" rel="bookmark" title="Fotos">Fotos</a></h2>
-
-    
-        </header> --><!-- end article header -->
-
-        <section class="entry-content clearfix">
-
-        <?php 
-        //echo $cat_id . " - id de categoría \n";
-        
-        $args = array(
-            'posts_per_page' => -1,
-            'cat' => $cat_id,
-        );
-        $list_of_posts = new WP_Query( $args );
-
-        $lista_id = array();
-
-        $number_of_posts = 0;
-        $number_of_pictures = 0;
-
-        if ( class_exists('KmC2_Responsive_Images') ) {
-            $images_functions = new KmC2_Responsive_Images();
-
-            if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
-                $number_of_posts += 1;
-
-                $postID = get_the_ID();
-
-
-                $lista_imagenes = $images_functions->get_post_images( $postID );
-                
-                for($i=0; $i<count($lista_imagenes); $i++) {
-                    array_push($lista_id, $lista_imagenes[$i]);
-                    $number_of_pictures += 1;
-                }
-            endwhile;
-            endif;
-        } 
-        else {
-
-            if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
-                $number_of_posts += 1;
-
-                $postID = get_the_ID();
-
-                $args = array(
-                    'posts_per_page' => -1,
-                    'order' => 'ASC',
-                    'post_mime_type' => 'image',
-                    'post_parent' => $postID,
-                    'post_status' => null,
-                    'post_type' => 'attachment',
-                );
-
-                $attachments = get_children( $args );
-
-                if ( $attachments ) {
-                    foreach ( $attachments as $attachment ) {
-                        array_push($lista_id, $attachment->ID);
-                        $number_of_pictures += 1;
-                    }
-                }
-
-
-            endwhile;
-            endif;
-        }
-        // Limpiar aray de ids
-        $lista_id = array_unique($lista_id);
-
-        // Poner en orden aleatorio para que sea más interesante de mostrar
-        shuffle($lista_id);
-
-        $str_ids = "";
-
-        foreach ($lista_id as $l) {
-            $str_ids .= $l . ",";
-        }
-
-        
-        $gallery = '[gallery type=rectangular columns=5 ids="';
-        $gallery .= $str_ids . '"]';
-
-        echo do_shortcode($gallery);
-
-        ?>
-        </section> <!-- end article section -->
-
-    </article> <!-- end article -->
-
-
-
-<?php
-}
 ?>
