@@ -1,12 +1,7 @@
 <?php
 /*
-Author: Eddie Machado
-URL: htp://themble.com/kmc2/
-
-This is where you can drop your custom functions or
-just edit things like thumbnail sizes, header images, 
-sidebars, comments, ect.
-*/
+Author: Claudio Noguera
+URL: htp://blog.claudionoguera.tk
 
 /************* INCLUDE NEEDED FILES ***************/
 

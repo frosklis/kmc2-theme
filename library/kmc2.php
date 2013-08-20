@@ -1,12 +1,11 @@
 <?php
 /* Welcome to kmc2 :)
 This is the core kmc2 file where most of the
-main functions & features reside. If you have
-any custom functions, it's best to put them
-in the functions.php file.
+main functions & features reside. 
+main functions & features reside. 
 
-Developed by: Eddie Machado
-URL: http://themble.com/kmc2/
+Developed by: Claudio Noguera
+URL: http://blog.claudionoguera.tk
 */
 
 /*********************
@@ -20,7 +19,7 @@ right up top and clean.
 if ( ! isset( $content_width ) ) $content_width = 1980;
 
 // we're firing all out initial functions at the start
-add_action('after_setup_theme','kmc2_ahoy', 15);
+
 
 function kmc2_ahoy() {
 
@@ -74,7 +73,7 @@ function kmc2_ahoy() {
 
 
 } /* end kmc2 ahoy */
-
+add_action('after_setup_theme','kmc2_ahoy', 15);
 
 function custom_excerpt_length( $length ) {
 	return 60;
