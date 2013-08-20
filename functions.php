@@ -177,7 +177,8 @@ function kmc2_remove_recent_comments_style() {
 
 // remove injected CSS from gallery
 function kmc2_gallery_style($css) {
-  return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
+  //return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
+    return $css;
 }
 
 
@@ -570,5 +571,6 @@ function kmc2_wpsearch($form) {
 
 
 require_once('library/misc.php');
+require_once('library/gallery.php');
 
 ?>
