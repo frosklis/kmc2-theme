@@ -1,4 +1,5 @@
 <?php
+remove_shortcode('gallery');
 add_shortcode('gallery', 'kmc2_gallery_shortcode');
 
 /**
@@ -45,7 +46,8 @@ function kmc2_gallery_shortcode($attr) {
 		'icontag'    => 'dt',
 		'captiontag' => 'dd',
 		'columns'    => 3,
-		'size'       => 'thumbnail',
+		// 'size'       => 'thumbnail',
+		'size'       => 'kmc2-thumb-height-150',
 		'include'    => '',
 		'exclude'    => ''
 	), $attr, 'gallery'));
@@ -119,6 +121,8 @@ function kmc2_gallery_shortcode($attr) {
 	$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
 	$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
 
+	echo ("size_class " . $size_class);
+
 	$i = 0;
 	foreach ( $attachments as $id => $attachment ) {
 		if ( ! empty( $attr['link'] ) && 'file' === $attr['link'] )
@@ -142,8 +146,13 @@ function kmc2_gallery_shortcode($attr) {
 		if ( $captiontag && trim($attachment->post_excerpt) ) {
 			$output .= "
 				<{$captiontag} class='wp-caption-text gallery-caption'>
-				" . wptexturize($attachment->post_excerpt) . "
+				" . wptexturize($attachment->post_excerpt) . $image_meta['height'] . " x " . $image_meta['width'] . " 
 				</{$captiontag}>";
+		} else {
+			$output .= "
+				<{$captiontag} class='wp-caption-text gallery-caption'>
+				" . $image_meta['height'] . " x " . $image_meta['width'] . " 
+				</{$captiontag}>";			
 		}
 		$output .= "</{$itemtag}>";
 		if ( $columns > 0 && ++$i % $columns == 0 )
