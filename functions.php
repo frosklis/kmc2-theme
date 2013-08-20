@@ -10,8 +10,6 @@ if ( ! isset( $content_width ) ) $content_width = 1980;
 
 
 function kmc2_ahoy() {
-
-
     // launching operation cleanup
     add_action('init', 'kmc2_head_cleanup');
     
@@ -58,8 +56,6 @@ function kmc2_ahoy() {
 
 
     add_filter( 'wp_nav_menu_items', 'add_logo_to_menu', 10, 2 );
-
-
 } /* end kmc2 ahoy */
 add_action('after_setup_theme','kmc2_ahoy', 15);
 
