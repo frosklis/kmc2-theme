@@ -1,6 +1,7 @@
 <?php
 remove_shortcode('gallery');
 add_shortcode('gallery', 'kmc2_gallery_shortcode');
+//add_filter( 'use_default_gallery_style', '__return_false' );
 
 /**
  * The Gallery shortcode.
@@ -46,10 +47,11 @@ function kmc2_gallery_shortcode($attr) {
 		'icontag'    => 'dt',
 		'captiontag' => 'dd',
 		'columns'    => 3,
-		// 'size'       => 'thumbnail',
-		'size'       => 'kmc2-thumb-height-150',
+		'size'       => 'thumbnail',
 		'include'    => '',
-		'exclude'    => ''
+		'exclude'    => '',
+		'type'       => 'rectangular',
+		'maxdim'     => 295
 	), $attr, 'gallery'));
 
 	$id = intval($id);
@@ -83,6 +85,9 @@ function kmc2_gallery_shortcode($attr) {
 	$captiontag = tag_escape($captiontag);
 	$icontag = tag_escape($icontag);
 	$valid_tags = wp_kses_allowed_html( 'post' );
+	$type = tag_escape($type);
+	$maxdim = intval($maxdim);
+
 	if ( ! isset( $valid_tags[ $itemtag ] ) )
 		$itemtag = 'dl';
 	if ( ! isset( $valid_tags[ $captiontag ] ) )
@@ -97,7 +102,7 @@ function kmc2_gallery_shortcode($attr) {
 	$selector = "gallery-{$instance}";
 
 	$gallery_style = $gallery_div = '';
-	if ( apply_filters( 'use_default_gallery_style', true ) )
+	if ( apply_filters( 'use_default_gallery_style', true ) && $type != 'masonry') {
 		$gallery_style = "
 		<style type='text/css'>
 			#{$selector} {
@@ -117,14 +122,36 @@ function kmc2_gallery_shortcode($attr) {
 			}
 			/* see gallery_shortcode() in wp-includes/media.php */
 		</style>";
+	}
+
 	$size_class = sanitize_html_class( $size );
-	$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
+	// $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
+	$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-{$type}'>";
 	$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
 
-	echo ("size_class " . $size_class);
+	// Seleccionar el tamaño adecuado de la imagen
+	$sizes = unserialize(IMAGE_SIZES);
+	$pixel_ratio = $_COOKIE['device_pixel_ratio'];
+	$thumbnail_size = 0;
+
+	for ($i=0; $i<count($sizes); $i++) {
+		$thumbnail_size = $sizes[$i];
+		if ($thumbnail_size >= $pixel_ratio * $maxdim) break;
+	}
+
 
 	$i = 0;
 	foreach ( $attachments as $id => $attachment ) {
+		$image_meta  = wp_get_attachment_metadata( $id );
+
+		$orientation = '';
+		if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
+			$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+			$size = ( $image_meta['height'] > $image_meta['width'] ) ? 'Image h' : 'Image w';
+			$size .= $thumbnail_size;
+		}
+
+
 		if ( ! empty( $attr['link'] ) && 'file' === $attr['link'] )
 			$image_output = wp_get_attachment_link( $id, $size, false, false );
 		elseif ( ! empty( $attr['link'] ) && 'none' === $attr['link'] )
@@ -132,11 +159,6 @@ function kmc2_gallery_shortcode($attr) {
 		else
 			$image_output = wp_get_attachment_link( $id, $size, true, false );
 
-		$image_meta  = wp_get_attachment_metadata( $id );
-
-		$orientation = '';
-		if ( isset( $image_meta['height'], $image_meta['width'] ) )
-			$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
 
 		$output .= "<{$itemtag} class='gallery-item'>";
 		$output .= "
@@ -146,23 +168,28 @@ function kmc2_gallery_shortcode($attr) {
 		if ( $captiontag && trim($attachment->post_excerpt) ) {
 			$output .= "
 				<{$captiontag} class='wp-caption-text gallery-caption'>
-				" . wptexturize($attachment->post_excerpt) . $image_meta['height'] . " x " . $image_meta['width'] . " 
+				" . wptexturize($attachment->post_excerpt) . $image_meta['height'] . " x " . $image_meta['width'] . ' ' . $size . " 
 				</{$captiontag}>";
 		} else {
 			$output .= "
 				<{$captiontag} class='wp-caption-text gallery-caption'>
-				" . $image_meta['height'] . " x " . $image_meta['width'] . " 
+				" . $image_meta['height'] . " x " . $image_meta['width'] . ' ' . $size . " 
 				</{$captiontag}>";			
 		}
 		$output .= "</{$itemtag}>";
-		if ( $columns > 0 && ++$i % $columns == 0 )
+
+		// Si el estilo es rectangular, hay que poner una línea en blanco cada $columns columnas
+		if ( $columns > 0 && ++$i % $columns == 0 && $type != 'masonry') {
 			$output .= '<br style="clear: both" />';
+		}
 	}
 
 	$output .= "
 			<br style='clear: both;' />
 		</div>\n";
 
+	$tams = IMAGE_SIZES;
+	// $output = "<p>Tipo de galería: $type<p><p> $tams </p>". $output;
 	return $output;
 }
 ?>

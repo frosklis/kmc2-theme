@@ -493,18 +493,40 @@ nav a#pull {
 
 		/* image gallery styles */
 		.gallery {
+			line-height: 0;
+			margin-top: 16px;
 
 			dl {
+				position: relative;
+				float: left;
+				margin: 0;
 
 				a {}
 
-				img {}
+				img {
+					margin: 0;
+				}				
+
+				dt {
+				}
+
+				dd {
+					opacity: 0;
+    				&:hover, &focus {
+    					opacity: 1;
+    				}
+					color: white;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+    				.black(0.5);
+    				margin: 0;
+    				line-height: 1.2;
+    				padding: 5px;
+				}
 
 			}
-
-			dt {}
-
-			dd {}
 
 		} /* end .gallery */
 

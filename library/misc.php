@@ -212,7 +212,7 @@ function display_pictures($cat_id) {
 
         
         // $gallery = '[gallery type=rectangular columns=5 ids="';
-        $gallery = '[gallery ids="';
+        $gallery = '[gallery type="masonry" ids="';
         $gallery .= $str_ids . '"]';
 
         echo do_shortcode($gallery);
