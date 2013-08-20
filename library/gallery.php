@@ -126,8 +126,17 @@ function kmc2_gallery_shortcode($attr) {
 
 	$size_class = sanitize_html_class( $size );
 	// $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-	$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-{$type}'>";
-	$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
+	$classes = 'gallery galleryid-{$id} gallery-columns-{$columns} gallery-{$type}';
+	$masonry_options = '';
+	if ($type == 'masonry') {
+		$classes .= ' js-masonry';
+		$masonry_options = "data-masonry-options='{ ". '"item-selector": ".gallery-item", "gutter": 5, "isFitWidth": true }' . "'";
+	}
+
+
+	$gallery_div = "<div id='$selector' class='$classes' $masonry_options >";
+	// $output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
+	$output = $gallery_div;
 
 	// Seleccionar el tamaño adecuado de la imagen
 	$sizes = unserialize(IMAGE_SIZES);
