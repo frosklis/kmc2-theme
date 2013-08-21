@@ -130,7 +130,8 @@ function kmc2_gallery_shortcode($attr) {
 	$masonry_options = '';
 	if ($type == 'masonry') {
 		$classes .= ' js-masonry';
-		$masonry_options = "data-masonry-options='{ ". '"item-selector": ".gallery-item", "gutter": 5, "isFitWidth": true }' . "'";
+		// $masonry_options = "data-masonry-options='{ ". '"item-selector": ".gallery-item", "gutter": 5, "isFitWidth": true }' . "'";
+		$masonry_options = "data-masonry-options='{ ". '"item-selector": "img", "gutter": 5, "isFitWidth": true }' . "'";
 	}
 
 
@@ -177,14 +178,9 @@ function kmc2_gallery_shortcode($attr) {
 		if ( $captiontag && trim($attachment->post_excerpt) ) {
 			$output .= "
 				<{$captiontag} class='wp-caption-text gallery-caption'>
-				" . wptexturize($attachment->post_excerpt) . $image_meta['height'] . " x " . $image_meta['width'] . ' ' . $size . " 
+				" . wptexturize($attachment->post_excerpt) . " 
 				</{$captiontag}>";
-		} else {
-			$output .= "
-				<{$captiontag} class='wp-caption-text gallery-caption'>
-				" . $image_meta['height'] . " x " . $image_meta['width'] . ' ' . $size . " 
-				</{$captiontag}>";			
-		}
+		} 
 		$output .= "</{$itemtag}>";
 
 		// Si el estilo es rectangular, hay que poner una línea en blanco cada $columns columnas
