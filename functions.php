@@ -573,9 +573,6 @@ function kmc2_wpsearch($form) {
     return $form;
 } // don't remove this bracket!
 
-
-
-
 require_once('library/misc.php');
 require_once('library/gallery.php');
 
