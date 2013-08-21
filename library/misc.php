@@ -202,7 +202,7 @@ function display_pictures($cat_id) {
         $lista_id = array_unique($lista_id);
 
         // Poner en orden aleatorio para que sea más interesante de mostrar
-        shuffle($lista_id);
+        //shuffle($lista_id);
 
         $str_ids = "";
 
@@ -212,7 +212,7 @@ function display_pictures($cat_id) {
 
         
         // $gallery = '[gallery type=rectangular columns=5 ids="';
-        $gallery = '[gallery type="masonry" ids="';
+        $gallery = '[gallery order="RAND" type="masonry" ids="';
         $gallery .= $str_ids . '"]';
 
         echo do_shortcode($gallery);
