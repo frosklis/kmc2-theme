@@ -124,20 +124,7 @@ function kmc2_gallery_shortcode($attr) {
 		</style>";
 	}
 
-	$size_class = sanitize_html_class( $size );
-	// $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-	$classes = 'gallery galleryid-{$id} gallery-columns-{$columns} gallery-{$type}';
-	$masonry_options = '';
-	if ($type == 'masonry') {
-		$classes .= ' js-masonry';
-		// $masonry_options = "data-masonry-options='{ ". '"item-selector": ".gallery-item", "gutter": 5, "isFitWidth": true }' . "'";
-		$masonry_options = "data-masonry-options='{ ". '"item-selector": "img", "gutter": 5, "isFitWidth": true }' . "'";
-	}
-
-
-	$gallery_div = "<div id='$selector' class='$classes' $masonry_options >";
-	// $output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
-	$output = $gallery_div;
+	$output = "";
 
 	// Seleccionar el tamaño adecuado de la imagen
 	$sizes = unserialize(IMAGE_SIZES);
@@ -151,20 +138,26 @@ function kmc2_gallery_shortcode($attr) {
 
 
 	$i = 0;
+	$min_width = 100000;
 	foreach ( $attachments as $id => $attachment ) {
 		$image_meta  = wp_get_attachment_metadata( $id );
 
 		$orientation = '';
+		$real_width = 0;
 		if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
 			$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
 			$size = ( $image_meta['height'] > $image_meta['width'] ) ? 'Image h' : 'Image w';
 			$size .= $thumbnail_size;
+
+			$real_width = $thumbnail_size / $pixel_ratio;
+			if ($orientation == 'portrait') {
+				$real_width *= $image_meta['width'] / $image_meta['height'];
+			} 
 		}
 
+		if ($min_width > $real_width) $min_width = $real_width;
 
-		if ( ! empty( $attr['link'] ) && 'file' === $attr['link'] )
-			$image_output = wp_get_attachment_link( $id, $size, false, false );
-		elseif ( ! empty( $attr['link'] ) && 'none' === $attr['link'] )
+		if ( ! empty( $attr['link'] ) && 'none' === $attr['link'] )
 			$image_output = wp_get_attachment_image( $id, $size, false );
 		else
 			$image_output = wp_get_attachment_link( $id, $size, true, false );
@@ -189,12 +182,28 @@ function kmc2_gallery_shortcode($attr) {
 		}
 	}
 
-	$output .= "
+
+	$size_class = sanitize_html_class( $size );
+	// $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
+	$classes = 'gallery galleryid-{$id} gallery-columns-{$columns} gallery-{$type}';
+	$masonry_options = '';
+	if ($type == 'masonry') {
+		$classes .= ' js-masonry';
+		// $masonry_options = "data-masonry-options='{ ". '"item-selector": ".gallery-item", "gutter": 5, "isFitWidth": true }' . "'";
+		$masonry_options = "data-masonry-options='{ ". '"isFitWidth": true, "columnWidth": ' . $min_width . '}' . "'";
+	}
+
+
+	$gallery_div = "<div id='$selector' class='$classes' $masonry_options >";
+	// $output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
+
+	$output = $gallery_div . $output . "
 			<br style='clear: both;' />
 		</div>\n";
 
 	$tams = IMAGE_SIZES;
-	// $output = "<p>Tipo de galería: $type<p><p> $tams </p>". $output;
+	$output = "<p>Mansonry options: $masonry_options </p>". $output;
 	return $output;
 }
+
 ?>

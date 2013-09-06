@@ -112,7 +112,7 @@ add_filter( 'excerpt_more', 'new_excerpt_more' );
 @see http://codex.wordpress.org/Function_Reference/add_image_size
 */
 
-define('IMAGE_SIZES', serialize(array(295, 295*2, 885, 885*2)));
+define('IMAGE_SIZES', serialize(array(32, 64, 128, 295, 295*2, 885, 885*2)));
 define('INFINITE', '99999999');
 
 function kmc2_image_sizes () {
