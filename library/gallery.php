@@ -202,7 +202,7 @@ function kmc2_gallery_shortcode($attr) {
 		</div>\n";
 
 	$tams = IMAGE_SIZES;
-	$output = "<p>Mansonry options: $masonry_options </p>". $output;
+	// $output = "<p>Mansonry options: $masonry_options </p>". $output;
 	return $output;
 }
 
