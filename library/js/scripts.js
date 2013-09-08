@@ -47,6 +47,7 @@ jQuery(document).ready(function($) {
     }
     
     size_dependent_actions();
+
 }); /* end of as page load scripts */
 
 

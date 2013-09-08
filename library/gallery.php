@@ -188,9 +188,10 @@ function kmc2_gallery_shortcode($attr) {
 	$classes = 'gallery galleryid-{$id} gallery-columns-{$columns} gallery-{$type}';
 	$masonry_options = '';
 	if ($type == 'masonry') {
-		$classes .= ' js-masonry';
+		$classes .= ' gallery-masonry';
 		// $masonry_options = "data-masonry-options='{ ". '"item-selector": ".gallery-item", "gutter": 5, "isFitWidth": true }' . "'";
 		$masonry_options = "data-masonry-options='{ ". '"isFitWidth": true, "columnWidth": ' . $min_width . '}' . "'";
+
 	}
 
 
