@@ -1,4 +1,5 @@
-jQuery(document).ready(function($) {
+// jQuery(document).ready(function($) {
+jQuery(window).load(function($) {
     var galleries = document.querySelectorAll(".gallery-masonry");
 
 	for (var i = 0; i < galleries.length; ++i) {
@@ -7,8 +8,9 @@ jQuery(document).ready(function($) {
 	    console.log(gallery);
 	    var msnry = new Masonry( gallery, {
 	      // options
-	      columnWidth: 150,
-	      isFitWidth: true
+	      //columnWidth: 150,
+	      isFitWidth: true,
+	      gutter: 10
 	    });// code here
 	}
 

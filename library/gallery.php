@@ -126,7 +126,7 @@ function kmc2_gallery_shortcode($attr) {
 
 	$output = "";
 
-	// Seleccionar el tamaño adecuado de la imagen
+	// Select the proper image size: it is the smallest one greater or equal than $maxdim
 	$sizes = unserialize(IMAGE_SIZES);
 	$pixel_ratio = $_COOKIE['device_pixel_ratio'];
 	$thumbnail_size = 0;
@@ -144,30 +144,50 @@ function kmc2_gallery_shortcode($attr) {
 
 		$orientation = '';
 		$real_width = 0;
+		$real_height = 0;
 		if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
 			$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
-			$size = ( $image_meta['height'] > $image_meta['width'] ) ? 'Image h' : 'Image w';
+			$size = ( $orientation == 'portrait' ) ? 'Image w' : 'Image h';
 			$size .= $thumbnail_size;
 
-			$real_width = $thumbnail_size / $pixel_ratio;
+			$picture_ratio = $image_meta['width'] / $image_meta['height'];
 			if ($orientation == 'portrait') {
-				$real_width *= $image_meta['width'] / $image_meta['height'];
-			} 
-		}
+				$picture_ratio = 1 / $picture_ratio;
+				$real_width = $maxdim * 3 / 4;
+				$real_height = $real_width * $picture_ratio;
+			} else {
+				$real_height = $maxdim * 3/4;
+				$real_width = $real_height * $picture_ratio;
+			}
 
-		if ($min_width > $real_width) $min_width = $real_width;
+			// area = width * height = picture_ratio * height ^ 2
+			// picture_ratio = area / (height ^ 2)
+			// height = sqrt(area / picture_ratio)
+			$multiplier = pow(16 / ($picture_ratio * 9), 0.5);
+
+			$real_height *= $multiplier;
+			$real_width *= $multiplier;
+
+
+		} else {
+			continue;
+		}
+		
 
 		if ( ! empty( $attr['link'] ) && 'none' === $attr['link'] )
 			$image_output = wp_get_attachment_image( $id, $size, false );
 		else
 			$image_output = wp_get_attachment_link( $id, $size, true, false );
 
+		
+		$image_attributes = wp_get_attachment_image_src( $id, $size ); // returns an array
+		$image_link = get_attachment_link($id);
 
 		$output .= "<{$itemtag} class='gallery-item'>";
 		$output .= "
-			<{$icontag} class='gallery-icon {$orientation}'>
-				$image_output
-			</{$icontag}>";
+			<{$icontag} class='gallery-icon {$orientation}'>" . '<a href="'.$image_link.'" title="'.$attachment->post_title.'"><img src="'
+				. $image_attributes[0] .'" width="' . $real_width .'" height="'.$real_height.'"></a>'.
+			"</{$icontag}>";
 		if ( $captiontag && trim($attachment->post_excerpt) ) {
 			$output .= "
 				<{$captiontag} class='wp-caption-text gallery-caption'>
@@ -176,7 +196,7 @@ function kmc2_gallery_shortcode($attr) {
 		} 
 		$output .= "</{$itemtag}>";
 
-		// Si el estilo es rectangular, hay que poner una línea en blanco cada $columns columnas
+		// If style==rectangular, output a blank line every $columns columns
 		if ( $columns > 0 && ++$i % $columns == 0 && $type != 'masonry') {
 			$output .= '<br style="clear: both" />';
 		}
