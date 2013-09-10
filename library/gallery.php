@@ -139,6 +139,7 @@ function kmc2_gallery_shortcode($attr) {
 
 	$i = 0;
 	$min_width = 100000;
+	$mason_sizes = "";
 	foreach ( $attachments as $id => $attachment ) {
 		$image_meta  = wp_get_attachment_metadata( $id );
 
@@ -167,7 +168,6 @@ function kmc2_gallery_shortcode($attr) {
 
 			$real_height *= $multiplier;
 			$real_width *= $multiplier;
-
 
 		} else {
 			continue;
@@ -209,9 +209,6 @@ function kmc2_gallery_shortcode($attr) {
 	$masonry_options = '';
 	if ($type == 'masonry') {
 		$classes .= ' gallery-masonry';
-		// $masonry_options = "data-masonry-options='{ ". '"item-selector": ".gallery-item", "gutter": 5, "isFitWidth": true }' . "'";
-		$masonry_options = "data-masonry-options='{ ". '"isFitWidth": true, "columnWidth": ' . $min_width . '}' . "'";
-
 	}
 
 
@@ -222,8 +219,6 @@ function kmc2_gallery_shortcode($attr) {
 			<br style='clear: both;' />
 		</div>\n";
 
-	$tams = IMAGE_SIZES;
-	// $output = "<p>Mansonry options: $masonry_options </p>". $output;
 	return $output;
 }
 

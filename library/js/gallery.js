@@ -5,13 +5,14 @@ jQuery(window).load(function($) {
 	for (var i = 0; i < galleries.length; ++i) {
 		var gallery = galleries[i];  
 
-	    console.log(gallery);
 	    var msnry = new Masonry( gallery, {
 	      // options
-	      //columnWidth: 150,
+	      itemSelecor: ".gallery-item",
+	      columnWidth: 22,
 	      isFitWidth: true,
-	      gutter: 10
+	      gutter: 10,
+	      isOriginLeft: true,
+	      animate: true,
 	    });// code here
-	}
-
+	} 
 });
