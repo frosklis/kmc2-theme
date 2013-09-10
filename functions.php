@@ -4,7 +4,7 @@ Author: Claudio Noguera
 URL: htp://blog.claudionoguera.tk
 */
 
-if ( ! isset( $content_width ) ) $content_width = 1980;
+if ( ! isset( $content_width ) ) $content_width = 480;
 
 // we're firing all out initial functions at the start
 
