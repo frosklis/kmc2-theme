@@ -21,9 +21,7 @@
 						<?php
 					    if (is_active_sidebar('footer1')):
 					    	dynamic_sidebar('footer1');
-					    else: ?>
-							<p><?php _e("Please activate some Widgets.", "kmc2theme");  ?></p>
-						<?php endif; ?>
+					    endif; ?>
 						</div>
 					<?php
 					unset($widget);
