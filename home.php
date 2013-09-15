@@ -44,25 +44,14 @@
 							// Poner un resumen de la categoría, con links
 							$cad .= '<div class="tile textcontent">';
 							$cad .= '<h2><a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </h2> ';
-						    $cad .= '<nav class="nav clearfix wrap"><ul>';
-							$cad .= '<li><a href="'.$cat_url.'/diario">Diario</a></li>';
-							$cad .= '<li><a href="'.$cat_url.'/notas">Notas</a></li>';
-							$cad .= '<li><a href="'.$cat_url.'/fotos">Fotos</a></li>';
-							$cad .= "</ul></nav>";
+						 //    $cad .= '<nav class="nav clearfix wrap"><ul>';
+							// $cad .= '<li><a href="'.$cat_url.'/diario">Diario</a></li>';
+							// $cad .= '<li><a href="'.$cat_url.'/notas">Notas</a></li>';
+							// $cad .= '<li><a href="'.$cat_url.'/fotos">Fotos</a></li>';
+							// $cad .= "</ul></nav>";
 							$cad .= '<p>'. $category->description . '</p>';
 						    // $cad .= '<p>' . $category->count . ' ' . __("entries", "kmc2theme"). '</p>';
 
-/*
-							$cad .= "</div>";
-
-							array_push($tile, $cad);
-
-
-
-							// 3rd tile
-							// Poner un resumen de la categoría, con links
-							$cad = '<div class="tile">';
-*/
 
 							$cad .= '<ul>';
 
