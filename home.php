@@ -124,14 +124,14 @@
 					        // Poner en orden aleatorio para que sea más interesante de mostrar
 					        shuffle($lista_id);
 
-					        if (count($lista_id) > 0) $cad .= wp_get_attachment_image( $lista_id[0], 'large' );
+					        if (count($lista_id) > 0) $cad .= wp_get_attachment_image( $lista_id[0], 'Image w590' );
 
 							$cad .= "</div>";
 
 							array_push($tile, $cad);
 
 							$cad = '<div class="tile">';
-							if (count($lista_id) > 1) $cad .= wp_get_attachment_image( $lista_id[1], 'large' );
+							if (count($lista_id) > 1) $cad .= wp_get_attachment_image( $lista_id[1], 'Image w590' );
 					        $cad .= "</div>";
 							array_push($tile, $cad);
 
