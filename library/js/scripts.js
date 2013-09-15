@@ -125,11 +125,22 @@ function size_dependent_actions() {
 
 // jQuery(document).ready(function($) {
 jQuery(window).load(function($) {
-    var container = document.querySelector("#home-categories");
+    var container_homepage = document.querySelector("#home-categories");
 
-    var msnry = new Masonry( container, {
+    var msnry = new Masonry( container_homepage, {
       // options
       itemSelecor: ".home-category",
+      isFitWidth: true,
+      gutter: 30,
+      isOriginLeft: true,
+      animate: true,
+    });// code here
+
+    var container_category_page = document.querySelector(".article-list");
+
+    var msnry = new Masonry( container_category_page, {
+      // options
+      itemSelecor: "article",
       isFitWidth: true,
       gutter: 30,
       isOriginLeft: true,

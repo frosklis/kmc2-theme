@@ -7,9 +7,9 @@ $tipo = get_query_var('tipo');
 				<div id="inner-content" class="wrap clearfix">
 
 				<?php if ($tipo != "fotos") { ?>
-					<div id="main" class="ninecol first clearfix" role="main">
+					<div id="main" class="ninecol first clearfix category-page" role="main">
 				<?php } else { ?>
-					<div id="main" class="twelvecol single first clearfix" role="main">
+					<div id="main" class="twelvecol single first clearfix category-page" role="main">
 				<?php } ?>
 						<nav role="navigation" class="clearfix">
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
@@ -51,7 +51,6 @@ $tipo = get_query_var('tipo');
 								</li>
 							</ul>
 						</nav>
-
 						<?php
 						if ($tipo == "") {
 							if ( is_active_sidebar( 'category_widgets' ) ) dynamic_sidebar( 'category_widgets' ); 

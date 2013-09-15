@@ -37,61 +37,66 @@ function echo_first_image( $postID ) {
 }
 
 // Dibujar los posts
-function display_posts ($list_of_posts = null, $resumen = false, $comentarios = false, $prev_next_links = false) {
-
-        if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); ?>
-
-        <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
+function display_posts ($list_of_posts = null, $resumen = false, $comentarios = false, $prev_next_links = false) { ?>
         
-            <header class="article-header">
+        <div class="article-list">
+
+        <?php if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); ?>
+
+            <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
             
-                <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-                <p class="byline vcard"><?php
-                printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
-                ?></p>
-                <p><?php edit_post_link( "Editar entrada"); ?></p>
-        
-            </header> <!-- end article header -->
+                <header class="article-header">
+                
+                    <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+                    <p class="byline vcard"><?php
+                    printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
+                    ?></p>
+                    <p><?php edit_post_link( "Editar entrada"); ?></p>
+            
+                </header> <!-- end article header -->
 
-            <?php
-            if ($resumen) { 
-            ?>
-                <section class="entry-content clearfix excerpt" onclick="location.href='<?php the_permalink(); ?>';">
                 <?php
-                if ( has_post_thumbnail() ) {
-                    the_post_thumbnail("medium",array('class' => 'alignleft'));
-                } else { 
-                    echo_first_image(get_the_ID());
-                }
-                the_excerpt();
-            } else {
-            ?>
-                <section class="entry-content clearfix">
-                <?php
-                the_content();
-            } 
-            ?>
-            </section> <!-- end article section -->
-        
-            <footer class="article-footer">
-                <p class="tags"><?php the_tags('<span class="tags-title">' . __('Tags:', 'kmc2theme') . '</span> ', ', ', ''); ?></p>
+                if ($resumen) { 
+                ?>
+                    <section class="entry-content clearfix excerpt" onclick="location.href='<?php the_permalink(); ?>';">
+                    <?php
+                    if ( has_post_thumbnail() ) {
+                        the_post_thumbnail("medium",array('class' => 'alignleft'));
+                    } else { 
+                        echo_first_image(get_the_ID());
+                    }
+                    the_excerpt();
+                } else {
+                ?>
+                    <section class="entry-content clearfix">
+                    <?php
+                    the_content();
+                } 
+                ?>
+                </section> <!-- end article section -->
+            
+                <footer class="article-footer">
+                    <p class="tags"><?php the_tags('<span class="tags-title">' . __('Tags:', 'kmc2theme') . '</span> ', ', ', ''); ?></p>
 
-            </footer> <!-- end article footer -->
-            
-            <?php if ($comentarios) comments_template();  ?>
-            
-        </article> <!-- end article -->
+                </footer> <!-- end article footer -->
+                
+                <?php if ($comentarios) comments_template();  ?>
+                
+            </article> <!-- end article -->
         <?php
         if ($prev_next_links) {
+            echo('</div><!-- article-list -->');
             echo('<div class="wp-prev-next">'); 
                 previous_post_link('<div class="prev-link">  ≪ %link</div>');
                 next_post_link('<div class="next-link">%link ≫  </div>'); 
             echo('</div>');
         }
         ?>
-        <?php endwhile; ?>  
-
-            <?php if (function_exists('kmc2_page_navi')) { ?>
+        <?php endwhile; 
+        if (!$prev_next_links) {
+            echo('</div>');
+        }
+            if (function_exists('kmc2_page_navi')) { ?>
                 <?php kmc2_page_navi(); ?>
             <?php } else { ?>
                 <nav class="wp-prev-next">
