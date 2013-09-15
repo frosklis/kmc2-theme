@@ -1,11 +1,11 @@
 <?php get_header(); ?>
 			<div id="content">
 				<div id="inner-content" class="wrap clearfix">
-					<div>
 
-						<?php 
-						if ( is_active_sidebar( 'homepage_widgets' ) ) dynamic_sidebar( 'homepage_widgets' ); 
-						?>
+					<?php 
+					if ( is_active_sidebar( 'homepage_widgets' ) ) dynamic_sidebar( 'homepage_widgets' ); 
+					?>
+					<div id="home-categories">
 
 						<?php
 						$url = get_bloginfo('url') . '/tree/';
@@ -25,7 +25,7 @@
 							'pad_counts'               => false );
 						$categories = get_categories( $args );
 
-						shuffle($categories);
+						// shuffle($categories);
 
 						$cat_tiles = array();
 

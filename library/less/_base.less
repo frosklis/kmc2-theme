@@ -1190,70 +1190,77 @@ SIDEBARS & ASIDES
 /*
  * HOME PAGE
  */
-.home-category {
-	clear: both;
-	margin-bottom: 30px;
-	overflow: hidden;
-	.textcontent {
-		margin-top: 5px;
-		margin-bottom: 5px;
-	}
-	.tile {
+ #home-categories {
+ 	text-align: center;
+ 	margin: 0 auto;
+	.home-category {
+		text-align: left;
+		clear: both;
+		margin-bottom: 30px;
+		overflow: hidden;
+		width: 400px;
 		display: inline-block;
-		width: 100%;
-		float: left;
-		margin-left: 5px;
-		margin-right: 5px;
 
-		p {
-			margin-top: 0;
-			margin-bottom: 0.5em;
+		.textcontent {
+			margin-top: 5px;
+			margin-bottom: 5px;
 		}
+		.tile {
+			display: inline-block;
+			width: 100%;
+			float: left;
+			margin-left: 5px;
+			margin-right: 5px;
 
-		h2 {
-			margin-top: 0;
-			margin-bottom: 0;
-		}
-
-		img {
-			max-height: 100%;
-			max-width: 100%;
-			width: auto;
-			height: auto;
-		}
-
-
-		.nav, nav {
-			background-color: transparent;
-			color: @normal-text-color;
-			padding: 0;
-			margin: 0;
-
-			a {
-				color: @normal-text-color;
-				&:hover, &:focus {
-					background-color: @kmc2-blue;
-					color: @white;
-				}
+			p {
+				margin-top: 0;
+				margin-bottom: 0.5em;
 			}
 
-			ul {
+			h2 {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+
+			img {
+				max-height: 100%;
+				max-width: 100%;
+				width: auto;
+				height: auto;
+			}
+
+
+			.nav, nav {
+				background-color: transparent;
+				color: @normal-text-color;
+				padding: 0;
 				margin: 0;
-			}
 
-			ul.nav {
-				color: @normal-text-color;
-				li {
-					padding-right: 8px;
-					padding-top: 8px;
-					padding-bottom: 8px;
-					a {
-						padding: 0;
+				a {
+					color: @normal-text-color;
+					&:hover, &:focus {
+						background-color: @kmc2-blue;
+						color: @white;
 					}
 				}
-			}
 
-		} // end .nav
+				ul {
+					margin: 0;
+				}
+
+				ul.nav {
+					color: @normal-text-color;
+					li {
+						padding-right: 8px;
+						padding-top: 8px;
+						padding-bottom: 8px;
+						a {
+							padding: 0;
+						}
+					}
+				}
+
+			} // end .nav
+		}
 	}
 }
-

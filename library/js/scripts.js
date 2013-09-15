@@ -120,3 +120,20 @@ function size_dependent_actions() {
         paddingRight: pad + 'px'
     });
 }
+
+
+
+// jQuery(document).ready(function($) {
+jQuery(window).load(function($) {
+    var container = document.querySelector("#home-categories");
+
+    var msnry = new Masonry( container, {
+      // options
+      itemSelecor: ".home-category",
+      isFitWidth: true,
+      gutter: 30,
+      isOriginLeft: true,
+      animate: true,
+    });// code here
+
+});
