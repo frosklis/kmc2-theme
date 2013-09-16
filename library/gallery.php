@@ -39,48 +39,51 @@ function kmc2_image_downsize( $existing_data, $attachment_id, $size ) {
 	else {
 		// Have to crop so that width/height is exact and findable in the future.
 		$image = wp_get_image_editor( $fullsize_path );
-		$new_size = array_map( 'absint', $image->get_size());
+		try {
+			$new_size = array_map( 'absint', $image->get_size());
 
-		$aux = (int)($size["width"] * $new_size["height"] / $new_size["width"]);
+			$aux = (int)($size["width"] * $new_size["height"] / $new_size["width"]);
+			
+			$thumbnail_filename = str_replace( ".{$fullsize_info['extension']}", 
+				"-{$size['width']}x{$aux}.{$fullsize_info['extension']}", 
+				$fullsize_info['basename'] ); 
+
+			if ( file_exists( $fullsize_info['dirname'] . '/' . $thumbnail_filename ) ) {
+		 
+				// Create the URL to the thumbnail by taking the fullsize image
+				// and replacing it's filename with the thumbnail filename
+				$thumbnail_url = str_replace( $fullsize_info['basename'], $thumbnail_filename, wp_get_attachment_url( $attachment_id ) );
+
+					return array(
+						$thumbnail_url, // URL
+						$size['width'],       // Width
+						$aux,       // Height
+						true,           // is_intermediate, i.e. exact size or will it be resized via HTML?
+					);
+			}
+
+			$aux = (int)($size["height"] * $new_size["width"] / $new_size["height"]);
+			$thumbnail_filename = str_replace( ".{$fullsize_info['extension']}", 
+				"-{$aux}x{$size['height']}.{$fullsize_info['extension']}", 
+				$fullsize_info['basename'] ); 
+
+			if ( file_exists( $fullsize_info['dirname'] . '/' . $thumbnail_filename ) ) {
+		 
+				// Create the URL to the thumbnail by taking the fullsize image
+				// and replacing it's filename with the thumbnail filename
+				$thumbnail_url = str_replace( $fullsize_info['basename'], $thumbnail_filename, wp_get_attachment_url( $attachment_id ) );
+
+					return array(
+						$thumbnail_url, // URL
+						$aux,       // Width
+						$size['height'],       // Height
+						true,           // is_intermediate, i.e. exact size or will it be resized via HTML?
+					);
+			}
+		} catch (Exception $e) {
+			error_log($e->getMessage());
+		}
 		
-		$thumbnail_filename = str_replace( ".{$fullsize_info['extension']}", 
-			"-{$size['width']}x{$aux}.{$fullsize_info['extension']}", 
-			$fullsize_info['basename'] ); 
-
-		if ( file_exists( $fullsize_info['dirname'] . '/' . $thumbnail_filename ) ) {
-	 
-			// Create the URL to the thumbnail by taking the fullsize image
-			// and replacing it's filename with the thumbnail filename
-			$thumbnail_url = str_replace( $fullsize_info['basename'], $thumbnail_filename, wp_get_attachment_url( $attachment_id ) );
-
-				return array(
-					$thumbnail_url, // URL
-					$size['width'],       // Width
-					$aux,       // Height
-					true,           // is_intermediate, i.e. exact size or will it be resized via HTML?
-				);
-		}
-
-		$aux = (int)($size["height"] * $new_size["width"] / $new_size["height"]);
-		$thumbnail_filename = str_replace( ".{$fullsize_info['extension']}", 
-			"-{$aux}x{$size['height']}.{$fullsize_info['extension']}", 
-			$fullsize_info['basename'] ); 
-
-		if ( file_exists( $fullsize_info['dirname'] . '/' . $thumbnail_filename ) ) {
-	 
-			// Create the URL to the thumbnail by taking the fullsize image
-			// and replacing it's filename with the thumbnail filename
-			$thumbnail_url = str_replace( $fullsize_info['basename'], $thumbnail_filename, wp_get_attachment_url( $attachment_id ) );
-
-				return array(
-					$thumbnail_url, // URL
-					$aux,       // Width
-					$size['height'],       // Height
-					true,           // is_intermediate, i.e. exact size or will it be resized via HTML?
-				);
-		}
-
-
 		$new_thumbnail_path="";
 		if ( ! is_wp_error( $image ) ) {
 		    $image->resize( $size["width"], $size["height"], $size["crop"] );
