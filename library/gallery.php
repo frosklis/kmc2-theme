@@ -39,7 +39,13 @@ function kmc2_image_downsize( $existing_data, $attachment_id, $size ) {
 	else {
 		// Have to crop so that width/height is exact and findable in the future.
 		$image = wp_get_image_editor( $fullsize_path );
+
+		if ( is_wp_error( $image ) ) {
+			return $existing_data;
+		}
+
 		try {
+
 			$new_size = array_map( 'absint', $image->get_size());
 
 			$aux = (int)($size["width"] * $new_size["height"] / $new_size["width"]);
@@ -82,6 +88,8 @@ function kmc2_image_downsize( $existing_data, $attachment_id, $size ) {
 			}
 		} catch (Exception $e) {
 			error_log($e->getMessage());
+
+			return $existing_data;
 		}
 		
 		$new_thumbnail_path="";
