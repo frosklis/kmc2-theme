@@ -23,7 +23,7 @@ function kmc2_image_downsize( $existing_data, $attachment_id, $size ) {
  
 	// Create the thumbnail filename
 	// Is there a helper function for all of this? I couldn't find one.
-	$thumbnail_filename = str_replace( ".{$fullsize_info['extension']}", "-{$size[0]}x{$size[1]}.{$fullsize_info['extension']}", $fullsize_info['basename'] );
+	$thumbnail_filename = str_replace( ".{$fullsize_info['extension']}", "-{$size['width']}x{$size['height']}.{$fullsize_info['extension']}", $fullsize_info['basename'] );
  
 	$thumbnail_path = $fullsize_info['dirname'] . '/' . $thumbnail_filename;
  
@@ -34,25 +34,69 @@ function kmc2_image_downsize( $existing_data, $attachment_id, $size ) {
 		// and replacing it's filename with the thumbnail filename
 		$thumbnail_url = str_replace( $fullsize_info['basename'], $thumbnail_filename, wp_get_attachment_url( $attachment_id ) );
 	}
- 
+
 	// Okay, thumbnail doesn't exist. Make it!
 	else {
- 
 		// Have to crop so that width/height is exact and findable in the future.
-		$new_thumbnail_path="";
 		$image = wp_get_image_editor( $fullsize_path );
+		$new_size = array_map( 'absint', $image->get_size());
+
+		$aux = (int)($size["width"] * $new_size["height"] / $new_size["width"]);
+		
+		$thumbnail_filename = str_replace( ".{$fullsize_info['extension']}", 
+			"-{$size['width']}x{$aux}.{$fullsize_info['extension']}", 
+			$fullsize_info['basename'] ); 
+
+		if ( file_exists( $fullsize_info['dirname'] . '/' . $thumbnail_filename ) ) {
+	 
+			// Create the URL to the thumbnail by taking the fullsize image
+			// and replacing it's filename with the thumbnail filename
+			$thumbnail_url = str_replace( $fullsize_info['basename'], $thumbnail_filename, wp_get_attachment_url( $attachment_id ) );
+
+				return array(
+					$thumbnail_url, // URL
+					$size['width'],       // Width
+					$aux,       // Height
+					true,           // is_intermediate, i.e. exact size or will it be resized via HTML?
+				);
+		}
+
+		$aux = (int)($size["height"] * $new_size["width"] / $new_size["height"]);
+		$thumbnail_filename = str_replace( ".{$fullsize_info['extension']}", 
+			"-{$aux}x{$size['height']}.{$fullsize_info['extension']}", 
+			$fullsize_info['basename'] ); 
+
+		if ( file_exists( $fullsize_info['dirname'] . '/' . $thumbnail_filename ) ) {
+	 
+			// Create the URL to the thumbnail by taking the fullsize image
+			// and replacing it's filename with the thumbnail filename
+			$thumbnail_url = str_replace( $fullsize_info['basename'], $thumbnail_filename, wp_get_attachment_url( $attachment_id ) );
+
+				return array(
+					$thumbnail_url, // URL
+					$aux,       // Width
+					$size['height'],       // Height
+					true,           // is_intermediate, i.e. exact size or will it be resized via HTML?
+				);
+		}
+
+
+		$new_thumbnail_path="";
 		if ( ! is_wp_error( $image ) ) {
 		    $image->resize( $size["width"], $size["height"], $size["crop"] );
 		    // $image->save( 'new_image.jpg' );
 		    $new_thumbnail_path = $image->save();
+		    $size=$image->get_size();
+		}
+
+		if ( is_wp_error( $new_thumbnail_path ) ) {
+			return $existing_data;
 		}
 
 		$new_thumbnail_path = $new_thumbnail_path["path"];
 
 
 
-		if ( is_wp_error( $new_thumbnail_path ) )
-			return $existing_data;
  
 		// Get the thumbnail path parts, specifically the filename
 		// Yeah, we created it above but let's be absolutely sure it's correct
@@ -63,8 +107,8 @@ function kmc2_image_downsize( $existing_data, $attachment_id, $size ) {
  
 	return array(
 		$thumbnail_url, // URL
-		$size[0],       // Width
-		$size[1],       // Height
+		$size['width'],       // Width
+		$size['height'],       // Height
 		true,           // is_intermediate, i.e. exact size or will it be resized via HTML?
 	);
 }
