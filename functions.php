@@ -108,19 +108,6 @@ function new_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'new_excerpt_more' );
 
-/**
-@see http://codex.wordpress.org/Function_Reference/add_image_size
-*/
-
-function kmc2_image_sizes () {
-    update_option('thumbnail_size_w', 150);
-    update_option('thumbnail_size_h', 150);
-    update_option('thumbnail_crop', false);
-    update_option('medium_size_w', 640);
-    update_option('medium_size_h', 480);
-    update_option('large_size_w', 1920);
-    update_option('large_size_h', 1080);
-}
 
 function autoset_featured() {
     global $post;

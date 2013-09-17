@@ -1,4 +1,37 @@
 <?php
+
+function kmc2_image_sizes () {
+    update_option('thumbnail_size_w', 150);
+    update_option('thumbnail_size_h', 150);
+    update_option('thumbnail_crop', false);
+    add_image_size('small', 320, 180, false );
+    update_option('medium_size_w', 640);
+    update_option('medium_size_h', 360);
+    update_option('large_size_w', 720);
+    update_option('large_size_h', 405);
+}
+
+function kmc2_get_attachment_image($image_id) {
+
+    $aux = wp_get_attachment_image_src( $image_id, $sizes[$i] );
+    $ratio = 100 * $aux[2] / $aux[1]; //height / width 
+    $out = "<div class='img-container' style='padding-bottom: {$ratio}%;'><noscript";
+
+    $sizes = array('small', 'medium', 'big', 'large', 'original', 'thumbnail');
+
+    $path = "";
+    for ($i = 0; $i < sizeof($sizes); $i++) {
+        $aux = wp_get_attachment_image_src( $image_id, $sizes[$i] ); // returns an array
+        $path = $aux[0];
+        $out .= "\ndata-src-" . $sizes[$i] . "='" . $path . "'";
+    }
+
+    $out .= "\n<img src='" . $path . "'>";
+    $out .= "\n</noscript></div>";
+    return $out;
+}
+
+
 // GET the first image of a post
 function echo_first_image( $postID ) {
 
@@ -25,7 +58,7 @@ function echo_first_image( $postID ) {
 
         if ( $attachments ) {
             foreach ( $attachments as $attachment ) {
-                $image_attributes = wp_get_attachment_image_src( $attachment->ID, 'medium' )  ? wp_get_attachment_image_src( $attachment->ID, 'medium' ) : wp_get_attachment_image_src( $attachment->ID, 'full' );
+                $image_attributes = kmc2_get_attachment_image_src( $attachment->ID, 'medium' )  ? kmc2_get_attachment_image_src( $attachment->ID, 'medium' ) : kmc2_get_attachment_image_src( $attachment->ID, 'full' );
 
                 echo '<img src="' . wp_get_attachment_thumb_url( $attachment->ID ) . '" class="current alignleft">';
             }

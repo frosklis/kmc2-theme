@@ -1,5 +1,5 @@
 <?php
-add_filter( 'image_downsize', 'kmc2_image_downsize', 10, 3 );
+// add_filter( 'image_downsize', 'kmc2_image_downsize', 10, 3 );
 
 // modified from https://gist.github.com/Viper007Bond/2785428
  
@@ -304,12 +304,12 @@ function kmc2_gallery_shortcode($attr) {
 		
 
 		if ( ! empty( $attr['link'] ) && 'none' === $attr['link'] )
-			$image_output = wp_get_attachment_image( $id, $size, false );
+			$image_output = kmc2_get_attachment_image( $id, $size, false );
 		else
 			$image_output = wp_get_attachment_link( $id, $size, true, false );
 
 		
-		$image_attributes = wp_get_attachment_image_src( $id, $size ); // returns an array
+		$image_attributes = kmc2_get_attachment_image( $id, $size ); // returns an array
 		$image_link = get_attachment_link($id);
 
 		$output .= "<{$itemtag} class='gallery-item'>";
