@@ -112,24 +112,14 @@ add_filter( 'excerpt_more', 'new_excerpt_more' );
 @see http://codex.wordpress.org/Function_Reference/add_image_size
 */
 
-define('IMAGE_SIZES', serialize(array(32, 64, 128, 295, 295*2, 885, 885*2)));
-define('INFINITE', '99999999');
-
 function kmc2_image_sizes () {
-    // add_image_size( $name, $width, $height, $crop );
-    // Nexus 4: 1280 x 384 (pero la recoge como 640 x 384)
-    $sizes = unserialize(IMAGE_SIZES);
-
-    for ($i=0; $i<count($sizes); $i++) {
-        $str = "Image w" . $sizes[$i];
-        add_image_size($str, $sizes[$i], INFINITE, false);
-        $str = "Image h" . $sizes[$i];
-        add_image_size($str, INFINITE, $sizes[$i], false);
-    }
-    // add_image_size('Image 1280 x 768', 1280, 768);
-    // add_image_size('Image 640 x 384', 640, 384);
-    // add_image_size('Image 768 x 1280', 1280, 768);
-    // add_image_size('Image 384 x 640', 384, 640);
+    update_option('thumbnail_size_w', 150);
+    update_option('thumbnail_size_h', 150);
+    update_option('thumbnail_crop', false);
+    update_option('medium_size_w', 640);
+    update_option('medium_size_h', 480);
+    update_option('large_size_w', 1920);
+    update_option('large_size_h', 1080);
 }
 
 function autoset_featured() {
