@@ -1,4 +1,37 @@
 <?php
+
+function kmc2_image_sizes () {
+    update_option('thumbnail_size_w', 150);
+    update_option('thumbnail_size_h', 150);
+    update_option('thumbnail_crop', false);
+    add_image_size('small', 320, 180, false );
+    update_option('medium_size_w', 640);
+    update_option('medium_size_h', 360);
+    update_option('large_size_w', 720);
+    update_option('large_size_h', 405);
+}
+
+function kmc2_get_attachment_image($image_id) {
+
+    $aux = wp_get_attachment_image_src( $image_id, 'full');
+    $ratio = 100 * $aux[2] / $aux[1]; //height / width 
+    $out = "<div class='img-container' style='padding-bottom: {$ratio}%;'><noscript";
+
+    $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail');
+
+    $path = "";
+    for ($i = 0; $i < sizeof($sizes); $i++) {
+        $aux = wp_get_attachment_image_src( $image_id, $sizes[$i] ); // returns an array
+        $path = $aux[0];
+        $out .= "\ndata-src-" . $sizes[$i] . "='" . $path . "'";
+    }
+
+    $out .= "\n<img src='" . $path . "'>";
+    $out .= "\n</noscript></div>";
+    return $out;
+}
+
+
 // GET the first image of a post
 function echo_first_image( $postID ) {
 
@@ -25,15 +58,12 @@ function echo_first_image( $postID ) {
 
         if ( $attachments ) {
             foreach ( $attachments as $attachment ) {
-                $image_attributes = wp_get_attachment_image_src( $attachment->ID, 'medium' )  ? wp_get_attachment_image_src( $attachment->ID, 'medium' ) : wp_get_attachment_image_src( $attachment->ID, 'full' );
+                $image_attributes = kmc2_get_attachment_image_src( $attachment->ID, 'medium' )  ? kmc2_get_attachment_image_src( $attachment->ID, 'medium' ) : kmc2_get_attachment_image_src( $attachment->ID, 'full' );
 
                 echo '<img src="' . wp_get_attachment_thumb_url( $attachment->ID ) . '" class="current alignleft">';
             }
         }
-        else {
-            echo 'No hay imágenes';
-        }
-}
+    }
 }
 
 // Dibujar los posts
@@ -72,7 +102,9 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
                 <section class="entry-content clearfix excerpt" onclick="location.href='<?php the_permalink(); ?>';">
                 <?php
                 if ( has_post_thumbnail() ) {
-                    the_post_thumbnail("medium",array('class' => 'alignleft'));
+                    // the_post_thumbnail("medium",array('class' => 'alignleft'));
+                    //the_post_thumbnail("medium");
+                    echo(kmc2_get_attachment_image( get_post_thumbnail_id( get_the_ID() )) );
                 } else { 
                     echo_first_image(get_the_ID());
                 }

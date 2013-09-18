@@ -1220,7 +1220,7 @@ SIDEBARS & ASIDES
 
 			h2 {
 				margin-top: 0;
-				margin-bottom: 0;
+				margin-bottom: 4px;
 				text-align: center;
 			}
 
@@ -1270,9 +1270,22 @@ SIDEBARS & ASIDES
 header {
 	.edit-entry-link {
 		display: inline-block;
-		/*
-		position: relative;
-		top: 200;
-		right: 0;*/
 	}
+}
+
+
+.img-container {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.img-container img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
