@@ -123,8 +123,8 @@ function size_dependent_actions() {
 
 
 
-// jQuery(document).ready(function($) {
-jQuery(window).load(function($) {
+jQuery(document).ready(function($) {
+// jQuery(window).load(function($) {
     var container_homepage = document.querySelector("#home-categories");
 
     if (container_homepage != null) {

@@ -1,5 +1,5 @@
-// jQuery(document).ready(function($) {
-jQuery(window).load(function($) {
+jQuery(document).ready(function($) {
+//jQuery(window).load(function($) {
     var galleries = document.querySelectorAll(".gallery-masonry");
 
 	for (var i = 0; i < galleries.length; ++i) {
