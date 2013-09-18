@@ -54,11 +54,15 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
         
             <header class="article-header">
             
-                <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+                <h2>
+                    <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+                    <div class="edit-entry-link">
+                        <?php edit_post_link('<img src="' . get_bloginfo('stylesheet_directory') . '/images/free-icon-set-gemicon/PNG/16x16/row 10/11.png"  width="16" height="16">'); ?>
+                    </div>
+                </h2>
                 <p class="byline vcard"><?php
                 printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
                 ?></p>
-                <p><?php edit_post_link( "Editar entrada"); ?></p>
         
             </header> <!-- end article header -->
 
