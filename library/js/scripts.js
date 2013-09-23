@@ -167,7 +167,7 @@ jQuery(document).ready(function($) {
         if ( w <= 150 ) return 'thumbnail';
         else if ( w <= 320 ) return 'small';
         else if ( w <= 640 ) return 'medium';
-        else if ( w <= 720 ) return 'large';
+        else if ( w <= 1600 ) return 'large';
         else return 'original';
     };
 

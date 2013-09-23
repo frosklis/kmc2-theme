@@ -7,8 +7,8 @@ function kmc2_image_sizes () {
     add_image_size('small', 320, 180, false );
     update_option('medium_size_w', 640);
     update_option('medium_size_h', 360);
-    update_option('large_size_w', 720);
-    update_option('large_size_h', 405);
+    update_option('large_size_w', 1600);
+    update_option('large_size_h', 900);
 }
 
 function kmc2_get_attachment_image($image_id) {
