@@ -17,65 +17,6 @@ right up top and clean.
 *********************/
 
 
-if ( ! isset( $content_width ) ) $content_width = 1980;
-
-// we're firing all out initial functions at the start
-add_action('after_setup_theme','kmc2_ahoy', 15);
-
-function kmc2_ahoy() {
-
-
-    // launching operation cleanup
-    add_action('init', 'kmc2_head_cleanup');
-    
-    add_action('init', 'tipo_taxonomy' );
-
-
-    // Set featured image
-	add_action('the_post', 'autoset_featured');
-	add_action('save_post', 'autoset_featured');
-	add_action('draft_to_publish', 'autoset_featured');
-	add_action('new_to_publish', 'autoset_featured');
-	add_action('pending_to_publish', 'autoset_featured');
-	add_action('future_to_publish', 'autoset_featured');
-
-    // remove WP version from RSS
-    add_filter('the_generator', 'kmc2_rss_version');
-    // remove pesky injected css for recent comments widget
-    add_filter( 'wp_head', 'kmc2_remove_wp_widget_recent_comments_style', 1 );
-    // clean up comment styles in the head
-    add_action('wp_head', 'kmc2_remove_recent_comments_style', 1);
-    // clean up gallery output in wp
-    add_filter('gallery_style', 'kmc2_gallery_style');
-
-    // ie conditional wrapper
-    add_filter( 'style_loader_tag', 'kmc2_ie_conditional', 10, 2 );
-
-    // enqueue base scripts and styles
-    add_action('wp_enqueue_scripts', 'kmc2_scripts_and_styles', 999);
-
-    // launching this stuff after theme setup
-    add_action('after_setup_theme','kmc2_theme_support');
-    // adding sidebars to Wordpress (these are created in functions.php)
-    add_action( 'widgets_init', 'kmc2_register_sidebars' );
-    // adding the kmc2 search form (created in functions.php)
-    add_filter( 'get_search_form', 'kmc2_wpsearch' );
-
-    // cleaning up random code around images
-    add_filter('the_content', 'kmc2_filter_ptags_on_images');
-
-    // no mostrar admin bar
-    add_filter('show_admin_bar', '__return_false' );
-
-	//add_filter('wp_nav_menu_items','add_social_bar_to_menu', 10, 2);
-
-
-	add_filter( 'wp_nav_menu_items', 'add_logo_to_menu', 10, 2 );
-
-
-} /* end kmc2 ahoy */
-
-
 function custom_excerpt_length( $length ) {
 	return 60;
 }
