@@ -157,15 +157,24 @@ jQuery(document).ready(function($) {
 });
 
 
-
+// ----------------------------------------------------
+// lazyload
+// ----------------------------------------------------
 jQuery(document).ready(function($) {
+    var getImageVersion = function (imageContainer) {
+        var w = jQuery(imageContainer).width() * window.devicePixelRatio;
 
-    console.log("documento listo");
+        if ( w <= 150 ) return 'thumbnail';
+        else if ( w <= 320 ) return 'small';
+        else if ( w <= 640 ) return 'medium';
+        else if ( w <= 720 ) return 'large';
+        else return 'original';
+    };
 
     var lazyloadImage = function (imageContainer) {
 
-        // var imageVersion = getImageVersion();
-        var imageVersion = 'small';
+        var imageVersion = getImageVersion(imageContainer);
+        // var imageVersion = 'small';
 
         if (!imageContainer || !imageContainer.children) {
             return;
