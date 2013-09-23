@@ -441,24 +441,13 @@ See http://net.tutsplus.com/tutorials/wordpress/how-to-create-a-better-wordpress
 */
 require_once('library/options.php');
 
+function edit_image_html($html, $attachment_id, $attachment) {
+    $html = $html . " attachment_id: " . $attachment_id . " attachment: " . $attachment;
 
-add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_class_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_alt_attribute', 10 );
- 
-function remove_width_attribute( $html ) {
-    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html );
-    return $html;
-} 
-function remove_class_attribute( $html ) {
-    $html = preg_replace('/class=".*?"/', "", $html );
-    return $html;
-} 
-function remove_alt_attribute( $html ) {
-    $html = preg_replace('/alt=".*?"/', "", $html );
+    $html = kmc2_get_attachment_image($attachment_id);
     return $html;
 }
+add_filter('image_send_to_editor', 'edit_image_html', 10, 3);
 
 /************* ACTIVE SIDEBARS ********************/
 

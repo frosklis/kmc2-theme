@@ -23,11 +23,12 @@ function kmc2_get_attachment_image($image_id) {
     for ($i = 0; $i < sizeof($sizes); $i++) {
         $aux = wp_get_attachment_image_src( $image_id, $sizes[$i] ); // returns an array
         $path = $aux[0];
-        $out .= "\ndata-src-" . $sizes[$i] . "='" . $path . "'";
+        $out .= " data-src-" . $sizes[$i] . "='" . $path . "'";
     }
 
-    $out .= "\n<img src='" . $path . "'>";
-    $out .= "\n</noscript></div>";
+    $out .= " data-src-img-id='{$image_id}'";
+    $out .= " <img src='" . $path . "'>";
+    $out .= " </noscript></div>";
     return $out;
 }
 
