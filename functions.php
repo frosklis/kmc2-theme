@@ -238,6 +238,15 @@ function kmc2_scripts_and_styles() {
         wp_register_script( 'masonry', get_stylesheet_directory_uri() . '/library/js/masonry.pkgd.min.js', array( 'jquery' ), '', true );
         wp_register_script( 'kmc2-gallery', get_stylesheet_directory_uri() . '/library/js/gallery.js', array( 'masonry' ), '', false );
 
+
+        wp_localize_script('kmc2-js', 'image_sizes_vars', array(
+                'thumbnail' => 250,
+                'small' => 320,
+                'medium' => 640,
+                'large' => 1600
+            )
+        );
+
         // enqueue styles and scripts
         wp_enqueue_style('kmc2-stylesheet');
         wp_enqueue_style('kmc2-ie-only');

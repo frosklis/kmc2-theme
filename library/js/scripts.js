@@ -161,14 +161,17 @@ jQuery(document).ready(function($) {
 // lazyload
 // ----------------------------------------------------
 jQuery(document).ready(function($) {
+    console.log("hola");
+    console.log(image_sizes_vars);
+
     var getImageVersion = function (imageContainer) {
         var w = jQuery(imageContainer).width() * window.devicePixelRatio;
 
-        if ( w <= 150 ) return 'thumbnail';
-        else if ( w <= 320 ) return 'small';
-        else if ( w <= 640 ) return 'medium';
-        else if ( w <= 1600 ) return 'large';
-        else return 'original';
+        for (k in image_sizes_vars) {
+            if (w <= image_sizes_vars[k]) return k;
+        }
+        
+        return 'original';
     };
 
     var lazyloadImage = function (imageContainer) {
