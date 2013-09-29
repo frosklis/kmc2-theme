@@ -448,7 +448,7 @@ require_once('library/translation/translation.php');
     - adds options to the wordpress dashboard
 See http://net.tutsplus.com/tutorials/wordpress/how-to-create-a-better-wordpress-options-panel/
 */
-require_once('library/options.php');
+// require_once('library/options.php');
 
 function edit_image_html($html, $attachment_id, $attachment) {
     $html = $html . " attachment_id: " . $attachment_id . " attachment: " . $attachment;
