@@ -8,7 +8,7 @@
 					<div id="home-categories">
 
 						<?php
-						$url = get_bloginfo('url') . '/tree/';
+						$url = home_url() . '/tree/';
 
 						$args = array(
 							'type'                     => 'post',
