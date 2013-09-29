@@ -191,6 +191,20 @@ jQuery(document).ready(function($) {
                 imageElement.setAttribute("alt", altTxt ? altTxt : "");
                 imageContainer.appendChild(imageElement);
                 imageContainer.removeChild(imageContainer.children[0]);
+
+
+                // Add the image caption
+                var d = document.createElement("div");
+                d.className = "wp-caption";
+
+                texto = document.createTextNode(img.getAttribute("data-caption"));
+
+                d.appendChild(texto);
+
+                imageContainer.appendChild(d);
+
+
+
             }
         }
     },

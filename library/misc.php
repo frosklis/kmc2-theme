@@ -14,9 +14,21 @@ function kmc2_image_sizes () {
 
 function kmc2_get_attachment_image($image_id) {
 
+    // $prueba = wp_get_attachment_metadata( $image_id );
+    // this returns an array that may be useful as it has all image sizes
+    // var_dump($prueba);
+
+    // In an image:
+    // caption --> post_excerpt
+    // title --> post_title
+    // description --> content
+
+    $queried_post = get_post($image_id);
+    $caption = $queried_post->post_excerpt;
+
     $aux = wp_get_attachment_image_src( $image_id, 'full');
     $ratio = 100 * $aux[2] / $aux[1]; //height / width 
-    $out = "<div class='img-container' style='padding-bottom: {$ratio}%;'><noscript";
+    $out = "<div class='wp-caption' style='padding-bottom: {$ratio}%;'><noscript";
 
     $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail');
 
@@ -28,6 +40,12 @@ function kmc2_get_attachment_image($image_id) {
     }
 
     $out .= " data-src-img-id='{$image_id}'";
+
+    // Image and caption
+    $out .= " data-title='".get_the_title($image_id)."'";
+    $out .= " data-caption='".$caption."'";
+
+    // fallback if javascript is not used
     $out .= " <img src='" . $path . "'>";
     $out .= " </noscript></div>";
     return $out;
