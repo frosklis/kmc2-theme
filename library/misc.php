@@ -108,7 +108,7 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
                 <h2>
                     <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
                     <div class="edit-entry-link">
-                        <?php edit_post_link('<img src="' . get_bloginfo('stylesheet_directory') . '/images/free-icon-set-gemicon/PNG/16x16/row 10/11.png"  width="16" height="16">'); ?>
+                        <?php edit_post_link('<img src="' . get_stylesheet_directory_uri() . '/images/free-icon-set-gemicon/PNG/16x16/row 10/11.png"  width="16" height="16">'); ?>
                     </div>
                 </h2>
                 <p class="byline vcard"><?php

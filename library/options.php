@@ -93,7 +93,7 @@ function mytheme_add_admin() {
 }
 
 function mytheme_add_init() {
-	$file_dir=get_bloginfo('template_directory');  
+	$file_dir=get_template_directory_uri();  
 	wp_enqueue_style("functions", $file_dir."/library/css/options.css", false, "1.0", "all"); 
 	wp_enqueue_script("rm_script", $file_dir."/library/js/rm_scripts.js", false, "1.0");  
 } 
@@ -168,7 +168,7 @@ function mytheme_admin() {
 					$i++;  ?>  
 					<div class="rm_section">  
 						<div class="rm_title">
-							<h3><img src="<?php bloginfo('template_directory')?>/library/images/transparent.gif" class="inactive" alt=""><?php echo $value['name']; ?></h3>
+							<h3><img src="<?php get_template_directory_uri()?>/library/images/transparent.gif" class="inactive" alt=""><?php echo $value['name']; ?></h3>
 							<span class="submit"><input name="save<?php echo $i; ?>" type="submit" value="Save changes" />  
 							</span>
 							<div class="clearfix"></div>
