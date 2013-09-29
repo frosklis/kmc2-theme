@@ -1272,6 +1272,15 @@ header {
 	margin-bottom: 4px;
 	line-height: 0;
 
+	&:hover, &focus {
+		.legend {
+			opacity: 1;
+		}
+		.title {
+			opacity: 1;
+		}
+	}
+
 	img {
 		position: absolute;
 		top: 0;
@@ -1279,37 +1288,27 @@ header {
 		min-width: 100%;
 		min-height: 100%;
 	}
-	.legend {
-		font-size: 12px;
-		opacity: 0;
-		&:hover, &focus {
-			opacity: 1;
-		}
-		color: white;
-		position: absolute;
-		bottom: 0;
-		left: 0;
+
+	.legend, .title {
+		transition: opacity 2.5s ease;
 		width: 100%;
 		.black(0.5);
 		margin: 0;
 		line-height: 1.2;
 		padding: 5px;
+		position: absolute;
+		color: white;
+		opacity: 0;
+	}
+	.legend {
+		font-size: 12px;
+		bottom: 0;
+		left: 0;
 	}
 	.title {
 		font-size: 16px;
-		opacity: 0;
 		text-align: center;
-		&:hover, &focus {
-			opacity: 1;
-		}
-		color: white;
-		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100%;
-		.black(0.5);
-		margin: 0;
-		line-height: 1.2;
-		padding: 5px;
 	}
 }
