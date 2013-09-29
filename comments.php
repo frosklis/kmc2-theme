@@ -54,11 +54,13 @@ The comments page for kmc2
 <?php endif; ?>
 
 
-<?php if ( comments_open() ) : ?>
+<?php if ( comments_open() ) : 
+	if (0 > 1) comment_form(); // This is what should be used instead of the <section> below, it is recommended by the guidelines. However I still have to tweak it
+?>
 
 <section id="respond" class="respond-form">
 
-	<h3 id="comment-form-title" class="h2"><?php comment_form_title( __('Leave a Reply', 'kmc2theme'), __('Leave a Reply to %s', 'kmc2theme' )); ?></h3>
+	<h3 id="comment-form-title"><?php comment_form_title( __('Leave a Reply', 'kmc2theme'), __('Leave a Reply to %s', 'kmc2theme' )); ?></h3>
 
 	<div id="cancel-comment-reply">
 		<p class="small"><?php cancel_comment_reply_link(); ?></p>
