@@ -19,14 +19,15 @@ class KmC2_Theme_Customize {
     */
    public static function register ( $wp_customize ) {
       //1. Define a new section (if desired) to the Theme Customizer
-      $wp_customize->add_section( 'colors', 
-         array(
-            'title' => __( 'Colors', 'kmc2theme' ), //Visible title of section
-            'priority' => 35, //Determines what order this appears in
-            'capability' => 'edit_theme_options', //Capability needed to tweak
-            'description' => __('Allows you to customize some example settings for MyTheme.', 'kmc2theme'), //Descriptive tooltip
-         ) 
-      );
+    
+      // $wp_customize->add_section( 'colors', 
+      //    array(
+      //       'title' => __( 'Colors', 'kmc2theme' ), //Visible title of section
+      //       'priority' => 35, //Determines what order this appears in
+      //       'capability' => 'edit_theme_options', //Capability needed to tweak
+      //       'description' => __('Allows you to customize some example settings for MyTheme.', 'kmc2theme'), //Descriptive tooltip
+      //    ) 
+      // );
 
       $wp_customize->add_section( 'accounts', 
          array(
@@ -38,14 +39,14 @@ class KmC2_Theme_Customize {
       );
 
       //2. Register new settings to the WP database...
-      $wp_customize->add_setting( 'normal_textcolor', //Give it a SERIALIZED name (so all theme settings can live under one db record)
-         array(
-            'default' => '#565656', //Default setting/value to save
-            'type' => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
-            'transport' => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-         ) 
-      );  
+      // $wp_customize->add_setting( 'normal_textcolor', //Give it a SERIALIZED name (so all theme settings can live under one db record)
+      //    array(
+      //       'default' => '#565656', //Default setting/value to save
+      //       'type' => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+      //       'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+      //       'transport' => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+      //    ) 
+      // );  
       $wp_customize->add_setting( 'kmc2_twitter_user', //Give it a SERIALIZED name (so all theme settings can live under one db record)
          array(
             'type' => 'option', //Is this an 'option' or a 'theme_mod'?
@@ -55,17 +56,17 @@ class KmC2_Theme_Customize {
       );      
             
       //3. Finally, we define the control itself (which links a setting to a section and renders the HTML controls)...
-      $wp_customize->add_control( new WP_Customize_Color_Control( //Instantiate the color control class
-         $wp_customize, //Pass the $wp_customize object (required)
-         'kmc2_options_normal_textcolor', //Set a unique ID for the control
-         array(
-            'label' => __( 'Text Color', 'kmc2theme' ), //Admin-visible name of the control
-            'section' => 'colors', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
-            'settings' => 'normal_textcolor', //Which setting to load and manipulate (serialized is okay)
-            'priority' => 10, //Determines the order this control appears in for the specified section
-         ) 
-      ) );
-      
+      // $wp_customize->add_control( new WP_Customize_Color_Control( //Instantiate the color control class
+      //    $wp_customize, //Pass the $wp_customize object (required)
+      //    'kmc2_options_normal_textcolor', //Set a unique ID for the control
+      //    array(
+      //       'label' => __( 'Text Color', 'kmc2theme' ), //Admin-visible name of the control
+      //       'section' => 'colors', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
+      //       'settings' => 'normal_textcolor', //Which setting to load and manipulate (serialized is okay)
+      //       'priority' => 10, //Determines the order this control appears in for the specified section
+      //    ) 
+      // ) );
+
       $wp_customize->add_control( 'themename_color_scheme', array(
         'label'      => __( 'Twitter username', 'kmc2theme' ),
         'section'    => 'accounts',
