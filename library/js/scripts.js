@@ -161,9 +161,6 @@ jQuery(document).ready(function($) {
 // lazyload
 // ----------------------------------------------------
 jQuery(document).ready(function($) {
-    console.log("hola");
-    console.log(image_sizes_vars);
-
     var getImageVersion = function (imageContainer) {
         var w = jQuery(imageContainer).width() * window.devicePixelRatio;
 
