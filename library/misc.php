@@ -114,6 +114,8 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
                 <p class="byline vcard"><?php
                 printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
                 ?></p>
+                
+                <?php wp_link_pages('before=<div id="page-links">&after=</div>'); ?>
         
             </header> <!-- end article header -->
 
@@ -140,6 +142,7 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
             </section> <!-- end article section -->
         
             <footer class="article-footer">
+                <?php wp_link_pages('before=<div id="page-links">&after=</div>'); ?>
                 <p class="tags"><?php the_tags('<span class="tags-title">' . __('Tags:', 'kmc2theme') . '</span> ', ', ', ''); ?></p>
 
             </footer> <!-- end article footer -->
