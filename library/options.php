@@ -27,12 +27,28 @@ class KmC2_Theme_Customize {
             'description' => __('Allows you to customize some example settings for MyTheme.', 'kmc2theme'), //Descriptive tooltip
          ) 
       );
-      
+
+      $wp_customize->add_section( 'accounts', 
+         array(
+            'title' => __( 'Accounts', 'kmc2theme' ), //Visible title of section
+            'priority' => 35, //Determines what order this appears in
+            'capability' => 'edit_theme_options', //Capability needed to tweak
+            'description' => __('Set social media user names to customize follow links.', 'kmc2theme'), //Descriptive tooltip
+         ) 
+      );
+
       //2. Register new settings to the WP database...
       $wp_customize->add_setting( 'normal_textcolor', //Give it a SERIALIZED name (so all theme settings can live under one db record)
          array(
             'default' => '#565656', //Default setting/value to save
             'type' => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport' => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+      );  
+      $wp_customize->add_setting( 'kmc2_twitter_user', //Give it a SERIALIZED name (so all theme settings can live under one db record)
+         array(
+            'type' => 'option', //Is this an 'option' or a 'theme_mod'?
             'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
             'transport' => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
          ) 
@@ -49,6 +65,14 @@ class KmC2_Theme_Customize {
             'priority' => 10, //Determines the order this control appears in for the specified section
          ) 
       ) );
+      
+      $wp_customize->add_control( 'themename_color_scheme', array(
+        'label'      => __( 'Twitter username', 'kmc2theme' ),
+        'section'    => 'accounts',
+        'settings'   => 'kmc2_twitter_user',
+        'type'       => 'text'
+        ) 
+      );
       
       //4. We can also change built-in settings by modifying properties. For instance, let's make some stuff use live preview JS...
       $wp_customize->get_setting( 'blogname' )->transport = 'postMessage';

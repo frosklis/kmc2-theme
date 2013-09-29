@@ -5,7 +5,7 @@
 						<div class="socialbar aligncenter">
 							<p>
 							    <a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php echo(get_stylesheet_directory_uri()); ?>/images/rss.png" height="32px" width="32px"></a>
-							    <a href="https://twitter.com/_kmc2"><img src="<?php echo(get_stylesheet_directory_uri()); ?>/images/twitter-bird-dark-bgs.png" height="32px" width="32px"></a>
+							    <a href="<?php echo('https://twitter.com/' . get_option('kmc2_twitter_user', '' )); ?>"><img src="<?php echo(get_stylesheet_directory_uri()); ?>/images/twitter-bird-dark-bgs.png" height="32px" width="32px"></a>
 								<a href="//plus.google.com/102083218914804503792?prsrc=3"
 								   rel="publisher" target="_top"><img src="<?php echo(get_stylesheet_directory_uri()); ?>/images/gplus.png" height="32px" width="32px">
 								</a>
