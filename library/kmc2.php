@@ -17,67 +17,8 @@ right up top and clean.
 *********************/
 
 
-if ( ! isset( $content_width ) ) $content_width = 1980;
-
-// we're firing all out initial functions at the start
-add_action('after_setup_theme','kmc2_ahoy', 15);
-
-function kmc2_ahoy() {
-
-
-    // launching operation cleanup
-    add_action('init', 'kmc2_head_cleanup');
-    
-    add_action('init', 'tipo_taxonomy' );
-
-
-    // Set featured image
-	add_action('the_post', 'autoset_featured');
-	add_action('save_post', 'autoset_featured');
-	add_action('draft_to_publish', 'autoset_featured');
-	add_action('new_to_publish', 'autoset_featured');
-	add_action('pending_to_publish', 'autoset_featured');
-	add_action('future_to_publish', 'autoset_featured');
-
-    // remove WP version from RSS
-    add_filter('the_generator', 'kmc2_rss_version');
-    // remove pesky injected css for recent comments widget
-    add_filter( 'wp_head', 'kmc2_remove_wp_widget_recent_comments_style', 1 );
-    // clean up comment styles in the head
-    add_action('wp_head', 'kmc2_remove_recent_comments_style', 1);
-    // clean up gallery output in wp
-    add_filter('gallery_style', 'kmc2_gallery_style');
-
-    // ie conditional wrapper
-    add_filter( 'style_loader_tag', 'kmc2_ie_conditional', 10, 2 );
-
-    // enqueue base scripts and styles
-    add_action('wp_enqueue_scripts', 'kmc2_scripts_and_styles', 999);
-
-    // launching this stuff after theme setup
-    add_action('after_setup_theme','kmc2_theme_support');
-    // adding sidebars to Wordpress (these are created in functions.php)
-    add_action( 'widgets_init', 'kmc2_register_sidebars' );
-    // adding the kmc2 search form (created in functions.php)
-    add_filter( 'get_search_form', 'kmc2_wpsearch' );
-
-    // cleaning up random code around images
-    add_filter('the_content', 'kmc2_filter_ptags_on_images');
-
-    // no mostrar admin bar
-    add_filter('show_admin_bar', '__return_false' );
-
-	//add_filter('wp_nav_menu_items','add_social_bar_to_menu', 10, 2);
-
-
-	add_filter( 'wp_nav_menu_items', 'add_logo_to_menu', 10, 2 );
-
-
-} /* end kmc2 ahoy */
-
-
 function custom_excerpt_length( $length ) {
-	return 150;
+	return 60;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
@@ -189,42 +130,6 @@ function kmc2_gallery_style($css) {
   return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 }
 
-
-/*********************
-SCRIPTS & ENQUEUEING
-*********************/
-
-// loading modernizr and jquery, and reply script
-function kmc2_scripts_and_styles() {
-
-	// Sintaxis: 
-	// wp_register_script( $handle, $src, $deps, $ver, $in_footer ); 
-
-	if (!is_admin()) {
-
-	    // register main stylesheet
-	    wp_register_style( 'kmc2-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
-
-	    // ie-only style sheet
-	    wp_register_style( 'kmc2-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
-
-	    // comment reply script for threaded comments
-	    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
-	    	wp_enqueue_script( 'comment-reply' );
-	    }
-
-	    //adding scripts file in the footer
-	    wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
-
-
-	    // enqueue styles and scripts
-	    wp_enqueue_style('kmc2-stylesheet');
-	    wp_enqueue_style('kmc2-ie-only');
-	    wp_enqueue_script('jquery');
-	    wp_enqueue_script('kmc2-js');
-
-	}
-}
 
 // adding the conditional wrapper around ie stylesheet
 // source: http://code.garyjones.co.uk/ie-conditional-style-sheets-wordpress/
@@ -441,7 +346,7 @@ function kmc2_get_the_author_posts_link() {
 	$link = sprintf(
 		'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
 		get_author_posts_url( $authordata->ID, $authordata->user_nicename ),
-		esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ), // No further l10n needed, core will take care of this one
+		esc_attr( sprintf( __( 'Posts by %s', 'kmc2theme' ), get_the_author() ) ), // No further l10n needed, core will take care of this one
 		get_the_author()
 	);
 	return $link;

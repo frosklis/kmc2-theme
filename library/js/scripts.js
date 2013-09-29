@@ -47,6 +47,7 @@ jQuery(document).ready(function($) {
     }
     
     size_dependent_actions();
+
 }); /* end of as page load scripts */
 
 
@@ -114,8 +115,108 @@ function size_dependent_actions() {
         pad = Math.floor((main_w - 480) * 54 / (1024 - 480));
     }
 
-    jQuery(".post, .page").css({
+    jQuery("body .post, body .page").css({
         paddingLeft: pad + 'px',
         paddingRight: pad + 'px'
     });
 }
+
+
+
+jQuery(document).ready(function($) {
+// jQuery(window).load(function($) {
+    var container_homepage = document.querySelector("#home-categories");
+
+    if (container_homepage != null) {
+
+        var msnry_homepage = new Masonry( container_homepage, {
+          // options
+          itemSelecor: ".home-category",
+          isFitWidth: true,
+          gutter: 30,
+          isOriginLeft: true,
+          animate: true,
+        });// code here
+
+    }
+
+    var container_category_page = document.querySelector(".article-list");
+
+    if (container_category_page != null ) {
+        
+        var msnry_category_page = new Masonry( container_category_page, {
+          // options
+          itemSelecor: "article",
+          isFitWidth: true,
+          gutter: 30,
+          isOriginLeft: true,
+          animate: true,
+        });// code here
+
+    }
+});
+
+
+// ----------------------------------------------------
+// lazyload
+// ----------------------------------------------------
+jQuery(document).ready(function($) {
+    var getImageVersion = function (imageContainer) {
+        var w = jQuery(imageContainer).width() * window.devicePixelRatio;
+
+        for (k in image_sizes_vars) {
+            if (w <= image_sizes_vars[k]) return k;
+        }
+        
+        return 'original';
+    };
+
+    var lazyloadImage = function (imageContainer) {
+
+        var imageVersion = getImageVersion(imageContainer);
+        // var imageVersion = 'small';
+
+        if (!imageContainer || !imageContainer.children) {
+            return;
+        }
+        var img = imageContainer.children[0];
+        
+        if (img) {
+            var imgSRC = img.getAttribute("data-src-" + imageVersion);
+
+            var imageCaption = img.getAttribute("data-caption");
+            var imageTitle = img.getAttribute("data-title");
+
+            if (imgSRC) {
+                var imageElement = new Image();
+                imageElement.src = imgSRC;
+                imageElement.setAttribute("alt", imageTitle ? imageTitle : "");
+                imageContainer.appendChild(imageElement);
+                imageContainer.removeChild(imageContainer.children[0]);
+
+
+                // Add the image caption
+                if (imageCaption){
+                    var d = document.createElement("div");
+                    d.className = "legend";
+                    var text = document.createTextNode(imageCaption);
+                    d.appendChild(text);
+                    imageContainer.appendChild(d);
+                }
+                // Add the image title
+                if (imageTitle){
+                    var d = document.createElement("div");
+                    d.className = "title";
+                    var text = document.createTextNode(imageTitle);
+                    d.appendChild(text);
+                    imageContainer.appendChild(d);
+                }
+            }
+        }
+    },
+    lazyLoadedImages = document.getElementsByClassName("img-container");
+
+    for (var i = 0; i < lazyLoadedImages.length; i++) {
+        lazyloadImage(lazyLoadedImages[i]);
+    }
+});

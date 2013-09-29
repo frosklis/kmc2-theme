@@ -81,12 +81,12 @@ The comments page for kmc2
 	<ul id="comment-form-elements" class="clearfix">
 		
 		<li>
-		  <label for="author"><?php _e("Name", "kmc2theme"); ?> <?php if ($req) _e("(required)"); ?></label>
+		  <label for="author"><?php _e("Name", "kmc2theme"); ?> <?php if ($req) _e("(required)", "kmc2theme"); ?></label>
 		  <input type="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" placeholder="<?php _e('Your Name*', 'kmc2theme'); ?>" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
 		</li>
 		
 		<li>
-		  <label for="email"><?php _e("Mail", "kmc2theme"); ?> <?php if ($req) _e("(required)"); ?></label>
+		  <label for="email"><?php _e("Mail", "kmc2theme"); ?> <?php if ($req) _e("(required)", "kmc2theme"); ?></label>
 		  <input type="email" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" placeholder="<?php _e('Your E-Mail*', 'kmc2theme'); ?>" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
 		  <small><?php _e("(will not be published)", "kmc2theme"); ?></small>
 		</li>
