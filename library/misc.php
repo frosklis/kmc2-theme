@@ -25,10 +25,11 @@ function kmc2_get_attachment_image($image_id) {
 
     $queried_post = get_post($image_id);
     $caption = $queried_post->post_excerpt;
+    $title = $queried_post->post_title;
 
     $aux = wp_get_attachment_image_src( $image_id, 'full');
     $ratio = 100 * $aux[2] / $aux[1]; //height / width 
-    $out = "<div class='wp-caption' style='padding-bottom: {$ratio}%;'><noscript";
+    $out = "<div class='img-container' style='padding-bottom: {$ratio}%;'><noscript";
 
     $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail');
 
@@ -42,7 +43,7 @@ function kmc2_get_attachment_image($image_id) {
     $out .= " data-src-img-id='{$image_id}'";
 
     // Image and caption
-    $out .= " data-title='".get_the_title($image_id)."'";
+    $out .= " data-title='".$title."'";
     $out .= " data-caption='".$caption."'";
 
     // fallback if javascript is not used

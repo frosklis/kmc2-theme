@@ -184,27 +184,33 @@ jQuery(document).ready(function($) {
         if (img) {
             var imgSRC = img.getAttribute("data-src-" + imageVersion);
 
-            var altTxt = img.getAttribute("data-alt");
+            var imageCaption = img.getAttribute("data-caption");
+            var imageTitle = img.getAttribute("data-title");
+
             if (imgSRC) {
                 var imageElement = new Image();
                 imageElement.src = imgSRC;
-                imageElement.setAttribute("alt", altTxt ? altTxt : "");
+                imageElement.setAttribute("alt", imageTitle ? imageTitle : "");
                 imageContainer.appendChild(imageElement);
                 imageContainer.removeChild(imageContainer.children[0]);
 
 
                 // Add the image caption
-                var d = document.createElement("div");
-                d.className = "wp-caption";
-
-                texto = document.createTextNode(img.getAttribute("data-caption"));
-
-                d.appendChild(texto);
-
-                imageContainer.appendChild(d);
-
-
-
+                if (imageCaption){
+                    var d = document.createElement("div");
+                    d.className = "legend";
+                    var text = document.createTextNode(imageCaption);
+                    d.appendChild(text);
+                    imageContainer.appendChild(d);
+                }
+                // Add the image title
+                if (imageTitle){
+                    var d = document.createElement("div");
+                    d.className = "title";
+                    var text = document.createTextNode(imageTitle);
+                    d.appendChild(text);
+                    imageContainer.appendChild(d);
+                }
             }
         }
     },
