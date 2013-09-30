@@ -28,7 +28,7 @@
 				<?php
 				kmc2_main_nav(); 
 				?>
-				<a href="#" id="pull">Menú</a>
+				<a href="#" id="pull"><?php _e('Menu', 'kmc2theme'); ?></a>
 			</nav>
 		</header>
 
