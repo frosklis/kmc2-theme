@@ -442,7 +442,8 @@ function kmc2_get_the_author_posts_link() {
 4. library/translation/translation.php
     - adding support for other languages
 */
-require_once('library/translation/translation.php'); 
+// require_once('library/translation/translation.php'); 
+load_theme_textdomain( 'kmc2theme', get_template_directory() .'/library/translation' );
 /*
 5. library/options.php
     - adds options to the wordpress dashboard
