@@ -155,8 +155,10 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
     if ($prev_next_links) {
         echo('</div><!-- article-list -->');
         echo('<div class="wp-prev-next">'); 
-            previous_post_link('<div class="prev-link">  ≪ %link</div>');
-            next_post_link('<div class="next-link">%link ≫  </div>'); 
+            previous_post_link('<div class="prev-link">%link</div>', 
+                '<img src="' . get_stylesheet_directory_uri() . '/images/free-icon-set-gemicon/PNG/16x16/row 8/4.png"  width="16" height="16">' . "%title");
+            next_post_link('<div class="next-link">%link</div>', 
+                "%title" . '<img src="' . get_stylesheet_directory_uri() . '/images/free-icon-set-gemicon/PNG/16x16/row 8/5.png"  width="16" height="16">'); 
         echo('</div>');
     }
     ?>
