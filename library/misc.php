@@ -108,7 +108,7 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
                 <h2>
                     <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
                     <div class="edit-entry-link">
-                        <?php edit_post_link('<img src="' . get_stylesheet_directory_uri() . '/images/free-icon-set-gemicon/PNG/16x16/row 10/11.png"  width="16" height="16">'); ?>
+                        <?php edit_post_link('<img src="' . get_stylesheet_directory_uri() . '/images/icons/edit_16.png"  width="16" height="16">'); ?>
                     </div>
                 </h2>
                 <p class="byline vcard"><?php
@@ -156,9 +156,9 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
         echo('</div><!-- article-list -->');
         echo('<div class="wp-prev-next">'); 
             previous_post_link('<div class="prev-link">%link</div>', 
-                '<img src="' . get_stylesheet_directory_uri() . '/images/free-icon-set-gemicon/PNG/16x16/row 8/4.png"  width="16" height="16">' . "%title");
+                '<img src="' . get_stylesheet_directory_uri() . '/images/icons/arrow_left_16.png"  width="16" height="16">' . "%title");
             next_post_link('<div class="next-link">%link</div>', 
-                "%title" . '<img src="' . get_stylesheet_directory_uri() . '/images/free-icon-set-gemicon/PNG/16x16/row 8/5.png"  width="16" height="16">'); 
+                "%title" . '<img src="' . get_stylesheet_directory_uri() . '/images/icons/arrow_right_16.png"  width="16" height="16">'); 
         echo('</div>');
     }
     ?>
