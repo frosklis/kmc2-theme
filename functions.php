@@ -93,8 +93,6 @@ function kmc2_ahoy() {
             'footer-links' => __( 'Footer Links', 'kmc2theme' ) // secondary nav in footer
         )
     );
-
-
 } /* end kmc2 ahoy */
 add_action('after_setup_theme','kmc2_ahoy', 15);
 
@@ -428,13 +426,6 @@ load_theme_textdomain( 'kmc2theme', get_template_directory() .'/library/translat
 
 require_once('library/options.php');
 
-function edit_image_html($html, $attachment_id, $attachment) {
-    $html = $html . " attachment_id: " . $attachment_id . " attachment: " . $attachment;
-
-    $html = kmc2_get_attachment_image($attachment_id);
-    return $html;
-}
-add_filter('image_send_to_editor', 'edit_image_html', 10, 3);
 
 /************* ACTIVE SIDEBARS ********************/
 

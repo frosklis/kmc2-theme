@@ -12,6 +12,22 @@ function kmc2_image_sizes () {
 
 }
 
+// kmc2 image shortcode
+function kmc2_image_shortcode( $atts ) {
+    extract( shortcode_atts( array(
+        'id' => '',
+    ), $atts, 'image' ) );
+
+    return kmc2_get_attachment_image($id);
+}
+add_shortcode('image', 'kmc2_image_shortcode');
+
+function edit_image_html($html, $attachment_id, $attachment) {
+    return "[image id='$attachment_id']";
+}
+add_filter('image_send_to_editor', 'edit_image_html', 10, 3);
+
+
 function kmc2_get_attachment_image($image_id) {
 
     // $prueba = wp_get_attachment_metadata( $image_id );
