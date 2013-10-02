@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmc2theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-10 17:13+0100\n"
+"POT-Creation-Date: 2013-10-02 20:31+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Claudio Noguera <claudio.noguera@gmail.com>\n"
 "Language-Team: fulgor <frag.fulgor@gmail.com>\n"
@@ -26,34 +26,30 @@ msgstr ""
 "<span class=\"author\">%3$s</span>."
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:19
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:150
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:494
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:17
 msgid "F jS, Y"
 msgstr "F jS, Y"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:43
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:264
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:36
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:190
 msgid "&laquo; Older Entries"
 msgstr "&laquo; Entradas anteriores"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:44
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:265
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:37
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:191
 msgid "Newer Entries &raquo;"
 msgstr "Entradas más modernas &raquo;"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:53
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:274
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:40
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:46
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:200
 msgid "Oops, Post Not Found!"
 msgstr "¡Entrada no encontrada!"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:56
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:277
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:43
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:49
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:203
 msgid "Uh Oh. Something is missing. Try double checking things."
 msgstr "Oh, oh. Algo falta. Verifica las cosas"
 
@@ -105,136 +101,182 @@ msgstr "<span>%</span> Respuesta"
 msgid "Comments are closed."
 msgstr "Los comentarios están cerrados."
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:61
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:63
 msgid "Leave a Reply"
 msgstr "Deja un comentario"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:61
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:63
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr "Responder a %s"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:69
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:71
 #, php-format
 msgid "You must be %1$slogged in%2$s to post a comment."
 msgstr "Tienes que estar %1$sidentificado%2$s para enviar un comentario."
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:77
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:79
 msgid "Logged in as"
 msgstr "Identificado como"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:77
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:79
 msgid "Log out of this account"
 msgstr "Salir de esta cuenta"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:77
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:79
 msgid "Log out"
 msgstr "Salir"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:77
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:79
 msgid "&raquo;"
 msgstr "&raquo;"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:84
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:86
 msgid "Name"
 msgstr "Nombre"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:84
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:89
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:86
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:91
 msgid "(required)"
 msgstr "(requerido)"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:85
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:87
 msgid "Your Name*"
 msgstr "Tu nombre*"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:89
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:91
 msgid "Mail"
 msgstr "Correo"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:90
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:92
 msgid "Your E-Mail*"
 msgstr "Tu correo electrónico*"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:91
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:93
 msgid "(will not be published)"
 msgstr "(no será publicado)"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:95
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:97
 msgid "Website"
 msgstr "Sitio web"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:96
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:98
 msgid "Got a website?"
 msgstr "¿Tienes una web?"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:103
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:105
 msgid "Your Comment here..."
 msgstr "Tu comentario aquí..."
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:106
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:108
 msgid "Submit"
 msgstr "Enviar"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:111
+#: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:113
 msgid "You can use these tags"
 msgstr "Puedes usar estas etiquetas"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/footer.php:25
-#: /Users/claudio/Dropbox/Web/kmc2-theme/sidebar.php:12
-msgid "Please activate some Widgets."
-msgstr "Por favor active algunos widgets."
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:92
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:287
+msgid "The Main Menu"
+msgstr "Menú Principal"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:86
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:93
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:306
+msgid "Footer Links"
+msgstr "Enlaces del pie"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:105
+msgid " keep reading"
+msgstr "seguir leyendo"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:374
+msgid "First"
+msgstr "Primero"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:391
+msgid "Last"
+msgstr "Último"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:418
+#, php-format
+msgid "Posts by %s"
+msgstr "Entradas de %s"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:436
 msgid "Sidebar 1"
 msgstr "Barra lateral 1"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:87
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:437
 msgid "The first (primary) sidebar."
 msgstr "La barra lateral principal."
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:97
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:447
 msgid "Footer 1"
 msgstr "Pie 1"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:98
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:448
 msgid "The footer"
 msgstr "El pie"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:108
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:458
 msgid "Homepage widgets"
 msgstr "Widgets de la página principal"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:109
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:459
 msgid "These widgets go right below the navbar"
 msgstr "Estos widgets van justo debajo de la barra de navegación"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:118
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:468
 msgid "Category page widgets"
 msgstr "Widgets de la página de categoría"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:119
-#, fuzzy
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:469
 msgid "These widgets go right below the navbar in the category pages"
 msgstr ""
 "Estos widgets van justo debajo de la barra de navegación en las páginas de "
 "categoría"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:149
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:493
 #, php-format
 msgid "<cite class=\"fn\">%s</cite>"
 msgstr "<cite class=\"fn\">%s</cite>"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:151
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:495
 msgid "(Edit)"
 msgstr "(Editar)"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:155
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:499
 msgid "Your comment is awaiting moderation."
 msgstr "Tu comentario está pendiente de moderación"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:215
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:11
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:516
+msgid "Search..."
+msgstr "Buscar…"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/header.php:31
+msgid "Menu"
+msgstr "Menú"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/home.php:46
+#, php-format
+msgid "View all posts in %s"
+msgstr "Ver todas los artículos en %s"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:28
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:161
+msgid "Tags:"
+msgstr "Etiquetas:"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:46
+msgid "This is the error message in the page.php template."
+msgstr "Este es el mensaje de error de la plantilla page.php."
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/sidebar.php:12
+msgid "Please activate some Widgets."
+msgstr "Por favor active algunos widgets."
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:131
 #, php-format
 msgid ""
 "Posted <time class=\"updated\" datetime=\"%1$s\" pubdate>%2$s</time> by "
@@ -245,226 +287,155 @@ msgstr ""
 "<span class=\"author\">%3$s</span> <span class=\"amp\">&</span> en la "
 "categoría %4$s."
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:242
-#: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:28
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:21
-msgid "Tags:"
-msgstr "Etiquetas:"
-
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:280
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:206
 msgid "This is the error message in the display_posts function."
 msgstr "Este es el mensaje de error de la función display_posts"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/home.php:46
-#, php-format
-msgid "View all posts in %s"
-msgstr "Ver todas los artículos en %s"
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/options.php:34
+msgid "Accounts"
+msgstr "Cuentas"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:46
-msgid "This is the error message in the page.php template."
-msgstr "Este es el mensaje de error de la plantilla page.php."
-
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/admin.php:66
-msgid "j F Y @ g:i a"
-msgstr "j F Y @ g:i a"
-
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/admin.php:78
-msgid "Recently on Themble (Customize on admin.php)"
-msgstr "Recientemente en Themble (personalizar en admin.php)"
-
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/admin.php:123
-msgid ""
-"<span id=\"footer-thankyou\">Developed by <a href=\"http://yoursite.com\" "
-"target=\"_blank\">Your Site Name</a></span>. Built using <a href=\"http://"
-"themble.com/kmc2\" target=\"_blank\">kmc2</a>."
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/options.php:37
+msgid "Set social media user names to customize follow links."
 msgstr ""
-"<span id=\"footer-thankyou\">Desarrollado por <a href=\"http://yoursite.com"
-"\" target=\"_blank\">Your Site Name</a></span>. Construido gracias a <a href="
-"\"http://themble.com/kmc2\" target=\"_blank\">kmc2</a>."
+"Introduzca los nombres de usuario de para configurar los vínculos a redes "
+"sociales."
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:24
-msgid "Custom Types"
-msgstr "Tipos personalizados"
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/options.php:71
+msgid "Twitter username"
+msgstr "Usuario de twitter"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:25
-msgid "Custom Post"
-msgstr "Entrada personalizada"
+#~ msgid "j F Y @ g:i a"
+#~ msgstr "j F Y @ g:i a"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:26
-msgid "All Custom Posts"
-msgstr "Todas las entradas personalizadas"
+#~ msgid "Recently on Themble (Customize on admin.php)"
+#~ msgstr "Recientemente en Themble (personalizar en admin.php)"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:27
-msgid "Add New"
-msgstr "Añadir nuevo"
+#~ msgid ""
+#~ "<span id=\"footer-thankyou\">Developed by <a href=\"http://yoursite.com\" "
+#~ "target=\"_blank\">Your Site Name</a></span>. Built using <a href=\"http://"
+#~ "themble.com/kmc2\" target=\"_blank\">kmc2</a>."
+#~ msgstr ""
+#~ "<span id=\"footer-thankyou\">Desarrollado por <a href=\"http://yoursite."
+#~ "com\" target=\"_blank\">Your Site Name</a></span>. Construido gracias a "
+#~ "<a href=\"http://themble.com/kmc2\" target=\"_blank\">kmc2</a>."
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:28
-msgid "Add New Custom Type"
-msgstr "Añadir nuevo tipo personalizado"
+#~ msgid "Custom Types"
+#~ msgstr "Tipos personalizados"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:29
-msgid "Edit"
-msgstr "Editar"
+#~ msgid "Custom Post"
+#~ msgstr "Entrada personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:30
-msgid "Edit Post Types"
-msgstr "Editar typo de entrada"
+#~ msgid "All Custom Posts"
+#~ msgstr "Todas las entradas personalizadas"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:31
-msgid "New Post Type"
-msgstr "Nuevo tipo de entrada"
+#~ msgid "Add New"
+#~ msgstr "Añadir nuevo"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:32
-msgid "View Post Type"
-msgstr "Ver tipo de entrada"
+#~ msgid "Add New Custom Type"
+#~ msgstr "Añadir nuevo tipo personalizado"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:33
-msgid "Search Post Type"
-msgstr "Buscar tipo de entrada"
+#~ msgid "Edit"
+#~ msgstr "Editar"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:34
-msgid "Nothing found in the Database."
-msgstr "Nada encontrado en la base de datos."
+#~ msgid "Edit Post Types"
+#~ msgstr "Editar typo de entrada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:35
-msgid "Nothing found in Trash"
-msgstr "Nada encontrado en la papelera de reciclaje"
+#~ msgid "New Post Type"
+#~ msgstr "Nuevo tipo de entrada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:38
-msgid "This is the example custom post type"
-msgstr "Este es un ejemplo de tipo de entrada personalizada"
+#~ msgid "View Post Type"
+#~ msgstr "Ver tipo de entrada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:75
-msgid "Custom Categories"
-msgstr "Categorías personalizadas"
+#~ msgid "Search Post Type"
+#~ msgstr "Buscar tipo de entrada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:76
-msgid "Custom Category"
-msgstr "Categoría personalizada"
+#~ msgid "Nothing found in the Database."
+#~ msgstr "Nada encontrado en la base de datos."
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:77
-msgid "Search Custom Categories"
-msgstr "Buscar en categorías personalizadas"
+#~ msgid "Nothing found in Trash"
+#~ msgstr "Nada encontrado en la papelera de reciclaje"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:78
-msgid "All Custom Categories"
-msgstr "Todas las categorias personalizadas"
+#~ msgid "This is the example custom post type"
+#~ msgstr "Este es un ejemplo de tipo de entrada personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:79
-msgid "Parent Custom Category"
-msgstr "Categoría personalizada padre"
+#~ msgid "Custom Categories"
+#~ msgstr "Categorías personalizadas"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:80
-msgid "Parent Custom Category:"
-msgstr "Categoría personalizada padre:"
+#~ msgid "Custom Category"
+#~ msgstr "Categoría personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:81
-msgid "Edit Custom Category"
-msgstr "Editar categoría personalizada"
+#~ msgid "Search Custom Categories"
+#~ msgstr "Buscar en categorías personalizadas"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:82
-msgid "Update Custom Category"
-msgstr "Actualizar categoría personalizada"
+#~ msgid "All Custom Categories"
+#~ msgstr "Todas las categorias personalizadas"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:83
-msgid "Add New Custom Category"
-msgstr "Añadir nueva categoría personalizada"
+#~ msgid "Parent Custom Category"
+#~ msgstr "Categoría personalizada padre"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:84
-msgid "New Custom Category Name"
-msgstr "Nuevo nombre de categoría personalizada"
+#~ msgid "Parent Custom Category:"
+#~ msgstr "Categoría personalizada padre:"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:97
-msgid "Custom Tags"
-msgstr "Etiquetas personalizadas"
+#~ msgid "Edit Custom Category"
+#~ msgstr "Editar categoría personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:98
-msgid "Custom Tag"
-msgstr "Etiqueta personalizada"
+#~ msgid "Update Custom Category"
+#~ msgstr "Actualizar categoría personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:99
-msgid "Search Custom Tags"
-msgstr "Buscar entiqueta personalizada"
+#~ msgid "Add New Custom Category"
+#~ msgstr "Añadir nueva categoría personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:100
-msgid "All Custom Tags"
-msgstr "Todas las etiquetas personalizadas"
+#~ msgid "New Custom Category Name"
+#~ msgstr "Nuevo nombre de categoría personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:101
-msgid "Parent Custom Tag"
-msgstr "Etiqueta personalizada padre"
+#~ msgid "Custom Tags"
+#~ msgstr "Etiquetas personalizadas"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:102
-msgid "Parent Custom Tag:"
-msgstr "Etiqueta personalizada padre"
+#~ msgid "Custom Tag"
+#~ msgstr "Etiqueta personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:103
-msgid "Edit Custom Tag"
-msgstr "Editar etiqueta personalizada"
+#~ msgid "Search Custom Tags"
+#~ msgstr "Buscar entiqueta personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:104
-msgid "Update Custom Tag"
-msgstr "Actualizar etiqueta personalizada"
+#~ msgid "All Custom Tags"
+#~ msgstr "Todas las etiquetas personalizadas"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:105
-msgid "Add New Custom Tag"
-msgstr "Añadir nueva etiqueta personalizada"
+#~ msgid "Parent Custom Tag"
+#~ msgstr "Etiqueta personalizada padre"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/custom-post-type.php:106
-msgid "New Custom Tag Name"
-msgstr "Nuevo nombre de etiqueta personalizada"
+#~ msgid "Parent Custom Tag:"
+#~ msgstr "Etiqueta personalizada padre"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:85
-msgid " keep reading"
-msgstr "seguir leyendo"
+#~ msgid "Edit Custom Tag"
+#~ msgstr "Editar etiqueta personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:287
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:313
-msgid "The Main Menu"
-msgstr "Menú Principal"
+#~ msgid "Update Custom Tag"
+#~ msgstr "Actualizar etiqueta personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:288
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:332
-msgid "Footer Links"
-msgstr "Enlaces del pie"
+#~ msgid "Add New Custom Tag"
+#~ msgstr "Añadir nueva etiqueta personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:400
-msgid "First"
-msgstr "Primero"
+#~ msgid "New Custom Tag Name"
+#~ msgstr "Nuevo nombre de etiqueta personalizada"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:417
-msgid "Last"
-msgstr "Último"
+#~ msgid "Colors"
+#~ msgstr "Colores"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/kmc2.php:444
-#, php-format
-msgid "Posts by %s"
-msgstr "Entradas de %s"
+#~ msgid "Allows you to customize some example settings for MyTheme."
+#~ msgstr "Te permite personalizar algunos ajustes de ejemplo para MyTheme"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/options.php:24
-msgid "Colors"
-msgstr "Colores"
+#~ msgid "Text Color"
+#~ msgstr "Color del texto"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/options.php:27
-msgid "Allows you to customize some example settings for MyTheme."
-msgstr "Te permite personalizar algunos ajustes de ejemplo para MyTheme"
-
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/options.php:46
-msgid "Text Color"
-msgstr "Color del texto"
-
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/the_loop.php:52
-msgid "This is the error message in the index.php template."
-msgstr "Este es el mensaje de error de la plantilla index.php."
+#~ msgid "This is the error message in the index.php template."
+#~ msgstr "Este es el mensaje de error de la plantilla index.php."
 
 #~ msgid "Search for:"
 #~ msgstr "Buscar por:"
 
 #~ msgid "entries"
 #~ msgstr "artículos"
-
-#~ msgid "Search this blog..."
-#~ msgstr "Buscar en el sitio…"
 
 #~ msgid "This is the error message in the archive.php template."
 #~ msgstr "Este es el mensaje de error de archive.php."

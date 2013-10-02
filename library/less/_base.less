@@ -120,6 +120,43 @@ article li {
 	width: 100%;
 	z-index: 1;
 	background-color: @black;
+
+	.search {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: @header-navbar-height;
+		#searchform {
+			position: absolute;
+			right: 20px;
+		}
+		input {
+			border: none;
+		}
+		.search-field {
+			background-color: transparent;
+			background-image: url('../../images/icons/search_white_64.png');
+			background-repeat: no-repeat;
+			background-size: 16px 16px;
+			background-position: calc(100% - 4px) 7px;
+			padding-right: 34px;
+			border: none;
+			width: 0;
+			height: @header-navbar-height;
+			cursor: pointer;
+
+			transition: width 400ms ease, background 400ms ease;
+	
+			&:focus {
+				background-color: #fff;
+				background-image: url('../../images/icons/search_black_64.png');
+				border: 2px solid #c3c0ab;
+				cursor: text;
+				outline: 0;
+				width: @searchform-width;
+			}
+		}
+	}
 }
 
 /*********************
@@ -1273,6 +1310,7 @@ header {
 .img-container {
 	position: relative;
 	height: 0;
+	max-height: 100%;
 	overflow: hidden;
 	margin-top: 4px;
 	margin-bottom: 4px;
