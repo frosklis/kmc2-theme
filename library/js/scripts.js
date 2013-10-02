@@ -92,7 +92,7 @@ jQuery(function() {
         menuHeight  = menu.height();  
   
     jQuery(pull).on('click', function(e) {
-        console.log("he hecho click");
+        // console.log("he hecho click");
         e.preventDefault();  
         menu.slideToggle();  
     });  
@@ -163,8 +163,14 @@ jQuery(document).ready(function($) {
 jQuery(document).ready(function($) {
     var getImageVersion = function (imageContainer) {
         var w = jQuery(imageContainer).width() * window.devicePixelRatio;
+        var h = jQuery(imageContainer).height() * window.devicePixelRatio;
+        var padding = parseFloat(jQuery(imageContainer).css('padding-bottom')) * window.devicePixelRatio;
 
+        // console.log('Width: ' + w + '\nHeight: ' + h + '\nPadding: ' + padding);
+        // console.log(padding * 2);
         for (k in image_sizes_vars) {
+            // console.log(k);
+            // console.log(image_sizes_vars[k]);
             if (w <= image_sizes_vars[k]) return k;
         }
         
@@ -173,8 +179,26 @@ jQuery(document).ready(function($) {
 
     var lazyloadImage = function (imageContainer) {
 
+        // If there is overflow, we have to make the parent not narrower
+        // The way this works overflow can only occur when the wrapper is too short,
+        // and if it is short, it is for a reason.
+        imageWrapper = imageContainer.parentNode;
+        if( imageWrapper.offsetHeight < imageWrapper.scrollHeight ||
+            imageWrapper.offsetWidth < imageWrapper.scrollWidth){
+           // your element have overflow
+            // console.log('Hay overflow');
+            var padding = parseFloat(jQuery(imageContainer).css('padding-bottom'));
+            var w = jQuery(imageContainer).width() * window.devicePixelRatio;
+            var h = jQuery(imageContainer).height() * window.devicePixelRatio;
+            // console.log('Width: ' + w + '\nHeight: ' + h + '\nPadding: ' + padding + '\nWrapper height: ' + jQuery(imageWrapper).height());
+            jQuery(imageWrapper).width(jQuery(imageWrapper).height() * w / padding);
+        }
+        else{
+          //your element don't have overflow
+        }
+
         var imageVersion = getImageVersion(imageContainer);
-        // var imageVersion = 'small';
+        // console.log("Escogida: " + imageVersion);
 
         if (!imageContainer || !imageContainer.children) {
             return;
@@ -186,6 +210,8 @@ jQuery(document).ready(function($) {
 
             var imageCaption = img.getAttribute("data-caption");
             var imageTitle = img.getAttribute("data-title");
+
+            // console.log(imageTitle);
 
             if (imgSRC) {
                 var imageElement = new Image();
@@ -219,4 +245,9 @@ jQuery(document).ready(function($) {
     for (var i = 0; i < lazyLoadedImages.length; i++) {
         lazyloadImage(lazyLoadedImages[i]);
     }
+});
+
+
+jQuery(window).load(function() {
+    jQuery('.flexslider').flexslider();
 });

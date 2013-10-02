@@ -7,6 +7,8 @@ function kmc2_image_sizes () {
     add_image_size('small', 320, 180, false );
     update_option('medium_size_w', 640);
     update_option('medium_size_h', 360);
+
+    add_image_size('large', 1600, 900, false );
     update_option('large_size_w', 1600);
     update_option('large_size_h', 900);
 
@@ -45,7 +47,7 @@ function kmc2_get_attachment_image($image_id) {
 
     $aux = wp_get_attachment_image_src( $image_id, 'full');
     $ratio = 100 * $aux[2] / $aux[1]; //height / width 
-    $out = "<div class='img-container' style='padding-bottom: {$ratio}%;'><noscript";
+    $out = "<div class='img-container-wrapper'><div class='img-container' style='padding-bottom: {$ratio}%;'><noscript";
 
     $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail');
 
@@ -64,7 +66,7 @@ function kmc2_get_attachment_image($image_id) {
 
     // fallback if javascript is not used
     $out .= " <img src='" . $path . "'>";
-    $out .= " </noscript></div>";
+    $out .= " </noscript></div></div>";
     return $out;
 }
 
