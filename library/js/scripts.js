@@ -124,7 +124,6 @@ function size_dependent_actions() {
 
 
 jQuery(document).ready(function($) {
-// jQuery(window).load(function($) {
     var container_homepage = document.querySelector("#home-categories");
 
     if (container_homepage != null) {
@@ -154,100 +153,113 @@ jQuery(document).ready(function($) {
         });// code here
 
     }
-});
 
 
 // ----------------------------------------------------
 // lazyload
 // ----------------------------------------------------
-jQuery(document).ready(function($) {
-    var getImageVersion = function (imageContainer) {
-        var w = jQuery(imageContainer).width() * window.devicePixelRatio;
-        var h = jQuery(imageContainer).height() * window.devicePixelRatio;
-        var padding = parseFloat(jQuery(imageContainer).css('padding-bottom')) * window.devicePixelRatio;
 
-        // console.log('Width: ' + w + '\nHeight: ' + h + '\nPadding: ' + padding);
-        // console.log(padding * 2);
-        for (k in image_sizes_vars) {
-            // console.log(k);
-            // console.log(image_sizes_vars[k]);
-            if (w <= image_sizes_vars[k]) return k;
-        }
-        
-        return 'original';
-    };
+    jQuery('.flexslider').flexslider({
+        // before: function(slider) {
+        //         console.log(slider.currentSlide);
+        //         jQuery('.current-slide').text(slider.currentSlide);
+        //     }
+        });
+          
 
-    var lazyloadImage = function (imageContainer) {
+    var startLoadingImages = function () {
+        var getImageVersion = function (imageContainer) {
+    
+            var imageWrapper = imageContainer.parentNode;
+            var padding = parseFloat(imageContainer.style.paddingBottom) / 100; //padding in fraction
+            var w = jQuery(imageWrapper).width();
+            var h = jQuery(imageWrapper).height();
+    
+            // If there is overflow, we have to make the parent narrower
+            // The way this works overflow can only occur when the wrapper is too short,
+            // and if it is short, it is for a reason.
+            var ancestor = jQuery(imageContainer).closest('.flexslider');
+            if (ancestor.length > 0) {
+                ancestor = ancestor[0];
+            }
+    
+            if( imageWrapper.offsetHeight > ancestor.offsetHeight ||
+                imageWrapper.offsetWidth > ancestor.offsetWidth) {
 
-        // If there is overflow, we have to make the parent not narrower
-        // The way this works overflow can only occur when the wrapper is too short,
-        // and if it is short, it is for a reason.
-        imageWrapper = imageContainer.parentNode;
-        if( imageWrapper.offsetHeight < imageWrapper.scrollHeight ||
-            imageWrapper.offsetWidth < imageWrapper.scrollWidth){
-           // your element have overflow
-            // console.log('Hay overflow');
-            var padding = parseFloat(jQuery(imageContainer).css('padding-bottom'));
-            var w = jQuery(imageContainer).width() * window.devicePixelRatio;
-            var h = jQuery(imageContainer).height() * window.devicePixelRatio;
-            // console.log('Width: ' + w + '\nHeight: ' + h + '\nPadding: ' + padding + '\nWrapper height: ' + jQuery(imageWrapper).height());
-            jQuery(imageWrapper).width(jQuery(imageWrapper).height() * w / padding);
-        }
-        else{
-          //your element don't have overflow
-        }
+                w = jQuery(ancestor).height() / padding;  
+                jQuery(imageWrapper).width(w);
 
-        var imageVersion = getImageVersion(imageContainer);
-        // console.log("Escogida: " + imageVersion);
+            }
+    
+            for (k in image_sizes_vars) {  
+                w = w * window.devicePixelRatio;
+                h = w * padding;
 
-        if (!imageContainer || !imageContainer.children) {
-            return;
-        }
-        var img = imageContainer.children[0];
-        
-        if (img) {
-            var imgSRC = img.getAttribute("data-src-" + imageVersion);
-
-            var imageCaption = img.getAttribute("data-caption");
-            var imageTitle = img.getAttribute("data-title");
-
-            // console.log(imageTitle);
-
-            if (imgSRC) {
-                var imageElement = new Image();
-                imageElement.src = imgSRC;
-                imageElement.setAttribute("alt", imageTitle ? imageTitle : "");
-                imageContainer.appendChild(imageElement);
-                imageContainer.removeChild(imageContainer.children[0]);
-
-
-                // Add the image caption
-                if (imageCaption){
-                    var d = document.createElement("div");
-                    d.className = "legend";
-                    var text = document.createTextNode(imageCaption);
-                    d.appendChild(text);
-                    imageContainer.appendChild(d);
+                w2 = image_sizes_vars[k][0];
+                h2 = w2 * padding;
+                if (h2 > image_sizes_vars[k][1]) {
+                    h2 = image_sizes_vars[k][1];
+                    w2 = h2 / padding;
                 }
-                // Add the image title
-                if (imageTitle){
-                    var d = document.createElement("div");
-                    d.className = "title";
-                    var text = document.createTextNode(imageTitle);
-                    d.appendChild(text);
-                    imageContainer.appendChild(d);
+
+                if (w <= w2 && h <= h2) {
+                    return k;
                 }
             }
+            
+            return None;
+        };
+    
+        var lazyloadImage = function (imageContainer) {
+    
+            var imageVersion = getImageVersion(imageContainer);
+            // console.log("Escogida: " + imageVersion);
+    
+            if (!imageContainer || !imageContainer.children) {
+                return;
+            }
+            var img = imageContainer.children[0];
+            
+            if (img) {
+                var imgSRC = img.getAttribute("data-src-" + imageVersion);
+    
+                var imageCaption = img.getAttribute("data-caption");
+                var imageTitle = img.getAttribute("data-title");
+    
+                // console.log(imageTitle);
+    
+                if (imgSRC) {
+                    var imageElement = new Image();
+                    imageElement.src = imgSRC;
+                    imageElement.setAttribute("alt", imageTitle ? imageTitle : "");
+                    imageContainer.appendChild(imageElement);
+                    imageContainer.removeChild(imageContainer.children[0]);
+    
+    
+                    // Add the image caption
+                    if (imageCaption){
+                        var d = document.createElement("div");
+                        d.className = "legend";
+                        var text = document.createTextNode(imageCaption);
+                        d.appendChild(text);
+                        imageContainer.appendChild(d);
+                    }
+                    // Add the image title
+                    // if (imageTitle){
+                    //     var d = document.createElement("div");
+                    //     d.className = "title";
+                    //     var text = document.createTextNode(imageTitle);
+                    //     d.appendChild(text);
+                    //     imageContainer.appendChild(d);
+                    // }
+                }
+            }
+        },
+        lazyLoadedImages = document.getElementsByClassName("img-container");
+    
+        for (var i = 0; i < lazyLoadedImages.length; i++) {
+            lazyloadImage(lazyLoadedImages[i]);
         }
-    },
-    lazyLoadedImages = document.getElementsByClassName("img-container");
-
-    for (var i = 0; i < lazyLoadedImages.length; i++) {
-        lazyloadImage(lazyLoadedImages[i]);
-    }
-});
-
-
-jQuery(window).load(function() {
-    jQuery('.flexslider').flexslider();
+    };
+    startLoadingImages();
 });
