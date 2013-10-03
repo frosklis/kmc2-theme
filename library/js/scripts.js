@@ -207,7 +207,7 @@ jQuery(document).ready(function($) {
                 }
             }
             
-            return None;
+            return 'original';
         };
     
         var lazyloadImage = function (imageContainer) {
