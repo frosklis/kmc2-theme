@@ -1,31 +1,33 @@
 <?php get_header(); ?>
-<div class="flexslider">
-	<?php
-	$args = array(
-			'posts_per_page'   => 5,
-			'offset'           => 0,
-			'category'         => '',
-			'orderby'          => 'rand',
-			'order'            => 'DESC',
-			'include'          => '',
-			'exclude'          => '',
-			'meta_key'         => '',
-			'meta_value'       => '',
-			'post_type'        => 'attachment',
-			'post_mime_type'   => '',
-			'post_parent'      => '',
-			// 'post_status'      => 'publish',
-			'suppress_filters' => true 
-		);
-	$image_list = get_posts($args);
-	echo('<ul class="slides">');
-	foreach ($image_list as $image ) {
-		echo('<li>');
-		echo(kmc2_get_attachment_image($image->ID));
-		echo('</li>');
-	}
-	echo('</ul>');
-	?>
+<div id="home-slideshow">
+	<div class="flexslider">
+		<?php
+		$args = array(
+				'posts_per_page'   => 5,
+				'offset'           => 0,
+				'category'         => '',
+				'orderby'          => 'rand',
+				'order'            => 'DESC',
+				'include'          => '',
+				'exclude'          => '',
+				'meta_key'         => '',
+				'meta_value'       => '',
+				'post_type'        => 'attachment',
+				'post_mime_type'   => '',
+				'post_parent'      => '',
+				// 'post_status'      => 'publish',
+				'suppress_filters' => true 
+			);
+		$image_list = get_posts($args);
+		echo("<ul class='slides'>\n");
+		foreach ($image_list as $image ) {
+			echo('<li>');
+			echo(kmc2_get_attachment_image($image->ID));
+			echo("</li>\n");
+		}
+		echo("</ul>\n");
+		?>
+	</div>
 </div>
 
 <div id="content">

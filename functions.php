@@ -238,10 +238,10 @@ function kmc2_scripts_and_styles() {
         wp_register_script( 'flexslider', get_stylesheet_directory_uri() . '/library/js/jquery.flexslider-min.js', array( 'jquery' ), '', false );
 
         wp_localize_script('kmc2-js', 'image_sizes_vars', array(
-                'thumbnail' => 250,
-                'small' => 320,
-                'medium' => 640,
-                'large' => 1600
+                'thumbnail' => array(150,150),
+                'small' => array(320,180),
+                'medium' => array(640,360),
+                'large' => array(1600,900)
             )
         );
 
