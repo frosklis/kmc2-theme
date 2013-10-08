@@ -175,6 +175,14 @@ jQuery(document).ready(function($) {
             var w = jQuery(imageWrapper).width();
             var h = jQuery(imageWrapper).height();
     
+            // If image is vertical, limit its height
+            var minRatio = 1.1;
+            if (w / h < minRatio) {
+                w = w * 9 / 16;  
+                jQuery(imageWrapper).width(w);
+                h = jQuery(imageWrapper).height();
+            }
+
             // If there is overflow, we have to make the parent narrower
             // The way this works overflow can only occur when the wrapper is too short,
             // and if it is short, it is for a reason.
