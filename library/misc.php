@@ -106,7 +106,8 @@ function echo_first_image( $postID ) {
 }
 
 // Dibujar los posts
-function display_posts ($list_of_posts = null, $resumen = false, $comentarios = false, $prev_next_links = false, $single = false) {
+function display_posts ($list_of_posts = null, $summary = false, $comentarios = false, 
+        $prev_next_links = false, $single = false, $attachment = false) {
 
     if ($single) { ?>
         <div class="article-single"> 
@@ -138,7 +139,7 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
             </header> <!-- end article header -->
 
             <?php
-            if ($resumen) { 
+            if ($summary) { 
             ?>
                 <section class="entry-content clearfix excerpt" onclick="location.href='<?php the_permalink(); ?>';">
                 <?php
@@ -153,6 +154,9 @@ function display_posts ($list_of_posts = null, $resumen = false, $comentarios = 
             ?>
                 <section class="entry-content clearfix">
                 <?php
+                if ($attachment) {
+                    echo (do_shortcode("[image id ='" . get_the_ID() . "']"));
+                }
                 the_content();
             } 
             ?>
