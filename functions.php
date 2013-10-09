@@ -519,6 +519,17 @@ function kmc2_wpsearch($form) {
     return $form;
 } // don't remove this bracket!
 
+
+function add_twitter_contactmethod( $contactmethods ) {
+  // Add Twitter
+  if ( !isset( $contactmethods['twitter'] ) )
+    $contactmethods['twitter'] = 'Twitter';
+
+  return $contactmethods;
+}
+add_filter( 'user_contactmethods', 'add_twitter_contactmethod', 10, 1 );
+
+
 require_once('library/misc.php');
 require_once('library/gallery.php');
 
