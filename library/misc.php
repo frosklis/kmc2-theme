@@ -12,6 +12,9 @@ function kmc2_image_sizes () {
     update_option('large_size_w', 1600);
     update_option('large_size_h', 900);
 
+    add_image_size('size_3', 928, 522, false);
+    add_image_size('size_2', 1088, 612, false);
+
 }
 
 // kmc2 image shortcode
@@ -49,7 +52,7 @@ function kmc2_get_attachment_image($image_id) {
     $ratio = 100 * $aux[2] / $aux[1]; //height / width 
     $out = "<div class='img-container-wrapper'><div class='img-container' style='padding-bottom: {$ratio}%;'><noscript";
 
-    $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail');
+    $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail', 'size_3', 'size_2');
 
     $path = "";
     for ($i = 0; $i < sizeof($sizes); $i++) {

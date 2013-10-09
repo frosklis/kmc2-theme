@@ -241,6 +241,8 @@ function kmc2_scripts_and_styles() {
                 'thumbnail' => array(150,150),
                 'small' => array(320,180),
                 'medium' => array(640,360),
+                'size_3' => array(928,522),
+                'size_2' => array(1088,612),
                 'large' => array(1600,900)
             )
         );
