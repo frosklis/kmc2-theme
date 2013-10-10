@@ -32,26 +32,32 @@ of the styles inside media queries.
     @import "_width_768px.less";
 }
 
-/*
-TABLET & SMALLER LAPTOPS
-This is the average viewing window. So Desktops, Laptops, and
-in general anyone not viewing on a mobile device. Here's where
-you can add resource intensive styles.
-*/
 @media (min-width: 1024px) {
     @import "_width_1024px.less";
 } // end of media query
 
 
-/*
-PRINT STYLESHEET
-Feel free to customize this. Remember to add things that won't make
-sense to print at the bottom. Things like nav, ads, and forms should
-be set to display none.
-*/
-@media print {
-	
+// Slideshow height
+@media (min-device-height: 480px){
+	#home-slideshow {height: 380px;}
+}
+@media (min-device-height: 600px){
+	#home-slideshow {height: 400px;}
+}
+@media (min-device-height: 680px){
+	#home-slideshow {height: 480px;}
+}
+@media (min-device-height: 900px){
+	#home-slideshow {height: 700px;}
+}
+@media (min-device-height: 1024px){
+	#home-slideshow {height: 824px;}
+}
+@media (min-device-height: 1080px){
+	#home-slideshow {height: 880px;}
+}
+
+@media print {	
 	@import "_print.less";
-	
 } // end of media query
 
