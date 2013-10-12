@@ -24,18 +24,23 @@
 	
 	<body <?php body_class(); ?>>
 		<header id="topbar"> 
-			<nav class="nav clearfix wrap">
+			<div class="pullmenu">
+				<span class="icon-list"></span>
+				<?php _e('Menu', 'kmc2theme'); ?>
+			</div>
+			<div class="search">
+				<?php
+				$form = "";
+				echo(kmc2_wpsearch($form));
+				?>
+			</div>
+			<nav class="nav clearfix">
 				<?php
 				kmc2_main_nav(); 
-				?>
-				<a href="#" id="pull"><?php _e('Menu', 'kmc2theme'); ?></a>
-
-
-				<div class="search">
-					<?php
-					$form = "";
-					echo(kmc2_wpsearch($form));
-					?>
+				?> 
+				<div class="pullmenu">
+					<span class="icon-arrow-up"></span>
+					<?php _e('Hide menu', 'kmc2theme'); ?>
 				</div>
 			</nav>
 

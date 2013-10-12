@@ -87,10 +87,12 @@ jQuery(document).ready(function($) {
 })( this );
 
 jQuery(function() {  
-    var pull        = jQuery('#pull');  
-        menu        = jQuery('nav ul');  
+    var pull        = jQuery('.pullmenu');  
+        menu        = jQuery('#topbar nav');  
         menuHeight  = menu.height();  
-  
+    
+
+
     jQuery(pull).on('click', function(e) {
         // console.log("he hecho click");
         e.preventDefault();  

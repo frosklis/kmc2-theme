@@ -116,18 +116,36 @@ article li {
 }
 
 #topbar {
+	text-transform: uppercase;
 	width: 100%;
 	z-index: 1;
 	background-color: @black;
+	color: white;
+	nav {
+		display: none;
+
+	}
+
+	.pullmenu {
+		display: inline-block;
+		height: @header-navbar-height;
+		line-height: 2.2em;
+		.icon-list {
+			font-size: 24px;
+			position: relative;
+			top: 4px;
+		}
+	}
 
 	.search {
-		position: absolute;
-		top: 0;
-		right: 0;
+		z-index: 5;
+		// position: absolute;
+		display: inline-block;
+		float: right;
 		height: @header-navbar-height;
 		#searchform {
-			position: absolute;
-			right: 20px;
+			// position: absolute;
+			margin-right: 20px;
 		}
 		input {
 			border: none;
@@ -255,17 +273,8 @@ header {
 	// margin-bottom: 20px;
 }
 
-/*********************
-07. NAVIGATION STYLES
-*********************/
 
-/*
-all navs have a .nav class applied via
-the wp_menu function; this is so we can
-easily write one group of styles for
-the navs on the site so our css is cleaner
-and more scalable.
-*/
+
 .nav, nav {
 	background-color: @black;
 	color: white;
@@ -279,37 +288,24 @@ and more scalable.
 	a {
 		color: @white;
 		display: inline-block;
-
 		&:hover, &:focus {
-			background-color: @kmc2-blue;
 			color: @white;
 		}
 	}
-
 	ul {
 		color: @white;
 		margin: 0 auto;
 		li {
-			height: @header-navbar-height;
 			a {
 				color: @white;
-
-				&:hover, &:focus {
-					background-color: @kmc2-blue;
-					color: @white;
-				}
 			}
-
-			&:first-child {}
-
-			&:last-child {}
 		}
 	}
 
 	li {
 		float: left;
 		position: relative;
-		max-width: 200px;
+		width: 100%;
 
 		a {
 			display: block;
@@ -318,62 +314,22 @@ and more scalable.
 			height: 100%;
 		}
 
-		&:hover, &:focus {
-			background-color: @kmc2-blue;
-			color: @white;
-			border: none;
-		}
 		
-
-		&:first-child {}
-		&:last-child {}
-
-		
-		// plan your menus and drop-downs wisely.
-		
-		ul.sub-menu,
-		ul.children {
-			background-color: @kmc2-orange;
+		ul.sub-menu {
 			color: @white;
 			opacity: 1;
-			max-width: 200px;
-			position: absolute;
 			display: none;
-			z-index: 8999;
+			max-width: 200px;
 			margin-top: 0px;
 			li {
-				border-top: 1px solid @white;
 				a {
 					padding-left: 10px;
 					display: block;
 					width: 200px;
 					opacity: 1;
 					color: @white;
-					&:hover, &:focus {
-						background-color: @kmc2-blue;
-						color: @white;
-					}
-
 					&:link {}
 				}
-
-				&:first-child {}
-
-				&:last-child {
-
-					a {
-						border-bottom: 0;
-					}
-				}
-
-			}
-
-			// highlight sub-menu current page
-			li.current-menu-item,
-			li.current_page_item,
-			li.current-page-ancestor {
-				background-color: @kmc2-blue;
-				a {}
 			}
 		}
 
@@ -390,17 +346,13 @@ and more scalable.
 	li.current_page_item,
 	li.current-page-ancestor {
 		font-weight: bold;
-		border-bottom: solid 8px @kmc2-orange;//@white;
-		a {}
 	}  // end current highlighters
 
 
 } // end .nav
 
 
-nav a#pull {  
-    display: none;  
-} 
+
 
 /*********************
 08. POSTS & CONTENT STYLES

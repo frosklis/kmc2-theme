@@ -66,3 +66,76 @@ header {
 		}
 	}
 }
+
+
+/*********************
+07. NAVIGATION STYLES
+*********************/
+#topbar {
+	.pullmenu {
+		display: none;
+	}
+	nav {
+		display: block;
+		margin-right: @searchform-width + 20px;
+	}
+}
+
+
+
+.nav, nav {
+	li {
+		max-width: 200px;
+		width: auto;
+		height: @header-navbar-height;
+		&:hover, &:focus {
+			background-color: @kmc2-blue;
+			color: @white;
+			border: none;
+		}
+		ul.sub-menu {
+			background-color: @kmc2-orange;
+			z-index: 4;
+			position: absolute;
+			display: none;
+			li {
+				border-top: 1px solid @white;
+				a {
+					&:hover, &:focus {
+						background-color: @kmc2-blue;
+						color: @white;
+					}
+				}
+				&:last-child {
+					a {
+						border-bottom: 0;
+					}
+				}
+			}
+			// highlight sub-menu current page
+			li.current-menu-item,
+			li.current_page_item,
+			li.current-page-ancestor {
+				border-bottom: 0;
+				background-color: black;
+			}
+		}
+
+		// showing sub-menus
+		&:hover ul {
+			top: auto;
+			display: block;
+		}
+	} // end .menu ul li 
+
+	// highlight current page
+	li.current-menu-item,
+	li.current_page_item,
+	li.current-page-ancestor {
+		border-bottom: solid 8px @kmc2-orange;//@white;
+	}  // end current highlighters
+} // end .nav
+
+
+
+
