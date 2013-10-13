@@ -12,8 +12,6 @@ if ( ! isset( $content_width ) ) $content_width = 480;
 function kmc2_ahoy() {
     // launching operation cleanup
     add_action('init', 'kmc2_head_cleanup');
-    
-    add_action('init', 'tipo_taxonomy' );
 
 
     // Set featured image
@@ -27,7 +25,7 @@ function kmc2_ahoy() {
     // remove WP version from RSS
     add_filter('the_generator', 'kmc2_rss_version');
     // remove pesky injected css for recent comments widget
-    add_filter( 'wp_head', 'kmc2_remove_wp_widget_recent_comments_style', 1 );
+    add_filter('wp_head', 'kmc2_remove_wp_widget_recent_comments_style', 1 );
     // clean up comment styles in the head
     add_action('wp_head', 'kmc2_remove_recent_comments_style', 1);
     // clean up gallery output in wp
@@ -59,10 +57,6 @@ function kmc2_ahoy() {
     // wp thumbnails (sizes handled in functions.php)
     add_theme_support('post-thumbnails');
 
-    // default thumb size
-    set_post_thumbnail_size(400, 400, true);
-    kmc2_image_sizes();
-
     // rss thingy
     add_theme_support('automatic-feed-links');
 
@@ -83,8 +77,6 @@ function kmc2_ahoy() {
     //     )
     // );
 
-    // wp menus
-    add_theme_support( 'menus' );
 
     // registering wp3+ menus
     register_nav_menus(
@@ -93,6 +85,25 @@ function kmc2_ahoy() {
             'footer-links' => __( 'Footer Links', 'kmc2theme' ) // secondary nav in footer
         )
     );
+
+    //
+    // Some of the actions only need to be performed when we are in the admin page
+    // 
+    if (is_admin()) {
+
+        // default thumb size: 7 database queries
+        set_post_thumbnail_size(400, 400, true);
+        kmc2_image_sizes();
+
+
+        // wp menus
+        add_theme_support( 'menus' );
+    
+        // 4 Queries
+        add_action('init', 'tipo_taxonomy' );
+    }
+
+
 } /* end kmc2 ahoy */
 add_action('after_setup_theme','kmc2_ahoy', 15);
 

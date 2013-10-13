@@ -36,6 +36,7 @@
 		<?php 
 		if ( is_active_sidebar( 'homepage_widgets' ) ) dynamic_sidebar( 'homepage_widgets' ); 
 		?>
+		
 		<div id="home-categories">
 
 			<?php
@@ -56,7 +57,7 @@
 				'pad_counts'               => false );
 			$categories = get_categories( $args );
 
-			// shuffle($categories);
+			shuffle($categories);
 
 			$cat_tiles = array();
 
@@ -103,7 +104,7 @@
 
 				array_push($tile, $cad);
 
-
+/*
 				// 2nd tile
 				$cad = '<div class="tile">';
 
@@ -169,7 +170,7 @@
 
 				// Mostrar las tiles
 				//shuffle($tile);
-
+*/
 				foreach ($tile as $t) {
 					echo $t;
 				}

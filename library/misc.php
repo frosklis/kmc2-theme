@@ -326,4 +326,54 @@ function display_pictures($cat_id) {
 
 <?php
 }
+
+/*
+// Autocreate a menu
+function kmc2_automenu() {
+    $menuname = __('KM C2 Default menu', 'kmc2theme');
+
+    // Does the menu exist already?
+    $menu_exists = wp_get_nav_menu_object( $menuname );
+
+    // If it doesn't exist, let's create it.
+    if( !$menu_exists) {
+        $menu_id = wp_create_nav_menu($menuname);
+
+        // Set up default BuddyPress links and add them to the menu.
+        wp_update_nav_menu_item($menu_id, 0, array(
+            'menu-item-title' =>  __('Front page', kmc2theme),
+            'menu-item-classes' => 'home',
+            'menu-item-url' => home_url( '/' ), 
+            'menu-item-status' => 'publish'));
+
+        $id_cat = wp_update_nav_menu_item($menu_id, 0, array(
+            'menu-item-title' =>  __('Categories', kmc2theme),
+            'menu-item-classes' => 'categories',
+            'menu-item-url' => '#', 
+            'menu-item-status' => 'publish'));
+
+        wp_update_nav_menu_item($menu_id, 0, array(
+            'menu-item-title' =>  __('All', kmc2theme),
+            'menu-item-classes' => 'All',
+            'menu-item-url' => '#', 
+            'menu-item-status' => 'publish',
+            'menu-item-parent-id' => $id_cat));
+
+        wp_update_nav_menu_item($menu_id, 0, array(
+            'menu-item-title' =>  __('Blog', kmc2theme),
+            'menu-item-classes' => 'blog',
+            'menu-item-url' => home_url( '/blog/' ), 
+            'menu-item-status' => 'publish'));
+    } else {
+        // Nothing to do yet
+    }
+
+    $items = wp_get_nav_menu_items($menu_exists->term_id); 
+    echo("<p>Menú creado</p>");
+}
+
+if (is_admin()) {
+    kmc2_automenu();    
+}
+*/
 ?>
