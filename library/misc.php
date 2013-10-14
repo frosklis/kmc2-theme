@@ -50,7 +50,7 @@ function kmc2_get_attachment_image($image_id) {
 
     $aux = wp_get_attachment_image_src( $image_id, 'full');
     $ratio = 100 * $aux[2] / $aux[1]; //height / width 
-    $out = "<div class='img-container-wrapper'><div class='img-container' style='padding-bottom: {$ratio}%;'><noscript";
+    $out = "<div class='img-container-wrapper'><div class='img-container not-loaded' style='padding-bottom: {$ratio}%;'><noscript";
 
     $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail', 'size_3', 'size_2');
 

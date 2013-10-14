@@ -259,6 +259,11 @@ function kmc2_scripts_and_styles() {
             )
         );
 
+        wp_localize_script('kmc2-js', 'blog_vars', array(
+                'siteurl' => home_url( '/' )
+            )
+        );
+
         // enqueue styles and scripts
         wp_enqueue_style('kmc2-stylesheet');
         wp_enqueue_style('kmc2-ie-only');
@@ -546,5 +551,6 @@ add_filter( 'user_contactmethods', 'add_twitter_contactmethod', 10, 1 );
 
 require_once('library/misc.php');
 require_once('library/gallery.php');
+require_once('library/ajax.php');
 
 ?>

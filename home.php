@@ -3,7 +3,7 @@
 	<div class="flexslider">
 		<?php
 		$args = array(
-				'posts_per_page'   => 5,
+				'posts_per_page'   => 2,
 				'offset'           => 0,
 				'category'         => '',
 				'orderby'          => 'rand',
