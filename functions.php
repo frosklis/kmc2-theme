@@ -194,6 +194,8 @@ function kmc2_rss_version() { return ''; }
 function kmc2_remove_wp_ver_css_js( $src ) {
     if ( strpos( $src, 'ver=' ) )
         $src = remove_query_arg( 'ver', $src );
+    if ( strpos( $src, 'v=' ) )
+        $src = remove_query_arg( 'ver', $src );
     return $src;
 }
 
@@ -244,7 +246,7 @@ function kmc2_scripts_and_styles() {
 
         //adding scripts file in the footer
         // wp_register_script( $handle, $src, $deps, $ver, $in_footer );
-        wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
+        wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/kmc2-scripts.js', array( 'jquery' ), '', true );
         wp_register_script( 'masonry', get_stylesheet_directory_uri() . '/library/js/masonry.pkgd.min.js', array( 'jquery' ), '', true );
         wp_register_script( 'kmc2-gallery', get_stylesheet_directory_uri() . '/library/js/gallery.js', array( 'masonry' ), '', true );
         wp_register_script( 'flexslider', get_stylesheet_directory_uri() . '/library/js/jquery.flexslider-min.js', array( 'jquery' ), '', true );

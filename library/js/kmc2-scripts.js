@@ -175,3 +175,8 @@ jQuery(document).ready(function($) {
     };
     startLoadingImages();
 });
+
+jQuery( window ).resize(function() {
+    h = jQuery('.flexslider').height();
+    jQuery('.flexslider .img-container-wrapper').css('max-height', h);
+});
