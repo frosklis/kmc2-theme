@@ -44,15 +44,23 @@ function kmc2_get_attachment_image($image_id) {
     // title --> post_title
     // description --> content
 
+    $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail', 'size_3', 'size_2');
+
     $queried_post = get_post($image_id);
     $caption = $queried_post->post_excerpt;
     $title = $queried_post->post_title;
 
+
+    // If we are in the feed tmeplate, we just return the medium sized image
+    if (is_feed()) {
+        $aux = wp_get_attachment_image_src( $image_id, "medium" );
+        $out = "<img src='" . $aux[0] . "' alt='" . $title . "'>";
+        return $out;
+    }
+
     $aux = wp_get_attachment_image_src( $image_id, 'full');
     $ratio = 100 * $aux[2] / $aux[1]; //height / width 
     $out = "<div class='img-container-wrapper'><div class='img-container not-loaded' style='padding-bottom: {$ratio}%;'><noscript";
-
-    $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail', 'size_3', 'size_2');
 
     $path = "";
     for ($i = 0; $i < sizeof($sizes); $i++) {
@@ -68,7 +76,7 @@ function kmc2_get_attachment_image($image_id) {
     $out .= " data-caption='".$caption."'";
 
     // fallback if javascript is not used
-    $out .= " <img src='" . $path . "'>";
+    $out .= " <img src='" . $path . "' alt='" . $title . "'>";
     $out .= " </noscript></div></div>";
     return $out;
 }
