@@ -4,15 +4,15 @@
 
 						<div class="socialbar aligncenter">
 							<p>
-							    <a href="<?php bloginfo('rss2_url'); ?>"><img src="<?php echo(get_stylesheet_directory_uri()); ?>/images/icons/rss-64.png" height="32px" width="32px"></a>
-							    <a href="<?php echo('https://twitter.com/' . get_option('kmc2_twitter_user', '' )); ?>"><img src="<?php echo(get_stylesheet_directory_uri()); ?>/images/icons/twitter-bird-dark-bgs-64.png" height="32px" width="32px"></a>
+							    <a href="<?php bloginfo('rss2_url'); ?>"><span class="icon-feed"></span></a>
+							    <a href="<?php echo('https://twitter.com/' . get_option('kmc2_twitter_user', '' )); ?>"><span class="icon-twitter"></span></a>
 								<a href="//plus.google.com/102083218914804503792?prsrc=3"
-								   rel="publisher" target="_top"><img src="<?php echo(get_stylesheet_directory_uri()); ?>/images/icons/gplus-64.png" height="32px" width="32px">
+								   rel="publisher" target="_top"><span class="icon-googleplus"></span>
 								</a>
 							</p>
 							<p>
 								<?php
-								$form = "";
+								$form = "footersearch";
 								echo(kmc2_wpsearch($form));
 								?>
 							</p>

@@ -533,10 +533,13 @@ function kmc2_comments($comment, $args, $depth) {
 /************* SEARCH FORM LAYOUT *****************/
 
 // Search Form
-function kmc2_wpsearch($form) {
-    $form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
-    <input class="search-field" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="'.__('Search...','kmc2theme').'" />
-    </form>';
+function kmc2_wpsearch($formid) {
+    $form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >';
+    $form .= '<div class="searchwrap"><input class="isexpanded" type="checkbox" id="'.$formid.'" />';
+    $form .= '<input class="search-input" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="'.__('Search...','kmc2theme').'" />';
+    // $form .= '<label for="'.$formid.'" class="icon-search"></label></div>';
+    $form .= '<button class="icon-search"></button></div>';
+    $form .= '</form>';
     return $form;
 } // don't remove this bracket!
 

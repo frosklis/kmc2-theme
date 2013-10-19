@@ -29,9 +29,9 @@
 				<span class="icon-list"></span>
 				<?php _e('Menu', 'kmc2theme'); ?>
 			</div>
-			<div class="search">
+			<div id="topbar-search">
 				<?php
-				$form = "";
+				$form = "headersearch";
 				echo(kmc2_wpsearch($form));
 				?>
 			</div>
