@@ -33,7 +33,7 @@
 						<p><a href="<?php echo home_url(); ?>" rel="nofollow">
 						<?php require('images/svg/c2.svg'); ?>
 						</a></p>
-						<p><a href="<?php echo home_url(); ?>" rel="nofollow">&copy; <?php echo date('Y'); ?> <?php //bloginfo('name'); ?>km c<sup>2</sup><?php //bloginfo('name'); ?></a></p>
+						<!-- <p><a href="<?php echo home_url(); ?>" rel="nofollow">&copy; <?php echo date('Y'); ?> km c<sup>2</sup><?php // bloginfo('name'); ?></a></p> -->
 					</div>
 				</div> <!-- end #inner-footer -->
 				
