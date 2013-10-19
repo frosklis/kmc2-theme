@@ -30,7 +30,9 @@
 	                </nav>
 	                		
 					<div class="source-org copyright aligncenter">
-						<p><a href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php echo(get_stylesheet_directory_uri()); ?>/images/logos/c2-blanco-64x64.png" alt="kmc2-logo"></a></p>
+						<p><a href="<?php echo home_url(); ?>" rel="nofollow">
+						<?php require('images/svg/c2.svg'); ?>
+						</a></p>
 						<p><a href="<?php echo home_url(); ?>" rel="nofollow">&copy; <?php echo date('Y'); ?> <?php //bloginfo('name'); ?>km c<sup>2</sup><?php //bloginfo('name'); ?></a></p>
 					</div>
 				</div> <!-- end #inner-footer -->
