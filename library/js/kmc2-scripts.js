@@ -36,6 +36,8 @@ jQuery(document).ready(function($) {
     }
 
     jQuery('.flexslider').flexslider({
+        controlNav: false,
+        directionNav: false,
         before: function(slider) {
                 if (slider.count < 10) {
                     jQuery.ajax({
