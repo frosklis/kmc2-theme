@@ -10,12 +10,10 @@
 								   rel="publisher" target="_top"><span class="icon-googleplus"></span>
 								</a>
 							</p>
-							<p>
 								<?php
 								$form = "footersearch";
 								echo(kmc2_wpsearch($form));
 								?>
-							</p>
 						</div> 
 						<div class="footer-widgetarea">
 						<?php
