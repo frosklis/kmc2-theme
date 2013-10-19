@@ -3,7 +3,16 @@ kmc2 Scripts File
 Author: Claudio Noguera
 
 */
-
+jQuery(function() {  
+    var pull        = jQuery('.pullmenu');  
+        menu        = jQuery('#topbar nav');  
+        menuHeight  = menu.height();  
+   
+    jQuery(pull).on('click', function(e) {
+        e.preventDefault();  
+        menu.slideToggle();  
+    });  
+});
 jQuery(document).ready(function($) {
     var container_homepage = document.querySelector("#home-categories");
 

@@ -170,7 +170,6 @@ article li {
 			float: right;
 			.search-input {
 				padding-right: 34px;
-				padding-left: 1em;
 				border: none;
 				width: @searchform-width;
 				height: @inputform-height;
@@ -190,6 +189,7 @@ article li {
 			button {
 				color: white;
 				right: 0;
+				top: 0;
 			}
 		}
 	}
@@ -1351,7 +1351,13 @@ header {
 		height: 32px;
 	}
 	.search-input {
-		margin-left: 32px;
+		height: 32px;
+		padding-left: 1em;
+	}
+
+	.icon-search {
+		font-size: 1.2em;
+		top: 3px;
 	}
 
 }
