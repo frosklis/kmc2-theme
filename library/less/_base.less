@@ -231,7 +231,6 @@ a, a:visited {
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 	font-family: @sans-serif;
-	text-rendering: optimizelegibility;
 	font-weight: 500;
 	/*
 	if you're going to use webfonts, be sure to check your weights
@@ -915,17 +914,6 @@ header {
 			&:focus {
 				background: #fff;
 			}
-
-			/* form validation */
-			&:invalid {
-				outline: none;
-				border-color: #fbc2c4;
-				background-color: #f6e7eb;
-				-webkit-box-shadow: none;
-				   -moz-box-shadow: none;
-				    -ms-box-shadow: none;
-						box-shadow: none;
-			}
 		}
 
 		input[type=text],
@@ -1211,7 +1199,6 @@ SIDEBARS & ASIDES
  	margin: 0 auto;
 	.home-category {
 	 	background-color: white;
-		float: top;
 		text-align: left;
 		clear: both;
 		margin-bottom: 30px;
