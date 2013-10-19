@@ -59,9 +59,13 @@ function kmc2_get_attachment_image($image_id) {
     }
 
     $aux = wp_get_attachment_image_src( $image_id, 'full');
-    $ratio = 100 * $aux[2] / $aux[1]; //height / width 
-    $out = "<div class='img-container-wrapper'><div class='img-container not-loaded' style='padding-bottom: {$ratio}%;'><noscript";
 
+    if ( 0 != $aux[1]){
+        $ratio = 100 * $aux[2] / $aux[1]; //height / width 
+        $out = "<div class='img-container-wrapper'><div class='img-container not-loaded' style='padding-bottom: {$ratio}%;'><noscript";
+    } else {
+        $out = "<div class='img-container-wrapper'><div class='img-container not-loaded'><noscript";
+    }
     $path = "";
     for ($i = 0; $i < sizeof($sizes); $i++) {
         $aux = wp_get_attachment_image_src( $image_id, $sizes[$i] ); // returns an array

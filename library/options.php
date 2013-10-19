@@ -67,7 +67,7 @@ class KmC2_Theme_Customize {
       //    ) 
       // ) );
 
-      $wp_customize->add_control( 'themename_color_scheme', array(
+      $wp_customize->add_control( 'kmc2_color_scheme', array(
         'label'      => __( 'Twitter username', 'kmc2theme' ),
         'section'    => 'accounts',
         'settings'   => 'kmc2_twitter_user',
@@ -78,8 +78,8 @@ class KmC2_Theme_Customize {
       //4. We can also change built-in settings by modifying properties. For instance, let's make some stuff use live preview JS...
       $wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
       $wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
-      $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
-      $wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
+      // $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+      // $wp_customize->get_setting( 'background_color' )->transport = 'postMessage';
    }
 
    /**
@@ -94,9 +94,9 @@ class KmC2_Theme_Customize {
       ?>
       <!--Customizer CSS--> 
       <style type="text/css">
-           <?php self::generate_css('#site-title a', 'color', 'header_textcolor'); ?> 
-           <?php self::generate_css('body', 'background-color', 'background_color'); ?>
-           <?php self::generate_css('body', 'color', 'normal_textcolor'); ?> 
+           <?php // self::generate_css('#site-title a', 'color', 'header_textcolor'); ?> 
+           <?php // self::generate_css('body', 'background-color', 'background_color'); ?>
+           <?php // self::generate_css('body', 'color', 'normal_textcolor'); ?> 
       </style> 
       <!--/Customizer CSS-->
       <?php
