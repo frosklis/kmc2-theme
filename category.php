@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php    					
-$categoria = get_query_var('category_name');
+$category = get_category(intval(get_query_var('cat')));
 $tipo = get_query_var('tipo');
 ?>			
 			<div id="content">
@@ -14,12 +14,23 @@ $tipo = get_query_var('tipo');
 						<nav role="navigation" class="clearfix">
 							<ul id="menu-menu-principal" class="nav top-nav clearfix">
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor 
+									<?php if ($tipo == '') echo ("current-menu-item"); ?>
+									">
+									<a href=<?php
+										$url = home_url(); 
+										$url .= '/tree/';
+										$url .= $category->slug;
+
+										echo($url); 
+									?>><?php echo($category->name); ?></a>
+								</li>
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor 
 									<?php if ($tipo == 'notas') echo ("current-menu-item"); ?>
 									">
 									<a href=<?php
 										$url = home_url(); 
 										$url .= '/tree/';
-										$url .= $categoria;
+										$url .= $category->slug;
 										$url .= '/notas';
 
 										echo($url); 
@@ -31,7 +42,7 @@ $tipo = get_query_var('tipo');
 									<a href=<?php
 										$url = home_url(); 
 										$url .= '/tree/';
-										$url .= $categoria;
+										$url .= $category->slug;
 										$url .= '/diario';
 
 										echo($url); 
@@ -43,7 +54,7 @@ $tipo = get_query_var('tipo');
 									<a href=<?php
 										$url = home_url(); 
 										$url .= '/tree/';
-										$url .= $categoria;
+										$url .= $category->slug;
 										$url .= '/fotos';
 
 										echo($url); 

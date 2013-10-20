@@ -60,6 +60,10 @@ function kmc2_ahoy() {
     // rss thingy
     add_theme_support('automatic-feed-links');
 
+    // 4 Queries
+    add_action('init', 'tipo_taxonomy' );
+
+
     // to add header image support go here: http://themble.com/support/adding-header-background-image-support/
 
     // adding post format support
@@ -99,8 +103,6 @@ function kmc2_ahoy() {
         // wp menus
         add_theme_support( 'menus' );
     
-        // 4 Queries
-        add_action('init', 'tipo_taxonomy' );
     }
 
 
