@@ -23,11 +23,13 @@ of the styles inside media queries.
 
 // styles in base.less
 @import "_base.less";
+@import "_navbar.less";
+@import "_header.less";
 @import "_footer.less";
 @import "_flexslider.less";
 
 
-@media (min-width: 768px) {
+@media (min-device-width: 768px) {
 	// import grid
 	@import "_grid.less";
     @import "_width_768px.less";

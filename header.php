@@ -22,24 +22,29 @@
 	</head>
 	
 	<body <?php body_class(); ?>>
-		<header id="topbar"> 
-			<div class="pullmenu">
-				<span class="icon-list"></span>
-				<?php _e('Menu', 'kmc2theme'); ?>
+		<header id="topbar">
+			<div class="logo">
+				<a href="<?php echo home_url(); ?>" rel="nofollow"><?php require('images/svg/c2.svg'); ?></a>
 			</div>
-			<div id="topbar-search">
-				<?php
-				$form = "headersearch";
-				echo(kmc2_wpsearch($form));
-				?>
-			</div>
-			<nav class="nav clearfix">
-				<?php
-				kmc2_main_nav(); 
-				?> 
+			<div class="utils">
 				<div class="pullmenu">
-					<span class="icon-arrow-up"></span>
-					<?php _e('Hide menu', 'kmc2theme'); ?>
+					<span class="icon-list"></span>
+					<?php _e('Menu', 'kmc2theme'); ?>
 				</div>
-			</nav> 
+				<nav class="nav clearfix">
+					<?php
+					kmc2_main_nav(); 
+					?> 
+					<div class="pullmenu">
+						<span class="icon-arrow-up"></span>
+						<?php _e('Hide menu', 'kmc2theme'); ?>
+					</div>
+				</nav>
+				<div id="topbar-search">
+					<?php
+					$form = "headersearch";
+					echo(kmc2_wpsearch($form));
+					?>
+				</div>
+			</div> 
 		</header>

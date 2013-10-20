@@ -72,12 +72,14 @@ header {
 07. NAVIGATION STYLES
 *********************/
 #topbar {
+	padding: 12px;
 	.pullmenu {
 		display: none;
 	}
 	nav {
-		display: block;
-		margin-right: @searchform-width + 20px;
+		display: table-cell;
+		width: 100%;
+		text-align: center;
 	}
 }
 
@@ -87,11 +89,14 @@ header {
 	li {
 		max-width: 200px;
 		width: auto;
-		height: @header-navbar-height;
+		text-align: left;
 		&:hover, &:focus {
 			background-color: @kmc2-blue;
 			color: white;
 			border: none;
+			a {
+				color: white;
+			}
 		}
 		ul.sub-menu {
 			background-color: @kmc2-orange;
@@ -117,7 +122,8 @@ header {
 			li.current_page_item,
 			li.current-page-ancestor {
 				border-bottom: 0;
-				background-color: black;
+				//background-color: black;
+				.black(0.5);
 			}
 		}
 
@@ -132,7 +138,7 @@ header {
 	li.current-menu-item,
 	li.current_page_item,
 	li.current-page-ancestor {
-		border-bottom: solid 8px @kmc2-orange;//white;
+		color: black;
 	}  // end current highlighters
 } // end .nav
 

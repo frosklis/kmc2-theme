@@ -12,7 +12,6 @@ Stylesheet: Base Mobile Stylesheet
 04. LINK STYLES
 05. H1, H2, H3, H4, H5 STYLES
 06. HEADER SYTLES
-07. NAVIGATION STYLES
 08. POSTS & CONTENT STYLES
 09. PAGE NAVI STYLES
 10. COMMENT STYLES
@@ -117,83 +116,6 @@ article li {
 	margin: 0 auto;
 }
 
-#topbar {
-	text-transform: uppercase;
-	width: 100%;
-	z-index: 1;
-	background-color: black;
-	color: white;
-	nav {
-		display: none;
-
-	}
-
-	.pullmenu {
-		display: inline-block;
-		height: @header-navbar-height;
-		line-height: 2.2em;
-		.icon-list {
-			font-size: 24px;
-			position: relative;
-			top: 4px;
-		}
-	}
-
-	#topbar-search {
-		z-index: 5;
-		display: inline-block;
-		float: right;
-		height: @inputform-height;
-		transition: width 400ms ease;
-		cursor: pointer;
-
-		&:focus, &:hover {
-			cursor: text;
-			.searchwrap {
-				width: @searchform-width;
-				.search-input {
-					background-color: #fff;
-					cursor: text;
-					outline: 0;
-					width: @searchform-width;
-					display: block;
-				}
-				button {
-					color: black;
-					top: 0;
-					position: absolute;
-				}
-			}
-		}
-		.searchwrap {
-			position: relative;
-			float: right;
-			.search-input {
-				padding-right: 34px;
-				border: none;
-				width: @searchform-width;
-				height: @inputform-height;
-				cursor: pointer;
-				transition: display 400ms ease;
-				display: none;
-				margin-left: 0;
-
-				&:focus, &:hover {
-					display: block;
-					cursor: text;
-					outline: 0;
-					background-color: white;
-					width: @searchform-width;
-				}
-			}
-			button {
-				color: white;
-				right: 0;
-				top: 0;
-			}
-		}
-	}
-}
 
 /*********************
 04. LINK STYLES
@@ -291,86 +213,6 @@ h6 {
 header {
 	// margin-bottom: 20px;
 }
-
-
-
-.nav, nav {
-	background-color: black;
-	color: white;
-	margin-left: auto;
-	margin-right: auto;
-	text-transform: uppercase;
-	font-size: 12px;
-	padding-left: 4px;
-	padding-right: 4px;
-
-	a {
-		color: white;
-		display: inline-block;
-		&:hover, &:focus {
-			color: white;
-		}
-	}
-	ul {
-		color: white;
-		margin: 0 auto;
-		li {
-			a {
-				color: white;
-			}
-		}
-	}
-
-	li {
-		float: left;
-		position: relative;
-		width: 100%;
-
-		a {
-			display: block;
-			text-decoration: none;
-			padding: 8px 16px;
-			height: 100%;
-		}
-
-		
-		ul.sub-menu {
-			color: white;
-			opacity: 1;
-			display: none;
-			max-width: 200px;
-			margin-top: 0px;
-			li {
-				a {
-					padding-left: 10px;
-					display: block;
-					width: 200px;
-					opacity: 1;
-					color: white;
-					&:link {}
-				}
-			}
-		}
-
-		// showing sub-menus
-		&:hover ul {
-			top: auto;
-			display: block;
-		}
-
-	} // end .menu ul li 
-
-	// highlight current page
-	li.current-menu-item,
-	li.current_page_item,
-	li.current-page-ancestor {
-		font-weight: bold;
-	}  // end current highlighters
-
-
-} // end .nav
-
-
 
 
 /*********************
@@ -1353,6 +1195,7 @@ header {
 	.search-input {
 		height: 32px;
 		padding-left: 1em;
+		border:none;
 	}
 
 	.icon-search {
@@ -1360,4 +1203,17 @@ header {
 		top: 3px;
 	}
 
+}
+
+::-webkit-input-placeholder {
+	color: @light-grey;
+}
+:-moz-placeholder { /* Firefox 18- */
+	color: @light-grey;  
+}
+::-moz-placeholder {  /* Firefox 19+ */
+	color: @light-grey;  
+}
+:-ms-input-placeholder {  
+	color: @light-grey;  
 }

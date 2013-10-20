@@ -1,0 +1,97 @@
+
+#topbar {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	z-index: 1;
+	background-color: transparent;
+	color: @normal-text-color;
+
+	svg {
+		fill: @normal-text-color;
+		&:hover {
+			fill: black;
+		}
+	}
+
+	.logo {
+		width: 70px;
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.utils {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	nav {
+		display: none; // It is displayed in bigger widths
+	}
+
+	.pullmenu {
+		display: inline-block;
+		height: @header-navbar-height;
+		line-height: 2.2em;
+		.icon-list {
+			font-size: 24px;
+			position: relative;
+			top: 4px;
+		}
+	}
+
+	#topbar-search {
+		z-index: 5;
+		display: table-cell;
+		vertical-align: middle;
+		// float: right;
+		width: @searchform-width;
+		height: @inputform-height;
+		transition: width 400ms ease;
+		cursor: pointer;
+
+
+		form {
+			float: right;
+			&:focus {
+				button {
+					display: none;
+				}
+			}
+		}
+
+		&:focus, &:hover {
+			cursor: text;
+			.searchwrap {
+				.search-input {
+					cursor: text;
+					outline: 0;
+					background-color: @almost-white;
+				}
+			}
+		}
+		.searchwrap {
+			position: relative;
+			float: right;
+			width: @searchform-width;
+			.search-input {
+				padding-right: 34px;
+				width: @searchform-width;
+				height: @inputform-height;
+				cursor: pointer;
+				transition: background-color 400ms ease;
+				margin-left: 0;
+
+				&:focus, &:hover {
+					cursor: text;
+					outline: 0;
+					background-color: @almost-white;
+				}
+			}
+			button {
+				color: black;
+				right: 0;
+				top: -1px;
+				position: absolute;
+			}
+		}
+	}
+}
