@@ -944,8 +944,8 @@ SIDEBARS & ASIDES
 .textwidget p {}
 
 .footer {
-	color: white;
-	background-color: black;
+	// color: white;
+	// background-color: black;
 	clear: both;
 	margin-top: @header-navbar-height;
 	bottom: 0;
@@ -953,21 +953,8 @@ SIDEBARS & ASIDES
 
 	#inner-footer {
 
-		nav {
-			ul.nav {
-				li {
-					a {}
-
-					&:first-child {}
-
-					&:last-child {}
-				}
-			}
-		}
-
-
 		a, a:visited {
-			color: white;
+			color: @normal-text-color;
 
 			/* on hover */
 			&:hover, &:focus {
