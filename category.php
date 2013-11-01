@@ -6,7 +6,7 @@ $tipo = get_query_var('tipo');
 			<div id="content">
 				<div id="inner-content" class="wrap clearfix">
 
-				<?php if ($tipo != "fotos") { ?>
+				<?php if ($tipo != "fotos" and is_active_sidebar( 'category_widgets' ) ) { ?>
 					<div id="main" class="ninecol first clearfix category-page" role="main">
 				<?php } else { ?>
 					<div id="main" class="twelvecol single first clearfix category-page" role="main">
