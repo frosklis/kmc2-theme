@@ -22,7 +22,7 @@
 	</head>
 	
 	<body <?php body_class(); ?>>
-		<header id="topbar">
+		<header><div  id="topbar" class="wrap">
 			<div class="logo">
 				<a href="<?php echo home_url(); ?>" rel="nofollow"><?php require('images/svg/c2.svg'); ?></a>
 			</div>
@@ -46,5 +46,5 @@
 					echo(kmc2_wpsearch($form));
 					?>
 				</div>
-			</div> 
-		</header>
+			</div>
+		</div></header>
