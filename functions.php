@@ -21,6 +21,8 @@ function kmc2_ahoy() {
     add_action('new_to_publish', 'autoset_featured');
     add_action('pending_to_publish', 'autoset_featured');
     add_action('future_to_publish', 'autoset_featured');
+    add_action('init','random_add_rewrite');
+    add_action('template_redirect','random_template');
 
     // remove WP version from RSS
     add_filter('the_generator', 'kmc2_rss_version');
@@ -47,12 +49,6 @@ function kmc2_ahoy() {
 
     // no mostrar admin bar
     // add_filter('show_admin_bar', '__return_false' );
-
-    //add_filter('wp_nav_menu_items','add_social_bar_to_menu', 10, 2);
-
-
-    add_filter( 'wp_nav_menu_items', 'add_logo_to_menu', 10, 2 );
-
 
     // wp thumbnails (sizes handled in functions.php)
     add_theme_support('post-thumbnails');
@@ -153,6 +149,24 @@ function tipo_taxonomy() {
     $tipo1_structure = '/tree/%category%/%tipo%';
     $wp_rewrite->add_permastruct('category_tipo', $tipo1_structure);
     $wp_rewrite->flush_rules();
+}
+
+
+function random_add_rewrite() {
+    global $wp;
+    $wp->add_query_var('random');
+    add_rewrite_rule('random/?$', 'index.php?random=1', 'top');
+}
+
+function random_template() {
+    if (get_query_var('random') == 1) {
+        $posts = get_posts('post_type=post&orderby=rand&numberposts=1');
+        foreach($posts as $post) {
+            $link = get_permalink($post);
+        }
+        wp_redirect($link,307);
+        exit;
+    }
 }
 
 /*********************
@@ -294,13 +308,6 @@ function kmc2_ie_conditional( $tag, $handle ) {
 /*********************
 MENUS & NAVIGATION
 *********************/
-function add_logo_to_menu ( $items, $args ) {
-    //$img_logo = '<img src="' . get_bloginfo('stylesheet_directory') . '/images/c2-blanco-64x64.png">';
-
-    //$items = '<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9">' . $img_logo .'</li>' . $items;
-
-    return $items;
-}
 // the main menu
 function kmc2_main_nav() {
     // display the wp3 menu if available
@@ -315,7 +322,6 @@ function kmc2_main_nav() {
         'after' => '',                                  // after the menu
         'link_before' => '',                            // before each link
         'link_after' => '',                             // after each link
-        //'items_wrap' => '<ul><li id="menu-logo" class="menu-item">Menu: </li>%3$s</ul>',
         'depth' => 0,                                   // limit the depth of the nav
         'fallback_cb' => 'kmc2_main_nav_fallback'      // fallback function
     ));
