@@ -544,7 +544,7 @@ function kmc2_comments($comment, $args, $depth) {
 function kmc2_wpsearch($formid) {
     $form = '<form role="search" method="get" id="'.$formid.'" action="' . home_url( '/' ) . '" >';
     $form .= '<div class="searchwrap">';
-    $form .= '<input class="search-input" type="text" value="' . get_search_query() . '" name="s" placeholder="'.__('Search...','kmc2theme').'" />';
+    $form .= '<input class="search-input" type="text" value="" name="s" placeholder="'.__('Search...','kmc2theme').'" />';
     $form .= '<button class="icon-search"></button></div>';
     $form .= '</form>';
     return $form;
