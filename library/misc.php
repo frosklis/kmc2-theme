@@ -251,37 +251,21 @@ function display_pictures($cat_id) {
 
         <?php 
         //echo $cat_id . " - id de categoría \n";
-        
-        $args = array(
-            'posts_per_page' => -1,
-            'cat' => $cat_id,
-        );
-        $list_of_posts = new WP_Query( $args );
 
         $lista_id = array();
 
         $number_of_posts = 0;
         $number_of_pictures = 0;
 
-        if ( class_exists('KmC2_Responsive_Images') ) {
-            $images_functions = new KmC2_Responsive_Images();
-
-            if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
-                $number_of_posts += 1;
-
-                $postID = get_the_ID();
 
 
-                $lista_imagenes = $images_functions->get_post_images( $postID );
-                
-                for($i=0; $i<count($lista_imagenes); $i++) {
-                    array_push($lista_id, $lista_imagenes[$i]);
-                    $number_of_pictures += 1;
-                }
-            endwhile;
-            endif;
-        } 
-        else {
+        if ($cat_id > -1) {
+            $args = array(
+                'posts_per_page' => -1,
+                'cat' => $cat_id,
+            );
+            $list_of_posts = new WP_Query( $args );
+
 
             if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
                 $number_of_posts += 1;
@@ -309,7 +293,20 @@ function display_pictures($cat_id) {
 
             endwhile;
             endif;
+        } else {
+
+            $args = array(
+                'post_type' => 'attachment', 'post_mime_type' =>'image', 'post_status' => 'inherit', 'posts_per_page' => -1,
+            );
+            $list_of_posts = new WP_Query( $args );
+            
+            foreach ( $list_of_posts->posts as $attachment ) {
+                array_push($lista_id, $attachment->ID);
+                $number_of_pictures += 1;
+            }
+
         }
+
         // Limpiar aray de ids
         $lista_id = array_unique($lista_id);
 
