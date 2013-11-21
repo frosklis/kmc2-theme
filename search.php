@@ -9,7 +9,12 @@
 					    <?php 
 					    global $wp_query;
     					$list_of_posts = $wp_query;
-    					display_posts($list_of_posts, true); 
+
+    					if ($list_of_posts->have_posts()) {
+    						display_posts($list_of_posts, true);
+    					} else {
+    						echo("<p>" . __("Seems like we couldn't find it. Sorry.",'kmc2theme') . "</p>");
+    					}
     					?>
 			
 				    </div> <!-- end #main -->

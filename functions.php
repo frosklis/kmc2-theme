@@ -22,7 +22,7 @@ function kmc2_ahoy() {
     add_action('pending_to_publish', 'autoset_featured');
     add_action('future_to_publish', 'autoset_featured');
     add_action('init','random_add_rewrite');
-    add_action('template_redirect','random_template');
+    add_action('template_redirect','kmc2_template_hook');
 
     // remove WP version from RSS
     add_filter('the_generator', 'kmc2_rss_version');
@@ -156,16 +156,22 @@ function random_add_rewrite() {
     global $wp;
     $wp->add_query_var('random');
     add_rewrite_rule('random/?$', 'index.php?random=1', 'top');
+    $wp->add_query_var('kmc2_pageofposts');
+    add_rewrite_rule('blog/?$', 'index.php?kmc2_pageofposts=1', 'top');
 }
 
-function random_template() {
+function kmc2_template_hook() {
     if (get_query_var('random') == 1) {
         $posts = get_posts('post_type=post&orderby=rand&numberposts=1');
         foreach($posts as $post) {
             $link = get_permalink($post);
         }
         wp_redirect($link,307);
-        exit;
+        exit();
+    } else 
+    if (get_query_var('kmc2_pageofposts') == 1) {
+        include( get_template_directory() . '/additional_templates/pageofposts.php' );
+        exit();
     }
 }
 

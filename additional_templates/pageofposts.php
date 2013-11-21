@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: All posts
+This template shows all posts
 */
 ?>
 <?php get_header(); ?>
