@@ -2,6 +2,17 @@
 <?php    					
 $category = get_category(intval(get_query_var('cat')));
 $tipo = get_query_var('tipo');
+
+$order = get_query_var('order');
+if ($order = "") {
+	$order = "desc";
+}
+
+$current_page = home_url() . '/tree/' . $category->slug;
+
+if ($tipo != "") {
+	$current_page .= "/" . $tipo;
+}
 ?>			
 			<div id="content">
 				<div id="inner-content" class="wrap clearfix">
@@ -20,6 +31,7 @@ $tipo = get_query_var('tipo');
 										$url = home_url(); 
 										$url .= '/tree/';
 										$url .= $category->slug;
+										$url .= '/' . $order;
 
 										echo($url); 
 									?>><?php echo($category->name); ?></a>
@@ -32,6 +44,7 @@ $tipo = get_query_var('tipo');
 										$url .= '/tree/';
 										$url .= $category->slug;
 										$url .= '/notas';
+										$url .= '/' . $order;
 
 										echo($url); 
 									?>>Notas</a>
@@ -44,6 +57,7 @@ $tipo = get_query_var('tipo');
 										$url .= '/tree/';
 										$url .= $category->slug;
 										$url .= '/diario';
+										$url .= '/' . $order;
 
 										echo($url); 
 									?>>Diario</a>
@@ -62,6 +76,13 @@ $tipo = get_query_var('tipo');
 								</li>
 							</ul>
 						</nav>
+						<?php
+						if ($order == "asc") {
+							?> <p><a href="<?php echo($current_page . "/?order=desc");?>">Ver más nuevos primero.</a></p>
+						<?php } else
+						{
+							?> <p><a href="<?php echo($current_page . "/?order=asc");?>">Ver más antiguos primero.</a></p>
+						<?php } ?>
 						<?php
 						// if ($tipo == "") {
 						// 	if ( is_active_sidebar( 'category_widgets' ) ) dynamic_sidebar( 'category_widgets' ); 
