@@ -3,11 +3,6 @@
 $category = get_category(intval(get_query_var('cat')));
 $tipo = get_query_var('tipo');
 
-$order = get_query_var('order');
-if ($order = "") {
-	$order = "desc";
-}
-
 $current_page = home_url() . '/tree/' . $category->slug;
 
 if ($tipo != "") {
@@ -31,10 +26,10 @@ if ($tipo != "") {
 										$url = home_url(); 
 										$url .= '/tree/';
 										$url .= $category->slug;
-										$url .= '/' . $order;
+										$url .= '/?order=' . get_query_var('order');
 
 										echo($url); 
-									?>><?php echo($category->name); ?></a>
+									?>><?php echo($category->name);?></a>
 								</li>
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor 
 									<?php if ($tipo == 'notas') echo ("current-menu-item"); ?>
@@ -44,7 +39,7 @@ if ($tipo != "") {
 										$url .= '/tree/';
 										$url .= $category->slug;
 										$url .= '/notas';
-										$url .= '/' . $order;
+										$url .= '/?order=' . get_query_var('order');
 
 										echo($url); 
 									?>>Notas</a>
@@ -57,7 +52,7 @@ if ($tipo != "") {
 										$url .= '/tree/';
 										$url .= $category->slug;
 										$url .= '/diario';
-										$url .= '/' . $order;
+										$url .= '/?order=' . get_query_var('order');
 
 										echo($url); 
 									?>>Diario</a>
@@ -77,11 +72,11 @@ if ($tipo != "") {
 							</ul>
 						</nav>
 						<?php
-						if ($order == "asc") {
-							?> <p><a href="<?php echo($current_page . "/?order=desc");?>">Ver más nuevos primero.</a></p>
+						if (get_query_var('order') == "ASC") {
+							?> <p><a href="<?php echo($current_page . "/?order=DESC");?>">Ver más nuevos primero.</a></p>
 						<?php } else
 						{
-							?> <p><a href="<?php echo($current_page . "/?order=asc");?>">Ver más antiguos primero.</a></p>
+							?> <p><a href="<?php echo($current_page . "/?order=ASC");?>">Ver más antiguos primero.</a></p>
 						<?php } ?>
 						<?php
 						// if ($tipo == "") {
