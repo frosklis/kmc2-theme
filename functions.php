@@ -104,6 +104,18 @@ function kmc2_ahoy() {
 
 } /* end kmc2 ahoy */
 add_action('after_setup_theme','kmc2_ahoy', 15);
+function kmc2_remove_version() {
+return '';
+}
+add_filter('the_generator', 'kmc2_remove_version');
+// remove wp version param from any enqueued scripts
+function kmc2_remove_wp_ver_css_js( $src ) {
+    if ( strpos( $src, 'ver=' ) )
+        $src = remove_query_arg( 'ver', $src );
+    return $src;
+}
+add_filter( 'style_loader_src', 'kmc2_remove_wp_ver_css_js', 9999 );
+add_filter( 'script_loader_src', 'kmc2_remove_wp_ver_css_js', 9999 );
 
 function custom_excerpt_length( $length ) {
     return 60;
@@ -220,14 +232,6 @@ function kmc2_head_cleanup() {
 // remove WP version from RSS
 function kmc2_rss_version() { return ''; }
 
-// remove WP version from scripts
-function kmc2_remove_wp_ver_css_js( $src ) {
-    if ( strpos( $src, 'ver=' ) )
-        $src = remove_query_arg( 'ver', $src );
-    if ( strpos( $src, 'v=' ) )
-        $src = remove_query_arg( 'ver', $src );
-    return $src;
-}
 
 // remove injected CSS for recent comments widget
 function kmc2_remove_wp_widget_recent_comments_style() {
