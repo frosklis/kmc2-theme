@@ -4,10 +4,10 @@
 
 						<div class="socialbar aligncenter">
 							<p>
-							    <a href="<?php bloginfo('rss2_url'); ?>"><span class="icon-feed"></span></a>
+							    <a href="<?php bloginfo('rss2_url'); ?>"><span class="icon-rss"></span></a>
 							    <a href="<?php echo('https://twitter.com/' . get_option('kmc2_twitter_user', '' )); ?>"><span class="icon-twitter"></span></a>
 								<a href="//plus.google.com/102083218914804503792?prsrc=3"
-								   rel="publisher" target="_top"><span class="icon-googleplus"></span>
+								   rel="publisher" target="_top"><span class="icon-google-plus"></span>
 								</a>
 							</p>
 								<?php
