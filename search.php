@@ -2,7 +2,7 @@
 			
 			<div id="content">
 			
-				<div id="inner-content" class="wrap clearfix">
+				<div id="inner-content" class="clearfix">
 			
 				    <div id="main" class="ninecol first clearfix" role="main">
 <!-- ver http://codex.wordpress.org/Creating_a_Search_Page -->

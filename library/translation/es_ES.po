@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmc2theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-10 22:10+0100\n"
+"POT-Creation-Date: 2013-12-10 23:37+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Claudio Noguera <claudio.noguera@gmail.com>\n"
 "Language-Team: fulgor <frag.fulgor@gmail.com>\n"
@@ -80,6 +80,14 @@ msgstr "Archivo mensual:"
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive.php:41
 msgid "Yearly Archives:"
 msgstr "Archivo anual:"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/category.php:75
+msgid "See newest first"
+msgstr "Ver más nuevos primero"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/category.php:77
+msgid "See oldest first"
+msgstr "Ver más antiguos primero"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/comments.php:12
 msgid "This post is password protected. Enter the password to view comments."

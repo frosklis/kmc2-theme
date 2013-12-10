@@ -7,7 +7,7 @@ This template shows all posts
 			
 			<div id="content">
 			
-				<div id="inner-content" class="wrap clearfix">
+				<div id="inner-content" class="clearfix">
 					<?php
 					$args = array(
 						'post_type' => 'post',

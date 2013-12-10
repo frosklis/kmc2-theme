@@ -10,7 +10,7 @@ if ($tipo != "") {
 }
 ?>			
 			<div id="content">
-				<div id="inner-content" class="wrap clearfix">
+				<div id="inner-content" class="clearfix">
 
 				<?php if ($tipo != "fotos" and is_active_sidebar( 'category_widgets' ) ) { ?>
 					<div id="main" class="ninecol first clearfix category-page" role="main">
@@ -69,15 +69,17 @@ if ($tipo != "") {
 										echo($url); 
 									?>>Fotos</a>
 								</li>
+								<?php if ($tipo != 'fotos') { ?>
+								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor ">
+									<?php if (get_query_var('order') == "ASC") { ?> 
+										<a title="<?php _e('See newest first', 'kmc2theme');?>" href="<?php echo($current_page . "/?order=DESC");?>"><span class="icon-sort-by-alphabet"></span></a>
+									<?php } else { ?> 
+										<a title="<?php _e('See oldest first', 'kmc2theme');?>" href="<?php echo($current_page . "/?order=ASC");?>"><span class="icon-sort-by-alphabet-alt"></span></a>
+									<?php } ?>
+								</li>
+								<?php } //Closes the if tipo!=fotos ?>
 							</ul>
 						</nav>
-						<?php
-						if (get_query_var('order') == "ASC") {
-							?> <p><a href="<?php echo($current_page . "/?order=DESC");?>">Ver más nuevos primero.</a></p>
-						<?php } else
-						{
-							?> <p><a href="<?php echo($current_page . "/?order=ASC");?>">Ver más antiguos primero.</a></p>
-						<?php } ?>
 						<?php
 						// if ($tipo == "") {
 						// 	if ( is_active_sidebar( 'category_widgets' ) ) dynamic_sidebar( 'category_widgets' ); 
