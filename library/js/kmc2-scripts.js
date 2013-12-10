@@ -145,6 +145,7 @@ jQuery(document).ready(function($) {
     
                 var imageCaption = img.getAttribute("data-caption");
                 var imageTitle = img.getAttribute("data-title");
+                var imageLink = img.getAttribute("data-link");
     
                 // console.log(imageTitle);
     
@@ -156,6 +157,12 @@ jQuery(document).ready(function($) {
                     imageContainer.appendChild(imageElement);
                     imageContainer.removeChild(imageContainer.children[0]);
     
+                    // Add link
+                    if (imageLink) {
+                        jQuery(imageElement).wrap($('<a>',{
+                            href: imageLink
+                        }));
+                    }
     
                     // Add the image caption
                     if (imageCaption){

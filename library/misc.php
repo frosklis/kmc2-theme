@@ -79,6 +79,9 @@ function kmc2_get_attachment_image($image_id) {
     $out .= " data-title='".$title."'";
     $out .= " data-caption='".$caption."'";
 
+    // Attachment page
+    $out .= " data-link='" . get_attachment_link($image_id) . "'";
+
     // fallback if javascript is not used
     $out .= " ><img src='" . $path . "' alt='" . $title . "'>";
     $out .= " </noscript></div></div>";
