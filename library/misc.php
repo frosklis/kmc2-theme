@@ -141,12 +141,29 @@ function display_posts ($list_of_posts = null, $summary = false, $comentarios = 
             
                 <h2>
                     <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-                    <div class="edit-entry-link">
-                        <?php edit_post_link('<img src="' . get_stylesheet_directory_uri() . '/images/icons/edit_16.png"  width="16" height="16">'); ?>
-                    </div>
                 </h2>
                 <p class="byline vcard"><?php
-                printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
+                // printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
+
+                // Edit the entry
+                edit_post_link(__('Edit', 'kmc2theme'),'<span class="icon-pencil"></span>');
+
+                // Date
+                echo(' <span class="icon-calendar"></span> ');
+                printf('<time class="updated" datetime="%1$s" pubdate>%2$s</time> ', 'kmc2theme', get_the_time('Y-m-j'), get_the_time(get_option('date_format')));
+
+                // Author
+                echo(' <span class="icon-user"></span> ');
+                echo(kmc2_get_the_author_posts_link());
+
+                // Category
+                echo(' <span class="icon-folder-close-alt"></span> ');
+                echo(get_the_category_list(', '));
+
+                // Tags
+                the_tags(' <span class="icon-tag"></span> ', ', ');
+
+                // printf(__(' <time class="updated" datetime="%1$s" pubdate>%2$s</time> <span class="icon-user"></span> <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
                 ?></p>
 
                 <?php wp_link_pages('before=<div id="page-links">&after=</div>'); ?>
@@ -179,7 +196,6 @@ function display_posts ($list_of_posts = null, $summary = false, $comentarios = 
         
             <footer class="article-footer">
                 <?php wp_link_pages('before=<div id="page-links">&after=</div>'); ?>
-                <p class="tags"><?php the_tags('<span class="tags-title">' . __('Tags:', 'kmc2theme') . '</span> ', ', ', ''); ?></p>
 
             </footer> <!-- end article footer -->
             

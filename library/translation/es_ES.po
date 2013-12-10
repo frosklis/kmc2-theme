@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmc2theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-07 20:59+0100\n"
+"POT-Creation-Date: 2013-12-10 22:10+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Claudio Noguera <claudio.noguera@gmail.com>\n"
 "Language-Team: fulgor <frag.fulgor@gmail.com>\n"
@@ -32,24 +32,24 @@ msgid "F jS, Y"
 msgstr "F jS, Y"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:43
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:211
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:227
 msgid "&laquo; Older Entries"
 msgstr "&laquo; Entradas anteriores"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:44
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:212
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:228
 msgid "Newer Entries &raquo;"
 msgstr "Entradas más modernas &raquo;"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:53
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:40
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:221
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:237
 msgid "Oops, Post Not Found!"
 msgstr "¡Entrada no encontrada!"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:56
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:43
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:224
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:240
 msgid "Uh Oh. Something is missing. Try double checking things."
 msgstr "Oh, oh. Algo falta. Verifica las cosas"
 
@@ -267,7 +267,6 @@ msgid "Hide menu"
 msgstr "Ocultar menú"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:28
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:182
 msgid "Tags:"
 msgstr "Etiquetas:"
 
@@ -299,17 +298,10 @@ msgid "View all posts in %s"
 msgstr "Ver todas los artículos en %s"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:149
-#, php-format
-msgid ""
-"Posted <time class=\"updated\" datetime=\"%1$s\" pubdate>%2$s</time> by "
-"<span class=\"author\">%3$s</span> <span class=\"amp\">&</span> filed under "
-"%4$s."
-msgstr ""
-"<time class=\"updated\" datetime=\"%1$s\" pubdate>%2$s</time>. Escrito por "
-"<span class=\"author\">%3$s</span> <span class=\"amp\">&</span> en la "
-"categoría %4$s."
+msgid "Edit"
+msgstr "Editar"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:227
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/misc.php:243
 msgid "This is the error message in the display_posts function."
 msgstr "Este es el mensaje de error de la función display_posts"
 
@@ -326,6 +318,15 @@ msgstr ""
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/options.php:71
 msgid "Twitter username"
 msgstr "Usuario de twitter"
+
+#~ msgid ""
+#~ "Posted <time class=\"updated\" datetime=\"%1$s\" pubdate>%2$s</time> by "
+#~ "<span class=\"author\">%3$s</span> <span class=\"amp\">&</span> filed "
+#~ "under %4$s."
+#~ msgstr ""
+#~ "<time class=\"updated\" datetime=\"%1$s\" pubdate>%2$s</time>. Escrito "
+#~ "por <span class=\"author\">%3$s</span> <span class=\"amp\">&</span> en la "
+#~ "categoría %4$s."
 
 #~ msgid "j F Y @ g:i a"
 #~ msgstr "j F Y @ g:i a"
@@ -356,9 +357,6 @@ msgstr "Usuario de twitter"
 
 #~ msgid "Add New Custom Type"
 #~ msgstr "Añadir nuevo tipo personalizado"
-
-#~ msgid "Edit"
-#~ msgstr "Editar"
 
 #~ msgid "Edit Post Types"
 #~ msgstr "Editar typo de entrada"
