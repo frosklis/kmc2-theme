@@ -72,9 +72,9 @@ if ($tipo != "") {
 								<?php if ($tipo != 'fotos') { ?>
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor ">
 									<?php if (get_query_var('order') == "ASC") { ?> 
-										<a title="<?php _e('See newest first', 'kmc2theme');?>" href="<?php echo($current_page . "/?order=DESC");?>"><span class="icon-sort-by-alphabet"></span></a>
+										<a title="<?php _e('See newest first', 'kmc2theme');?>" href="<?php echo($current_page . "/?order=DESC");?>"><span class="icon-sort-by-alphabet-alt"></span></a>
 									<?php } else { ?> 
-										<a title="<?php _e('See oldest first', 'kmc2theme');?>" href="<?php echo($current_page . "/?order=ASC");?>"><span class="icon-sort-by-alphabet-alt"></span></a>
+										<a title="<?php _e('See oldest first', 'kmc2theme');?>" href="<?php echo($current_page . "/?order=ASC");?>"><span class="icon-sort-by-alphabet"></span></a>
 									<?php } ?>
 								</li>
 								<?php } //Closes the if tipo!=fotos ?>
