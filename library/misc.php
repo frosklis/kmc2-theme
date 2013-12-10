@@ -160,9 +160,11 @@ function display_posts ($list_of_posts = null, $summary = false, $comentarios = 
                 echo(kmc2_get_the_author_posts_link());
 
                 // Category
-                echo(' <span class="icon-folder-close-alt"></span> ');
-                echo(get_the_category_list(', '));
-
+                if (get_the_category()) {
+                    echo(' <span class="icon-folder-close-alt"></span> ');
+                    the_category(' <span class="icon-folder-close-alt"></span> ', ', ');
+                }
+                
                 // Tags
                 the_tags(' <span class="icon-tag"></span> ', ', ');
 
