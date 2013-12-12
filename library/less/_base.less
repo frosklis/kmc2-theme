@@ -151,8 +151,10 @@ a, a:visited {
 ******************************************************************/
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-	font-family: @sans-serif;
+	font-family: @serif;
 	font-weight: 500;
+	margin-top: 0.375em;
+	margin-bottom: 0.375em;
 	/*
 	if you're going to use webfonts, be sure to check your weights
 	http://css-tricks.com/watch-your-font-weight/
@@ -165,15 +167,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 
 h1, .h1 {
-	font-size: 3em;
-	line-height: 1.333em;
+	font-size: 3.5em;
 }
 
 h2, .h2 {
 	font-size: 2.5em;
-	line-height: 1.4em;
-	// margin-bottom: 0.375em;
-	// margin-top: (0.375*1.1)em;
 }
 
 h3, .h3 {
@@ -222,7 +220,7 @@ header {
 #content {
 
 	#inner-content {
-		margin-top: 20px;
+		// margin-top: 20px;
 
 		.hentry {
 
@@ -241,21 +239,24 @@ header {
 			background-color: white;
 			margin-top: 20px;
 			margin-bottom: 20px;
+
 		}          /* general post style */
 		           /* general article on a page style */
 
-		.attachment {}      /* general style on an attatchment */
-		.sticky {}          /* sticky post style */
-		.hentry {}          /* hentry class */
-		.category-slug {}   /* style by category (i.e. category-videos) */
-		.tag-slug {}        /* style by tag (i.e. tag-news) */
-
-		/* post meta */
-		.byline {
-			color: #999;
-
-			time {}
+		.article-header {
+			h1 {
+				margin-bottom: 0.1em;
+			}
+			.byline {
+				margin-bottom: 0.375em;
+				time {}
+				.info {
+					display: inline-block;
+					margin-right: 20px;
+				}
+			}
 		}
+
 
 		/* entry content */
 		.entry-content {

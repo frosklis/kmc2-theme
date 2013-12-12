@@ -142,34 +142,35 @@ function display_posts ($list_of_posts = null, $summary = false, $comentarios = 
         
             <header class="article-header">
             
-                <h2>
+                <h1>
                     <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-                </h2>
-                <p class="byline vcard"><?php
+                </h1>
+                <div class="byline"><?php
                 // printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
 
                 // Edit the entry
-                edit_post_link(__('Edit', 'kmc2theme'),'<span class="icon-pencil"></span>');
+                edit_post_link(__('Edit', 'kmc2theme'),'<div><span class="icon-pencil"></span>','</div>');
 
                 // Date
-                echo(' <span class="icon-calendar"></span> ');
-                printf('<time class="updated" datetime="%1$s" pubdate>%2$s</time> ', 'kmc2theme', get_the_time('Y-m-j'), get_the_time(get_option('date_format')));
-
+                echo('<div class="info"><span class="icon-calendar"></span> ');
+                printf('<time class="updated" datetime="%1$s" pubdate>%2$s</time></div>', 'kmc2theme', get_the_time('Y-m-j'), get_the_time(get_option('date_format')));
                 // Author
-                echo(' <span class="icon-user"></span> ');
+                echo('<div class="info"><span class="icon-user"></span> ');
                 echo(kmc2_get_the_author_posts_link());
+                echo('</div>');
 
                 // Category
                 if (get_the_category()) {
-                    echo(' <span class="icon-folder-close-alt"></span> ');
+                    echo('<div class="info"><span class="icon-folder-close-alt"></span> ');
                     the_category(' <span class="icon-folder-close-alt"></span> ', ', ');
+                    echo('</div>');
                 }
                 
                 // Tags
-                the_tags(' <span class="icon-tag"></span> ', ', ');
+                the_tags('<div class="info"><span class="icon-tag"></span> ', ', ', '</div>');
 
                 // printf(__(' <time class="updated" datetime="%1$s" pubdate>%2$s</time> <span class="icon-user"></span> <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
-                ?></p>
+                ?></div>
 
                 <?php wp_link_pages('before=<div id="page-links">&after=</div>'); ?>
         
