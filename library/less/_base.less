@@ -245,14 +245,26 @@ header {
 
 		.article-header {
 			h1 {
-				margin-bottom: 0.1em;
+				margin-bottom: 0.15em;
 			}
 			.byline {
+				color: lighten(@normal-text-color, 40%);
 				margin-bottom: 0.375em;
+				font-size: 0.9em;
 				time {}
 				.info {
 					display: inline-block;
 					margin-right: 20px;
+
+					&:hover {
+						color: @normal-text-color;
+					}
+				}
+				a {
+					color: lighten(@normal-text-color, 40%);
+					&:hover {
+						color: @normal-text-color;
+					}
 				}
 			}
 		}
