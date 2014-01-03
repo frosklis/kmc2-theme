@@ -124,8 +124,14 @@ function echo_first_image( $postID ) {
 }
 
 // Dibujar los posts
-function display_posts ($list_of_posts = null, $summary = false, $comentarios = false, 
-        $prev_next_links = false, $single = false, $attachment = false) {
+function display_posts ($args) {
+    // $list_of_posts = null, $summary = false, $comments = false, $prev_next_links = false, $single = false, $attachment = false
+    $list_of_posts = isset($args["list_of_posts"]) ? $args["list_of_posts"] : null;
+    $summary = isset($args["summary"]) ? $args["summary"] : false;
+    $comments = isset($args["comments"]) ? $args["comments"] : false;
+    $prev_next_links = isset($args["prev_next_links"]) ? $args["prev_next_links"] : false;
+    $single = isset($args["single"]) ? $args["single"] : false;
+    $attachment = isset($args["attachment"]) ? $args["attachment"] : false;
 
     if ($single) { ?>
         <div class="article-single"> 
@@ -153,7 +159,7 @@ function display_posts ($list_of_posts = null, $summary = false, $comentarios = 
                 // printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
 
                 // Edit the entry
-                edit_post_link(__('Edit', 'kmc2theme'),'<div><span class="icon-pencil"></span>','</div>');
+                edit_post_link(__('Edit', 'kmc2theme'),'<div class="info"><span class="icon-pencil"></span>','</div>');
 
                 // Date
                 echo('<div class="info"><span class="icon-calendar"></span> ');
@@ -210,7 +216,7 @@ function display_posts ($list_of_posts = null, $summary = false, $comentarios = 
             </footer> <!-- end article footer -->
             
             <?php 
-            if ($comentarios) comments_template();
+            if ($comments) comments_template();
             ?>
             
         </article> <!-- end article -->
