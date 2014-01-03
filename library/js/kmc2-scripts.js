@@ -14,35 +14,35 @@ jQuery(function() {
     });  
 });
 jQuery(document).ready(function($) {
-    // var container_homepage = document.querySelector("#home-categories");
+    var container_homepage = document.querySelector("#home-categories");
 
-    // if (container_homepage != null) {
+    if (container_homepage != null) {
 
-    //     var msnry_homepage = new Masonry( container_homepage, {
-    //       // options
-    //       itemSelecor: ".home-category",
-    //       isFitWidth: true,
-    //       gutter: 30,
-    //       isOriginLeft: true,
-    //       animate: true,
-    //     });// code here
+        var msnry_homepage = new Masonry( container_homepage, {
+          // options
+          itemSelecor: ".home-category",
+          isFitWidth: true,
+          gutter: 30,
+          isOriginLeft: true,
+          animate: true,
+        });// code here
 
-    // }
+    }
 
-    // var container_category_page = document.querySelector(".article-list");
+    var container_category_page = document.querySelector(".article-list");
 
-    // if (container_category_page != null ) {
+    if (container_category_page != null ) {
         
-    //     var msnry_category_page = new Masonry( container_category_page, {
-    //       // options
-    //       itemSelecor: "article",
-    //       isFitWidth: true,
-    //       gutter: 30,
-    //       isOriginLeft: true,
-    //       animate: true,
-    //     });// code here
+        var msnry_category_page = new Masonry( container_category_page, {
+          // options
+          itemSelecor: "article",
+          isFitWidth: true,
+          gutter: 30,
+          isOriginLeft: true,
+          animate: true,
+        });// code here
 
-    // }
+    }
 
     jQuery('.flexslider').flexslider({
         controlNav: false,
