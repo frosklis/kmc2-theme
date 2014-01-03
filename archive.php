@@ -45,7 +45,11 @@
 					    <?php 
 					    global $wp_query;
     					$list_of_posts = $wp_query;
-    					display_posts($list_of_posts, true); 
+    					$args = array(
+				            'list_of_posts' => $list_of_posts,
+				            'summary' => true,
+				        );
+    					display_posts($args);
     					?>
 			
     				</div> <!-- end #main -->

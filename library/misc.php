@@ -125,7 +125,6 @@ function echo_first_image( $postID ) {
 
 // Dibujar los posts
 function display_posts ($args) {
-    // $list_of_posts = null, $summary = false, $comments = false, $prev_next_links = false, $single = false, $attachment = false
     $list_of_posts = isset($args["list_of_posts"]) ? $args["list_of_posts"] : null;
     $summary = isset($args["summary"]) ? $args["summary"] : false;
     $comments = isset($args["comments"]) ? $args["comments"] : false;
@@ -148,13 +147,11 @@ function display_posts ($args) {
         
             <header class="article-header">
             
-                <h1>
-                    <?php if (true == $single) {
-                        the_title();
-                    } else { ?>
-                    <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+                <?php if ($single) { ?>
+                    <h1><?php the_title(); ?> </h1>
+                <?php } else { ?>
+                    <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
                     <?php } ?>
-                </h1>
                 <div class="byline"><?php
                 // printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kmc2theme'), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), kmc2_get_the_author_posts_link(), get_the_category_list(', '));
 
@@ -190,14 +187,16 @@ function display_posts ($args) {
             if ($summary) { 
             ?>
                 <section class="entry-content clearfix excerpt" onclick="location.href='<?php the_permalink(); ?>';">
-                <?php
-                if ( has_post_thumbnail() ) {
-                    echo(kmc2_get_attachment_image( get_post_thumbnail_id( get_the_ID() )) );
-                    if (false) the_post_thumbnail(); // this never executes, just to pass the guidelines tests
-                } else { 
-                    echo_first_image(get_the_ID());
-                }
-                the_excerpt();
+                <div class="thumbnail">
+                    <?php
+                    if ( has_post_thumbnail() ) {
+                        echo(kmc2_get_attachment_image( get_post_thumbnail_id( get_the_ID() )) );
+                        if (false) the_post_thumbnail(); // this never executes, just to pass the guidelines tests
+                    } else { 
+                        echo_first_image(get_the_ID());
+                    } ?>
+                </div>
+                <?php the_excerpt();
             } else {
             ?>
                 <section class="entry-content clearfix">

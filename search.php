@@ -11,7 +11,11 @@
     					$list_of_posts = $wp_query;
 
     					if ($list_of_posts->have_posts()) {
-    						display_posts($list_of_posts, true);
+    						$args = array(
+					            'list_of_posts' => $list_of_posts,
+					            'summary' => true,
+					        );
+    						display_posts($args);
     					} else {
     						echo("<p>" . __("Seems like we couldn't find it. Sorry.",'kmc2theme') . "</p>");
     					}

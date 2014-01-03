@@ -11,7 +11,15 @@
 						} 
 						global $wp_query;
     					$list_of_posts = $wp_query;
-    					display_posts($list_of_posts,false,true,true,true); 
+    					$args = array(
+					            'list_of_posts' => $list_of_posts,
+					            'summary' => false,
+					            'comments' => true,
+					            'prev_next_links' => true,
+					            'single' => true,
+					            'attachment' => true
+					        );
+    					display_posts($args); 
     					
     					?>
     					

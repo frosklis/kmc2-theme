@@ -19,7 +19,11 @@ This template shows all posts
 	
 					<div id="main" class="ninecol first clearfix" role="main">
     					<?php 
-    					display_posts($list_of_posts, true); 
+    					$args = array(
+				            'list_of_posts' => $list_of_posts,
+				            'summary' => true,
+				        );
+    					display_posts($args); 
     					?>
 					</div> <!-- end #main -->
     				
