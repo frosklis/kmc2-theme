@@ -28,6 +28,10 @@
 					<nav role="navigation">
     					<?php //kmc2_footer_links(); ?>
 	                </nav>
+
+	                <div class="donation aligncenter">
+	                	<p>Invítanos a un café: <a href="bitcoin:18xXsjSYr4hueUqLwb1dXuugvzAb3e3h6k" target="_blank" title="Click here to send this address to your wallet (if your wallet is not compatible you will get an empty page, close the white screen and copy the address by hand)" style="top: 28px; left: 218px;"><img src="http://coinwidget.com/widget/icon_wallet.png"></a></p>
+	                </div>
 	                		
 					<div class="source-org copyright aligncenter">
 						<p><a href="<?php echo home_url(); ?>" rel="nofollow">
