@@ -351,8 +351,9 @@ function display_pictures($cat_id) {
         }
 
         
-        // $gallery = '[gallery type=rectangular columns=5 ids="';
-        $gallery = '[gallery maxdim=300 type="masonry" ids="';
+        // $gallery = '[gallery type=tiled columns=5 ids="';
+        // $gallery = '[gallery maxdim=300 type="masonry" ids="';
+        $gallery = '[gallery size="medium" type="rectangular" ids="';
         $gallery .= $str_ids . '"]';
 
         echo do_shortcode($gallery);

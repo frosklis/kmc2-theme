@@ -79,6 +79,9 @@ header nav {
 		max-width: 200px;
 		width: auto;
 		text-align: left;
+		a {
+			max-width: 198px;
+		}
 		&:hover, &:focus {
 			background-color: @kmc2-blue;
 			color: white;
@@ -88,22 +91,29 @@ header nav {
 			}
 		}
 		ul.sub-menu {
-			background-color: @kmc2-orange;
+			// background-color: @kmc2-orange;
+			background-color: white;
+			color: @normal-text-color;
 			z-index: 4;
 			position: absolute;
 			display: none;
 			li {
-				border-top: 1px solid white;
+				// border-top: 1px solid white;
+				border-left: 1px solid @normal-text-color;
+				border-right: 1px solid @normal-text-color;
+				color: @normal-text-color;
 				a {
+					color: @normal-text-color;
 					&:hover, &:focus {
 						background-color: @kmc2-blue;
 						color: white;
 					}
 				}
+				&:first-child {
+					border-top: 1px solid @normal-text-color;
+				}
 				&:last-child {
-					a {
-						border-bottom: 0;
-					}
+					border-bottom: 1px solid @normal-text-color;
 				}
 			}
 			// highlight sub-menu current page
@@ -111,8 +121,11 @@ header nav {
 			li.current_page_item,
 			li.current-page-ancestor {
 				border-bottom: 0;
-				//background-color: black;
 				.black(0.5);
+				color: white;
+				a {
+					color: white;
+				}
 			}
 		}
 
