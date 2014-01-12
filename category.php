@@ -81,9 +81,9 @@ if ($tipo != "") {
 							</ul>
 						</nav>
 						<?php
-						// if ($tipo == "") {
-						// 	if ( is_active_sidebar( 'category_widgets' ) ) dynamic_sidebar( 'category_widgets' ); 
-						// }
+						if ($tipo != "fotos") {
+							if ( is_active_sidebar( 'category_widgets' ) ) dynamic_sidebar( 'category_widgets' ); 
+						}
 						if ($tipo != "fotos") {
 							global $wp_query;
 	    					$list_of_posts = $wp_query;
