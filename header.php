@@ -15,7 +15,7 @@
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
 				
   		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-		
+		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&#038;subset=latin,latin-ext' type='text/css'/>
 
 		<?php wp_head(); ?>
 		
