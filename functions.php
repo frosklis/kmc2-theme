@@ -98,7 +98,9 @@ function kmc2_ahoy() {
 
         // wp menus
         add_theme_support( 'menus' );
-    
+
+        add_editor_style( './library/css/style.css' );
+   
     }
 
 
