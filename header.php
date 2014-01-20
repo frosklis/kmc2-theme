@@ -27,12 +27,6 @@
 				<a href="<?php echo home_url(); ?>" rel="nofollow"><?php require('images/svg/c2.svg'); ?></a>
 			</div>
 			<div class="utils">
-				<!-- No es necesario, va al logo
-				<div class="pullmenu">
-					<span class="icon-list"></span>
-					<?php _e('Menu', 'kmc2theme'); ?>
-				</div>
-				-->
 				<nav class="nav clearfix">
 					<?php
 					kmc2_main_nav(); 
