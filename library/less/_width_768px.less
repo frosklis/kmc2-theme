@@ -60,6 +60,9 @@ header nav {
 07. NAVIGATION STYLES
 *********************/
 #topbar {
+	display: table;
+	table-layout: fixed;
+	position: static;
 	padding: 12px;
 	.pullmenu {
 		display: none;
@@ -68,6 +71,21 @@ header nav {
 		display: table-cell;
 		width: 100%;
 		text-align: center;
+	}
+	.logo {
+		width: 70px;
+		vertical-align: middle;
+		svg {
+			width: 64px;
+			height: 64px;
+		}
+	}
+	.utils {
+		display: table-cell;
+	}
+	#topbar-search {
+		position: static;
+		display: table-cell;
 	}
 }
 

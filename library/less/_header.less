@@ -1,19 +1,24 @@
 #topbar {
-	display: table;
-	table-layout: fixed;
+	// display: table;
+	// table-layout: fixed;
 	// width: auto;
+	position: relative;
 	z-index: 1;
 	background-color: transparent;
 	color: @normal-text-color;
 
 
 	.logo {
-		width: 70px;
+		width: 34px;
 		display: table-cell;
-		vertical-align: middle;
+		vertical-align: top;
+		svg {
+			height: 32px;
+			width: 32px;
+		}
 	}
 	.utils {
-		display: table-cell;
+		// display: table-cell;
 		vertical-align: middle;
 	}
 	nav {
@@ -32,13 +37,16 @@
 	}
 
 	#topbar-search {
+		position: absolute;
+		right: 0px;
+		top: 0px;
 		z-index: 5;
-		display: table-cell;
+		display: block;
 		vertical-align: middle;
 		// float: right;
 		width: @searchform-width;
 		height: @inputform-height;
-		transition: width 400ms ease;
+		// transition: width 400ms ease;
 		cursor: pointer;
 
 
