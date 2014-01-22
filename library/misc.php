@@ -15,6 +15,8 @@ function kmc2_image_sizes () {
     add_image_size('size_3', 928, 522, false);
     add_image_size('size_2', 1088, 612, false);
 
+    add_image_size('width_260', 260, 9999, false);
+
 }
 
 // kmc2 image shortcode
@@ -44,7 +46,9 @@ function kmc2_get_attachment_image($image_id) {
     // title --> post_title
     // description --> content
 
+    // width_260 omitted on purpose
     $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail', 'size_3', 'size_2');
+
 
     $queried_post = get_post($image_id);
     $caption = $queried_post->post_excerpt;

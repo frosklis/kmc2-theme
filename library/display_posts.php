@@ -14,11 +14,11 @@ function display_posts ($args) {
         ?><div class="article-list">
         <?php
         while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
-            $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "medium");
+            $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "width_260");
             $thumbnail = $thumbnail[0];
         ?>
             <a class="article-thumb" href="<?php the_permalink(); ?>">
-                <div class="background" style="background-image: url(<?php echo($thumbnail ); ?>);"></div>
+                <div class="background" style="background-image: url(<?php echo($thumbnail); ?>);"></div>
 
                 <div class="content">
                     <div class="title"><h3><?php the_title(); ?></h3></div>
