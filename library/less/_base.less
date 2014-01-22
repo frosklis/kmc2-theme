@@ -1220,7 +1220,67 @@ SIDEBARS & ASIDES
 // 
 // 
 .article-list {
-	// .thumbnail {
-	// 	width: 50px;
-	// }
+	margin: 0 auto;
+	.article-thumb {
+		position: relative;
+		display: inline-block;
+		margin-right: 10px;
+		margin-bottom: 10px;
+
+		border: solid 1px @almost-white;
+
+		width: 260px;
+		height: 160px;
+		
+		.background {
+			width: 260px;
+			height: 160px;
+		
+			background-repeat: no-repeat;
+			background-size: 100% auto;
+
+			-webkit-filter: grayscale(100%);
+
+			transition: ease 750ms background-position;
+
+		}
+
+		&:hover {
+			.background {
+				background-position: 0% 100%;
+				-webkit-filter: grayscale(0%);
+			}
+			.content {
+				// display: block;
+				color: white;
+				text-shadow: 1px 1px 2px black, 0 0 1em @normal-text-color, 0 0 0.2em @normal-text-color;
+				background-color: transparent;
+			}
+		}
+
+		.content {
+			position: absolute;
+			// display: none;
+			top: 0px;
+			width: 260px;
+			height: 160px;
+			color: @normal-text-color;
+			.white(0.8);
+			.meta {
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+			}
+			.title {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+	
+			.meta, .title {
+				color: inherit;
+				padding-left: 10px;
+			}
+		}
+	}
 }

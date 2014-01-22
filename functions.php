@@ -582,6 +582,7 @@ add_filter( 'user_contactmethods', 'add_twitter_contactmethod', 10, 1 );
 
 
 require_once('library/misc.php');
+require_once('library/display_posts.php');
 require_once('library/gallery.php');
 require_once('library/ajax.php');
 

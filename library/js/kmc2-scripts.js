@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
           isFitWidth: true,
           gutter: 30,
           isOriginLeft: true,
-          animate: true,
+          animate: false,
         });// code here
 
     }
@@ -43,7 +43,7 @@ jQuery(document).ready(function($) {
         
         var msnry_category_page = new Masonry( container_category_page, {
           // options
-          itemSelecor: "article",
+          itemSelecor: "article, .article-thumb",
           isFitWidth: true,
           gutter: 30,
           isOriginLeft: true,
