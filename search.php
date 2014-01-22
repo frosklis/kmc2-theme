@@ -21,6 +21,15 @@
     					// }
     					?>
 
+    					<p align="center">
+    					<?php 
+    						_e("Showing results for '", 'kmc2theme');
+    						echo("<big>");
+    						echo get_search_query(); 
+    						echo("</big>");
+    						echo("'");
+    					?>
+    					<p>
     					<div class="article-list">
 						<?php
 						while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
