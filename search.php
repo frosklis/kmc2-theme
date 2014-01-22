@@ -4,9 +4,11 @@
 			
 				<div id="inner-content" class="clearfix">
 			
-				    <div id="main" class="twelvecol first clearfix" role="main">
-<!-- ver http://codex.wordpress.org/Creating_a_Search_Page -->
-
+					<?php if (!is_active_sidebar( 'sidebar1' ) ) { ?>
+						<div id="main" class="twelvecol first clearfix" role="main">
+					<?php } else { ?>
+						<div id="main" class="ninecol single first clearfix" role="main">
+					<?php } ?>
     					<p align="center">
     					<?php 
     						_e("Showing results for '", 'kmc2theme');
