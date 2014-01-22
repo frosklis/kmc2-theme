@@ -3,10 +3,24 @@
 <div id="content">
 	<div id="inner-content" class="clearfix">
 		<?php 
-		//if ( is_active_sidebar( 'homepage_widgets' ) ) dynamic_sidebar( 'homepage_widgets' ); 
-		// echo('<div class="kmc2-maps-plugin"><div class="trips-visualization-map">');
-		// echo('</div></div>');
-		the_widget('Kmc2_Visualization');
+		if ( is_active_sidebar( 'homepage_widgets' ) ) dynamic_sidebar( 'homepage_widgets' ); 
+		else {
+			?>
+			<div id="main" class="twelvecol clearfix" role="main">
+			    <?php 
+			    global $wp_query;
+				$list_of_posts = $wp_query;
+				$args = array(
+		            'list_of_posts' => $list_of_posts,
+		            'summary' => true,
+		            'tiles' => true,
+		        );
+				display_posts($args);
+				?>
+	
+		    </div> 
+		<?php
+		}
 		?>
 	</div> <!-- end #inner-content -->
 

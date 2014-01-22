@@ -4,14 +4,18 @@
 			
 				<div id="inner-content" class="clearfix">
 			
-				    <div id="main" class="ninecol first clearfix" role="main">
-
+				    <?php if (!is_active_sidebar( 'sidebar1' ) ) { ?>
+						<div id="main" class="twelvecol first clearfix" role="main">
+					<?php } else { ?>
+						<div id="main" class="ninecol single first clearfix" role="main">
+					<?php } ?>
 					    <?php 
 					    global $wp_query;
     					$list_of_posts = $wp_query;
     					$args = array(
 				            'list_of_posts' => $list_of_posts,
 				            'summary' => true,
+				            'tiles' => true,
 				        );
     					display_posts($args);
     					?>
