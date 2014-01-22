@@ -8,6 +8,29 @@ function display_posts ($args) {
     $single = isset($args["single"]) ? $args["single"] : false;
     $attachment = isset($args["attachment"]) ? $args["attachment"] : false;
 
+    $tiles = isset($args["tiles"]) ? $args["tiles"] : false;
+
+    if($tiles) {
+        ?><div class="article-list">
+        <?php
+        while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
+            $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "medium");
+            $thumbnail = $thumbnail[0];
+        ?>
+            <a class="article-thumb" href="<?php the_permalink(); ?>">
+                <div class="background" style="background-image: url(<?php echo($thumbnail ); ?>);"></div>
+
+                <div class="content">
+                    <div class="title"><h3><?php the_title(); ?></h3></div>
+                    <?php echo('<div class="meta"><p><span class="icon-calendar"></span> ');
+                    printf('<time class="updated" datetime="%1$s" pubdate>%2$s</time></p></div>', 'kmc2theme', get_the_time('Y-m-j'), get_the_time(get_option('date_format'))); ?>
+                </div>
+            </a>
+        <?php endwhile;
+
+        return true;
+    }
+
     if ($single) { ?>
         <div class="article-single"> 
         <?php
