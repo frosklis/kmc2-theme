@@ -14,6 +14,7 @@
 		            'list_of_posts' => $list_of_posts,
 		            'summary' => true,
 		            'tiles' => true,
+		            'pages' => false,
 		        );
 				display_posts($args);
 				?>

@@ -16,6 +16,9 @@ function display_posts ($args) {
 
     $tiles = isset($args["tiles"]) ? $args["tiles"] : false;
 
+
+    $pages = isset($args["pages"]) ? $args["pages"] : !$single;
+
 	
 	// Container for the article list
 	$articles  = $single ? "article-single" : "article-list";
@@ -147,6 +150,9 @@ function display_posts ($args) {
 		
 	}
 
+
+    echo ('</div>'); // Close article list div
+
     // Navigation links to previous and next articles        
     if ($single && $prev_next_links) {
         echo('<div class="wp-prev-next">'); 
@@ -157,12 +163,11 @@ function display_posts ($args) {
         echo('</div>');
     }
 	
-	if (!$single) { 
+	if ($pages) { 
 		kmc2_page_navi();
 	} 
 		
 	// final steps
-	echo ('</div>'); // Close article list div
 	return 1;
     
 		
