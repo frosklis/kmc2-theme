@@ -448,27 +448,24 @@ header {
 09. PAGE NAVI STYLES
 ******************************************************************/
 
-.page-navigation,
-.wp-prev-next {
-	margin: 1.1em 0 2.2em;
-}
-
 .kmc2_page_navi {
 
 	li {
 		float: left;
-		margin-left: 10px;
+		height: 1.5em;
+		margin-left: 2px;
+		margin-right: 2px;
 
 		a {
-			padding: 3px 6px;
+			padding: 1px 6px;
 			display: block;
 			text-decoration: none;
 			position: relative;
+			color: @normal-text-color;
 
 			&:hover,
 			&:focus {
-				color: @kmc2-blue;
-				text-decoration: underline;
+				color: white;
 			}
 		}
 
@@ -476,7 +473,7 @@ header {
 
 	/* current page link */
 	li.bpn-current {
-		padding: 3px 6px;
+		padding: 1px 6px;
 		border-bottom: 2px solid @kmc2-blue;
 		position: relative;
 
@@ -489,55 +486,7 @@ header {
 
 	} /* end .kmc2_page_navi .bpn-current */
 
-	/* common styles for page-navi links */
-	li.bpn-prev-link,
-	li.bpn-next-link {
-		font-weight: 700;
 
-		a {
-			padding: 0;
-		}
-	}
-
-	/* remove the bg on end links */
-	li.bpn-prev-link a:hover,
-	li.bpn-next-link a:hover,
-	li.bpn-first-page-link a:hover,
-	li.bpn-last-page-link a:hover {
-		background: none;
-	}
-
-	/* previous link */
-	li.bpn-prev-link {
-		a {
-			&:hover,
-			&:focus {}
-		}
-	}
-
-	/* next page link */
-	li.bpn-next-link {
-		a {
-			&:hover,
-			&:focus {}
-		}
-	}
-
-	/* first page link */
-	li.bpn-first-page-link {
-		a {
-			&:hover,
-			&:focus {}
-		}
-	}
-
-	/* last page link */
-	li.bpn-last-page-link {
-		a {
-			&:hover,
-			&:focus {}
-		}
-	}
 
 } /* end .kmc2_page_navi */
 
