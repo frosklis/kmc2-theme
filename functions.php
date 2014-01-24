@@ -424,11 +424,11 @@ function kmc2_page_navi($before = '', $after = '') {
     }
     echo $before.'<nav class="page-navigation"><ol class="kmc2_page_navi clearfix">'."";
     if ($start_page >= 2 && $pages_to_show < $max_page) {
-        $first_page_text = __( "First", 'kmc2theme' );
-        echo '<li class="bpn-first-page-link"><a href="'.get_pagenum_link().'" title="'.$first_page_text.'">'.$first_page_text.'</a></li>';
+        $first_page_text = __( "First page", 'kmc2theme' );
+        echo '<li class="bpn-first-page-link"><a href="'.get_pagenum_link().'" title="'.$first_page_text.'"><span class="icon-double-angle-left"></span></a></li>';
     }
     echo '<li class="bpn-prev-link">';
-    previous_posts_link('<span class="icon-double-angle-left"></span>');
+    previous_posts_link('<span class="icon-angle-left"></span>');
 
     echo '</li>';
     for($i = $start_page; $i  <= $end_page; $i++) {
@@ -439,11 +439,11 @@ function kmc2_page_navi($before = '', $after = '') {
         }
     }
     echo '<li class="bpn-next-link">';
-    next_posts_link('<span class="icon-double-angle-right"></span>');
+    next_posts_link('<span class="icon-angle-right"></span>');
     echo '</li>';
     if ($end_page < $max_page) {
-        $last_page_text = __( "Last", 'kmc2theme' );
-        echo '<li class="bpn-last-page-link"><a href="'.get_pagenum_link($max_page).'" title="'.$last_page_text.'">'.$last_page_text.'</a></li>';
+        $last_page_text = __( "Last page", 'kmc2theme' );
+        echo '<li class="bpn-last-page-link"><a href="'.get_pagenum_link($max_page).'" title="'.$last_page_text.'"><span class="icon-double-angle-right"></span></a></li>';
     }
     echo '</ol></nav>'.$after."";
 } /* end page navi */

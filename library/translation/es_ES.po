@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmc2theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-22 21:02+0100\n"
+"POT-Creation-Date: 2014-01-24 01:42+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Claudio Noguera <claudio.noguera@gmail.com>\n"
 "Language-Team: fulgor <frag.fulgor@gmail.com>\n"
@@ -26,30 +26,28 @@ msgstr ""
 "<span class=\"author\">%3$s</span>."
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:19
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:544
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:548
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:17
 msgid "F jS, Y"
 msgstr "F jS, Y"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:43
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/display_posts.php:118
 msgid "&laquo; Older Entries"
 msgstr "&laquo; Entradas anteriores"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:44
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/display_posts.php:119
 msgid "Newer Entries &raquo;"
 msgstr "Entradas más modernas &raquo;"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:53
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:40
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/display_posts.php:128
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/display_posts.php:31
 msgid "Oops, Post Not Found!"
 msgstr "¡Entrada no encontrada!"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/archive-custom_type.php:56
 #: /Users/claudio/Dropbox/Web/kmc2-theme/page.php:43
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/display_posts.php:131
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/display_posts.php:34
 msgid "Uh Oh. Something is missing. Try double checking things."
 msgstr "Oh, oh. Algo falta. Verifica las cosas"
 
@@ -185,12 +183,12 @@ msgid "You can use these tags"
 msgstr "Puedes usar estas etiquetas"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:84
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:338
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:341
 msgid "The Main Menu"
 msgstr "Menú Principal"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:85
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:356
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:359
 msgid "Footer Links"
 msgstr "Enlaces del pie"
 
@@ -198,71 +196,71 @@ msgstr "Enlaces del pie"
 msgid " keep reading"
 msgstr "seguir leyendo"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:178
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:181
 msgid "pictures/?$"
 msgstr "fotos/?$"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:424
-msgid "First"
-msgstr "Primero"
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:427
+msgid "First page"
+msgstr "Primera página"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:441
-msgid "Last"
-msgstr "Último"
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:445
+msgid "Last page"
+msgstr "Última página"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:468
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:472
 #, php-format
 msgid "Posts by %s"
 msgstr "Entradas de %s"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:486
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:490
 msgid "Sidebar 1"
 msgstr "Barra lateral 1"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:487
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:491
 msgid "The first (primary) sidebar."
 msgstr "La barra lateral principal."
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:497
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:501
 msgid "Footer 1"
 msgstr "Pie 1"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:498
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:502
 msgid "The footer"
 msgstr "El pie"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:508
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:512
 msgid "Homepage widgets"
 msgstr "Widgets de la página principal"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:509
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:513
 msgid "These widgets go right below the navbar"
 msgstr "Estos widgets van justo debajo de la barra de navegación"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:518
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:522
 msgid "Category page widgets"
 msgstr "Widgets de la página de categoría"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:519
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:523
 msgid "These widgets go right below the navbar in the category pages"
 msgstr ""
 "Estos widgets van justo debajo de la barra de navegación en las páginas de "
 "categoría"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:543
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:547
 #, php-format
 msgid "<cite class=\"fn\">%s</cite>"
 msgstr "<cite class=\"fn\">%s</cite>"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:545
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:549
 msgid "(Edit)"
 msgstr "(Editar)"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:549
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:553
 msgid "Your comment is awaiting moderation."
 msgstr "Tu comentario está pendiente de moderación"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:567
+#: /Users/claudio/Dropbox/Web/kmc2-theme/functions.php:571
 msgid "Search..."
 msgstr "Buscar…"
 
@@ -278,9 +276,13 @@ msgstr "Etiquetas:"
 msgid "This is the error message in the page.php template."
 msgstr "Este es el mensaje de error de la plantilla page.php."
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/search.php:26
+#: /Users/claudio/Dropbox/Web/kmc2-theme/search.php:14
 msgid "Showing results for '"
 msgstr "Mostrando resultados para '"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/search.php:32
+msgid "Seems like we couldn't find it. Sorry."
+msgstr "No se ha encontrado nada."
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/yarpp-template-kmc2.php:7
 msgid "Related posts"
@@ -297,13 +299,13 @@ msgstr ""
 msgid "View all posts in %s"
 msgstr "Ver todas los artículos en %s"
 
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/display_posts.php:35
-msgid "Edit"
-msgstr "Editar"
-
-#: /Users/claudio/Dropbox/Web/kmc2-theme/library/display_posts.php:134
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/display_posts.php:37
 msgid "This is the error message in the display_posts function."
 msgstr "Este es el mensaje de error de la función display_posts"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/display_posts.php:82
+msgid "Edit"
+msgstr "Editar"
 
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/options.php:34
 msgid "Accounts"
@@ -321,9 +323,6 @@ msgstr "Usuario de twitter"
 
 #~ msgid "Menu"
 #~ msgstr "Menú"
-
-#~ msgid "Seems like we couldn't find it. Sorry."
-#~ msgstr "No se ha encontrado nada."
 
 #~ msgid "Please activate some Widgets."
 #~ msgstr "Por favor active algunos widgets."
