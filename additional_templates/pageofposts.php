@@ -11,10 +11,11 @@ This template shows all posts
 					<?php
 					$args = array(
 						'post_type' => 'post',
-						'paged' => $paged
+						'paged' => get_query_var('paged')
 					  );
-
+					
 					$list_of_posts = new WP_Query( $args );
+
 					?>
 	
 					<?php if (!is_active_sidebar( 'sidebar1' ) ) { ?>

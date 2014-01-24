@@ -172,7 +172,10 @@ function kmc2_custom_rewrites() {
     add_rewrite_rule('random/?$', 'index.php?random=1', 'top');
 
     $wp->add_query_var('kmc2_pageofposts');
-    add_rewrite_rule('blog/?$', 'index.php?kmc2_pageofposts=1', 'top');
+    add_rewrite_rule('blog/?$', 'index.php?kmc2_pageofposts=1', 'top');    
+    add_rewrite_rule( 'blog/page/?([0-9]{1,})/?',  
+    'index.php?kmc2_pageofposts=1&paged=$matches[1]',  
+    'top');
 
     $wp->add_query_var('kmc2_pictures');
     add_rewrite_rule(__('pictures/?$', 'kmc2theme'), 'index.php?kmc2_pictures=1', 'top');
