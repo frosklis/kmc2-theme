@@ -172,22 +172,32 @@ jQuery(document).ready(function($) {
                         }));
                     }
     
-                    // Add the image caption
-                    if (imageCaption){
+                    // Add the image title and caption
+                    if (imageCaption || imageTitle){
                         var d = document.createElement("div");
                         d.className = "legend";
-                        var text = document.createTextNode(imageCaption);
-                        d.appendChild(text);
-                        imageContainer.appendChild(d);
+
+                        if (imageTitle) {
+                            var em = document.createElement("em");
+                            var text = document.createTextNode(imageTitle);
+                            em.appendChild(text);
+                            d.appendChild(em);
+                        }
+
+                        if (imageCaption) {
+                            if (imageTitle) {
+                                var text = document.createTextNode(" - " + imageCaption);
+                            }
+                            else {
+                                var text = document.createTextNode(imageCaption);
+                            }
+                            d.appendChild(text);
+                        }
+
+
+                        // Add it as a sibling of the image container, in the image container wrapper
+                        imageContainer.parentNode.appendChild(d);
                     }
-                    // Add the image title
-                    // if (imageTitle){
-                    //     var d = document.createElement("div");
-                    //     d.className = "title";
-                    //     var text = document.createTextNode(imageTitle);
-                    //     d.appendChild(text);
-                    //     imageContainer.appendChild(d);
-                    // }
                 }
             }
         },

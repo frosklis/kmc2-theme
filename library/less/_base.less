@@ -1059,56 +1059,35 @@ SIDEBARS & ASIDES
 	margin-top: 16px;
 	margin-bottom: 4px;
 	max-height: 100%;
-}
-.img-container {
-	position: relative;
-	height: 0;
-	max-height: 100%;
-	overflow: hidden;
-	line-height: 0;
-	width: 100%;
 
-	&:hover, &focus {
-		.legend {
-			opacity: 1;
-		}
-		.title {
-			opacity: 1;
-		}
-	}
-
-	img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		min-width: 100%;
-		min-height: 100%;
-	}
-
-	.legend, .title {
-		transition: opacity 2.5s ease;
+	.img-container {
+		position: relative;
+		height: 0;
+		max-height: 100%;
+		overflow: hidden;
+		line-height: 0;
 		width: 100%;
-		.black(0.5);
-		margin: 0;
-		line-height: 1.2;
-		padding: 5px;
-		position: absolute;
-		color: white;
-		opacity: 0;
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			min-width: 100%;
+			min-height: 100%;
+		}
+
 	}
+
 	.legend {
+		margin-top: 2px;
+		margin-bottom: 2px;
+		line-height: 1.2;
 		font-size: 12px;
-		bottom: 0;
-		left: 0;
-	}
-	.title {
-		font-size: 16px;
-		text-align: center;
-		top: 0;
-		left: 0;
+		em {
+			font-size: 14px;
+		}
 	}
 }
-
 #home-slideshow {
 	position: relative;
 	height: 700px;
