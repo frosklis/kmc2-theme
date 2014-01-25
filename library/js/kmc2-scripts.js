@@ -1,61 +1,51 @@
 /*
 kmc2 Scripts File
 Author: Claudio Noguera
-
 */
-jQuery(function() {   
-    var menu        = jQuery('#topbar nav');  
+/*global image_sizes_vars, blog_vars, jQuery: false*/
+
+jQuery(function () {
+    var menu        = jQuery('#topbar nav');
     // var menuHeight  = menu.height();
 
     if(!menu.is(':visible')) {
-        var pull = jQuery('#topbar .logo'); 
-        jQuery(pull).on('click', function(e) {
-            e.preventDefault();  
-            menu.slideToggle();  
+        var pull = jQuery('#topbar .logo');
+        jQuery(pull).on('click', function (e) {
+            e.preventDefault();
+            menu.slideToggle();
         });
-        pull = jQuery('.pullmenu'); 
-        jQuery(pull).on('click', function(e) {
-            e.preventDefault();  
-            menu.slideToggle();  
+        pull = jQuery('.pullmenu');
+        jQuery(pull).on('click', function (e) {
+            e.preventDefault();
+            menu.slideToggle();
         });
     }
-     
+
 });
-jQuery(document).ready(function($) {
-    var container_homepage = document.querySelector("#home-categories");
-
-    if (container_homepage != null) {
-
-        var msnry_homepage = new Masonry( container_homepage, {
+jQuery(document).ready(function ($) {
+    jQuery("#home-categories").masonry({
           // options
           itemSelecor: ".home-category",
           isFitWidth: true,
           gutter: 30,
           isOriginLeft: true,
           animate: false,
-        });// code here
+        });
 
-    }
 
-    var container_category_page = document.querySelector(".article-list");
-
-    if (container_category_page != null ) {
-        
-        var msnry_category_page = new Masonry( container_category_page, {
+    jQuery(".article-list").masonry({
           // options
           itemSelecor: "article, .article-thumb",
           isFitWidth: true,
           gutter: 30,
           isOriginLeft: true,
           animate: true,
-        });// code here
-
-    }
+        });
 
     jQuery('.flexslider').flexslider({
         controlNav: false,
         directionNav: false,
-        before: function(slider) {
+        before: function (slider) {
                 if (slider.count < 10) {
                     jQuery.ajax({
                         type: 'POST',
@@ -63,14 +53,14 @@ jQuery(document).ready(function($) {
                         data: {
                             action: 'AddHomeSlide',
                         },
-                        success: function(data, textStatus, XMLHttpRequest){
+                        success: function (data /*, textStatus, XMLHttpRequest*/) {
                             jQuery(".flexslider ul").append(data);
-                            startLoadingImages();     
+                            startLoadingImages();
                             slider.addSlide(jQuery(".flexlider .slides li:last-child"),slider.count);
                         },
-                        error: function(MLHttpRequest, textStatus, errorThrown){
-                            alert(errorThrown);
-                        }
+                        // error: function (MLHttpRequest, textStatus, errorThrown) {
+                        //     alert(errorThrown);
+                        // }
                     });
                 }
             }
@@ -84,21 +74,21 @@ jQuery(document).ready(function($) {
 
     var startLoadingImages = function () {
         var getImageVersion = function (imageContainer) {
-    
+
             var imageWrapper = imageContainer.parentNode;
             var padding = parseFloat(imageContainer.style.paddingBottom) / 100; //padding in fraction
             var w = jQuery(imageWrapper).width();
             var h = jQuery(imageWrapper).height();
 
-            if (0 == w) {
+            if (0 === w) {
                 w = window.screen.width;
                 h = w * padding;
             }
-    
+
             // If image is vertical, limit its height
             var minRatio = 1.1;
             if (w / h < minRatio) {
-                w = w * 9 / 16;  
+                w = w * 9 / 16;
                 jQuery(imageWrapper).width(w);
                 h = jQuery(imageWrapper).height();
             }
@@ -110,21 +100,21 @@ jQuery(document).ready(function($) {
             if (ancestor.length > 0) {
                 ancestor = ancestor[0];
             }
-    
+
             if( imageWrapper.offsetHeight > ancestor.offsetHeight ||
                 imageWrapper.offsetWidth > ancestor.offsetWidth) {
 
-                w = jQuery(ancestor).height() / padding;  
+                w = jQuery(ancestor).height() / padding;
                 jQuery(imageWrapper).width(w);
 
             }
-    
-            for (k in image_sizes_vars) {  
+            var k;
+            for (k in image_sizes_vars) {
                 w = w * window.devicePixelRatio;
                 h = w * padding;
 
-                w2 = image_sizes_vars[k][0];
-                h2 = w2 * padding;
+                var w2 = image_sizes_vars[k][0];
+                var h2 = w2 * padding;
                 if (h2 > image_sizes_vars[k][1]) {
                     h2 = image_sizes_vars[k][1];
                     w2 = h2 / padding;
@@ -134,29 +124,29 @@ jQuery(document).ready(function($) {
                     return k;
                 }
             }
-            
+
             return 'original';
         };
-    
+
         var lazyloadImage = function (imageContainer) {
-    
+
             var imageVersion = getImageVersion(imageContainer);
             // console.log("Escogida: " + imageVersion);
-    
+
             if (!imageContainer || !imageContainer.children) {
                 return;
             }
             var img = imageContainer.children[0];
-            
+
             if (img) {
                 var imgSRC = img.getAttribute("data-src-" + imageVersion);
-    
+
                 var imageCaption = img.getAttribute("data-caption");
                 var imageTitle = img.getAttribute("data-title");
                 var imageLink = img.getAttribute("data-link");
-    
+
                 // console.log(imageTitle);
-    
+
                 if (imgSRC) {
                     jQuery(imageContainer).removeClass('not-loaded');
                     var imageElement = new Image();
@@ -164,32 +154,32 @@ jQuery(document).ready(function($) {
                     imageElement.setAttribute("alt", imageTitle ? imageTitle : "");
                     imageContainer.appendChild(imageElement);
                     imageContainer.removeChild(imageContainer.children[0]);
-    
+
                     // Add link
                     if (imageLink) {
                         jQuery(imageElement).wrap($('<a>',{
                             href: imageLink
                         }));
                     }
-    
+
                     // Add the image title and caption
-                    if (imageCaption || imageTitle){
-                        var d = document.createElement("div");
+                    if (imageCaption || imageTitle) {
+                        var text,
+                            d = document.createElement("div");
                         d.className = "legend";
 
                         if (imageTitle) {
                             var em = document.createElement("em");
-                            var text = document.createTextNode(imageTitle);
+                            text = document.createTextNode(imageTitle);
                             em.appendChild(text);
                             d.appendChild(em);
                         }
 
                         if (imageCaption) {
                             if (imageTitle) {
-                                var text = document.createTextNode(" - " + imageCaption);
-                            }
-                            else {
-                                var text = document.createTextNode(imageCaption);
+                                text = document.createTextNode(" - " + imageCaption);
+                            } else {
+                                text = document.createTextNode(imageCaption);
                             }
                             d.appendChild(text);
                         }
@@ -202,7 +192,7 @@ jQuery(document).ready(function($) {
             }
         },
         lazyLoadedImages = document.getElementsByClassName("img-container");
-    
+
         for (var i = 0; i < lazyLoadedImages.length; i++) {
             if (jQuery(lazyLoadedImages[i]).hasClass('not-loaded')) {
                 lazyloadImage(lazyLoadedImages[i]);
@@ -212,7 +202,7 @@ jQuery(document).ready(function($) {
     startLoadingImages();
 });
 
-jQuery( window ).resize(function() {
-    h = jQuery('.flexslider').height();
+jQuery( window ).resize(function () {
+    var h = jQuery('.flexslider').height();
     jQuery('.flexslider .img-container-wrapper').css('max-height', h);
 });

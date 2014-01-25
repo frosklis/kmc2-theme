@@ -23,9 +23,15 @@ function kmc2_image_sizes () {
 function kmc2_image_shortcode( $atts ) {
     extract( shortcode_atts( array(
         'id' => '',
+        'width' => '100%',
+        'legend' => 'true',
+        'link' => 'true',
+        'align' => 'center',
     ), $atts, 'image' ) );
 
-    return kmc2_get_attachment_image($id);
+    $legend = strtolower($legend) == "true";
+    $link = strtolower($link) == "true";
+    return kmc2_get_attachment_image($id, $width, $legend, $link, $align);
 }
 add_shortcode('image', 'kmc2_image_shortcode');
 
@@ -35,12 +41,7 @@ function edit_image_html($html, $attachment_id, $attachment) {
 add_filter('image_send_to_editor', 'edit_image_html', 10, 3);
 
 
-function kmc2_get_attachment_image($image_id) {
-
-    // $prueba = wp_get_attachment_metadata( $image_id );
-    // this returns an array that may be useful as it has all image sizes
-    // var_dump($prueba);
-
+function kmc2_get_attachment_image($image_id, $width='100%', $legend=true, $link=true, $align='center') {
     // In an image:
     // caption --> post_excerpt
     // title --> post_title
@@ -64,11 +65,20 @@ function kmc2_get_attachment_image($image_id) {
 
     $aux = wp_get_attachment_image_src( $image_id, 'full');
 
+    $style = '';
+    if ($width != '100%' || $align != 'center') {
+        $style = "style='width:{$width};";
+        if ($align != 'center') {
+            $style .= 'float:'.$align.';';
+        }
+        $style .= "'";
+    }
+
     if ( 0 != $aux[1]){
         $ratio = 100 * $aux[2] / $aux[1]; //height / width 
-        $out = "<div class='img-container-wrapper'><div class='img-container not-loaded' style='padding-bottom: {$ratio}%;'><noscript";
+        $out = "<div class='img-container-wrapper' {$style}><div class='img-container not-loaded' style='padding-bottom: {$ratio}%;'><noscript";
     } else {
-        $out = "<div class='img-container-wrapper'><div class='img-container not-loaded'><noscript";
+        $out = "<div class='img-container-wrapper' {$style}><div class='img-container not-loaded'><noscript";
     }
     $path = "";
     for ($i = 0; $i < sizeof($sizes); $i++) {
@@ -80,15 +90,21 @@ function kmc2_get_attachment_image($image_id) {
     $out .= " data-src-img-id='{$image_id}'";
 
     // Image and caption
-    $out .= " data-title='".$title."'";
-    $out .= " data-caption='".$caption."'";
-
+    if($legend) {
+        $out .= " data-title='".$title."'";
+        $out .= " data-caption='".$caption."'";
+    }
     // Attachment page
-    $out .= " data-link='" . get_attachment_link($image_id) . "'";
-
+    if($link) {
+        $out .= " data-link='" . get_attachment_link($image_id) . "'";
+    }
     // fallback if javascript is not used
     $out .= " ><img src='" . $path . "' alt='" . $title . "'>";
     $out .= " </noscript></div></div>";
+
+    error_log($legend);
+    error_log(gettype($legend));
+    error_log($out);
     return $out;
 }
 
