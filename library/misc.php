@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Defines theme image sizes
+ * @return void
+ */
 function kmc2_image_sizes () {
     update_option('thumbnail_size_w', 150);
     update_option('thumbnail_size_h', 150);
@@ -20,6 +24,11 @@ function kmc2_image_sizes () {
 }
 
 // kmc2 image shortcode
+/**
+ * image shortcode definiction
+ * @param array $atts User defined atts
+ * @return string html code of the shortcode
+ */
 function kmc2_image_shortcode( $atts ) {
     extract( shortcode_atts( array(
         'id' => '',
@@ -40,7 +49,20 @@ function edit_image_html($html, $attachment_id, $attachment) {
 }
 add_filter('image_send_to_editor', 'edit_image_html', 10, 3);
 
-
+/**
+ * Generates the html for displaying a picture
+ *
+ * The generated html defines several sources for the image and attributes such as the title, caption, etc.
+ * These parameters then have to be parsed using javascript to actually generate the final html code.
+ * Also, a noscript downstripped version of the code is provided in case the user chooses not to enable javascript.
+ *
+ * @param int $image_id
+ * @param string $width directly parsed to the style of the image
+ * @param bool $legend provide a legend?
+ * @param bool $link provide a link?
+ * @param string $align direcly parsed to the float css property
+ * @return string html code
+ */
 function kmc2_get_attachment_image($image_id, $width='100%', $legend=true, $link=true, $align='center') {
     // In an image:
     // caption --> post_excerpt
@@ -66,16 +88,22 @@ function kmc2_get_attachment_image($image_id, $width='100%', $legend=true, $link
     $aux = wp_get_attachment_image_src( $image_id, 'full');
 
     $style = '';
+    $align = strtolower($align);
     if ($width != '100%' || $align != 'center') {
         $style = "style='width:{$width};";
         if ($align != 'center') {
             $style .= 'float:'.$align.';';
+            if ($align == "right") {
+                $style .= 'margin-left: 12px';
+            } else if ($align == "left") {
+                $style .= 'margin-right: 12px';
+            }
         }
         $style .= "'";
     }
 
     if ( 0 != $aux[1]){
-        $ratio = 100 * $aux[2] / $aux[1]; //height / width 
+        $ratio = 100 * $aux[2] / $aux[1]; //height / width
         $out = "<div class='img-container-wrapper' {$style}><div class='img-container not-loaded' style='padding-bottom: {$ratio}%;'><noscript";
     } else {
         $out = "<div class='img-container-wrapper' {$style}><div class='img-container not-loaded'><noscript";
@@ -102,9 +130,6 @@ function kmc2_get_attachment_image($image_id, $width='100%', $legend=true, $link
     $out .= " ><img src='" . $path . "' alt='" . $title . "'>";
     $out .= " </noscript></div></div>";
 
-    error_log($legend);
-    error_log(gettype($legend));
-    error_log($out);
     return $out;
 }
 
@@ -120,7 +145,7 @@ function echo_first_image( $postID ) {
             $img_id = $lista_imagenes[0];
             echo '<img src="' . wp_get_attachment_thumb_url( $img_id ) . '" class="current alignleft">';
         }
-    } 
+    }
     else {
         $args = array(
             'numberposts' => 1,
@@ -147,20 +172,20 @@ function echo_first_image( $postID ) {
 
 // Mostrar las imágenes asociadas a una categoría
 function display_pictures($cat_id) {
-?>    
+?>
 
     <article <?php post_class('clearfix'); ?> role="article">
-    
+
         <!-- <header class="article-header">
-        
+
             <h2><a href="" rel="bookmark" title="Fotos">Fotos</a></h2>
 
-    
+
         </header> --><!-- end article header -->
 
         <section class="entry-content clearfix">
 
-        <?php 
+        <?php
         //echo $cat_id . " - id de categoría \n";
 
         $lista_id = array();
@@ -178,7 +203,7 @@ function display_pictures($cat_id) {
             $list_of_posts = new WP_Query( $args );
 
 
-            if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post(); 
+            if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post();
                 $number_of_posts += 1;
 
                 $postID = get_the_ID();
@@ -210,7 +235,7 @@ function display_pictures($cat_id) {
                 'post_type' => 'attachment', 'post_mime_type' =>'image', 'post_status' => 'inherit', 'posts_per_page' => -1,
             );
             $list_of_posts = new WP_Query( $args );
-            
+
             foreach ( $list_of_posts->posts as $attachment ) {
                 array_push($lista_id, $attachment->ID);
                 $number_of_pictures += 1;
@@ -230,7 +255,7 @@ function display_pictures($cat_id) {
             $str_ids .= $l . ",";
         }
 
-        
+
         // $gallery = '[gallery type=tiled columns=5 ids="';
         // $gallery = '[gallery maxdim=300 type="masonry" ids="';
         $gallery = '[gallery size="medium" type="rectangular" ids="';
@@ -268,33 +293,33 @@ function display_pictures($cat_id) {
 //     wp_update_nav_menu_item($menu_id, 0, array(
 //         'menu-item-title' =>  __('Front page', kmc2theme),
 //         'menu-item-classes' => 'home',
-//         'menu-item-url' => home_url( '/' ), 
+//         'menu-item-url' => home_url( '/' ),
 //         'menu-item-status' => 'publish'));
 
 //     $id_cat = wp_update_nav_menu_item($menu_id, 0, array(
 //         'menu-item-title' =>  __('Categories', kmc2theme),
 //         'menu-item-classes' => 'categories',
-//         'menu-item-url' => '#', 
+//         'menu-item-url' => '#',
 //         'menu-item-status' => 'publish'));
 
 //     wp_update_nav_menu_item($menu_id, 0, array(
 //         'menu-item-title' =>  __('All', kmc2theme),
 //         'menu-item-classes' => 'All',
-//         'menu-item-url' => '#', 
+//         'menu-item-url' => '#',
 //         'menu-item-status' => 'publish',
 //         'menu-item-parent-id' => $id_cat));
 
 //     wp_update_nav_menu_item($menu_id, 0, array(
 //         'menu-item-title' =>  __('Blog', kmc2theme),
 //         'menu-item-classes' => 'blog',
-//         'menu-item-url' => home_url( '/blog/' ), 
+//         'menu-item-url' => home_url( '/blog/' ),
 //         'menu-item-status' => 'publish'));
-    
+
 
 // }
 
 // if (is_admin()) {
-//     kmc2_automenu();    
+//     kmc2_automenu();
 // }
 
 ?>
