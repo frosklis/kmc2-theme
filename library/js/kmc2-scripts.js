@@ -4,12 +4,13 @@ Author: Claudio Noguera
 */
 /*global image_sizes_vars, blog_vars, jQuery: false*/
 
-jQuery(function () {
-    var menu        = jQuery('#topbar nav');
-    // var menuHeight  = menu.height();
+jQuery(document).ready(function (jQuery) {
+    "use strict";
+    var menu, pull, startLoadingImages, lazyloadImage, lazyLoadedImages, i;
+    menu = jQuery('#topbar nav');
 
-    if(!menu.is(':visible')) {
-        var pull = jQuery('#topbar .logo');
+    if (!menu.is(':visible')) {
+        pull = jQuery('#topbar .logo');
         jQuery(pull).on('click', function (e) {
             e.preventDefault();
             menu.slideToggle();
@@ -21,64 +22,41 @@ jQuery(function () {
         });
     }
 
-});
-jQuery(document).ready(function ($) {
     jQuery("#home-categories").masonry({
-          // options
-          itemSelecor: ".home-category",
-          isFitWidth: true,
-          gutter: 30,
-          isOriginLeft: true,
-          animate: false,
-        });
+        // options
+        itemSelecor: ".home-category",
+        isFitWidth: true,
+        gutter: 30,
+        isOriginLeft: true,
+        animate: false
+    });
 
 
     jQuery(".article-list").masonry({
-          // options
-          itemSelecor: "article, .article-thumb",
-          isFitWidth: true,
-          gutter: 30,
-          isOriginLeft: true,
-          animate: true,
-        });
-
-    jQuery('.flexslider').flexslider({
-        controlNav: false,
-        directionNav: false,
-        before: function (slider) {
-                if (slider.count < 10) {
-                    jQuery.ajax({
-                        type: 'POST',
-                        url: blog_vars.siteurl + 'wp-admin/admin-ajax.php',
-                        data: {
-                            action: 'AddHomeSlide',
-                        },
-                        success: function (data /*, textStatus, XMLHttpRequest*/) {
-                            jQuery(".flexslider ul").append(data);
-                            startLoadingImages();
-                            slider.addSlide(jQuery(".flexlider .slides li:last-child"),slider.count);
-                        },
-                        // error: function (MLHttpRequest, textStatus, errorThrown) {
-                        //     alert(errorThrown);
-                        // }
-                    });
-                }
-            }
-        });
+        // options
+        itemSelecor: "article, .article-thumb",
+        isFitWidth: true,
+        gutter: 30,
+        isOriginLeft: true,
+        animate: true
+    });
 
 
     // ----------------------------------------------------
     // lazyload
     // ----------------------------------------------------
-
-
-    var startLoadingImages = function () {
+    startLoadingImages = function () {
         var getImageVersion = function (imageContainer) {
 
-            var imageWrapper = imageContainer.parentNode;
-            var padding = parseFloat(imageContainer.style.paddingBottom) / 100; //padding in fraction
-            var w = jQuery(imageWrapper).width();
-            var h = jQuery(imageWrapper).height();
+            var imageWrapper = imageContainer.parentNode,
+                padding = parseFloat(imageContainer.style.paddingBottom) / 100, //padding in fraction,
+                w = jQuery(imageWrapper).width(),
+                h = jQuery(imageWrapper).height(),
+                minRatio = 1.1,
+                ancestor = jQuery(imageContainer).closest('.flexslider'),
+                k,
+                w2,
+                h2;
 
             if (0 === w) {
                 w = window.screen.width;
@@ -86,7 +64,6 @@ jQuery(document).ready(function ($) {
             }
 
             // If image is vertical, limit its height
-            var minRatio = 1.1;
             if (w / h < minRatio) {
                 w = w * 9 / 16;
                 jQuery(imageWrapper).width(w);
@@ -96,25 +73,24 @@ jQuery(document).ready(function ($) {
             // If there is overflow, we have to make the parent narrower
             // The way this works overflow can only occur when the wrapper is too short,
             // and if it is short, it is for a reason.
-            var ancestor = jQuery(imageContainer).closest('.flexslider');
             if (ancestor.length > 0) {
                 ancestor = ancestor[0];
             }
 
-            if( imageWrapper.offsetHeight > ancestor.offsetHeight ||
-                imageWrapper.offsetWidth > ancestor.offsetWidth) {
+            if (imageWrapper.offsetHeight > ancestor.offsetHeight ||
+                    imageWrapper.offsetWidth > ancestor.offsetWidth) {
 
                 w = jQuery(ancestor).height() / padding;
                 jQuery(imageWrapper).width(w);
 
             }
-            var k;
-            for (k in image_sizes_vars) {
+
+            for (k = 0; k < image_sizes_vars.length; k++) {
                 w = w * window.devicePixelRatio;
                 h = w * padding;
 
-                var w2 = image_sizes_vars[k][0];
-                var h2 = w2 * padding;
+                w2 = image_sizes_vars[k][0];
+                h2 = w2 * padding;
                 if (h2 > image_sizes_vars[k][1]) {
                     h2 = image_sizes_vars[k][1];
                     w2 = h2 / padding;
@@ -128,48 +104,54 @@ jQuery(document).ready(function ($) {
             return 'original';
         };
 
-        var lazyloadImage = function (imageContainer) {
+        lazyloadImage = function (imageContainer) {
 
-            var imageVersion = getImageVersion(imageContainer);
-            // console.log("Escogida: " + imageVersion);
+            var d,
+                text,
+                em,
+                img,
+                imgSRC,
+                imageCaption,
+                imageTitle,
+                imageLink,
+                imageElement,
+                imageVersion = getImageVersion(imageContainer);
 
             if (!imageContainer || !imageContainer.children) {
                 return;
             }
-            var img = imageContainer.children[0];
+
+            img = imageContainer.children[0];
 
             if (img) {
-                var imgSRC = img.getAttribute("data-src-" + imageVersion);
+                imgSRC = img.getAttribute("data-src-" + imageVersion);
 
-                var imageCaption = img.getAttribute("data-caption");
-                var imageTitle = img.getAttribute("data-title");
-                var imageLink = img.getAttribute("data-link");
-
-                // console.log(imageTitle);
+                imageCaption = img.getAttribute("data-caption");
+                imageTitle = img.getAttribute("data-title");
+                imageLink = img.getAttribute("data-link");
 
                 if (imgSRC) {
                     jQuery(imageContainer).removeClass('not-loaded');
-                    var imageElement = new Image();
+                    imageElement = new Image();
                     imageElement.src = imgSRC;
-                    imageElement.setAttribute("alt", imageTitle ? imageTitle : "");
+                    imageElement.setAttribute("alt", imageTitle || "");
                     imageContainer.appendChild(imageElement);
                     imageContainer.removeChild(imageContainer.children[0]);
 
                     // Add link
                     if (imageLink) {
-                        jQuery(imageElement).wrap($('<a>',{
+                        jQuery(imageElement).wrap(jQuery('<a>', {
                             href: imageLink
                         }));
                     }
 
                     // Add the image title and caption
                     if (imageCaption || imageTitle) {
-                        var text,
-                            d = document.createElement("div");
+                        d = document.createElement("div");
                         d.className = "legend";
 
                         if (imageTitle) {
-                            var em = document.createElement("em");
+                            em = document.createElement("em");
                             text = document.createTextNode(imageTitle);
                             em.appendChild(text);
                             d.appendChild(em);
@@ -190,19 +172,49 @@ jQuery(document).ready(function ($) {
                     }
                 }
             }
-        },
+        };
+
         lazyLoadedImages = document.getElementsByClassName("img-container");
 
-        for (var i = 0; i < lazyLoadedImages.length; i++) {
+        for (i = 0; i < lazyLoadedImages.length; i++) {
             if (jQuery(lazyLoadedImages[i]).hasClass('not-loaded')) {
                 lazyloadImage(lazyLoadedImages[i]);
             }
         }
     };
     startLoadingImages();
+
+
+
+    jQuery('.flexslider').flexslider({
+        controlNav: false,
+        directionNav: false,
+        before: function (slider) {
+            if (slider.count < 10) {
+                jQuery.ajax({
+                    type: 'POST',
+                    url: blog_vars.siteurl + 'wp-admin/admin-ajax.php',
+                    data: {
+                        action: 'AddHomeSlide'
+                    },
+                    success: function (data) {
+                        jQuery(".flexslider ul").append(data);
+                        startLoadingImages();
+                        slider.addSlide(jQuery(".flexlider .slides li:last-child"), slider.count);
+                    }
+                    // error: function (MLHttpRequest, textStatus, errorThrown) {
+                    //     alert(errorThrown);
+                    // }
+                });
+            }
+        }
+    });
+
+
 });
 
-jQuery( window ).resize(function () {
+jQuery(window).resize(function () {
+    "use strict";
     var h = jQuery('.flexslider').height();
     jQuery('.flexslider .img-container-wrapper').css('max-height', h);
 });
