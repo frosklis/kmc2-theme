@@ -91,7 +91,7 @@ function kmc2_ahoy() {
 
     //
     // Some of the actions only need to be performed when we are in the admin page
-    // 
+    //
     if (is_admin()) {
 
         // default thumb size: 7 database queries
@@ -103,7 +103,7 @@ function kmc2_ahoy() {
         add_theme_support( 'menus' );
 
         add_editor_style( './library/css/style.css' );
-   
+
     }
 
 
@@ -164,7 +164,7 @@ function tipo_taxonomy() {
         );
 
     $tipo1_structure = '/tree/%category%/%tipo%';
-    $wp_rewrite->add_permastruct('category_tipo', $tipo1_structure);
+    $wp_rewrite->add_permastruct('category_tipo', $tipo1_structure, array('paged' => true ));
     $wp_rewrite->flush_rules();
 }
 
@@ -175,13 +175,22 @@ function kmc2_custom_rewrites() {
     add_rewrite_rule('random/?$', 'index.php?random=1', 'top');
 
     $wp->add_query_var('kmc2_pageofposts');
-    add_rewrite_rule('blog/?$', 'index.php?kmc2_pageofposts=1', 'top');    
-    add_rewrite_rule( 'blog/page/?([0-9]{1,})/?',  
-    'index.php?kmc2_pageofposts=1&paged=$matches[1]',  
+    add_rewrite_rule('blog/?$', 'index.php?kmc2_pageofposts=1', 'top');
+    add_rewrite_rule( 'blog/page/?([0-9]{1,})/?',
+    'index.php?kmc2_pageofposts=1&paged=$matches[1]',
     'top');
 
     $wp->add_query_var('kmc2_pictures');
     add_rewrite_rule(__('pictures/?$', 'kmc2theme'), 'index.php?kmc2_pictures=1', 'top');
+
+    // add_rewrite_rule('tree/?([^/]+)/?([^/]+)/paged/?([0-9]{1,})/$',
+    //     'index.php?category_name=$matches[1]&tipo=$matches[2]?paged=matches[3]',
+    //     'top');
+
+    // add_rewrite_rule('tree/([^/]+)page/?([0-9]{1,})/$',
+    //     'index.php?category_name=$matches[1]?paged=matches[2]',
+    //     'top');
+
 }
 
 function kmc2_template_hook() {
@@ -192,11 +201,11 @@ function kmc2_template_hook() {
         }
         wp_redirect($link,307);
         exit();
-    } else 
+    } else
     if (get_query_var('kmc2_pageofposts') == 1) {
         include( get_template_directory() . '/additional_templates/pageofposts.php' );
         exit();
-    } else 
+    } else
     if (get_query_var('kmc2_pictures') == 1) {
         include( get_template_directory() . '/additional_templates/pictures.php' );
         exit();
@@ -270,8 +279,8 @@ SCRIPTS & ENQUEUEING
 // loading modernizr and jquery, and reply script
 function kmc2_scripts_and_styles() {
 
-    // Sintaxis: 
-    // wp_register_script( $handle, $src, $deps, $ver, $in_footer ); 
+    // Sintaxis:
+    // wp_register_script( $handle, $src, $deps, $ver, $in_footer );
 
     if (!is_admin()) {
 
@@ -497,7 +506,7 @@ function kmc2_register_sidebars() {
     	'before_title' => '<h4 class="widgettitle">',
     	'after_title' => '</h4>',
     ));
-    
+
     // This is where the banner will be
     register_sidebar(array(
         'id' => 'footer1',
@@ -533,7 +542,7 @@ function kmc2_register_sidebars() {
 } // don't remove this bracket!
 
 /************* COMMENT LAYOUT *********************/
-		
+
 // Comment Layout
 function kmc2_comments($comment, $args, $depth) {
    $GLOBALS['comment'] = $comment; ?>

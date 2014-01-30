@@ -1,5 +1,5 @@
 <?php
-// 
+//
 // Display the posts
 // A lot of options can be passed as keys to the $args array
 // return values:
@@ -19,11 +19,11 @@ function display_posts ($args) {
 
     $pages = isset($args["pages"]) ? $args["pages"] : !$single;
 
-	
+
 	// Container for the article list
 	$articles  = $single ? "article-single" : "article-list";
 	echo ('<div class="' . $articles . '">');
-	
+
 	// If there are no posts, display an error message to the user and return false
 	if (!$list_of_posts->have_posts()) { ?>
 		<article id="post-not-found" class="hentry clearfix">
@@ -32,6 +32,7 @@ function display_posts ($args) {
             </header>
             <section class="entry-content">
                 <p><?php _e("Uh Oh. Something is missing. Try double checking things.", "kmc2theme"); ?></p>
+                <pre><?php global $wp_query; var_dump($wp_query);?></pre>
             </section>
             <footer class="article-footer">
                 <p><?php _e("This is the error message in the display_posts function.", "kmc2theme"); ?></p>
@@ -41,11 +42,11 @@ function display_posts ($args) {
 		echo ('</div>'); // Close article list div
 		return -1;
 	}
-	
+
 	// If we're here, we have posts
 	while ($list_of_posts->have_posts()) {
 		$list_of_posts->the_post(); // update wordpress variables
-		
+
 		// If what we have are tiles
 		if($tiles) {
             $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "width_260");
@@ -60,17 +61,17 @@ function display_posts ($args) {
                     printf('<time class="updated" datetime="%1$s" pubdate>%2$s</time></p></div>', get_the_time('Y-m-j'), get_the_time(get_option('date_format'))); ?>
                 </div>
             </a>
-        <?php 
+        <?php
 			continue;
 		} // if tiles
-		
+
 		// No tiles
 		?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
-        
+
             <header class="article-header">
-            
+
                 <?php if ($single) { ?>
                     <h1><?php the_title(); ?> </h1>
                 <?php } else { ?>
@@ -83,8 +84,8 @@ function display_posts ($args) {
 
 					// Date
 					echo('<div class="info"><span class="icon-calendar"></span> ');
-                    printf('<time class="updated" datetime="%1$s" pubdate>%2$s</time></p></div>', 
-                            get_the_time('Y-m-j'), 
+                    printf('<time class="updated" datetime="%1$s" pubdate>%2$s</time></p></div>',
+                            get_the_time('Y-m-j'),
                             get_the_time(get_option('date_format')));
 					// Author
 					echo('<div class="info"><span class="icon-user"></span> ');
@@ -97,7 +98,7 @@ function display_posts ($args) {
 						the_category(' <span class="icon-folder-close-alt"></span> ', ', ');
 						echo('</div>');
 					}
-					
+
 					// Tags
 					the_tags('<div class="info"><span class="icon-tag"></span> ', ', ', '</div>');
 
@@ -105,11 +106,11 @@ function display_posts ($args) {
                 ?></div><!-- byline class -->
 
                 <?php wp_link_pages('before=<div id="page-links">&after=</div>'); ?>
-        
+
             </header> <!-- end article header -->
 
             <?php
-            if ($summary) { 
+            if ($summary) {
             ?>
                 <section class="entry-content clearfix excerpt" onclick="location.href='<?php the_permalink(); ?>';">
                 <div class="thumbnail">
@@ -117,7 +118,7 @@ function display_posts ($args) {
                     if ( has_post_thumbnail() ) {
                         echo(kmc2_get_attachment_image( get_post_thumbnail_id( get_the_ID() )) );
                         if (false) the_post_thumbnail(); // this never executes, just to pass the guidelines tests
-                    } else { 
+                    } else {
                         echo_first_image(get_the_ID());
                     } ?>
                 </div>
@@ -130,43 +131,43 @@ function display_posts ($args) {
                     echo (do_shortcode("[image id ='" . get_the_ID() . "']"));
                 }
                 the_content();
-            } 
+            }
             ?>
             </section> <!-- end article section -->
-        
+
             <footer class="article-footer">
                 <?php wp_link_pages('before=<div id="page-links">&after=</div>'); ?>
 
             </footer> <!-- end article footer -->
-            
-            <?php 
+
+            <?php
             if ($comments) comments_template();
             ?>
-            
+
         </article> <!-- end article -->
     <?php
-		
+
 	}
 
 
     echo ('</div>'); // Close article list div
 
-    // Navigation links to previous and next articles        
+    // Navigation links to previous and next articles
     if ($single && $prev_next_links) {
-        echo('<div class="wp-prev-next">'); 
-            previous_post_link('<div class="prev-link">%link</div>', 
+        echo('<div class="wp-prev-next">');
+            previous_post_link('<div class="prev-link">%link</div>',
                 '<img src="' . get_stylesheet_directory_uri() . '/images/icons/arrow_left_16.png"  width="16" height="16">' . "%title");
-            next_post_link('<div class="next-link">%link</div>', 
-                "%title" . '<img src="' . get_stylesheet_directory_uri() . '/images/icons/arrow_right_16.png"  width="16" height="16">'); 
+            next_post_link('<div class="next-link">%link</div>',
+                "%title" . '<img src="' . get_stylesheet_directory_uri() . '/images/icons/arrow_right_16.png"  width="16" height="16">');
         echo('</div>');
     }
-	
-	if ($pages) { 
+
+	if ($pages) {
 		kmc2_page_navi();
-	} 
-		
+	}
+
 	// final steps
 	return 1;
-    
-		
+
+
 }

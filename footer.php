@@ -1,5 +1,5 @@
 			<footer class="footer" role="contentinfo">
-			
+
 				<div id="inner-footer" class="wrap clearfix">
 
 						<div class="socialbar aligncenter">
@@ -14,7 +14,7 @@
 								$form = "footersearch";
 								echo(kmc2_wpsearch($form));
 								?>
-						</div> 
+						</div>
 						<div class="footer-widgetarea">
 						<?php
 					    if (is_active_sidebar('footer1')):
@@ -24,11 +24,11 @@
 					<?php
 					unset($widget);
 					?>
-					
+
 					<nav role="navigation">
     					<?php //kmc2_footer_links(); ?>
 	                </nav>
-	                		
+
 					<div class="source-org copyright aligncenter">
 						<p><a href="<?php echo home_url(); ?>" rel="nofollow">
 						<?php require('images/svg/c2.svg'); ?>
@@ -36,10 +36,10 @@
 						<!-- <p><a href="<?php echo home_url(); ?>" rel="nofollow">&copy; <?php echo date('Y'); ?> km c<sup>2</sup><?php // bloginfo('name'); ?></a></p> -->
 					</div>
 				</div> <!-- end #inner-footer -->
-				
+
 			</footer> <!-- end footer -->
-		
-		
+
+
 		<!-- all js scripts are loaded in library/kmc2.php -->
 		<?php wp_footer();?>
 	</body>
