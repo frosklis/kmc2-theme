@@ -4,9 +4,12 @@ Author: Claudio Noguera
 */
 /*global image_sizes_vars, blog_vars, jQuery: false*/
 
+
 jQuery(document).ready(function (jQuery) {
     "use strict";
-    var menu, pull, startLoadingImages, lazyloadImage, lazyLoadedImages, i;
+    var menu, pull, startLoadingImages, lazyloadImage, lazyLoadedImages, i,
+        currentPage = 2;
+
     menu = jQuery('#topbar nav');
 
     if (!menu.is(':visible')) {
@@ -211,6 +214,37 @@ jQuery(document).ready(function (jQuery) {
     });
 
 
+    function loadArticle(pageNumber) {
+        jQuery.ajax({
+            url: blog_vars.siteurl + 'wp-admin/admin-ajax.php',
+            type: 'GET',
+            data: "action=kmc2_infinite_scroll&page_no=" + pageNumber + '&loop_file=loop',
+            success: function (html) {
+
+                if (html === "0") { // Response code for no more posts
+                    jQuery(window).unbind('scroll');
+                    return null;
+                }
+                // jQuery(".article-list").append(html);   // This will be the div where our content will be loaded
+                // jQuery(".article-list").masonry();
+
+                html = jQuery.parseHTML(html);
+
+                jQuery('.article-list').masonry()
+                    .append(html)
+                    .masonry('appended', html);
+            }
+        });
+        return false;
+    }
+
+    jQuery(window).scroll(function () {
+        if (jQuery(window).scrollTop() === jQuery(document).height() - jQuery(window).height()) {
+            loadArticle(currentPage);
+            currentPage++;
+        }
+    });
+
 });
 
 jQuery(window).resize(function () {
@@ -218,3 +252,4 @@ jQuery(window).resize(function () {
     var h = jQuery('.flexslider').height();
     jQuery('.flexslider .img-container-wrapper').css('max-height', h);
 });
+

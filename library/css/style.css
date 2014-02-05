@@ -2383,6 +2383,9 @@ values are commented out on each line.
   nav li.current-page-ancestor {
     color: black;
   }
+  .article-list .article-thumb {
+    margin-bottom: 30px;
+  }
 }
 @media (min-width: 1024px) {
   .home-category {

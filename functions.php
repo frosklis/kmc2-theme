@@ -4,13 +4,14 @@ Author: Claudio Noguera
 URL: htp://blog.claudionoguera.tk
 */
 
+// Dummy
 if ( ! isset( $content_width ) ) $content_width = 960;
 
-// we're firing all out initial functions at the start
+
 
 /**
- * Description
- * @return type
+ * Kmc2 theme initial actions
+ * @return void
  */
 function kmc2_ahoy() {
     // launching operation cleanup
@@ -79,6 +80,12 @@ function kmc2_ahoy() {
     //         'chat'               // chat transcript
     //     )
     // );
+
+    // Infinite scroll
+    add_theme_support( 'infinite-scroll', array(
+        'container' => 'content',
+        'footer' => 'page',
+    ) );
 
 
     // registering wp3+ menus

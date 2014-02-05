@@ -1,11 +1,11 @@
 <?php
-//
-// Display the posts
-// A lot of options can be passed as keys to the $args array
-// return values:
-// 1 --> everything went fine
-// -1 --> no_posts
-//
+/**
+ * Function used to display posts. Lots of options.
+ * @param array $args options array
+ * @return integet
+ * 1 - everything fine
+ * -1 - no posts
+ */
 function display_posts ($args) {
     $list_of_posts = isset($args["list_of_posts"]) ? $args["list_of_posts"] : null;
     $summary = isset($args["summary"]) ? $args["summary"] : false;
@@ -18,11 +18,15 @@ function display_posts ($args) {
 
 
     $pages = isset($args["pages"]) ? $args["pages"] : !$single;
+    $infinite_scroll = isset($args["infinite_scroll"]) ? $args["infinite_scroll"] : false;
+    $ajax = isset($args["ajax"]) ? $args["ajax"] : false;
 
 
 	// Container for the article list
-	$articles  = $single ? "article-single" : "article-list";
-	echo ('<div class="' . $articles . '">');
+    if (!$ajax) {
+        $articles  = $single ? "article-single" : "article-list";
+        echo ('<div class="' . $articles . '">');
+    }
 
 	// If there are no posts, display an error message to the user and return false
 	if (!$list_of_posts->have_posts()) { ?>
@@ -149,8 +153,9 @@ function display_posts ($args) {
 
 	}
 
-
-    echo ('</div>'); // Close article list div
+    if (!$ajax) {
+        echo ('</div>'); // Close article list div
+    }
 
     // Navigation links to previous and next articles
     if ($single && $prev_next_links) {
@@ -162,7 +167,7 @@ function display_posts ($args) {
         echo('</div>');
     }
 
-	if ($pages) {
+	if ($pages && !$infinite_scroll) {
 		kmc2_page_navi();
 	}
 
