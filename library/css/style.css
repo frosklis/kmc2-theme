@@ -1684,12 +1684,10 @@ SIDEBARS & ASIDES
   height: 160px;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  -webkit-filter: grayscale(100%);
   transition: ease 750ms background-position;
 }
 .article-list .article-thumb:hover .background {
   background-position: 0% 100%;
-  -webkit-filter: grayscale(0%);
 }
 .article-list .article-thumb:hover .content {
   color: white;
