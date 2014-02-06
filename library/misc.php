@@ -57,13 +57,13 @@ add_filter('image_send_to_editor', 'edit_image_html', 10, 3);
  * Also, a noscript downstripped version of the code is provided in case the user chooses not to enable javascript.
  *
  * @param int $image_id
- * @param string $width directly parsed to the style of the image
  * @param bool $legend provide a legend?
+ * @param string $width directly parsed to the style of the image
  * @param bool $link provide a link?
  * @param string $align direcly parsed to the float css property
  * @return string html code
  */
-function kmc2_get_attachment_image($image_id, $width='100%', $legend=true, $link=true, $align='center') {
+function kmc2_get_attachment_image($image_id, $legend=true, $width='100%', $link=true, $align='center') {
     // In an image:
     // caption --> post_excerpt
     // title --> post_title
@@ -141,11 +141,12 @@ function echo_first_image( $postID ) {
         $images_functions = new KmC2_Responsive_Images();
         $lista_imagenes = $images_functions->get_post_images( $postID );
 
-        if (count($lista_imagenes)>0) {
+        if (count($lista_imagenes) > 0) {
             $img_id = $lista_imagenes[0];
             echo '<img src="' . wp_get_attachment_thumb_url( $img_id ) . '" class="current alignleft">';
         }
     }
+
     else {
         $args = array(
             'numberposts' => 1,
