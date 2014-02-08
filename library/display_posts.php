@@ -58,7 +58,7 @@ function display_posts ($args) {
                 <div class="content">
                     <div class="title"><h3><?php the_title(); ?></h3></div>
                     <?php echo('<div class="meta"><p><span class="icon-calendar"></span> ');
-                    printf('<time class="updated" datetime="%1$s" pubdate>%2$s</time></p></div>', get_the_time('Y-m-j'), get_the_time(get_option('date_format'))); ?>
+                    printf('<time class="updated" datetime="%1$s">%2$s</time></p></div>', get_the_time('Y-m-d H:i'), get_the_time(get_option('date_format'))); ?>
                 </div>
             </a>
         <?php
