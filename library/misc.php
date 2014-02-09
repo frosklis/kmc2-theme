@@ -29,18 +29,27 @@ function kmc2_image_sizes () {
  * @param array $atts User defined atts
  * @return string html code of the shortcode
  */
-function kmc2_image_shortcode( $atts ) {
+function kmc2_image_shortcode($atts) {
     extract( shortcode_atts( array(
         'id' => '',
         'width' => '100%',
-        'legend' => 'true',
-        'link' => 'true',
+        'legend' => true,
+        'link' => true,
         'align' => 'center',
+        'min_width' => '',
+        'max_width' => ''
     ), $atts, 'image' ) );
 
-    $legend = strtolower($legend) == "true";
-    $link = strtolower($link) == "true";
-    return kmc2_get_attachment_image($id, $width, $legend, $link, $align);
+    $atts = array(
+        'id' => $id,
+        'width' => $width,
+        'legend' => $legend,
+        'link' => $link,
+        'align' => $align,
+        'min_width' => $min_width,
+        'max_width' => $max_width);
+
+    return kmc2_get_attachment_image($atts);
 }
 add_shortcode('image', 'kmc2_image_shortcode');
 
@@ -56,41 +65,39 @@ add_filter('image_send_to_editor', 'edit_image_html', 10, 3);
  * These parameters then have to be parsed using javascript to actually generate the final html code.
  * Also, a noscript downstripped version of the code is provided in case the user chooses not to enable javascript.
  *
- * @param int $image_id
- * @param bool $legend provide a legend?
- * @param string $width directly parsed to the style of the image
- * @param bool $link provide a link?
- * @param string $align direcly parsed to the float css property
+ * @param array $atts
  * @return string html code
  */
-function kmc2_get_attachment_image($image_id, $legend=true, $width='100%', $link=true, $align='center') {
+function kmc2_get_attachment_image($atts) {
     // In an image:
     // caption --> post_excerpt
     // title --> post_title
     // description --> content
+    extract($atts);
 
     // width_260 omitted on purpose
     $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail', 'size_3', 'size_2');
 
 
-    $queried_post = get_post($image_id);
+    $queried_post = get_post($id);
     $caption = $queried_post->post_excerpt;
     $title = $queried_post->post_title;
 
 
     // If we are in the feed tmeplate, we just return the medium sized image
     if (is_feed()) {
-        $aux = wp_get_attachment_image_src( $image_id, "medium" );
+        $aux = wp_get_attachment_image_src( $id, "medium" );
         $out = "<img src='" . $aux[0] . "' alt='" . $title . "'>";
         return $out;
     }
 
-    $aux = wp_get_attachment_image_src( $image_id, 'full');
+    $aux = wp_get_attachment_image_src( $id, 'full');
 
     $style = '';
     $align = strtolower($align);
     if ($width != '100%' || $align != 'center') {
         $style = "style='width:{$width};";
+
         if ($align != 'center') {
             $style .= 'float:'.$align.';';
             if ($align == "right") {
@@ -110,12 +117,12 @@ function kmc2_get_attachment_image($image_id, $legend=true, $width='100%', $link
     }
     $path = "";
     for ($i = 0; $i < sizeof($sizes); $i++) {
-        $aux = wp_get_attachment_image_src( $image_id, $sizes[$i] ); // returns an array
+        $aux = wp_get_attachment_image_src( $id, $sizes[$i] ); // returns an array
         $path = $aux[0];
         $out .= " data-src-" . $sizes[$i] . "='" . $path . "'";
     }
 
-    $out .= " data-src-img-id='{$image_id}'";
+    $out .= " data-src-img-id='{$id}'";
 
     // Image and caption
     if($legend) {
@@ -124,7 +131,7 @@ function kmc2_get_attachment_image($image_id, $legend=true, $width='100%', $link
     }
     // Attachment page
     if($link) {
-        $out .= " data-link='" . get_attachment_link($image_id) . "'";
+        $out .= " data-link='" . get_attachment_link($id) . "'";
     }
     // fallback if javascript is not used
     $out .= " ><img src='" . $path . "' alt='" . $title . "'>";
