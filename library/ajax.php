@@ -16,13 +16,13 @@ function AddHomeSlide() {
 		'post_mime_type'   => '',
 		'post_parent'      => '',
 		// 'post_status'      => 'publish',
-		'suppress_filters' => true 
+		'suppress_filters' => true
 	);
 	$image_list = get_posts($args);
 	$results = "";
 	foreach ($image_list as $image ) {
 		$results .= '<li style="display: block; opacity: 0; z-index: 1">';
-		$results .= kmc2_get_attachment_image($image->ID);
+		$results .= kmc2_get_attachment_image(array('id' => $image->ID));
 		$results .= "</li>";
 	}
 	die($results);

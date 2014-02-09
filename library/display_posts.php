@@ -121,7 +121,7 @@ function display_posts ($args) {
                 <div class="thumbnail">
                     <?php
                     if ( has_post_thumbnail() ) {
-                        echo(kmc2_get_attachment_image( get_post_thumbnail_id( get_the_ID() ), $legend = false) );
+                        echo(kmc2_get_attachment_image( array('id' => get_post_thumbnail_id( get_the_ID() ), 'legend' => false) ));
                         if (false) the_post_thumbnail(); // this never executes, just to pass the guidelines tests
                     } else {
                         echo_first_image(get_the_ID());
