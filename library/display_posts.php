@@ -16,6 +16,8 @@ function display_posts ($args) {
 
     $tiles = isset($args["tiles"]) ? $args["tiles"] : false;
 
+    $byline = isset($args["byline"]) ? $args["byline"] : true;
+
 
     $pages = isset($args["pages"]) ? $args["pages"] : !$single;
 
@@ -76,36 +78,39 @@ function display_posts ($args) {
                     <h1><?php the_title(); ?> </h1>
                 <?php } else { ?>
                     <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-                    <?php } ?>
-                <div class="byline"><?php
+                    <?php }
+                if ($byline) { ?>
+                    <div class="byline"><?php
 
-					// Edit the entry
-					edit_post_link(__('Edit', 'kmc2theme'),'<div class="info"><span class="icon-pencil"></span>','</div>');
+    					// Edit the entry
+    					edit_post_link(__('Edit', 'kmc2theme'),'<div class="info"><span class="icon-pencil"></span>','</div>');
 
-					// Date
-					echo('<div class="info"><span class="icon-calendar"></span> ');
-                    printf('<time class="updated" datetime="%1$s" pubdate>%2$s</time></p></div>',
-                            get_the_time('Y-m-j'),
-                            get_the_time(get_option('date_format')));
-					// Author
-					echo('<div class="info"><span class="icon-user"></span> ');
-					echo(kmc2_get_the_author_posts_link());
-					echo('</div>');
+    					// Date
+    					echo('<div class="info"><span class="icon-calendar"></span> ');
+                        printf('<time class="updated" datetime="%1$s" pubdate>%2$s</time></p></div>',
+                                get_the_time('Y-m-j'),
+                                get_the_time(get_option('date_format')));
+    					// Author
+    					echo('<div class="info"><span class="icon-user"></span> ');
+    					echo(kmc2_get_the_author_posts_link());
+    					echo('</div>');
 
-					// Category
-					if (get_the_category()) {
-						echo('<div class="info"><span class="icon-folder-close-alt"></span> ');
-						the_category(' <span class="icon-folder-close-alt"></span> ', ', ');
-						echo('</div>');
-					}
+    					// Category
+    					if (get_the_category()) {
+    						echo('<div class="info"><span class="icon-folder-close-alt"></span> ');
+    						the_category(' <span class="icon-folder-close-alt"></span> ', ', ');
+    						echo('</div>');
+    					}
 
-					// Tags
-					the_tags('<div class="info"><span class="icon-tag"></span> ', ', ', '</div>');
+    					// Tags
+    					the_tags('<div class="info"><span class="icon-tag"></span> ', ', ', '</div>');
 
 
-                ?></div><!-- byline class -->
+                    ?></div><!-- byline class -->
 
-                <?php wp_link_pages('before=<div id="page-links">&after=</div>'); ?>
+                <?php
+                }
+                wp_link_pages('before=<div id="page-links">&after=</div>'); ?>
 
             </header> <!-- end article header -->
 
