@@ -76,8 +76,18 @@ function kmc2_get_attachment_image($atts) {
     extract($atts);
 
     if (!isset($width)) $width = '100%';
-    if (!isset($link)) $link = true;
-    if (!isset($legend)) $legend = true;
+    if (!isset($link)) {
+        $link = true;
+    }
+    else {
+        $link = 'true' == strtolower($link);
+    }
+    if (!isset($legend)) {
+        $legend = true;
+    }
+    else {
+        $legend = 'true' == strtolower($legend);
+    }
     if (!isset($align)) $align = 'center';
 
     // width_260 omitted on purpose
