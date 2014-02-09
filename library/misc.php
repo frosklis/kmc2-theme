@@ -33,8 +33,8 @@ function kmc2_image_shortcode($atts) {
     extract( shortcode_atts( array(
         'id' => '',
         'width' => '100%',
-        'legend' => true,
-        'link' => true,
+        'legend' => 'true',
+        'link' => 'true',
         'align' => 'center',
         'min_width' => '',
         'max_width' => ''
