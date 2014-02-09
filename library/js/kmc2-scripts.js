@@ -7,8 +7,7 @@ Author: Claudio Noguera
 
 jQuery(document).ready(function (jQuery) {
     "use strict";
-    var menu, pull, startLoadingImages, lazyloadImage, lazyLoadedImages, i,
-        currentPage = 2;
+    var menu, pull, startLoadingImages, lazyloadImage, lazyLoadedImages, i;
 
     menu = jQuery('#topbar nav');
 
@@ -205,43 +204,8 @@ jQuery(document).ready(function (jQuery) {
                         startLoadingImages();
                         slider.addSlide(jQuery(".flexlider .slides li:last-child"), slider.count);
                     }
-                    // error: function (MLHttpRequest, textStatus, errorThrown) {
-                    //     alert(errorThrown);
-                    // }
                 });
             }
-        }
-    });
-
-
-    function loadArticle(pageNumber) {
-        jQuery.ajax({
-            url: blog_vars.siteurl + 'wp-admin/admin-ajax.php',
-            type: 'GET',
-            data: "action=kmc2_infinite_scroll&page_no=" + pageNumber + '&loop_file=loop',
-            success: function (html) {
-
-                if (html === "0") { // Response code for no more posts
-                    jQuery(window).unbind('scroll');
-                    return null;
-                }
-                // jQuery(".article-list").append(html);   // This will be the div where our content will be loaded
-                // jQuery(".article-list").masonry();
-
-                html = jQuery.parseHTML(html);
-
-                jQuery('.article-list').masonry()
-                    .append(html)
-                    .masonry('appended', html);
-            }
-        });
-        return false;
-    }
-
-    jQuery(window).scroll(function () {
-        if (jQuery(window).scrollTop() === jQuery(document).height() - jQuery(window).height()) {
-            loadArticle(currentPage);
-            currentPage++;
         }
     });
 
@@ -253,3 +217,45 @@ jQuery(window).resize(function () {
     jQuery('.flexslider .img-container-wrapper').css('max-height', h);
 });
 
+
+function loadGallery() {
+    'use strict';
+    var gallery, chunks, chunk, i;
+    gallery = jQuery(".gallery");
+    chunks = parseInt(gallery[0].getAttribute("data-chunks"), 10);
+    chunk = gallery[0].getAttribute("data-include-" + chunks.toString());
+
+
+    gallery[0].setAttribute("data-chunks", chunks - 1);
+    gallery[0].removeAttribute("data-include-" + chunks.toString());
+
+    jQuery.ajax({
+        url: blog_vars.siteurl + 'wp-admin/admin-ajax.php',
+        type: 'GET',
+        data: "action=kmc2_load_gallery&include=" + chunk,
+        beforeSend: function () {
+            jQuery('#main').addClass("loading");
+        },
+        complete: function () {
+            jQuery('#main').removeClass("loading");
+        },
+        success: function (html) {
+            html = jQuery.parseHTML(html);
+
+            for (i = 0; i < html.length; i++) {
+                if (html[i].childNodes.length > 0) {
+                    html = html[i].childNodes;
+                    break;
+                }
+            }
+
+            gallery.append(html);
+
+
+            // jQuery('.article-list').masonry()
+            //     .append(html)
+            //     .masonry('appended', html);
+        }
+    });
+    return false;
+}
