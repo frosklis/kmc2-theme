@@ -1,4 +1,43 @@
+			<footer class="footer" role="contentinfo">
 
+				<div id="inner-footer" class="wrap clearfix">
+
+						<div class="socialbar aligncenter">
+							<p>
+							    <a href="<?php bloginfo('rss2_url'); ?>"><span class="icon-rss"></span></a>
+							    <a href="<?php echo('https://twitter.com/' . get_option('kmc2_twitter_user', '' )); ?>"><span class="icon-twitter"></span></a>
+								<a href="//plus.google.com/102083218914804503792?prsrc=3"
+								   rel="publisher" target="_top"><span class="icon-google-plus"></span>
+								</a>
+							</p>
+								<?php
+								$form = "footersearch";
+								echo(kmc2_wpsearch($form));
+								?>
+						</div>
+						<div class="footer-widgetarea">
+						<?php
+					    if (is_active_sidebar('footer1')):
+					    	dynamic_sidebar('footer1');
+					    endif; ?>
+						</div>
+					<?php
+					unset($widget);
+					?>
+
+					<nav role="navigation">
+    					<?php //kmc2_footer_links(); ?>
+	                </nav>
+
+					<div class="source-org copyright aligncenter">
+						<p><a href="<?php echo home_url(); ?>" rel="nofollow">
+						<?php require('images/svg/c2.svg'); ?>
+						</a></p>
+						<!-- <p><a href="<?php echo home_url(); ?>" rel="nofollow">&copy; <?php echo date('Y'); ?> km c<sup>2</sup><?php // bloginfo('name'); ?></a></p> -->
+					</div>
+				</div> <!-- end #inner-footer -->
+
+			</footer> <!-- end footer -->
 
 
 		<!-- all js scripts are loaded in library/kmc2.php -->
