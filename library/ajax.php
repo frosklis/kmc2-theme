@@ -1,6 +1,5 @@
 <?php
-function AddHomeSlide() {
-
+function kmc2_AddHomeSlide() {
 
 	$args = array(
 		'posts_per_page'   => 1,
@@ -28,7 +27,18 @@ function AddHomeSlide() {
 	die($results);
 }
 // creating Ajax call for WordPress
-add_action( 'wp_ajax_AddHomeSlide', 'AddHomeSlide' );
-add_action( 'wp_ajax_nopriv_AddHomeSlide', 'AddHomeSlide' );
+add_action( 'wp_ajax_kmc2_AddHomeSlide', 'kmc2_AddHomeSlide' );
+add_action( 'wp_ajax_nopriv_kmc2_AddHomeSlide', 'AddHomeSlide' );
+
+
+function kmc2_load_gallery() {
+	$gallery = "[gallery include='" . $_GET['include'] . "' container='false']";
+
+	$out = do_shortcode($gallery);
+
+	die($out);
+}
+add_action('wp_ajax_kmc2_load_gallery', 'kmc2_load_gallery');           // for logged in user
+add_action('wp_ajax_nopriv_kmc2_load_gallery', 'kmc2_load_gallery');    // if user not logged in
 
 ?>

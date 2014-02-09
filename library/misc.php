@@ -192,26 +192,23 @@ function echo_first_image( $postID ) {
 }
 
 
-
-// Mostrar las imágenes asociadas a una categoría
+/**
+ * Creates the gallery
+ * @param type $cat_id
+ * @return type
+ */
 function display_pictures($cat_id) {
 ?>
 
     <article <?php post_class('clearfix'); ?> role="article">
 
-        <!-- <header class="article-header">
-
-            <h2><a href="" rel="bookmark" title="Fotos">Fotos</a></h2>
-
-
-        </header> --><!-- end article header -->
 
         <section class="entry-content clearfix">
 
         <?php
         //echo $cat_id . " - id de categoría \n";
 
-        $lista_id = array();
+        $id_list = array();
 
         $number_of_posts = 0;
         $number_of_pictures = 0;
@@ -244,7 +241,7 @@ function display_pictures($cat_id) {
 
                 if ( $attachments ) {
                     foreach ( $attachments as $attachment ) {
-                        array_push($lista_id, $attachment->ID);
+                        array_push($id_list, $attachment->ID);
                         $number_of_pictures += 1;
                     }
                 }
@@ -260,28 +257,26 @@ function display_pictures($cat_id) {
             $list_of_posts = new WP_Query( $args );
 
             foreach ( $list_of_posts->posts as $attachment ) {
-                array_push($lista_id, $attachment->ID);
+                array_push($id_list, $attachment->ID);
                 $number_of_pictures += 1;
             }
 
         }
 
         // Limpiar aray de ids
-        $lista_id = array_unique($lista_id);
+        $id_list = array_unique($id_list);
 
         // Poner en orden aleatorio para que sea más interesante de mostrar
-        shuffle($lista_id);
+        shuffle($id_list);
 
         $str_ids = "";
 
-        foreach ($lista_id as $l) {
+        foreach ($id_list as $l) {
             $str_ids .= $l . ",";
         }
 
 
-        // $gallery = '[gallery type=tiled columns=5 ids="';
-        // $gallery = '[gallery maxdim=300 type="masonry" ids="';
-        $gallery = '[gallery size="medium" type="rectangular" ids="';
+        $gallery = '[gallery autoload="true" include="';
         $gallery .= $str_ids . '"]';
 
         echo do_shortcode($gallery);
@@ -296,6 +291,60 @@ function display_pictures($cat_id) {
 <?php
 }
 
+
+function kmc2_gallery_shortcode( $out, $atts ) {
+    if (!isset($atts['autoload']) && !isset($atts['container'])) return $out;
+
+    if (isset($atts['autoload'])) {
+        if ($atts['autoload'] == 'true') {
+
+            $images = explode(',', $atts['include']);
+            $loadchunk = 10;
+            $chunks = intval((count($images) - 1) / $loadchunk);
+
+            if ($chunks == 0) return $out;
+
+            $first = array_slice($images, 0, $loadchunk);
+            $ids = implode(',', $first);
+
+            $output = do_shortcode('[gallery include="' . $ids . '"]');
+
+            $moregalleries = '<div data-chunks="' . $chunks . '"';
+            $shortcodes = array();
+
+            foreach (range(1, $chunks) as $i) {
+                $next = array_slice($images, 10 * (1 + $chunks - $i), 10);
+                $moregalleries .= "data-include-$i='" . implode(',', $next) . "' ";
+            }
+            unset($images);
+
+            $pos = strpos($output, "<div");
+
+            $output = substr($output, 0, $pos) . $moregalleries . substr($output, $pos + 4);
+
+            $output .= "<script>
+                jQuery(window).scroll(function () {
+                    if (jQuery(window).scrollTop() === jQuery(document).height() - jQuery(window).height()) {
+                        loadGallery();
+                    }
+                });
+            </script>";
+
+            return $output;
+        }
+    }
+
+    if (isset($atts['container'])) {
+        if ($atts['container'] == 'false') {
+            $out = do_shortcode("[gallery include='" . $atts['include'] . "']");
+            $pos = strpos($out, "</style>");
+            $output = substr($out, $pos + 8);
+            return $output;
+        }
+    }
+    return $out;
+}
+add_filter( 'post_gallery', 'kmc2_gallery_shortcode', 10, 3 );
 
 // // Autocreate a menu
 // function kmc2_automenu() {

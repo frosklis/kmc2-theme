@@ -4,9 +4,11 @@ Author: Claudio Noguera
 */
 /*global image_sizes_vars, blog_vars, jQuery: false*/
 
+
 jQuery(document).ready(function (jQuery) {
     "use strict";
     var menu, pull, startLoadingImages, lazyloadImage, lazyLoadedImages, i;
+
     menu = jQuery('#topbar nav');
 
     if (!menu.is(':visible')) {
@@ -202,14 +204,10 @@ jQuery(document).ready(function (jQuery) {
                         startLoadingImages();
                         slider.addSlide(jQuery(".flexlider .slides li:last-child"), slider.count);
                     }
-                    // error: function (MLHttpRequest, textStatus, errorThrown) {
-                    //     alert(errorThrown);
-                    // }
                 });
             }
         }
     });
-
 
 });
 
@@ -218,3 +216,46 @@ jQuery(window).resize(function () {
     var h = jQuery('.flexslider').height();
     jQuery('.flexslider .img-container-wrapper').css('max-height', h);
 });
+
+
+function loadGallery() {
+    'use strict';
+    var gallery, chunks, chunk, i;
+    gallery = jQuery(".gallery");
+    chunks = parseInt(gallery[0].getAttribute("data-chunks"), 10);
+    chunk = gallery[0].getAttribute("data-include-" + chunks.toString());
+
+
+    gallery[0].setAttribute("data-chunks", chunks - 1);
+    gallery[0].removeAttribute("data-include-" + chunks.toString());
+
+    jQuery.ajax({
+        url: blog_vars.siteurl + 'wp-admin/admin-ajax.php',
+        type: 'GET',
+        data: "action=kmc2_load_gallery&include=" + chunk,
+        beforeSend: function () {
+            jQuery('#main').addClass("loading");
+        },
+        complete: function () {
+            jQuery('#main').removeClass("loading");
+        },
+        success: function (html) {
+            html = jQuery.parseHTML(html);
+
+            for (i = 0; i < html.length; i++) {
+                if (html[i].childNodes.length > 0) {
+                    html = html[i].childNodes;
+                    break;
+                }
+            }
+
+            gallery.append(html);
+
+
+            // jQuery('.article-list').masonry()
+            //     .append(html)
+            //     .masonry('appended', html);
+        }
+    });
+    return false;
+}
