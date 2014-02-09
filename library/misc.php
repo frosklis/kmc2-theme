@@ -75,6 +75,11 @@ function kmc2_get_attachment_image($atts) {
     // description --> content
     extract($atts);
 
+    if (!isset($width)) $width = '100%';
+    if (!isset($link)) $link = true;
+    if (!isset($legend)) $legend = true;
+    if (!isset($align)) $align = 'center';
+
     // width_260 omitted on purpose
     $sizes = array('small', 'medium', 'big', 'large', 'original', 'full', 'thumbnail', 'size_3', 'size_2');
 
