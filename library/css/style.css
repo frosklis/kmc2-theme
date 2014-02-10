@@ -1052,7 +1052,6 @@ h6 {
   /* end .wp-caption */
   /* image gallery styles */
   /* end .gallery */
-  /* gallery caption styles */
 }
 #content #inner-content .single {
   float: none;
@@ -1159,32 +1158,8 @@ h6 {
   margin-right: auto;
   width: 100%;
 }
-#content #inner-content .gallery dl {
-  position: relative;
-  float: left;
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-#content #inner-content .gallery dl img {
-  margin: 0;
-}
-#content #inner-content .gallery dl dd {
-  opacity: 0;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  margin: 0;
-  line-height: 1.2;
-  padding: 5px;
-}
-#content #inner-content .gallery dl dd:hover,
-#content #inner-content .gallery dl ddfocus {
-  opacity: 1;
+#content #inner-content .gallery .gallery-item {
+  min-width: 300px;
 }
 .excerpt p {
   margin-top: 0 !important;
@@ -2238,15 +2213,6 @@ values are commented out on each line.
     line-height: 1.2;
     display: inline-block;
     text-align: justify;
-  }
-  .gallery-masonry {
-    margin: 0 auto;
-    position: relative;
-  }
-  .gallery-masonry .gallery-item {
-    float: left;
-    background-color: grey;
-    margin-bottom: 10px;
   }
   .category-page .article-list {
     text-align: center;

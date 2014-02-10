@@ -306,7 +306,6 @@ function kmc2_scripts_and_styles() {
         // wp_register_script( $handle, $src, $deps, $ver, $in_footer );
         wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/kmc2-scripts.min.js', array( 'jquery', 'masonry' ), '', true );
         wp_register_script( 'masonry', get_stylesheet_directory_uri() . '/library/js/masonry.pkgd.min.js', array( 'jquery' ), '', true );
-        wp_register_script( 'kmc2-gallery', get_stylesheet_directory_uri() . '/library/js/gallery.js', array( 'masonry' ), '', true );
         wp_register_script( 'flexslider', get_stylesheet_directory_uri() . '/library/js/jquery.flexslider-min.js', array( 'jquery' ), '', true );
 
         wp_localize_script('kmc2-js', 'image_sizes_vars', array(
@@ -330,7 +329,6 @@ function kmc2_scripts_and_styles() {
         wp_enqueue_script('jquery');
         wp_enqueue_script('kmc2-js');
         wp_enqueue_script('masonry');
-        wp_enqueue_script('kmc2-gallery');
         wp_enqueue_script('flexslider');
 
     }
@@ -606,7 +604,6 @@ add_filter( 'user_contactmethods', 'add_twitter_contactmethod', 10, 1 );
 
 require_once('library/misc.php');
 require_once('library/display_posts.php');
-require_once('library/gallery.php');
 require_once('library/ajax.php');
 
 ?>

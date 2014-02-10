@@ -32,7 +32,7 @@ add_action( 'wp_ajax_nopriv_kmc2_AddHomeSlide', 'AddHomeSlide' );
 
 
 function kmc2_load_gallery() {
-	$gallery = "[gallery include='" . $_GET['include'] . "' container='false']";
+	$gallery = "[gallery type='masonry' include='" . $_GET['include'] . "' container='false']";
 
 	$out = do_shortcode($gallery);
 

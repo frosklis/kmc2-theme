@@ -99,7 +99,7 @@ function kmc2_get_attachment_image($atts) {
     $title = $queried_post->post_title;
 
 
-    // If we are in the feed tmeplate, we just return the medium sized image
+    // If we are in the feed template, we just return the medium sized image
     if (is_feed()) {
         $aux = wp_get_attachment_image_src( $id, "medium" );
         $out = "<img src='" . $aux[0] . "' alt='" . $title . "'>";
@@ -141,7 +141,7 @@ function kmc2_get_attachment_image($atts) {
 
     // Image and caption
     if($legend) {
-        $out .= " data-title='".$title."'";
+        $out .= " data-title='" . $title . "'";
         $out .= " data-caption='".$caption."'";
     }
     // Attachment page
@@ -276,7 +276,7 @@ function display_pictures($cat_id) {
         }
 
 
-        $gallery = '[gallery autoload="true" include="';
+        $gallery = '[gallery type="masonry" autoload="true" include="';
         $gallery .= $str_ids . '"]';
 
         echo do_shortcode($gallery);
@@ -293,7 +293,7 @@ function display_pictures($cat_id) {
 
 
 function kmc2_gallery_shortcode( $out, $atts ) {
-    if (!isset($atts['autoload']) && !isset($atts['container'])) return $out;
+    if (!isset($atts['autoload']) && !isset($atts['container']) && !isset($atts['type'])) return $out;
 
     if (isset($atts['autoload'])) {
         if ($atts['autoload'] == 'true') {
@@ -307,8 +307,12 @@ function kmc2_gallery_shortcode( $out, $atts ) {
             $first = array_slice($images, 0, $loadchunk);
             $ids = implode(',', $first);
 
-            $output = do_shortcode('[gallery include="' . $ids . '"]');
-
+            if (!isset($atts['type'])){
+                $output = do_shortcode('[gallery include="' . $ids . '"]');
+            }
+            else {
+                $output = do_shortcode('[gallery type="' . $atts['type'] . '" include="' . $ids . '"]');
+            }
             $moregalleries = '<div data-chunks="' . $chunks . '"';
             $shortcodes = array();
 
@@ -336,10 +340,37 @@ function kmc2_gallery_shortcode( $out, $atts ) {
 
     if (isset($atts['container'])) {
         if ($atts['container'] == 'false') {
-            $out = do_shortcode("[gallery include='" . $atts['include'] . "']");
+            if (!isset($atts['type'])){
+                $out = do_shortcode("[gallery include='" . $atts['include'] . "']");
+            }
+            else {
+                $out = do_shortcode('[gallery type="' . $atts['type'] . '" include="' . $atts['include'] . '"]');
+            }
             $pos = strpos($out, "</style>");
-            $output = substr($out, $pos + 8);
-            return $output;
+            if ($pos > -1) $out = substr($out, $pos + 8);
+
+            $pos = strpos($out, ">");
+            $out = substr($out, $pos + 1);
+            $pos = strrpos($out, "</div>");
+            $out = substr($out, 0, $pos);
+
+            return $out;
+        }
+    }
+
+    if (isset($atts['type'])) {
+        if (strtolower($atts['type']) == 'masonry') {
+            $out = '<div class="gallery gallery-masonry">';
+
+            $imageids = explode(',', $atts['include']);
+            foreach ($imageids as $id) {
+                $out .= '<div class="gallery-item">';
+
+                $out .= do_shortcode('[image legend="false" id="' . $id . '"]');
+
+                $out .= '</div>'; // gallery-item
+            }
+            $out .= '</div>'; // gallery class
         }
     }
     return $out;
