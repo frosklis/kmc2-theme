@@ -4,6 +4,17 @@ Author: Claudio Noguera
 */
 /*global image_sizes_vars, blog_vars, jQuery: false*/
 
+Object.size = function (obj) {
+    'use strict';
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            size++;
+        }
+    }
+    return size;
+};
+
 // ----------------------------------------------------
 // lazyload
 // ----------------------------------------------------
@@ -50,22 +61,24 @@ window.startLoadingImages = function () {
 
         }
 
-        for (k = 0; k < image_sizes_vars.length; k++) {
-            w = w * window.devicePixelRatio;
-            h = w * padding;
+        // for (k = 0; k < Object.size(image_sizes_vars); k++) {
+        for (k in image_sizes_vars) {
+            if (image_sizes_vars.hasOwnProperty(k)) {
+                w = w * window.devicePixelRatio;
+                h = w * padding;
 
-            w2 = image_sizes_vars[k][0];
-            h2 = w2 * padding;
-            if (h2 > image_sizes_vars[k][1]) {
-                h2 = image_sizes_vars[k][1];
-                w2 = h2 / padding;
-            }
+                w2 = image_sizes_vars[k][0];
+                h2 = w2 * padding;
+                if (h2 > image_sizes_vars[k][1]) {
+                    h2 = image_sizes_vars[k][1];
+                    w2 = h2 / padding;
+                }
 
-            if (w <= w2 && h <= h2) {
-                return k;
+                if (w <= w2 && h <= h2) {
+                    return k;
+                }
             }
         }
-
         return 'original';
     };
 
