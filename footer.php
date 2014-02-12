@@ -10,10 +10,6 @@
 								   rel="publisher" target="_top"><span class="icon-google-plus"></span>
 								</a>
 							</p>
-								<?php
-								$form = "footersearch";
-								echo(kmc2_wpsearch($form));
-								?>
 						</div>
 						<div class="footer-widgetarea">
 						<?php
@@ -24,17 +20,6 @@
 					<?php
 					unset($widget);
 					?>
-
-					<nav role="navigation">
-    					<?php //kmc2_footer_links(); ?>
-	                </nav>
-
-					<div class="source-org copyright aligncenter">
-						<p><a href="<?php echo home_url(); ?>" rel="nofollow">
-						<?php require('images/svg/c2.svg'); ?>
-						</a></p>
-						<!-- <p><a href="<?php echo home_url(); ?>" rel="nofollow">&copy; <?php echo date('Y'); ?> km c<sup>2</sup><?php // bloginfo('name'); ?></a></p> -->
-					</div>
 				</div> <!-- end #inner-footer -->
 
 			</footer> <!-- end footer -->
