@@ -1,17 +1,17 @@
 <?php
 /**
  * Contains methods for customizing the theme customization screen.
- * 
+ *
  * @link http://codex.wordpress.org/Theme_Customization_API
  */
 class KmC2_Theme_Customize {
    /**
     * This hooks into 'customize_register' (available as of WP 3.4) and allows
     * you to add new sections and controls to the Theme Customize screen.
-    * 
+    *
     * Note: To enable instant preview, we have to actually write a bit of custom
     * javascript. See live_preview() for more.
-    *  
+    *
     * @see add_action('customize_register',$func)
     * @param \WP_Customize_Manager $wp_customize
     * @link http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
@@ -19,23 +19,31 @@ class KmC2_Theme_Customize {
     */
    public static function register ( $wp_customize ) {
       //1. Define a new section (if desired) to the Theme Customizer
-    
-      // $wp_customize->add_section( 'colors', 
+
+      // $wp_customize->add_section( 'colors',
       //    array(
       //       'title' => __( 'Colors', 'kmc2theme' ), //Visible title of section
       //       'priority' => 35, //Determines what order this appears in
       //       'capability' => 'edit_theme_options', //Capability needed to tweak
       //       'description' => __('Allows you to customize some example settings for MyTheme.', 'kmc2theme'), //Descriptive tooltip
-      //    ) 
+      //    )
       // );
 
-      $wp_customize->add_section( 'accounts', 
+      $wp_customize->add_section( 'accounts',
          array(
             'title' => __( 'Accounts', 'kmc2theme' ), //Visible title of section
             'priority' => 35, //Determines what order this appears in
             'capability' => 'edit_theme_options', //Capability needed to tweak
             'description' => __('Set social media user names to customize follow links.', 'kmc2theme'), //Descriptive tooltip
-         ) 
+         )
+      );
+      $wp_customize->add_section( 'analytics',
+         array(
+            'title' => __( 'Google Analytics tracking code', 'kmc2theme' ), //Visible title of section
+            'priority' => 35, //Determines what order this appears in
+            'capability' => 'edit_theme_options', //Capability needed to tweak
+            'description' => __('Enable google analytics for statistics', 'kmc2theme'), //Descriptive tooltip
+         )
       );
 
       //2. Register new settings to the WP database...
@@ -45,16 +53,23 @@ class KmC2_Theme_Customize {
       //       'type' => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
       //       'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
       //       'transport' => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-      //    ) 
-      // );  
+      //    )
+      // );
       $wp_customize->add_setting( 'kmc2_twitter_user', //Give it a SERIALIZED name (so all theme settings can live under one db record)
          array(
             'type' => 'option', //Is this an 'option' or a 'theme_mod'?
             'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
             'transport' => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-         ) 
-      );      
-            
+         )
+      );
+      $wp_customize->add_setting( 'google_analytics_tracking_code', //Give it a SERIALIZED name (so all theme settings can live under one db record)
+         array(
+            'type' => 'option', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport' => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         )
+      );
+
       //3. Finally, we define the control itself (which links a setting to a section and renders the HTML controls)...
       // $wp_customize->add_control( new WP_Customize_Color_Control( //Instantiate the color control class
       //    $wp_customize, //Pass the $wp_customize object (required)
@@ -64,17 +79,24 @@ class KmC2_Theme_Customize {
       //       'section' => 'colors', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
       //       'settings' => 'normal_textcolor', //Which setting to load and manipulate (serialized is okay)
       //       'priority' => 10, //Determines the order this control appears in for the specified section
-      //    ) 
+      //    )
       // ) );
 
-      $wp_customize->add_control( 'kmc2_color_scheme', array(
+      $wp_customize->add_control( 'accounts', array(
         'label'      => __( 'Twitter username', 'kmc2theme' ),
         'section'    => 'accounts',
         'settings'   => 'kmc2_twitter_user',
         'type'       => 'text'
-        ) 
+        )
       );
-      
+      $wp_customize->add_control('google_analytics', array(
+        'label'      => __( 'Google Analytics API key', 'kmc2theme' ),
+        'section'    => 'analytics',
+        'settings'   => 'google_analytics_tracking_code',
+        'type'       => 'text'
+        )
+      );
+
       //4. We can also change built-in settings by modifying properties. For instance, let's make some stuff use live preview JS...
       $wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
       $wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
@@ -84,41 +106,41 @@ class KmC2_Theme_Customize {
 
    /**
     * This will output the custom WordPress settings to the live theme's WP head.
-    * 
+    *
     * Used by hook: 'wp_head'
-    * 
+    *
     * @see add_action('wp_head',$func)
     * @since MyTheme 1.0
     */
    public static function header_output() {
       ?>
-      <!--Customizer CSS--> 
+      <!--Customizer CSS-->
       <style type="text/css">
-           <?php // self::generate_css('#site-title a', 'color', 'header_textcolor'); ?> 
+           <?php // self::generate_css('#site-title a', 'color', 'header_textcolor'); ?>
            <?php // self::generate_css('body', 'background-color', 'background_color'); ?>
-           <?php // self::generate_css('body', 'color', 'normal_textcolor'); ?> 
-      </style> 
+           <?php // self::generate_css('body', 'color', 'normal_textcolor'); ?>
+      </style>
       <!--/Customizer CSS-->
       <?php
    }
-   
+
    /**
     * This outputs the javascript needed to automate the live settings preview.
-    * Also keep in mind that this function isn't necessary unless your settings 
+    * Also keep in mind that this function isn't necessary unless your settings
     * are using 'transport'=>'postMessage' instead of the default 'transport'
     * => 'refresh'
-    * 
+    *
     * Used by hook: 'customize_preview_init'
-    * 
+    *
     * @see add_action('customize_preview_init',$func)
     * @since MyTheme 1.0
     */
    public static function live_preview() {
-      wp_enqueue_script( 
+      wp_enqueue_script(
            'mytheme-themecustomizer', // Give the script a unique ID
            get_template_directory_uri() . '/library/js/theme-customizer.js', // Define the path to the JS file
            array(  'jquery', 'customize-preview' ), // Define dependencies
-           '', // Define a version (optional) 
+           '', // Define a version (optional)
            true // Specify whether to put in footer (leave this true)
       );
    }
@@ -126,7 +148,7 @@ class KmC2_Theme_Customize {
     /**
      * This will generate a line of CSS for use in header output. If the setting
      * ($mod_name) has no defined value, the CSS will not be output.
-     * 
+     *
      * @uses get_theme_mod()
      * @param string $selector CSS selector
      * @param string $style The name of the CSS *property* to modify
