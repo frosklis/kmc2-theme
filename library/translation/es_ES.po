@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmc2theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-15 21:59+0100\n"
+"POT-Creation-Date: 2014-02-16 01:18+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Claudio Noguera <claudio.noguera@gmail.com>\n"
 "Language-Team: fulgor <frag.fulgor@gmail.com>\n"
@@ -282,6 +282,14 @@ msgstr ""
 "No se han encontrado entradas relacionadas, así que aquí hay un premio de "
 "consolación:"
 
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/admin.php:3
+msgid "Km c<sup>2</sup> theme"
+msgstr "Tema Km c<sup>2</sup>"
+
+#: /Users/claudio/Dropbox/Web/kmc2-theme/library/admin.php:9
+msgid "by"
+msgstr "por"
+
 #: /Users/claudio/Dropbox/Web/kmc2-theme/library/display_posts.php:44
 msgid "This is the error message in the display_posts function."
 msgstr "Este es el mensaje de error de la función display_posts"
@@ -510,9 +518,6 @@ msgstr "Clave API de Google Analytics"
 
 #~ msgid "Posted"
 #~ msgstr "Publicado"
-
-#~ msgid "by"
-#~ msgstr "por"
 
 #~ msgid "filed under"
 #~ msgstr "archivadas en"
