@@ -601,6 +601,10 @@ function add_twitter_contactmethod( $contactmethods ) {
 }
 add_filter( 'user_contactmethods', 'add_twitter_contactmethod', 10, 1 );
 
+function kmc2_disable_richedit( $default ) {
+    return false;
+}
+add_filter( 'user_can_richedit', 'kmc2_disable_richedit' );
 
 require_once('library/misc.php');
 require_once('library/display_posts.php');
