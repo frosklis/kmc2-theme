@@ -377,6 +377,78 @@ function kmc2_gallery_shortcode( $out, $atts ) {
 }
 add_filter( 'post_gallery', 'kmc2_gallery_shortcode', 10, 3 );
 
+
+function kmc2_update_image_table($post_id) {
+    global $wpdb;
+    $prefix = $wpdb->prefix;
+    $table = $prefix . 'kmc2_imagerel';
+
+    if($wpdb->get_var("SHOW TABLES LIKE '$table'") != $table) {
+        kmc2_create_image_table();
+        return false;
+    }
+    // Drop and create table
+    $wpdb->query("delete from " . $table . " where post_id = " . strval($post_id));
+
+
+    $list_of_posts = new WP_Query( 'p=' . strval($post_id) );
+
+    $pattern = get_shortcode_regex();
+
+    foreach ($list_of_posts->posts as $post) {
+        if (   preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches )
+            && array_key_exists( 2, $matches )
+            && in_array( 'image', $matches[2] ) )
+        {
+            foreach ($matches[0] as $key => $value) {
+                $value = str_replace('[', '', $value);
+                $value = str_replace(']', '', $value);
+                $atts = shortcode_parse_atts($value);
+
+                $id = intval($atts['id']);
+
+                $q = "insert into ". $table . " (post_id, image_id) values (" . strval($post_id) . ", " . strval($id) . ")";
+                $wpdb->query($q);
+            }
+        }
+    }
+}
+add_action( 'save_post', 'kmc2_update_image_table' );
+function kmc2_create_image_table()
+{
+
+    global $wpdb;
+    $prefix = $wpdb->prefix;
+    $table = $prefix . 'kmc2_imagerel';
+    // Drop and create table
+    $wpdb->query("drop table if exists $table");
+    $wpdb->query("create table $table (
+            image_id integer,
+            post_id integer
+        )");
+
+    $args = array(
+        'post_type' => 'post',
+        'nopaging' => true
+      );
+
+    $list_of_posts = new WP_Query( $args );
+
+    $pattern = get_shortcode_regex();
+
+
+    foreach ($list_of_posts->posts as $post) {
+        if (   preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches )
+            && array_key_exists( 2, $matches )
+            && in_array( 'image', $matches[2] ) )
+        {
+            kmc2_update_image_table($post->ID);
+        }
+    }
+}
+// add_action( 'wp', 'kmc2_detect_image_shortcode' );
+
+
 // // Autocreate a menu
 // function kmc2_automenu() {
 //     $menuname = __('KM C2 Default menu', 'kmc2theme');
