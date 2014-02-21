@@ -57,6 +57,10 @@ function display_posts ($args) {
 		if($tiles) {
             $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "width_260");
             $thumbnail = $thumbnail[0];
+            if ($thumbnail == '') {
+                $thumbnail = wp_get_attachment_image_src( kmc2_get_random_image_id( get_the_ID() ), "width_260");
+                $thumbnail = $thumbnail[0];
+            }
         ?>
             <a class="article-thumb" href="<?php the_permalink(); ?>">
                 <div class="background" style="background-image: url(<?php echo($thumbnail); ?>);"></div>

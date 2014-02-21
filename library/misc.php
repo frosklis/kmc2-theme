@@ -448,6 +448,19 @@ function kmc2_create_image_table()
 }
 // add_action( 'wp', 'kmc2_detect_image_shortcode' );
 
+/**
+ * If the post has images, it returns one random image
+ * @param int $post_id
+ * @return int an image id
+ */
+function kmc2_get_random_image_id($post_id) {
+    global $wpdb;
+    $prefix = $wpdb->prefix;
+    $table = $prefix . 'kmc2_imagerel';
+
+    // Drop and create table
+    return $wpdb->get_var("select image_id from $table where post_id = $post_id order by rand() limit 1");
+}
 
 // // Autocreate a menu
 // function kmc2_automenu() {
