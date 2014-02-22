@@ -486,10 +486,10 @@ function kmc2_posts_with_attachment($content) {
 
     foreach ( $post_ids as $id )
     {
-        $related .= "<ol><a href='";
+        $related .= "<li><a href='";
         $title = get_the_title($id);
         $related .= get_permalink($id) . "'  title='" . trim(strip_tags($title)) . "'>" . $title;
-        $related .= "</a></ol>";
+        $related .= "</a></li>";
 
     }
 
