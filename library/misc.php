@@ -462,6 +462,41 @@ function kmc2_get_random_image_id($post_id) {
     return $wpdb->get_var("select image_id from $table where post_id = $post_id order by rand() limit 1");
 }
 
+add_filter ('the_content', 'kmc2_posts_with_attachment');
+
+function kmc2_posts_with_attachment($content) {
+    if (!is_attachment()) {
+        return $content;
+    }
+
+    global $wpdb;
+    $prefix = $wpdb->prefix;
+    $table = $prefix . 'kmc2_imagerel';
+
+    // Drop and create table
+    $image_id = get_the_ID();
+    $post_ids = $wpdb->get_col("select post_id from $table where image_id = $image_id order by rand()");
+
+    if (!$post_ids) {
+        return $content;
+    }
+
+    $related = "<h3>" . __("Posts with this file", "kmc2theme") . "</h3>";
+    $related .= "<ol>";
+
+    foreach ( $post_ids as $id )
+    {
+        $related .= "<ol><a href='";
+        $title = get_the_title($id);
+        $related .= get_permalink($id) . "'  title='" . trim(strip_tags($title)) . "'>" . $title;
+        $related .= "</a></ol>";
+
+    }
+
+    $related .= "</ol>";
+
+    return $content . $related;
+}
 // // Autocreate a menu
 // function kmc2_automenu() {
 //     $menuname = __('KM C2 Default menu', 'kmc2theme');
