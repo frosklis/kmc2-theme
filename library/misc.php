@@ -210,45 +210,39 @@ function display_pictures($cat_id) {
 
         $id_list = array();
 
-        $number_of_posts = 0;
-        $number_of_pictures = 0;
-
-
-
         if ($cat_id > -1) {
             $args = array(
                 'posts_per_page' => -1,
                 'cat' => $cat_id,
+                'post_type' => array('attachment', 'post'),
+                'post_status' => array('publish', 'inherit')
             );
             $list_of_posts = new WP_Query( $args );
 
+            $post_id_list = array();
 
-            if ($list_of_posts->have_posts()) : while ($list_of_posts->have_posts()) : $list_of_posts->the_post();
-                $number_of_posts += 1;
-
-                $postID = get_the_ID();
-
-                $args = array(
-                    'posts_per_page' => -1,
-                    'order' => 'ASC',
-                    'post_mime_type' => 'image',
-                    'post_parent' => $postID,
-                    'post_status' => null,
-                    'post_type' => 'attachment',
-                );
-
-                $attachments = get_children( $args );
-
-                if ( $attachments ) {
-                    foreach ( $attachments as $attachment ) {
-                        array_push($id_list, $attachment->ID);
-                        $number_of_pictures += 1;
+            if ($list_of_posts->have_posts()) {
+                while ($list_of_posts->have_posts()) {
+                    $list_of_posts->the_post();
+                    $postID = get_the_ID();
+                    if (strpos(get_post_mime_type($postID), "image") !== false) {
+                        $id_list[] = $postID;
+                    }
+                    elseif (get_post_type($postID) != 'attachment') {
+                        $post_id_list[] = $postID;
                     }
                 }
 
+                // Get the images from the posts
+                global $wpdb;
+                $prefix = $wpdb->prefix;
+                $table = $prefix . 'kmc2_imagerel';
 
-            endwhile;
-            endif;
+                $postlist = implode(',', $post_id_list);
+                $post_ids = $wpdb->get_col("select image_id from $table where post_id in ( $postlist ) ");
+                $id_list = array_merge($id_list, $post_ids);
+            }
+
         } else {
 
             $args = array(
@@ -258,7 +252,6 @@ function display_pictures($cat_id) {
 
             foreach ( $list_of_posts->posts as $attachment ) {
                 array_push($id_list, $attachment->ID);
-                $number_of_pictures += 1;
             }
 
         }

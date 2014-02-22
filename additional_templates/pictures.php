@@ -12,19 +12,8 @@ $tipo = get_query_var('tipo');
 				<div id="inner-content" class="clearfix">
 					<div id="main" class="twelvecol single first clearfix category-page" role="main">
 						<?php
-						// The Query
-						$args = array(
-							'posts_per_page' => 1,
-						);
-						$query = new WP_Query( $args );
-
-						// The Loop
-						if ( $query->have_posts() ) {
-							$query->the_post();
-    						display_pictures(-1);
-						}
-
-    					?>
+						display_pictures(-1);
+						?>
 					</div> <!-- end #main -->
 
 				</div> <!-- end #inner-content -->
