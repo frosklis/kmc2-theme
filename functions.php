@@ -109,6 +109,17 @@ function kmc2_ahoy() {
 
 
 } /* end kmc2 ahoy */
+/**
+ * Add categories to attachments
+ * @see http://code.tutsplus.com/articles/applying-categories-tags-and-custom-taxonomies-to-media-attachments--wp-32319
+ * @return type
+ */
+function kmc2_add_categories_to_attachments() {
+    register_taxonomy_for_object_type( 'category', 'attachment' );
+    register_taxonomy_for_object_type( 'post_tag', 'attachment' );
+}
+add_action( 'init' , 'kmc2_add_categories_to_attachments' );
+
 add_action('after_setup_theme','kmc2_ahoy', 15);
 function kmc2_remove_version() {
 return '';
