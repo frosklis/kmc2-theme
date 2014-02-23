@@ -16,6 +16,7 @@ if ( ! isset( $content_width ) ) $content_width = 960;
 function kmc2_ahoy() {
     // launching operation cleanup
     add_action('init', 'kmc2_head_cleanup');
+    add_action('init', 'kmc2_add_categories_to_attachments' );
 
 
     // Set featured image
@@ -57,24 +58,6 @@ function kmc2_ahoy() {
     // 4 Queries
     add_action('init', 'tipo_taxonomy' );
 
-
-    // to add header image support go here: http://themble.com/support/adding-header-background-image-support/
-
-    // adding post format support
-    // add_theme_support( 'post-formats',
-    //     array(
-    //         'aside',             // title less blurb
-    //         'gallery',           // gallery of images
-    //         'link',              // quick link to other site
-    //         'image',             // an image
-    //         'quote',             // a quick quote
-    //         'status',            // a Facebook like status update
-    //         'video',             // video
-    //         'audio',             // audio
-    //         'chat'               // chat transcript
-    //     )
-    // );
-
     // Infinite scroll
     add_theme_support( 'infinite-scroll', array(
         'container' => 'content',
@@ -112,13 +95,12 @@ function kmc2_ahoy() {
 /**
  * Add categories to attachments
  * @see http://code.tutsplus.com/articles/applying-categories-tags-and-custom-taxonomies-to-media-attachments--wp-32319
- * @return type
+ * @return void
  */
 function kmc2_add_categories_to_attachments() {
     register_taxonomy_for_object_type( 'category', 'attachment' );
     register_taxonomy_for_object_type( 'post_tag', 'attachment' );
 }
-add_action( 'init' , 'kmc2_add_categories_to_attachments' );
 
 add_action('after_setup_theme','kmc2_ahoy', 15);
 function kmc2_remove_version() {
@@ -182,14 +164,6 @@ function kmc2_custom_rewrites() {
 
     $wp->add_query_var('kmc2_pictures');
     add_rewrite_rule(__('pictures/?$', 'kmc2theme'), 'index.php?kmc2_pictures=1', 'top');
-
-    // add_rewrite_rule('tree/?([^/]+)/?([^/]+)/paged/?([0-9]{1,})/$',
-    //     'index.php?category_name=$matches[1]&tipo=$matches[2]?paged=matches[3]',
-    //     'top');
-
-    // add_rewrite_rule('tree/([^/]+)page/?([0-9]{1,})/$',
-    //     'index.php?category_name=$matches[1]?paged=matches[2]',
-    //     'top');
 
 }
 
@@ -461,11 +435,6 @@ function kmc2_page_navi($before = '', $after = '') {
 /*********************
 RANDOM CLEANUP ITEMS
 *********************/
-
-// remove the p from around imgs (http://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/)
-function kmc2_filter_ptags_on_images($content) {
-   return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
-}
 
 /*
  * This is a modified the_author_posts_link() which just returns the link.
