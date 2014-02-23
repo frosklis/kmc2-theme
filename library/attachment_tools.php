@@ -80,67 +80,81 @@ function exifizer_nuclear_option($action){
 		$attachid = $postid;
 		echo "using EXIF date from " . $exifdetails . " id ". $attachid . ": \"" . $attachname . "\"</p>";
 
-		$imgmeta = wp_get_attachment_metadata($attachid, false);
 
-		if($imgmeta && $imgmeta['image_meta']['created_timestamp'] != 0){			//use EXIF date if not 0
-			$exifdate = date("Y-m-d H:i:s", $imgmeta['image_meta']['created_timestamp']);
-		} else {
-			$meta = get_post_meta( $attachid );
+		$meta = get_post_meta( $attachid );
 
-			$upload_dir = wp_upload_dir();
+		$upload_dir = wp_upload_dir();
 
-			$exif = exif_read_data($upload_dir['basedir'] . '/' . $meta['_wp_attached_file'][0], 'EXIF');
+		$exif = exif_read_data($upload_dir['basedir'] . '/' . $meta['_wp_attached_file'][0]);
 
-			var_dump($exif);
+		$update_date = false;
+		$update_gps = false;
 
-			$exifdate = 'badexif';
+		if ($exif == false) {
+			echo "<div class=\"error highlight\"><p>" . __("Couldn't read EXIF data", 'kmc2theme') . "</p></div>";
+		}
+		else {
+			echo "<div class=\"updated highlight\">";
+			if (isset($exif['DateTimeOriginal'])) {
+				echo "<p>" . __("Picture date: ", 'kmc2theme') . $exif['DateTimeOriginal'] . "</p>";
+				$update_date = true;
+			} else {
+				echo "<p>" . __("Got no date!", 'kmc2theme') . "</p>";
+			}
+			if (isset($exif["GPSLongitude"]) && isset($exif["GPSLongitudeRef"])
+				&& isset($exif["GPSLatitude"]) && isset($exif["GPSLatitudeRef"])) {
+				echo "<p>" . __("The picture has GPS data.", 'kmc2theme') . "</p>";
+				$update_gps = true;
+			} else {
+				echo "<p>" . __("No EXIF GPS data.", 'kmc2theme') . "</p>";
+			}
+
+			echo "</div>";
 		}
 
-		// if we have image meta and it is not 0 then...
 
-		switch ($exifdate){
-		case 'skip':
-			$exifexcuse = __("SKIP: 'exifize_date' meta is set to 'skip'");
-			$exifexclass = "updated";
-			break;
-		case 'none':
-			$exifexcuse = __("SKIP: No attachment, featured image, or 'exifize_date' meta found");
-			$exifexclass = "updated";
-			break;
-		case 'badexif':
-			$exifexcuse = __("SKIP: WARNING - image EXIF date missing or can't be read");
-			$exifexclass = "error";
-			break;
-		case 'badmeta':
-			$exifexcuse = __("SKIP: WARNING - 'exifize_date' custom meta is formatted wrong: ") . $metadate;
-			$exifexclass = "error";
-			break;
-		case $postdate:
-			$exifexcuse = __("Already EXIFized!");
-			$exifexclass = "updated \" style=\" background:none ";
-			break;
-		default:
-			// $update_post = array(
-			// 	'ID' => $postid,
-			// 	'post_date' => $exifdate,
-			// 	'post_date_gmt' => $exifdate,
-			// 	//'edit_date' => true,
-			// );
+		// Update post GPS data
+		if ($update_gps && !(isset($meta['geo_latitude']) && isset($meta['geo_longitude']))) {
 
-			// $howditgo = wp_update_post($update_post);
-			$howditgo = 0;
+			$lon = getGps($exif["GPSLongitude"], $exif['GPSLongitudeRef']);
+			$lat = getGps($exif["GPSLatitude"], $exif['GPSLatitudeRef']);
 
-			if($howditgo != 0){
-				$exifexcuse = "Post " . $howditgo . " EXIFIZED! using " . $exifdetails . " date: " . $exifdate . " " ;
-				$exifexclass = "updated highlight";
-			}else{
-				$exifexcuse = "ERROR... something went wrong... with " . $postid .". You might get that checked out.";
-				$exifexclass = "error highlight";
-			} //end howditgo
-		} //end switch
+			update_post_meta($post_id, 'geo_latitude', $lat);
+			update_post_meta($post_id, 'geo_longitude', $lon);
+			echo "<div class=\"updated highlight\">";
+			echo "<p>" . __("GPS data updated: ", 'kmc2theme') . $lon . ", " . $lat . "</p>";
+			echo "</div>";
 
-		echo "<div class=\"" . $exifexclass . "\"><p>" . $exifexcuse . "</p></div>";
+		} else {
+			echo "<div class=\"updated highlight\">";
+			echo "<p>" . __("Not updating GPS data", 'kmc2theme');
+			if ($update_gps) {
+				echo __(" because it is already up to date", 'kmc2theme');
+			}
+			echo ".</p>";
+			echo "</div>";
+		}
 
+		// Update post date
+
+		if ($update_date) {
+			$exifdate = $exif['DateTimeOriginal'];
+			$postdate = get_the_time('Y-m-d H:i:s', $attachid);
+
+			echo "<div class=\"updated highlight\">";
+			echo "<p>" . __("Updating date.", 'kmc2theme') . "</p>";
+			echo "</div>";
+
+			if (date_parse($exifdate) != date_parse($postdate)) {
+				$update_post = array(
+					'ID' => $postid,
+					'post_date' => $exifdate,
+					'post_date_gmt' => $exifdate
+				);
+
+				wp_update_post($update_post);
+			}
+		}
 	endforeach;
 
 	?>
@@ -157,4 +171,6 @@ function exifizer_nuclear_option($action){
 	<h2>Again?</h2>
 	<?php
 } //end function exifizer_nuclear_option
+
+
 ?>
