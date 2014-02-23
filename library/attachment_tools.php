@@ -1,12 +1,14 @@
 <?php
 
 
-add_action( 'admin_menu', 'exifize_date_menu' );
-function exifize_date_menu() {
-	add_submenu_page( 'tools.php', 'EXIFize Dates', 'EXIFize Dates', 'manage_options', 'exifize-my-dates', 'exifize_my_dates' );
+add_action( 'admin_menu', 'kmc2_theme_tools' );
+function kmc2_theme_tools() {
+	// add_submenu_page( 'tools.php', 'EXIFize Dates', 'EXIFize Dates', 'manage_options', 'exifize-my-dates', 'kmc2_theme_tools_page' );
+	add_theme_page( __('Theme tools', 'kmc2theme'), __('Theme tools', 'kmc2theme'), 'manage_options', 'kmc2-theme-tools', 'kmc2_theme_tools_page');
+
 }
 
-function exifize_my_dates() {
+function kmc2_theme_tools_page() {
 	?>
 	<div class="">
 		<h1>EXIFize My Dates</h1>
