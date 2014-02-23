@@ -43,9 +43,6 @@ function kmc2_ahoy() {
     // adding the kmc2 search form (created in functions.php)
     add_filter( 'get_search_form', 'kmc2_wpsearch' );
 
-    // cleaning up random code around images
-    add_filter('the_content', 'kmc2_filter_ptags_on_images');
-
     // no mostrar admin bar
     // add_filter('show_admin_bar', '__return_false' );
 
