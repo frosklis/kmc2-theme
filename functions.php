@@ -604,6 +604,7 @@ require_once('library/display_posts.php');
 require_once('library/ajax.php');
 if (is_admin()) {
     require_once('library/admin.php');
+    require_once('library/attachment_tools.php');
 }
 
 ?>
