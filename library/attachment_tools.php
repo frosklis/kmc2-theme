@@ -119,8 +119,8 @@ function exifizer_nuclear_option($action){
 			$lon = getGps($exif["GPSLongitude"], $exif['GPSLongitudeRef']);
 			$lat = getGps($exif["GPSLatitude"], $exif['GPSLatitudeRef']);
 
-			update_post_meta($post_id, 'geo_latitude', $lat);
-			update_post_meta($post_id, 'geo_longitude', $lon);
+			update_post_meta($attachid, 'geo_latitude', $lat);
+			update_post_meta($attachid, 'geo_longitude', $lon);
 			echo "<div class=\"updated highlight\">";
 			echo "<p>" . __("GPS data updated: ", 'kmc2theme') . $lon . ", " . $lat . "</p>";
 			echo "</div>";
