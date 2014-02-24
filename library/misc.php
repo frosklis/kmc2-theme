@@ -319,14 +319,6 @@ function kmc2_gallery_shortcode( $out, $atts ) {
 
             $output = substr($output, 0, $pos) . $moregalleries . substr($output, $pos + 4);
 
-            $output .= "<script>
-                jQuery(window).scroll(function () {
-                    if (jQuery(window).scrollTop() === jQuery(document).height() - jQuery(window).height()) {
-                        loadGallery();
-                    }
-                });
-            </script>";
-
             return $output;
         }
     }

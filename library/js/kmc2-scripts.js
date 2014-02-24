@@ -194,8 +194,6 @@ jQuery(document).ready(function (jQuery) {
     });
 
     window.startLoadingImages();
-
-
 });
 
 
@@ -232,3 +230,10 @@ function loadGallery() {
     });
     return false;
 }
+
+jQuery(window).scroll(function () {
+    'use strict';
+    if (jQuery(window).scrollTop() === jQuery(document).height() - jQuery(window).height()) {
+        loadGallery();
+    }
+});
