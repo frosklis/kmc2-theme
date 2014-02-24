@@ -157,7 +157,7 @@ function kmc2_get_attachment_image($atts) {
 
 
 // GET the first image of a post
-function echo_first_image( $postID ) {
+function echo_post_random_image( $postID ) {
 
     if ( class_exists('KmC2_Responsive_Images') ) {
         $images_functions = new KmC2_Responsive_Images();
@@ -170,26 +170,10 @@ function echo_first_image( $postID ) {
     }
 
     else {
-        $args = array(
-            'numberposts' => 1,
-            'order' => 'ASC',
-            'post_mime_type' => 'image',
-            'post_parent' => $postID,
-            'post_status' => null,
-            'post_type' => 'attachment',
-        );
-
-        $attachments = get_children( $args );
-
-        if ( $attachments ) {
-            foreach ( $attachments as $attachment ) {
-                $image_attributes = kmc2_get_attachment_image_src( $attachment->ID, 'medium' )  ? kmc2_get_attachment_image_src( $attachment->ID, 'medium' ) : kmc2_get_attachment_image_src( $attachment->ID, 'full' );
-
-                echo '<img src="' . wp_get_attachment_thumb_url( $attachment->ID ) . '" class="current alignleft">';
-            }
-        }
+        echo(kmc2_get_attachment_image( array('id' => kmc2_get_random_image_id( $postID ) , 'legend' => false)) );
     }
 }
+
 
 
 /**

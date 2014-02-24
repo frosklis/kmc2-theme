@@ -132,7 +132,7 @@ function display_posts ($args) {
                         echo(kmc2_get_attachment_image( array('id' => get_post_thumbnail_id( get_the_ID() ), 'legend' => false) ));
                         if (false) the_post_thumbnail(); // this never executes, just to pass the guidelines tests
                     } else {
-                        echo_first_image(get_the_ID());
+                        echo_post_random_image(get_the_ID());
                     } ?>
                 </div>
                 <?php the_excerpt();
