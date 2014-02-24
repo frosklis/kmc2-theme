@@ -268,9 +268,9 @@ function kmc2_scripts_and_styles() {
 
         //adding scripts file in the footer
         // wp_register_script( $handle, $src, $deps, $ver, $in_footer );
-        wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/kmc2-scripts.min.js', array( 'jquery', 'masonry', 'flexslider' ), '', true );
+        wp_register_script( 'kmc2-js', get_stylesheet_directory_uri() . '/library/js/kmc2-scripts.min.js', array( 'jquery', 'masonry'), '', true );
         wp_register_script( 'masonry', get_stylesheet_directory_uri() . '/library/js/masonry.pkgd.min.js', array( 'jquery' ), '', true );
-        wp_register_script( 'flexslider', get_stylesheet_directory_uri() . '/library/js/jquery.flexslider-min.js', array( 'jquery' ), '', true );
+
 
         wp_localize_script('kmc2-js', 'image_sizes_vars', array(
                 'thumbnail' => array(150,150),
