@@ -468,7 +468,7 @@ function kmc2_posts_with_attachment($content) {
 
     // Drop and create table
     $image_id = get_the_ID();
-    $post_ids = $wpdb->get_col("select post_id from $table where image_id = $image_id order by rand()");
+    $post_ids = $wpdb->get_col("select distinct post_id from $table where image_id = $image_id order by rand()");
 
     if (!$post_ids) {
         return $content;
