@@ -30,13 +30,14 @@ Stylesheet: Base Mobile Stylesheet
 *********************/
 body {
 	font-family: @sans-serif;
-	font-size: 16px;
-	line-height: 1.2;
+	font-size: 22px;
+	line-height: 1.2em;
 	color: @normal-text-color;
 	background-color: white;
 	word-wrap: break-word;
 	-ms-word-wrap: break-word;
 }
+
 
 img { //Don't let images be larger than their container
 	max-width: 100%;
@@ -153,7 +154,7 @@ a, a:visited {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 	font-family: @serif;
 	font-weight: 500;
-	margin-top: 0.375em;
+	margin-top: 0.175em;
 	margin-bottom: 0.375em;
 	/*
 	if you're going to use webfonts, be sure to check your weights
@@ -164,6 +165,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 	a {
 		text-decoration: none;
 	}
+	line-height: 1.1em;
 }
 
 h1, .h1 {
@@ -233,11 +235,11 @@ header {
 		.single{
 			float: none;
 			margin: 0 auto;
+			max-width: 800px;
 		}
 
 		.post, .page {
 			background-color: white;
-			margin-top: 20px;
 			margin-bottom: 20px;
 			padding-left: 1em;
 			padding-right: 1em;
@@ -275,10 +277,10 @@ header {
 
 		/* entry content */
 		.entry-content {
-			text-align: justify;
+			text-align: left;
 
 			p {
-				line-height: 1.7;
+				line-height: 1.7em;
 			}
 
 
@@ -1044,7 +1046,7 @@ SIDEBARS & ASIDES
 	.legend {
 		margin-top: 2px;
 		margin-bottom: 2px;
-		line-height: 1.2;
+		line-height: 1.2em;
 		font-size: 12px;
 		em {
 			font-size: 14px;
