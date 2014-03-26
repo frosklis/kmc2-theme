@@ -23,7 +23,7 @@ Author: Claudio Noguera
 
 Stylesheet: Mixins & Constants Stylesheet
 
-This is where you can take advantage of LESS' great features: 
+This is where you can take advantage of LESS' great features:
 Mixins & Constants. I won't go in-depth on how they work exactly,
 there are a few articles below that will help do that. What I will
 tell you is that this will help speed up simple changes like
@@ -31,7 +31,7 @@ changing a color or adding CSS3 techniques like box shadow and
 border-radius.
 
 A WORD OF WARNING: It's very easy to overdo it here. Be careful and
-remember less is more. 
+remember less is more.
 
 ******************************************************************/
 /*********************
@@ -75,7 +75,7 @@ DIMENSIONS
 TYPOGRAPHY
 *********************/
 /* 	To embed your own fonts, use this syntax
-	and place your fonts inside the 
+	and place your fonts inside the
 	library/fonts folder. For more information
 	on embedding fonts, go to:
 	http://www.fontsquirrel.com/
@@ -92,8 +92,8 @@ TYPOGRAPHY
     	font-style: normal;
 	}
 */
-/* 
-use the best ampersand 
+/*
+use the best ampersand
 http://simplebits.com/notebook/2008/08/14/ampersands-2/
 */
 span.amp {
@@ -146,11 +146,11 @@ span.amp {
 /*********************
 BORDER RADIUS
 *********************/
-/* 
-NOTE: For older browser support (and some mobile), 
-don't use the shorthand to define *different* corners. 
+/*
+NOTE: For older browser support (and some mobile),
+don't use the shorthand to define *different* corners.
 
-USAGE: .border-radius(4px); 
+USAGE: .border-radius(4px);
 
 */
 /*********************
@@ -159,7 +159,7 @@ TRANISTION
 /* .transition(all,2s); */
 /*********************
 CSS3 GRADIENTS
-Be careful with these since they can 
+Be careful with these since they can
 really slow down your CSS. Don't overdo it.
 *********************/
 /* .css-gradient(#dfdfdf,#f8f8f8); */
