@@ -18,15 +18,15 @@ if ($tipo != "") {
 					<div id="main" class="ninecol single first clearfix category-page" role="main">
 				<?php } ?>
 						<nav role="navigation" class="clearfix">
-							<ul id="menu-menu-principal" class="nav top-nav clearfix">
+							<ul id="menu-menu-category" class="nav top-nav clearfix">
 								<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor
 									<?php if ($tipo == '') echo ("current-menu-item"); ?>
 									">
 									<a href=<?php
-										$url = home_url();
+										$url = '"' . home_url();
 										$url .= '/category/';
 										$url .= $category->slug;
-										$url .= '/?order=' . get_query_var('order');
+										$url .= '/?order=' . get_query_var('order') . '"';
 
 										echo($url);
 									?>><?php echo($category->name);?></a>
@@ -35,11 +35,11 @@ if ($tipo != "") {
 									<?php if ($tipo == 'notas') echo ("current-menu-item"); ?>
 									">
 									<a href=<?php
-										$url = home_url();
+										$url = '"' . home_url();
 										$url .= '/tree/';
 										$url .= $category->slug;
 										$url .= '/notas';
-										$url .= '/?order=' . get_query_var('order');
+										$url .= '/?order=' . get_query_var('order') . '"';
 
 										echo($url);
 									?>>Notas</a>
@@ -48,11 +48,11 @@ if ($tipo != "") {
 									<?php if ($tipo == 'diario') echo ("current-menu-item"); ?>
 									">
 									<a href=<?php
-										$url = home_url();
+										$url = '"' . home_url();
 										$url .= '/tree/';
 										$url .= $category->slug;
 										$url .= '/diario';
-										$url .= '/?order=' . get_query_var('order');
+										$url .= '/?order=' . get_query_var('order') . '"';
 
 										echo($url);
 									?>>Diario</a>
@@ -61,10 +61,10 @@ if ($tipo != "") {
 									<?php if ($tipo == 'fotos') echo ("current-menu-item"); ?>
 									">
 									<a href=<?php
-										$url = home_url();
+										$url = '"' . home_url();
 										$url .= '/tree/';
 										$url .= $category->slug;
-										$url .= '/fotos';
+										$url .= '/fotos' . '"';
 
 										echo($url);
 									?>>Fotos</a>

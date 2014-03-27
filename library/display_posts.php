@@ -95,9 +95,7 @@ function display_posts ($args) {
 
     					// Date
     					echo('<div class="info"><span class="icon-calendar"></span> ');
-                        printf('<time class="updated" datetime="%1$s" pubdate>%2$s</time></p></div>',
-                                get_the_time('Y-m-j'),
-                                get_the_time(get_option('date_format')));
+                        printf('<time class="updated" datetime="%1$s">%2$s</time></div>', get_the_time('Y-m-d H:i'), get_the_time(get_option('date_format')));
     					// Author
     					echo('<div class="info"><span class="icon-user"></span> ');
     					echo(kmc2_get_the_author_posts_link());
